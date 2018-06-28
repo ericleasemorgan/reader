@@ -1,2 +1,2 @@
 # reader
-Distant Reader, a tool for using &amp; understand a corpus
+Distant Reader, a tool for using &amp; understanding a corpus --Eric Lease Morgan (June 28, 2018)
