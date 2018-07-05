@@ -11,7 +11,6 @@
 
 
 # configure
-HOME='/Users/emorgan/Desktop/reader'
 ADR='adr'
 
 # sanity check
@@ -22,9 +21,6 @@ fi
 
 # get input
 FILE=$1
-
-# make sane
-cd $HOME
 
 # compute I/O names
 ORIGINAL=$( dirname "${FILE}" )

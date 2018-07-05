@@ -10,7 +10,6 @@
 # June 26, 2018 - first cut
 
 # configure
-HOME='/Users/emorgan/Desktop/reader'
 URLS='urls'
 
 # sanity check
@@ -22,8 +21,6 @@ fi
 # get input
 FILE=$1
 
-# make sane
-cd $HOME
 
 # compute I/O names
 ORIGINAL=$( dirname "${FILE}" )

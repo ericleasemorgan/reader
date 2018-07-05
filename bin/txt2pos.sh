@@ -11,7 +11,6 @@
 
 
 # configure
-HOME='/Users/emorgan/Desktop/reader'
 ID2POS='./bin/txt2pos.py'
 POS='pos'
 
@@ -23,9 +22,6 @@ fi
 
 # get input
 FILE=$1
-
-# make sane
-cd $HOME
 
 # compute output
 ORIGINAL=$( dirname "${FILE}" )

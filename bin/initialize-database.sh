@@ -9,7 +9,6 @@
 
 
 # configure
-HOME='/Users/emorgan/Desktop/reader'
 ETC='etc'
 DATABASE="reader.db"
 SCHEMA='./etc/reader.sql'
@@ -21,7 +20,6 @@ if [[ -z "$1" ]]; then
 fi
 
 # set up environment
-cd $HOME
 DIRECTORY=$1
 
 # initialize

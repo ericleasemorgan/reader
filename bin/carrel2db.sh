@@ -8,7 +8,6 @@
 # June 28, 2018 - first cut
 
 # configure
-HOME='/Users/emorgan/Desktop/reader'
 CARREL2DB='./bin/carrel2db.pl'
 INITIALIZEDB='./bin/initialize-database.sh'
 
@@ -20,9 +19,6 @@ fi
 
 # get input
 DIRECTORY=$1
-
-# make sane
-cd $HOME
 
 # echo and do the work
 echo "$DIRECTORY" >&2

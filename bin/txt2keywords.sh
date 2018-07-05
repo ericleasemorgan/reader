@@ -11,7 +11,6 @@
 
 
 # configure
-HOME='/Users/emorgan/Desktop/reader'
 TXT2KEYWORDS='./bin/txt2keywords.py'
 WRD='wrd'
 
@@ -23,9 +22,6 @@ fi
 
 # get input
 FILE=$1
-
-# make sane
-cd $HOME
 
 # compute output
 ORIGINAL=$( dirname "${FILE}" )

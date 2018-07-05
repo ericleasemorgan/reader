@@ -10,17 +10,11 @@
 # June 26, 2018 - first cut
 
 
-# configure
-HOME='/Users/emorgan/Desktop/reader'
-
 # sanity check
 if [[ -z "$1" || -z "$2" ]]; then
 	echo "Usage: $0 <directory> <another directory>" >&2
 	exit
 fi
-
-# set up environment
-cd $HOME
 
 # initialize
 INPUT=$1
