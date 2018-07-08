@@ -18,12 +18,12 @@ if [[ -z "$1" || -z "$2" ]]; then
 	exit
 fi
 
-
 # get input
 FILE=$1
 DIRECTORY=$2
 
-# add error checking here
+# just in case
+mkdir -p $DIRECTORY
 
 # initialize
 DIRNAME=$( dirname $FILE )
@@ -31,7 +31,7 @@ BASENAME=$( basename "$FILE" )
 BASENAME="${BASENAME%.*}"
 
 # do the work
-$TIKACLIENT $FILE > "$DIRECTORY/$BASENAME.xhtml"
+$TIKACLIENT $FILE > "$DIRECTORY/$BASENAME.txt"
 
 # done
 exit
