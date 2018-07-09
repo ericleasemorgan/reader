@@ -18,7 +18,7 @@ fi
 INPUT=$1
 OUTPUT=$2
 
-./bin/raw2txt.sh $INPUT $OUTPUT
+#./bin/raw2txt.sh $INPUT $OUTPUT
 find $OUTPUT -name '*.txt' -exec ./bin/txt2adr.sh {} \;
 find $OUTPUT -name '*.txt' -exec ./bin/txt2bib.sh {} \;
 find $OUTPUT -name '*.txt' -exec ./bin/txt2ent.sh {} \;
