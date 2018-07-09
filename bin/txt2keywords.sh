@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # txt2keywords.sh - given a file, execute txt2keywords.py
-
 # usage: find carrels/word2vec/txt -name '*.txt' -exec ./bin/txt2keywords.sh {} \;
 
 # Eric Lease Morgan <emorgan@nd.edu>
@@ -29,9 +28,10 @@ LEAF=$( basename "$FILE" .txt )
 mkdir -p "$ORIGINAL/../$WRD"
 OUTPUT="$ORIGINAL/../$WRD/$LEAF.wrd"
 
-# echo and do the work
+# echo; debug
 echo "$LEAF  $OUTPUT" >&2
 
+# optionally, do the work
 if [ -f "$OUTPUT" ]; then
 	echo "$OUTPUT exist" >&2
 else

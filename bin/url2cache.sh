@@ -9,17 +9,17 @@
 # configure
 ROOT='root.html'
 
+# check for input
 if [[ -z $1 || -z $2 ]]; then
 
 	echo "Usage: $0 <url> <directory>\n"  >&2
 	exit
 
 fi
+
 # get the input
 URL=$1
 DIRECTORY=$2
-
-# INSERT SANITY CHECK HERE
 
 # set up environment, and cache the root url
 cd $DIRECTORY

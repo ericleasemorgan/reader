@@ -36,7 +36,7 @@ id = os.path.basename( os.path.splitext( file )[ 0 ] )
 # output a header
 print( "id\tkeyword" )
 
-# process each keyword
+# process each keyword; can't get much simpler
 for keyword in keywords( text, ratio=RATIO, split=True ) : print( "\t".join( ( id, keyword ) ) )
 
 # done

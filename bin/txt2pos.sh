@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # txt2pos.sh - given a file name, run txt2pos.py
-
 # usage: find carrels/word2vec/txt -name '*.txt' -exec ./bin/txt2pos.sh {} \;
 
 # Eric Lease Morgan <emorgan@nd.edu>
@@ -29,9 +28,10 @@ LEAF=$( basename "$FILE" .txt )
 mkdir -p "$ORIGINAL/../$POS"
 OUTPUT="$ORIGINAL/../$POS/$LEAF.pos"
 
-# echo and do the work
+# echo; debug
 echo "$LEAF  $OUTPUT" >&2
 
+# do the work
 if [ -f "$OUTPUT" ]; then
 	echo "$OUTPUT exist" >&2
 else

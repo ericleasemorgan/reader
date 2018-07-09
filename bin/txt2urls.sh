@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 # txt2urls.sh - given a file name, output a list of urls
-
-# usage: find carrels/word2vec/txt -name '*.txt' -exec ./bin/txt2ent.sh {} \;
+# usage: find carrels/word2vec/txt -name '*.txt' -exec ./bin/txt2urls.sh {} \;
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
 
 # June 26, 2018 - first cut
+
 
 # configure
 URLS='urls'
@@ -21,7 +21,6 @@ fi
 # get input
 FILE=$1
 
-
 # compute I/O names
 ORIGINAL=$( dirname "${FILE}" )
 LEAF=$( basename "$FILE" .txt )
@@ -31,6 +30,7 @@ OUTPUT="$ORIGINAL/../$URLS/$LEAF.url"
 # get the data
 RECORDS=$(cat $FILE | egrep -o 'https?://[^ ]+' | sed -e 's/https/http/g' |  sed -e 's/\W+$//g' )
 
+# if content found, then extract domain and output
 SIZE=${#RECORDS} 
 if [[ $SIZE > 0 ]]; then
 
