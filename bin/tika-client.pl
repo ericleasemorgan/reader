@@ -26,7 +26,7 @@ my $ua = LWP::UserAgent->new;
 
 # create a request and fill it out
 my $request = HTTP::Request->new( PUT => URL );
-$request->header( 'Accept' => 'text/xml' );
+$request->header( 'Accept' => 'text/plain' );
 $request->content( &slurp( $file ) );
 
 # send the request and output the response
