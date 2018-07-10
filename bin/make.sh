@@ -5,7 +5,7 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
 
-# July 10, 2018 - first cut; at the cabin
+# July 10, 2018 - first cut
 
 
 # configure

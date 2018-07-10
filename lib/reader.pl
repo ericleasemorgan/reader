@@ -19,13 +19,12 @@ sub make_filename {
 	# get (lot's of) input
 	my $url       = shift;
 	my $path      = shift;
-	my $count     = shift;
 	my $extension = shift;
 	
 	# return a filename
 	my $host     =  lc( URI->new( $url )->host );
 	$host        =~ s/\./-/g;
-	return( $path . '/' . $host . '-' . sprintf( '%03d', $count ) . ".$extension" );
+	return( $path . '/' . $host . '-' . time . ".$extension" );
 
 }
 

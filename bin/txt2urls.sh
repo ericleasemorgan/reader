@@ -28,7 +28,7 @@ mkdir -p "$ORIGINAL/../$URLS"
 OUTPUT="$ORIGINAL/../$URLS/$LEAF.url"
 
 # get the data
-RECORDS=$(cat $FILE | egrep -o 'https?://[^ ]+' | sed -e 's/https/http/g' |  sed -e 's/\W+$//g' )
+RECORDS=$(cat $FILE | egrep -o 'https?://[^ ]+' | sed -e 's/https/http/g' |  sed -e 's/\W+$//g' |  sed -e 's/\,$//g' )
 
 # if content found, then extract domain and output
 SIZE=${#RECORDS} 
