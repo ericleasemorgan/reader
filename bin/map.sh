@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# build.sh - given an directory (of .txt files), map various types of information
+# map.sh - given an directory (of .txt files), map various types of information
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
