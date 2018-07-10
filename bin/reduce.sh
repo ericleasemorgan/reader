@@ -8,7 +8,7 @@
 # June 28, 2018 - first cut
 
 # configure
-CARREL2DB='./bin/carrel2db.pl'
+REDUCE='./bin/reduce.pl'
 INITIALIZEDB='./bin/initialize-database.sh'
 
 # sanity check
@@ -23,9 +23,9 @@ DIRECTORY=$1
 # echo and do the work
 echo "$DIRECTORY" >&2
 $INITIALIZEDB $DIRECTORY
-find $DIRECTORY -name '*.pos' -exec ./bin/carrel2db.pl $DIRECTORY pos {} \;
-find $DIRECTORY -name '*.ent' -exec ./bin/carrel2db.pl $DIRECTORY ent {} \;
-find $DIRECTORY -name '*.wrd' -exec ./bin/carrel2db.pl $DIRECTORY wrd {} \;
-find $DIRECTORY -name '*.adr' -exec ./bin/carrel2db.pl $DIRECTORY adr {} \;
-find $DIRECTORY -name '*.url' -exec ./bin/carrel2db.pl $DIRECTORY url {} \;
-find $DIRECTORY -name '*.bib' -exec ./bin/carrel2db.pl $DIRECTORY bib {} \;
+find $DIRECTORY -name '*.pos' -exec $REDUCE $DIRECTORY pos {} \;
+find $DIRECTORY -name '*.ent' -exec $REDUCE $DIRECTORY ent {} \;
+find $DIRECTORY -name '*.wrd' -exec $REDUCE $DIRECTORY wrd {} \;
+find $DIRECTORY -name '*.adr' -exec $REDUCE $DIRECTORY adr {} \;
+find $DIRECTORY -name '*.url' -exec $REDUCE $DIRECTORY url {} \;
+find $DIRECTORY -name '*.bib' -exec $REDUCE $DIRECTORY bib {} \;

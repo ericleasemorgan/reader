@@ -12,17 +12,20 @@
 TIKA='./bin/tika-server.sh'
 PIDFILE='./tmp/tika-server.pid'
 FILE2TXT='./bin/file2txt.sh'
-SECONDS=20
+SECONDS=10
+CACHE='/cache'
+TXT='/txt'
 
 # sanity check
-if [[ -z "$1" || -z "$2" ]]; then
-	echo "Usage: $0 <input directory> <output directory>" >&2
+if [[ -z "$1" ]]; then
+	echo "Usage: $0 <directory>" >&2
 	exit
 fi
 
 # initialize
-INPUT=$1
-OUTPUT=$2
+CARREL=$1
+INPUT="$CARREL$CACHE"
+OUTPUT="$CARREL$TXT"
 
 # fire up the tika server
 $TIKA

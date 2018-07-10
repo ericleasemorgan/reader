@@ -9,6 +9,9 @@
 # July 10, 2018 - started using parallel, and removed files2txt processing
 
 
+# configure
+TXT='/txt';
+
 # sanity check
 if [[ -z "$1" ]]; then
 	echo "Usage: $0 <directory>" >&2
@@ -16,13 +19,14 @@ if [[ -z "$1" ]]; then
 fi
 
 # initialize
-DIRECTORY=$1
+CARREL=$1
+INPUT="$CARREL$TXT"
 
 # do the work
-find $DIRECTORY -name '*.txt' | parallel ./bin/txt2adr.sh {}
-find $DIRECTORY -name '*.txt' | parallel ./bin/txt2bib.sh {}
-find $DIRECTORY -name '*.txt' | parallel ./bin/txt2ent.sh {}
-find $DIRECTORY -name '*.txt' | parallel ./bin/txt2pos.sh {}
-find $DIRECTORY -name '*.txt' | parallel ./bin/txt2keywords.sh {}
-find $DIRECTORY -name '*.txt' | parallel ./bin/txt2urls.sh {}
+find $INPUT -name '*.txt' | parallel ./bin/txt2adr.sh {}
+find $INPUT -name '*.txt' | parallel ./bin/txt2bib.sh {}
+find $INPUT -name '*.txt' | parallel ./bin/txt2ent.sh {}
+find $INPUT -name '*.txt' | parallel ./bin/txt2pos.sh {}
+find $INPUT -name '*.txt' | parallel ./bin/txt2keywords.sh {}
+find $INPUT -name '*.txt' | parallel ./bin/txt2urls.sh {}
 
