@@ -12,10 +12,11 @@
 TIKA='./bin/tika-server.sh'
 PIDFILE='./tmp/tika-server.pid'
 FILE2TXT='./bin/file2txt.sh'
+SECONDS=20
 
 # sanity check
 if [[ -z "$1" || -z "$2" ]]; then
-	echo "Usage: $0 <directory> <another directory>" >&2
+	echo "Usage: $0 <input directory> <output directory>" >&2
 	exit
 fi
 
@@ -25,6 +26,10 @@ OUTPUT=$2
 
 # fire up the tika server
 $TIKA
+sleep $SECONDS
+
+# make sane
+mkdir -p $OUTPUT
 
 # find desirable file types and do the work
 find $INPUT -name '*.html' -exec $FILE2TXT {} $OUTPUT \;

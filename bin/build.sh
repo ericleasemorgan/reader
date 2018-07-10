@@ -1,28 +1,28 @@
 #!/usr/bin/env bash
 
-# build.sh - given an input directory and an output directory, do everything
+# build.sh - given an directory (of .txt files), map various types of information
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
 
 # June 27, 2018 - first cut
+# July 10, 2018 - started using parallel, and removed files2txt processing
 
 
 # sanity check
-if [[ -z "$1" || -z "$2" ]]; then
-	echo "Usage: $0 <directory> <another directory>" >&2
+if [[ -z "$1" ]]; then
+	echo "Usage: $0 <directory>" >&2
 	exit
 fi
 
 # initialize
-INPUT=$1
-OUTPUT=$2
+DIRECTORY=$1
 
-#./bin/raw2txt.sh $INPUT $OUTPUT
-find $OUTPUT -name '*.txt' -exec ./bin/txt2adr.sh {} \;
-find $OUTPUT -name '*.txt' -exec ./bin/txt2bib.sh {} \;
-find $OUTPUT -name '*.txt' -exec ./bin/txt2ent.sh {} \;
-find $OUTPUT -name '*.txt' -exec ./bin/txt2pos.sh {} \;
-find $OUTPUT -name '*.txt' -exec ./bin/txt2keywords.sh {} \;
-find $OUTPUT -name '*.txt' -exec ./bin/txt2urls.sh {} \;
+# do the work
+find $DIRECTORY -name '*.txt' | parallel ./bin/txt2adr.sh {}
+find $DIRECTORY -name '*.txt' | parallel ./bin/txt2bib.sh {}
+find $DIRECTORY -name '*.txt' | parallel ./bin/txt2ent.sh {}
+find $DIRECTORY -name '*.txt' | parallel ./bin/txt2pos.sh {}
+find $DIRECTORY -name '*.txt' | parallel ./bin/txt2keywords.sh {}
+find $DIRECTORY -name '*.txt' | parallel ./bin/txt2urls.sh {}
 
