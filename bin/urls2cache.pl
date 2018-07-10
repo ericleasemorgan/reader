@@ -11,7 +11,6 @@
 # configure
 use constant MIME    => ( 'application/xml' => 'xml', 'application/atom+xml' => 'xml', 'image/png' => 'png', 'application/rss+xml' => 'xml', 'text/xml' => 'xml', 'image/jpeg' => 'jpg', 'text/csv' => 'csv', 'text/plain' => 'txt', 'text/html' => 'html', 'image/gif' => 'gif', 'application/pdf' => 'pdf' );
 use constant TIMEOUT => 10;
-use constant CACHE   => './carrels/urls2carrel/cache';
 
 # require
 use LWP::UserAgent;
@@ -19,10 +18,11 @@ use strict;
 require './lib/reader.pl';
 
 # read input
-my $url = $ARGV[ 0 ];
+my $url       = $ARGV[ 0 ];
+my $directory = $ARGV[ 1 ];
 
 # validate input
-if ( ! $url ) { die "Usage: $0 <url>\n" }
+if ( ! $url || ! $directory ) { die "Usage: $0 <url> <directory>\n" }
 
 # initialize
 my %mime   = MIME;
@@ -46,7 +46,7 @@ if ( $response->is_success ) {
 	if ( $extension ) {
 			
 		# build file name
-		my $filename = &make_filename( $url, CACHE, $extension );
+		my $filename = &make_filename( $url, $directory, $extension );
 		
 		# check for html
 		if ( $extension eq 'html' ) {
