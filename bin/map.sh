@@ -40,6 +40,9 @@ while [ $CONTINUE -eq 0 ]; do
 	# get and check the queue
 	QUE=$( qstat -u $NETID | grep $NAME | wc -l )
 	if [ $QUE -eq 0 ]; then
+		
+		# let the file system catch up?; rest some more
+		sleep 20
 		CONTINUE=1
 	else
 		
