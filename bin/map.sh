@@ -24,26 +24,27 @@ fi
 CARREL=$1
 INPUT="$CARREL$TXT"
 CONTINUE=0
+NAME=$( basename $CARREL )
 
 # submit the work
 find $INPUT -name '*.txt' | parallel ./bin/txt2adr.sh {}
-find $INPUT -name '*.txt' -exec qsub -N TXT2BIB -o ./log/txt2bib.log ./bin/txt2bib.sh {} \;
-find $INPUT -name '*.txt' -exec qsub -N TXT2ENT -o ./log/txt2ent.log ./bin/txt2ent.sh {} \;
-find $INPUT -name '*.txt' -exec qsub -N TXT2POS -o ./log/txt2pos.log ./bin/txt2pos.sh {} \;
-find $INPUT -name '*.txt' -exec qsub -N TXT2WRD -o ./log/txt2wrd.log ./bin/txt2keywords.sh {} \;
+find $INPUT -name '*.txt' -exec qsub -N "$NAME" -o ./log/txt2bib.log ./bin/txt2bib.sh {} \;
+find $INPUT -name '*.txt' -exec qsub -N "$NAME" -o ./log/txt2ent.log ./bin/txt2ent.sh {} \;
+find $INPUT -name '*.txt' -exec qsub -N "$NAME" -o ./log/txt2pos.log ./bin/txt2pos.sh {} \;
+find $INPUT -name '*.txt' -exec qsub -N "$NAME" -o ./log/txt2wrd.log ./bin/txt2keywords.sh {} \;
 find $INPUT -name '*.txt' | parallel ./bin/txt2urls.sh {}
 
 # start waiting
 while [ $CONTINUE -eq 0 ]; do
 
 	# get and check the queue
-	QUE=$( qstat -u $NETID | wc -l )
+	QUE=$( qstat -u $NETID | grep $NAME | wc -l )
 	if [ $QUE -eq 0 ]; then
 		CONTINUE=1
 	else
 		
 		# continue waiting
-		printf "Items in the queue: $QUE     \r" >&2
+		printf "Items in the queue ($NAME): $QUE     \r" >&2
 		sleep 1
 	fi
 	

@@ -24,8 +24,8 @@ if len( sys.argv ) != 2 :
 file = sys.argv[ 1 ]
 nlp  = spacy.load( 'en' )
 
-# limit ourselves is a few processors only
-#os.system( "taskset -pc 0-1 %d > /dev/null" % os.getpid() )
+# limit ourselves to a few processors only
+os.system( "taskset -pc 0-1 %d > /dev/null" % os.getpid() )
 
 # open the given file and unwrap it
 handle = open( file, 'r' )
