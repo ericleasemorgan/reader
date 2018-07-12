@@ -9,9 +9,9 @@
 # July 10, 2018 - started using parallel, and removed files2txt processing
 # July 12, 2018 - migrating to the cluster
 
+
 # configure
 TXT='/txt';
-CONTINUE=0
 NETID='emorgan'
 
 # sanity check
@@ -23,6 +23,7 @@ fi
 # initialize
 CARREL=$1
 INPUT="$CARREL$TXT"
+CONTINUE=0
 
 # submit the work
 find $INPUT -name '*.txt' | parallel ./bin/txt2adr.sh {}
@@ -35,12 +36,15 @@ find $INPUT -name '*.txt' | parallel ./bin/txt2urls.sh {}
 # start waiting
 while [ $CONTINUE -eq 0 ]; do
 
+	# get and check the queue
 	QUE=$( qstat -u $NETID | wc -l )
 	if [ $QUE -eq 0 ]; then
 		CONTINUE=1
 	else
-		printf "Items in queue: $QUE\t\r" >&2
-		sleep 2
+		
+		# continue waiting
+		printf "Items in the queue: $QUE     \r" >&2
+		sleep 1
 	fi
 	
 done
