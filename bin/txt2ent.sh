@@ -2,6 +2,7 @@
 
 # txt2ent.sh - given a file name, run txt2ent.py
 # usage: find carrels/word2vec/txt -name '*.txt' -exec ./bin/txt2ent.sh {} \;
+# usage: find carrels/asist/txt -name '*.txt' -exec qsub -N TXT2ENT -o ./log/txt2ent ./bin/txt2ent.sh {} \;
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License

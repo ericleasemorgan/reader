@@ -1,4 +1,4 @@
-#!/usr/local/anaconda/bin/python
+#!/afs/crc.nd.edu/user/e/emorgan/local/anaconda/bin/python
 
 # txt2ent.py - given a plain text file, output a tab-delimited file of named entitites
 
@@ -23,6 +23,9 @@ if len( sys.argv ) != 2 :
 # initialize
 file = sys.argv[ 1 ]
 nlp  = spacy.load( 'en', disable=['tagger'] )
+
+# limit ourselves to a few processors only
+os.system( "taskset -pc 0-1 %d > /dev/null" % os.getpid() )
 
 # open the given file and unwrap it
 handle = open( file, 'r' )

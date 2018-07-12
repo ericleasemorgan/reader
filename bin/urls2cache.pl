@@ -1,4 +1,4 @@
-#!/usr/bin/env perl
+#!/afs/crc.nd.edu/user/e/emorgan/bin/perl
 
 # url2cache.pl - given a URL, cache the remote content in a "study carrel"
 

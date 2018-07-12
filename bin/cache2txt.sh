@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# cache2txt.sh - given an input & output directory, use tika to transform documents to plain text
+# cache2txt.sh - given an input directory, use tika to transform documents to plain text
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
@@ -35,10 +35,10 @@ sleep $SECONDS
 mkdir -p $OUTPUT
 
 # find desirable file types and do the work
-find $INPUT -name '*.html' -exec $FILE2TXT {} $OUTPUT \;
-find $INPUT -name '*.pdf'  -exec $FILE2TXT {} $OUTPUT \;
-find $INPUT -name '*.txt'  -exec $FILE2TXT {} $OUTPUT \;
-find $INPUT -name '*.xml'  -exec $FILE2TXT {} $OUTPUT \;
+find $INPUT -name '*.html' | parallel $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.pdf'  | parallel $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.txt'  | parallel $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.xml'  | parallel $FILE2TXT {} $OUTPUT
 
 # kill the server and done
 PID=$( cat $PIDFILE )

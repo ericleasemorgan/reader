@@ -7,10 +7,12 @@
 
 # June 27, 2018 - first cut
 # July 10, 2018 - started using parallel, and removed files2txt processing
-
+# July 12, 2018 - migrating to the cluster
 
 # configure
 TXT='/txt';
+CONTINUE=0
+NETID='emorgan'
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -22,11 +24,29 @@ fi
 CARREL=$1
 INPUT="$CARREL$TXT"
 
-# do the work
+# submit the work
 find $INPUT -name '*.txt' | parallel ./bin/txt2adr.sh {}
-find $INPUT -name '*.txt' | parallel ./bin/txt2bib.sh {}
-find $INPUT -name '*.txt' | parallel ./bin/txt2ent.sh {}
-find $INPUT -name '*.txt' | parallel ./bin/txt2pos.sh {}
-find $INPUT -name '*.txt' | parallel ./bin/txt2keywords.sh {}
+find $INPUT -name '*.txt' -exec qsub -N TXT2BIB -o ./log/txt2bib.log ./bin/txt2bib.sh {} \;
+find $INPUT -name '*.txt' -exec qsub -N TXT2ENT -o ./log/txt2ent.log ./bin/txt2ent.sh {} \;
+find $INPUT -name '*.txt' -exec qsub -N TXT2POS -o ./log/txt2pos.log ./bin/txt2pos.sh {} \;
+find $INPUT -name '*.txt' -exec qsub -N TXT2WRD -o ./log/txt2wrd.log ./bin/txt2keywords.sh {} \;
 find $INPUT -name '*.txt' | parallel ./bin/txt2urls.sh {}
+
+# start waiting
+while [ $CONTINUE -eq 0 ]; do
+
+	QUE=$( qstat -u $NETID | wc -l )
+	if [ $QUE -eq 0 ]; then
+		CONTINUE=1
+	else
+		printf "Items in queue: $QUE\t\r" >&2
+		sleep 2
+	fi
+	
+done
+
+# done
+echo "Que is empty; done" >&2
+exit
+
 

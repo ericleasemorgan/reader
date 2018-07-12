@@ -23,9 +23,9 @@ DIRECTORY=$1
 # echo and do the work
 echo "$DIRECTORY" >&2
 $INITIALIZEDB $DIRECTORY
-find $DIRECTORY -name '*.pos' -exec $REDUCE $DIRECTORY pos {} \;
-find $DIRECTORY -name '*.ent' -exec $REDUCE $DIRECTORY ent {} \;
-find $DIRECTORY -name '*.wrd' -exec $REDUCE $DIRECTORY wrd {} \;
-find $DIRECTORY -name '*.adr' -exec $REDUCE $DIRECTORY adr {} \;
-find $DIRECTORY -name '*.url' -exec $REDUCE $DIRECTORY url {} \;
-find $DIRECTORY -name '*.bib' -exec $REDUCE $DIRECTORY bib {} \;
+find $DIRECTORY -name '*.pos' | parallel $REDUCE $DIRECTORY pos {} \;
+find $DIRECTORY -name '*.ent' | parallel $REDUCE $DIRECTORY ent {} \;
+find $DIRECTORY -name '*.wrd' | parallel $REDUCE $DIRECTORY wrd {} \;
+find $DIRECTORY -name '*.adr' | parallel $REDUCE $DIRECTORY adr {} \;
+find $DIRECTORY -name '*.url' | parallel $REDUCE $DIRECTORY url {} \;
+find $DIRECTORY -name '*.bib' | parallel $REDUCE $DIRECTORY bib {} \;

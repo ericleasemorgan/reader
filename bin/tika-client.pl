@@ -1,4 +1,4 @@
-#!/usr/bin/env perl
+#!/afs/crc.nd.edu/user/e/emorgan/bin/perl
 
 # tika-client.pl - given a file, return plain text; a wrapper around tika
 

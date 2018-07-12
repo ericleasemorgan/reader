@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/afs/crc.nd.edu/user/e/emorgan/bin/perl
 
 # carrel2db.pl - given a directory name, create an sqlite database
 
@@ -28,7 +28,7 @@ my $database = "$directory/" . DATABASE;
 my $reader   = DBI->connect( "DBI:$driver:dbname=$database", '', '', { RaiseError => 1 } ) or die $DBI::errstr;
 
 # branch according to the desired work
-if ( $type    eq 'pos' ) { &pos( $reader, $file ) }
+if    ( $type eq 'pos' ) { &pos( $reader, $file ) }
 elsif ( $type eq 'ent' ) { &ent( $reader, $file ) }
 elsif ( $type eq 'wrd' ) { &wrd( $reader, $file ) }
 elsif ( $type eq 'adr' ) { &adr( $reader, $file ) }
