@@ -33,6 +33,7 @@ while read URL; do
     # debug and do the work
     echo "$URL" >&2
     $URL2CACHE $URL "$DIRECTORY$CACHE"
+    sleep 1
     
 done < $FILE
 
