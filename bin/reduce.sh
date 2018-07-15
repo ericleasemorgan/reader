@@ -8,24 +8,30 @@
 # June 28, 2018 - first cut
 
 # configure
+CARRELS='./carrels'
+HOME='/afs/crc.nd.edu/user/e/emorgan/local/reader'
 REDUCE='./bin/reduce.pl'
 INITIALIZEDB='./bin/initialize-database.sh'
 
 # sanity check
 if [[ -z "$1" ]]; then
-	echo "Usage: $0 <directory>" >&2
+	echo "Usage: $0 <name>" >&2
 	exit
 fi
 
 # get input
-DIRECTORY=$1
+NAME=$1
+
+# make sane
+cd $HOME
 
 # echo and do the work
-echo "$DIRECTORY" >&2
-$INITIALIZEDB $DIRECTORY
-find $DIRECTORY -name '*.pos' | parallel $REDUCE $DIRECTORY pos {} \;
-find $DIRECTORY -name '*.ent' | parallel $REDUCE $DIRECTORY ent {} \;
-find $DIRECTORY -name '*.wrd' | parallel $REDUCE $DIRECTORY wrd {} \;
-find $DIRECTORY -name '*.adr' | parallel $REDUCE $DIRECTORY adr {} \;
-find $DIRECTORY -name '*.url' | parallel $REDUCE $DIRECTORY url {} \;
-find $DIRECTORY -name '*.bib' | parallel $REDUCE $DIRECTORY bib {} \;
+echo "$NAME" >&2
+
+$INITIALIZEDB "$CARRELS/$NAME"
+find "$CARRELS/$NAME" -name '*.pos' | parallel $REDUCE "$CARRELS/$NAME" pos {} \;
+find "$CARRELS/$NAME" -name '*.ent' | parallel $REDUCE "$CARRELS/$NAME" ent {} \;
+find "$CARRELS/$NAME" -name '*.wrd' | parallel $REDUCE "$CARRELS/$NAME" wrd {} \;
+find "$CARRELS/$NAME" -name '*.adr' | parallel $REDUCE "$CARRELS/$NAME" adr {} \;
+find "$CARRELS/$NAME" -name '*.url' | parallel $REDUCE "$CARRELS/$NAME" url {} \;
+find "$CARRELS/$NAME" -name '*.bib' | parallel $REDUCE "$CARRELS/$NAME" bib {} \;

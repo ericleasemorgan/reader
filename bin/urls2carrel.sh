@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# urls2cache.sh - give a file listing a set of urls, initialize a study carrel, cache content, and build the carrel
+# urls2carrel.sh - give a file listing a set of urls, initialize a study carrel, cache/harvest content, and build the carrel
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
@@ -17,6 +17,7 @@ INITIALIZECARREL='./bin/initialize-carrel.sh'
 MAKE='./bin/make.sh'
 TMP='./tmp'
 URL2CACHE='./bin/urls2cache.pl'
+CARREL2ZIP='./bin/carrel2zip.pl'
 
 # validate input
 if [[ -z $1 ]]; then
@@ -38,7 +39,7 @@ NAME=$( cat /dev/urandom | tr -cd 'a-zA-Z' | head -c 7 )
 # create a study carrel
 $INITIALIZECARREL $NAME
 
-# process each line from input; create the cache
+# process each line from input; harvest & cache
 while read URL; do
 
     # debug and do the work
@@ -51,6 +52,9 @@ done < "$TMP/$FILE"
 # build the carrel
 $MAKE $NAME
 
+# zip it up
+$CARREL2ZIP $NAME
+
 # done
-echo $
+echo $NAME
 exit

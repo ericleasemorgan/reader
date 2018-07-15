@@ -11,20 +11,24 @@
 
 
 # configure
+CARRELS='./carrels'
+HOME='/afs/crc.nd.edu/user/e/emorgan/local/reader'
 TXT='/txt';
 NETID='emorgan'
 
 # sanity check
 if [[ -z "$1" ]]; then
-	echo "Usage: $0 <directory>" >&2
+	echo "Usage: $0 <name>" >&2
 	exit
 fi
 
 # initialize
-CARREL=$1
-INPUT="$CARREL$TXT"
+NAME=$1
+INPUT="$CARRELS/$NAME$TXT"
 CONTINUE=0
-NAME=$( basename $CARREL )
+
+# make sane
+cd $HOME
 
 # submit the work
 find $INPUT -name '*.txt' | parallel ./bin/txt2adr.sh {}

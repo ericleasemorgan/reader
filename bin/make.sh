@@ -9,6 +9,7 @@
 
 
 # configure
+HOME='/afs/crc.nd.edu/user/e/emorgan/local/reader'
 CACHE2TXT='./bin/cache2txt.sh'
 MAP='./bin/map.sh'
 REDUCE='./bin/reduce.sh'
@@ -16,14 +17,27 @@ DB2REPORT='./bin/db2report.sh'
 
 # sanity check
 if [[ -z "$1" ]]; then
-	echo "Usage: $0 <directory>" >&2
+	echo "Usage: $0 <name>" >&2
 	exit
 fi
 
-# initialize
+# get input
 CARREL=$1
 
+# make sane
+cd $HOME
+
+# transform cache to plain text files
 $CACHE2TXT $CARREL
+
+# extract parts-of-speech, named entities, etc
 $MAP $CARREL
+
+# build the database
 $REDUCE $CARREL
+
+# output a report against the database
 $DB2REPORT $CARREL
+
+# done
+exit

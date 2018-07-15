@@ -9,6 +9,8 @@
 
 
 # configure
+CARRELS='./carrels'
+HOME='/afs/crc.nd.edu/user/e/emorgan/local/reader'
 TIKA='./bin/tika-server.sh'
 PIDFILE='./tmp/tika-server.pid'
 FILE2TXT='./bin/file2txt.sh'
@@ -18,14 +20,14 @@ TXT='/txt'
 
 # sanity check
 if [[ -z "$1" ]]; then
-	echo "Usage: $0 <directory>" >&2
+	echo "Usage: $0 <name>" >&2
 	exit
 fi
 
 # initialize
-CARREL=$1
-INPUT="$CARREL$CACHE"
-OUTPUT="$CARREL$TXT"
+NAME=$1
+INPUT="$CARRELS/$NAME$CACHE"
+OUTPUT="$CARRELS/$NAME$TXT"
 
 # fire up the tika server
 $TIKA

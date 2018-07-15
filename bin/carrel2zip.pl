@@ -9,7 +9,8 @@
 
 
 # configure
-use constant ETC => 'etc';
+use constant ETC     => 'etc';
+use constant CARRELS => '/afs/crc.nd.edu/user/e/emorgan/local/reader/carrels';
 
 # require
 use Archive::Zip;
@@ -17,17 +18,17 @@ use File::Basename;
 use strict;
 
 # sanity check
-my $directory = $ARGV[ 0 ];
-if ( ! $directory ) { die "Usage: $0 <directory>\n" }
+my $name = $ARGV[ 0 ];
+if ( ! $name ) { die "Usage: $0 <name>\n" }
 
 # initialize
-my $etc    = ETC;
-my $carrel = basename( $directory );
-my $zip    = Archive::Zip->new();
+my $etc     = ETC;
+my $carrels = CARRELS;
+my $zip     = Archive::Zip->new();
 
 # do the work
-$zip->addTree( $directory, $carrel );
-$zip->writeToFileNamed( "$directory/$etc/$carrel.zip" );
+$zip->addTree( "$carrels/$name", $name );
+$zip->writeToFileNamed( "$carrels/$name/$etc/$name.zip" );
 
 # done
 exit;

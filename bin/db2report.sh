@@ -9,18 +9,23 @@
 
 
 # configure
+CARRELS='./carrels'
+HOME='/afs/crc.nd.edu/user/e/emorgan/local/reader'
 QUERIES='./etc/queries.sql'
 DB='/etc/reader.db'
 
 # sanity check
 if [[ -z "$1" ]]; then
-	echo "Usage: $0 <directory>" >&2
+	echo "Usage: $0 <name>" >&2
 	exit
 fi
 
 # initialize
-CARREL=$1
+NAME=$1
+
+# make sane
+cd $HOME
 
 # do the work
-cat $QUERIES | sqlite3 "$CARREL$DB"
+cat $QUERIES | sqlite3 "$CARRELS/$NAME/$DB"
 

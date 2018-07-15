@@ -1,5 +1,6 @@
-.DS_Store
 ._*
+.DS_Store
+.parallel
 carrels
 Library
 log
