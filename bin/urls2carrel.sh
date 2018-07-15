@@ -33,7 +33,7 @@ FILE=$1
 # make sane
 cd $HOME
 
-# initialize (a random) name
+# initialize a (random) name
 NAME=$( cat /dev/urandom | tr -cd 'a-zA-Z' | head -c 7 )
 
 # create a study carrel

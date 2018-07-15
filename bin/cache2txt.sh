@@ -17,6 +17,7 @@ FILE2TXT='./bin/file2txt.sh'
 SECONDS=10
 CACHE='/cache'
 TXT='/txt'
+PARALLEL='/afs/crc.nd.edu/user/e/emorgan/bin/parallel'
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -37,12 +38,13 @@ sleep $SECONDS
 mkdir -p $OUTPUT
 
 # find desirable file types and do the work
-find $INPUT -name '*.html' | parallel $FILE2TXT {} $OUTPUT
-find $INPUT -name '*.pdf'  | parallel $FILE2TXT {} $OUTPUT
-find $INPUT -name '*.txt'  | parallel $FILE2TXT {} $OUTPUT
-find $INPUT -name '*.xml'  | parallel $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.html' | $PARALLEL $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.pdf'  | $PARALLEL $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.txt'  | $PARALLEL $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.xml'  | $PARALLEL $FILE2TXT {} $OUTPUT
 
 # kill the server and done
 PID=$( cat $PIDFILE )
 kill $PID
+rm $PIDFILE
 exit

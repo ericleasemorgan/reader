@@ -53,12 +53,6 @@ if ( $response->is_success ) {
 		
 			# get html and convert relative urls to absolute
 			my $html = &make_absolute( $response->decoded_content, $response->base );
-
-			# save
-			#open OUTPUT, " > $filename" or die "Can't open $filename ($!). Call Eric. \n";
-			#binmode( OUTPUT, ":utf8" );
-			#print OUTPUT $html;
-			#close OUTPUT;
 			
 			# actually do the work but cheat with a more robust application; wget++
 			`wget -k $url -O $filename`;

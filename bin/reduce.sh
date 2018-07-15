@@ -12,6 +12,7 @@ CARRELS='./carrels'
 HOME='/afs/crc.nd.edu/user/e/emorgan/local/reader'
 REDUCE='./bin/reduce.pl'
 INITIALIZEDB='./bin/initialize-database.sh'
+PARALLEL='/afs/crc.nd.edu/user/e/emorgan/bin/parallel'
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -29,9 +30,9 @@ cd $HOME
 echo "$NAME" >&2
 
 $INITIALIZEDB "$CARRELS/$NAME"
-find "$CARRELS/$NAME" -name '*.pos' | parallel $REDUCE "$CARRELS/$NAME" pos {} \;
-find "$CARRELS/$NAME" -name '*.ent' | parallel $REDUCE "$CARRELS/$NAME" ent {} \;
-find "$CARRELS/$NAME" -name '*.wrd' | parallel $REDUCE "$CARRELS/$NAME" wrd {} \;
-find "$CARRELS/$NAME" -name '*.adr' | parallel $REDUCE "$CARRELS/$NAME" adr {} \;
-find "$CARRELS/$NAME" -name '*.url' | parallel $REDUCE "$CARRELS/$NAME" url {} \;
-find "$CARRELS/$NAME" -name '*.bib' | parallel $REDUCE "$CARRELS/$NAME" bib {} \;
+find "$CARRELS/$NAME" -name '*.pos' | $PARALLEL $REDUCE "$CARRELS/$NAME" pos {} \;
+find "$CARRELS/$NAME" -name '*.ent' | $PARALLEL $REDUCE "$CARRELS/$NAME" ent {} \;
+find "$CARRELS/$NAME" -name '*.wrd' | $PARALLEL $REDUCE "$CARRELS/$NAME" wrd {} \;
+find "$CARRELS/$NAME" -name '*.adr' | $PARALLEL $REDUCE "$CARRELS/$NAME" adr {} \;
+find "$CARRELS/$NAME" -name '*.url' | $PARALLEL $REDUCE "$CARRELS/$NAME" url {} \;
+find "$CARRELS/$NAME" -name '*.bib' | $PARALLEL $REDUCE "$CARRELS/$NAME" bib {} \;
