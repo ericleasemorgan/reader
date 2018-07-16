@@ -7,17 +7,19 @@
 
 # July  8, 2018 - first cut
 # July 14, 2018 - more investigation
+# July 16, 2018 - made things more module
 
 
 # configure
 CACHE='cache';
+CARREL2ZIP='./bin/carrel2zip.pl'
 CARRELS='./carrels'
 HOME='/afs/crc.nd.edu/user/e/emorgan/local/reader'
 INITIALIZECARREL='./bin/initialize-carrel.sh'
 MAKE='./bin/make.sh'
+MAKENAME='./bin/make-name.sh'
 TMP='./tmp'
 URL2CACHE='./bin/urls2cache.pl'
-CARREL2ZIP='./bin/carrel2zip.pl'
 
 # validate input
 if [[ -z $1 ]]; then
@@ -34,7 +36,7 @@ FILE=$1
 cd $HOME
 
 # initialize a (random) name
-NAME=$( cat /dev/urandom | tr -cd 'a-zA-Z' | head -c 7 )
+NAME=$( $MAKENAME )
 
 # create a study carrel
 $INITIALIZECARREL $NAME
@@ -49,12 +51,12 @@ while read URL; do
     
 done < "$TMP/$FILE"
 
-# build the carrel
+# build the carrel; the magic happens here
 $MAKE $NAME
 
 # zip it up
 $CARREL2ZIP $NAME
 
 # done
-echo $NAME
+echo $HOME/$NAME
 exit
