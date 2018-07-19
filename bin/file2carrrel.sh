@@ -16,6 +16,8 @@ HOME='/afs/crc.nd.edu/user/e/emorgan/local/reader'
 INITIALIZECARREL='./bin/initialize-carrel.sh'
 MAKE='./bin/make.sh'
 MAKENAME='./bin/make-name.sh'
+PREFIX='http://cds.crc.nd.edu/reader/carrels'
+SUFFIX='etc'
 
 # validate input
 if [[ -z $1 ]]; then
@@ -47,5 +49,7 @@ $MAKE $NAME
 $CARREL2ZIP $NAME
 
 # done
-echo $HOME/$NAME
+echo "$PREFIX/$NAME/$SUFFIX/$NAME.zip"
+echo "$PREFIX/$NAME/$SUFFIX/$NAME.zip" | mailx -s "text mining" emorgan@nd.edu
+
 exit
