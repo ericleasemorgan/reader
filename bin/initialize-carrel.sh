@@ -6,7 +6,7 @@
 # (c) University of Notre Dame and distributed under a GNU Public License
 
 # July 14, 2018 - first cut
-
+# July 20, 2018 - added log directory
 
 # configure
 HOME='/afs/crc.nd.edu/user/e/emorgan/local/reader'
@@ -35,6 +35,7 @@ mkdir -p "$CARRELS/$NAME/pos"
 mkdir -p "$CARRELS/$NAME/txt"
 mkdir -p "$CARRELS/$NAME/urls"
 mkdir -p "$CARRELS/$NAME/wrd"
+mkdir -p "$CARRELS/$NAME/log"
 
 # fill file system
 cp ./etc/README        "$CARRELS/$NAME"

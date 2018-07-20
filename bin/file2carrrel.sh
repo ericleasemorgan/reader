@@ -6,18 +6,21 @@
 # (c) University of Notre Dame and distributed under a GNU Public License
 
 # July 19, 2018 - first cut
+# July 20, 2018 - started getting to work from a remote machine and sending email
 
 
 # configure
-CACHE='cache';
-CARREL2ZIP='./bin/carrel2zip.pl'
-CARRELS='./carrels'
 HOME='/afs/crc.nd.edu/user/e/emorgan/local/reader'
-INITIALIZECARREL='./bin/initialize-carrel.sh'
-MAKE='./bin/make.sh'
 MAKENAME='./bin/make-name.sh'
+INITIALIZECARREL='./bin/initialize-carrel.sh'
+TMP='tmp'
+CARRELS='./carrels'
+CACHE='cache';
+MAKE='./bin/make.sh'
+CARREL2ZIP='./bin/carrel2zip.pl'
 PREFIX='http://cds.crc.nd.edu/reader/carrels'
 SUFFIX='etc'
+LOG='./log'
 
 # validate input
 if [[ -z $1 ]]; then
@@ -27,6 +30,9 @@ if [[ -z $1 ]]; then
 
 fi
 
+# initialize log
+echo "$0 $1" >&2
+
 # get the input
 FILE=$1
 
@@ -35,21 +41,25 @@ cd $HOME
 
 # initialize a (random) name
 NAME=$( $MAKENAME )
+echo "Created random name: $NAME" > "$LOG/$NAME.log"
 
 # create a study carrel
-$INITIALIZECARREL $NAME
+echo "Creating study carrel named $NAME" >> "$LOG/$NAME.log"
+$INITIALIZECARREL $NAME >> "$LOG/$NAME.log"
 
 # copy the file; this will not recurse nor copy dot files
-cp $FILE "$CARRELS/$NAME/$CACHE"
+echo "Copying $TMP/$FILE to $CARRELS/$NAME/$CACHE" >> "$LOG/$NAME.log"
+cp "$TMP/$FILE" "$CARRELS/$NAME/$CACHE"
 
 # build the carrel; the magic happens here
-$MAKE $NAME
+echo "Building study carrel named $NAME" >> "$LOG/$NAME.log"
+$MAKE $NAME >> "$LOG/$NAME.log"
 
 # zip it up
+echo "Zipping study carrel" >> "$LOG/$NAME.log"
+cp "$LOG/$NAME.log" "$CARRELS/$NAME/log" 
 $CARREL2ZIP $NAME
 
 # done
-echo "$PREFIX/$NAME/$SUFFIX/$NAME.zip"
 echo "$PREFIX/$NAME/$SUFFIX/$NAME.zip" | mailx -s "text mining" emorgan@nd.edu
-
 exit
