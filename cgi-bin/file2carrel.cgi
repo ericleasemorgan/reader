@@ -21,8 +21,9 @@ my $cgi = CGI->new;
 
 # echo next steps
 print $cgi->header;
-print "<html><head><title></title></head><body><p>Hello, World!</body></html>\n";
+print "<html><head><title></title></head><body style='text-align: center; margin: 10%'><h1>Hello, World!</h1></body></html>\n";
 
 # do the work
 system( SSHCMD );
 exit;
+
