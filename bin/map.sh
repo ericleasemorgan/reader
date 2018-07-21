@@ -49,7 +49,7 @@ while [ $CONTINUE -eq 0 ]; do
 	if [ $QUE -eq 0 ]; then
 		
 		# let the file system catch up?; rest some more
-		sleep 20
+		sleep 10
 		CONTINUE=1
 	else
 		
