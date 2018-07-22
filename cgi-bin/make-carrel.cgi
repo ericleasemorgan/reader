@@ -1,28 +1,31 @@
 #!/usr/bin/perl
 
-# make-carrel.cgi - given a various types of input, create a study carrel
+# make-carrel.cgi - given various types of input, create a study carrel
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame, distributed under a GNU Public License
 
 # July 20, 2018 - first investigations; difficult, really!
+# July 22, 2018 - started adding ability to use file uploads
 
 
 # configure
 use constant TEMPLATE => 'ssh crcfe "source /etc/profile; local/reader/bin/##CMD## ##INPUT## &> /dev/null &"';
 use constant CMDS     => ( 'url2carrel' => 'url2carrel.sh', 'file2carrel' => 'file2carrel.sh' );
+use constant TMP      => '/afs/crc.nd.edu/user/e/emorgan/local/reader/tmp';
 
 # require
 use CGI;
 use CGI::Carp qw( fatalsToBrowser );
+use File::Basename;
+use File::Copy;	
 use strict;
 
 # initialize
-my $cgi   = CGI->new;
-my $cmd   = $cgi->param( 'cmd' );
-my $input = $cgi->param( 'input' );
-my %cmds  = CMDS;
-my $ssh   = TEMPLATE;
+my $cgi  = CGI->new;
+my $cmd  = $cgi->param( 'cmd' );
+my %cmds = CMDS;
+my $ssh  = TEMPLATE;
 
 # from url
 if ( $cmd eq 'url2carrel' ) {
@@ -31,8 +34,31 @@ if ( $cmd eq 'url2carrel' ) {
 	$ssh =~ s/##CMD##/$cmds{ $cmd }/e;
 	
 	# check for input and continue to build ssh command
+	my $input = $cgi->param( 'input' );
 	if ( ! $input ) { &error( "No value for input supplied. Call Eric." ) }
 	$ssh =~ s/##INPUT##/$input/e;
+
+}
+
+# from file
+elsif ( $cmd eq 'file2carrel' ) {
+
+	# start to build the ssh command
+	$ssh =~ s/##CMD##/$cmds{ $cmd }/e;
+	
+	# check for input
+	my $input = $cgi->param( 'input' );
+	if ( ! $input ) { &error( "No value for input supplied. Call Eric." ) }
+	
+	# get the name of the temporary file, and move it to tmp; a bit ugly
+	my ( $name, $path, $suffix ) = fileparse( $input, qr/\.[^.]*/ );	
+	my $file     = $cgi->tmpFileName( $input );
+	my $basename = fileparse( $file );
+	my $new      = "$basename$suffix";
+	copy( $file, TMP . "/$new" ) or &error( "Copy failed ($!). Call Eric." );
+	
+	# finish building the ssh command
+	$ssh =~ s/##INPUT##/$new/e;
 
 }
 
