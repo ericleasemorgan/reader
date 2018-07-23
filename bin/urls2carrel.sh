@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# urls2carrel.sh - give a file listing a set of urls, initialize a study carrel, cache/harvest content, and build the carrel
+# urls2carrel.sh - given a list of URLs in a plain text file, create a Distant Reader Study Carrel
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
@@ -11,15 +11,17 @@
 
 
 # configure
-CACHE='cache';
-CARREL2ZIP='./bin/carrel2zip.pl'
-CARRELS='./carrels'
 HOME='/afs/crc.nd.edu/user/e/emorgan/local/reader'
-INITIALIZECARREL='./bin/initialize-carrel.sh'
-MAKE='./bin/make.sh'
 MAKENAME='./bin/make-name.sh'
-TMP='./tmp'
+INITIALIZECARREL='./bin/initialize-carrel.sh'
 URL2CACHE='./bin/urls2cache.pl'
+CARRELS='./carrels'
+CACHE='cache';
+TMP='./tmp'
+MAKE='./bin/make.sh'
+CARREL2ZIP='./bin/carrel2zip.pl'
+PREFIX='http://cds.crc.nd.edu/reader/carrels'
+LOG='./log'
 
 # validate input
 if [[ -z $1 ]]; then
@@ -37,26 +39,31 @@ cd $HOME
 
 # initialize a (random) name
 NAME=$( $MAKENAME )
+echo "Created random name: $NAME" > "$LOG/$NAME.log"
 
 # create a study carrel
+echo "Creating study carrel named $NAME" >> "$LOG/$NAME.log"
 $INITIALIZECARREL $NAME
 
 # process each line from input; harvest & cache
 while read URL; do
 
     # debug and do the work
-    echo "$URL" >&2
+    echo "Caching $URL to $CARRELS/$NAME/$CACHE" >> "$LOG/$NAME.log"
     $URL2CACHE $URL "$CARRELS/$NAME/$CACHE"
     sleep 1
     
 done < "$TMP/$FILE"
 
 # build the carrel; the magic happens here
+echo "Building study carrel named $NAME" >> "$LOG/$NAME.log"
 $MAKE $NAME
 
 # zip it up
+echo "Zipping study carrel" >> "$LOG/$NAME.log"
+cp "$LOG/$NAME.log" "$CARRELS/$NAME/log" 
 $CARREL2ZIP $NAME
 
 # done
-echo $HOME/$NAME
+echo "$PREFIX/$NAME/" | mailx -s "text mining" emorgan@nd.edu
 exit

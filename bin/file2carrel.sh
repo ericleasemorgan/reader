@@ -19,7 +19,6 @@ CACHE='cache';
 MAKE='./bin/make.sh'
 CARREL2ZIP='./bin/carrel2zip.pl'
 PREFIX='http://cds.crc.nd.edu/reader/carrels'
-SUFFIX='etc'
 LOG='./log'
 
 # validate input
@@ -61,5 +60,5 @@ cp "$LOG/$NAME.log" "$CARRELS/$NAME/log"
 $CARREL2ZIP $NAME
 
 # done
-echo "$PREFIX/$NAME/$SUFFIX/$NAME.zip" | mailx -s "text mining" emorgan@nd.edu
+echo "$PREFIX/$NAME/" | mailx -s "text mining" emorgan@nd.edu
 exit

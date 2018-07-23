@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# make-carrel.cgi - given various types of input, create a study carrel
+# make-carrel.cgi - given various types of input, create a Distant Reader Study Carrel
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame, distributed under a GNU Public License
@@ -11,7 +11,7 @@
 
 # configure
 use constant TEMPLATE => 'ssh crcfe "source /etc/profile; local/reader/bin/##CMD## ##INPUT## &> /dev/null &"';
-use constant CMDS     => ( 'url2carrel' => 'url2carrel.sh', 'file2carrel' => 'file2carrel.sh' );
+use constant CMDS     => ( 'url2carrel' => 'url2carrel.sh', 'file2carrel' => 'file2carrel.sh', 'zotero2carrel' => 'zotero2carrel.sh' );
 use constant TMP      => '/afs/crc.nd.edu/user/e/emorgan/local/reader/tmp';
 
 # require
@@ -27,12 +27,12 @@ my $cmd  = $cgi->param( 'cmd' );
 my %cmds = CMDS;
 my $ssh  = TEMPLATE;
 
+# start to build the ssh command
+$ssh =~ s/##CMD##/$cmds{ $cmd }/e;
+	
 # from url
 if ( $cmd eq 'url2carrel' ) {
 
-	# start to build the ssh command
-	$ssh =~ s/##CMD##/$cmds{ $cmd }/e;
-	
 	# check for input and continue to build ssh command
 	my $input = $cgi->param( 'input' );
 	if ( ! $input ) { &error( "No value for input supplied. Call Eric." ) }
@@ -40,11 +40,27 @@ if ( $cmd eq 'url2carrel' ) {
 
 }
 
-# from file
+# from single file
 elsif ( $cmd eq 'file2carrel' ) {
 
-	# start to build the ssh command
-	$ssh =~ s/##CMD##/$cmds{ $cmd }/e;
+	# check for input
+	my $input = $cgi->param( 'input' );
+	if ( ! $input ) { &error( "No value for input supplied. Call Eric." ) }
+	
+	# get the name of the temporary file, and move it to tmp; a bit ugly
+	my ( $name, $path, $suffix ) = fileparse( $input, qr/\.[^.]*/ );	
+	my $file     = $cgi->tmpFileName( $input );
+	my $basename = fileparse( $file );
+	my $new      = "$basename$suffix";
+	copy( $file, TMP . "/$new" ) or &error( "Copy failed ($!). Call Eric." );
+	
+	# finish building the ssh command
+	$ssh =~ s/##INPUT##/$new/e;
+
+}
+
+# from zotero file
+elsif ( $cmd eq 'zotero2carrel' ) {
 	
 	# check for input
 	my $input = $cgi->param( 'input' );
