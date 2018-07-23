@@ -26,7 +26,7 @@ LOG='./log'
 # validate input
 if [[ -z $1 ]]; then
 
-	echo "Usage: $0 <file>" >&2
+	echo "Usage: $0 <file> [<address>]" >&2
 	exit
 
 fi
@@ -64,6 +64,13 @@ echo "Zipping study carrel" >> "$LOG/$NAME.log"
 cp "$LOG/$NAME.log" "$CARRELS/$NAME/log" 
 $CARREL2ZIP $NAME
 
+# notify completion
+if [[ $2 ]]; then
+	ADDRESS=$2
+	echo "$PREFIX/$NAME/" | mailx -s "text mining" $ADDRESS
+else
+	echo "$HOME/$CARRELS/$NAME/"
+fi
+
 # done
-echo "$PREFIX/$NAME/" | mailx -s "text mining" emorgan@nd.edu
 exit

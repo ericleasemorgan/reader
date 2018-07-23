@@ -26,13 +26,13 @@ LOG='./log'
 # validate input
 if [[ -z $1 ]]; then
 
-	echo "Usage: $0 <url>" >&2
+	echo "Usage: $0 <url> [<address>]" >&2
 	exit
 
 fi
 
 # initialize log
-echo "$0 $1" >&2
+echo "$0 $1 $2" >&2
 
 # get the input
 URL=$1
@@ -76,6 +76,11 @@ echo "Zipping study carrel" >> "$LOG/$NAME.log"
 cp "$LOG/$NAME.log" "$CARRELS/$NAME/log" 
 $CARREL2ZIP $NAME
 
-# done
-echo "$PREFIX/$NAME/$SUFFIX/$NAME.zip" | mailx -s "text mining" emorgan@nd.edu
-exit
+# notify completion
+if [[ $2 ]]; then
+	ADDRESS=$2
+	echo "$PREFIX/$NAME/" | mailx -s "distant reader results" $ADDRESS
+else
+	echo "$HOME/$CARRELS/$NAME/"
+fi
+
