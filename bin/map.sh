@@ -12,7 +12,7 @@
 
 # configure
 CARRELS='./carrels'
-HOME='/afs/crc.nd.edu/user/e/emorgan/local/reader'
+HOME='/afs/crc.nd.edu/user/e/emorgan/local/html/reader'
 TXT='/txt';
 NETID='emorgan'
 PARALLEL='/afs/crc.nd.edu/user/e/emorgan/bin/parallel'

@@ -11,8 +11,8 @@
 
 
 # configure
-use constant TEMPLATE => 'ssh crcfe "source /etc/profile; local/reader/bin/##CMD## ##INPUT## ##ADDRESS## &> /dev/null &"';
-use constant TMP      => '/afs/crc.nd.edu/user/e/emorgan/local/reader/tmp';
+use constant TEMPLATE => 'ssh crcfe "source /etc/profile; local/html/reader/bin/##CMD## ##INPUT## ##ADDRESS## &> /dev/null &"';
+use constant TMP      => '/afs/crc.nd.edu/user/e/emorgan/local/html/reader/tmp';
 use constant CMDS     => ( 'url2carrel'    => 'url2carrel.sh',
                            'file2carrel'   => 'file2carrel.sh',
                            'zotero2carrel' => 'zotero2carrel.sh',

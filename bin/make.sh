@@ -9,7 +9,7 @@
 
 
 # configure
-HOME='/afs/crc.nd.edu/user/e/emorgan/local/reader'
+HOME='/afs/crc.nd.edu/user/e/emorgan/local/html/reader'
 CARRELS='./carrels'
 CACHE2TXT='./bin/cache2txt.sh'
 MAP='./bin/map.sh'

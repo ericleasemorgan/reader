@@ -11,7 +11,7 @@
 
 
 # configure
-HOME='/afs/crc.nd.edu/user/e/emorgan/local/reader'
+HOME='/afs/crc.nd.edu/user/e/emorgan/local/html/reader'
 MAKENAME='./bin/make-name.sh'
 INITIALIZECARREL='./bin/initialize-carrel.sh'
 URL2CACHE='./bin/urls2cache.pl'
@@ -67,7 +67,7 @@ $CARREL2ZIP $NAME
 # notify completion
 if [[ $2 ]]; then
 	ADDRESS=$2
-	echo "$PREFIX/$NAME/" | mailx -s "text mining" $ADDRESS
+	echo "$PREFIX/$NAME/" | mailx -s "distant reader results" $ADDRESS
 else
 	echo "$HOME/$CARRELS/$NAME/"
 fi

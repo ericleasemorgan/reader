@@ -10,7 +10,7 @@
 
 # configure
 CARRELS='./carrels'
-HOME='/afs/crc.nd.edu/user/e/emorgan/local/reader'
+HOME='/afs/crc.nd.edu/user/e/emorgan/local/html/reader'
 TIKA='./bin/tika-server.sh'
 PIDFILE='./tmp/tika-server.pid'
 FILE2TXT='./bin/file2txt.sh'

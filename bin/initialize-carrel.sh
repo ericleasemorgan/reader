@@ -9,7 +9,7 @@
 # July 20, 2018 - added log directory
 
 # configure
-HOME='/afs/crc.nd.edu/user/e/emorgan/local/reader'
+HOME='/afs/crc.nd.edu/user/e/emorgan/local/html/reader'
 CARRELS='./carrels'
 
 # sanity check

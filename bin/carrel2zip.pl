@@ -10,7 +10,7 @@
 
 # configure
 use constant ETC     => 'etc';
-use constant CARRELS => '/afs/crc.nd.edu/user/e/emorgan/local/reader/carrels';
+use constant CARRELS => '/afs/crc.nd.edu/user/e/emorgan/local/html/reader/carrels';
 
 # require
 use Archive::Zip;

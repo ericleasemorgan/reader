@@ -12,7 +12,7 @@
 CACHE='cache';
 CARREL2ZIP='./bin/carrel2zip.pl'
 CARRELS='./carrels'
-HOME='/afs/crc.nd.edu/user/e/emorgan/local/reader'
+HOME='/afs/crc.nd.edu/user/e/emorgan/local/html/reader'
 INITIALIZECARREL='./bin/initialize-carrel.sh'
 MAKE='./bin/make.sh'
 MAKENAME='./bin/make-name.sh'
@@ -72,7 +72,7 @@ $CARREL2ZIP $NAME
 # notify completion
 if [[ $2 ]]; then
 	ADDRESS=$2
-	echo "$PREFIX/$NAME/" | mailx -s "text mining" $ADDRESS
+	echo "$PREFIX/$NAME/" | mailx -s "distant reader results" $ADDRESS
 else
 	echo "$HOME/$CARRELS/$NAME/"
 fi
