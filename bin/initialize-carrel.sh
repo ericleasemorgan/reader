@@ -7,6 +7,8 @@
 
 # July 14, 2018 - first cut
 # July 20, 2018 - added log directory
+# July 26, 2018 - added home page
+
 
 # configure
 HOME='/afs/crc.nd.edu/user/e/emorgan/local/html/reader'
@@ -40,6 +42,7 @@ mkdir -p "$CARRELS/$NAME/log"
 # fill file system
 cp ./etc/README        "$CARRELS/$NAME"
 cp ./etc/LICENSE       "$CARRELS/$NAME"
+cp ./etc/home.html     "$CARRELS/$NAME"
 cp ./etc/stopwords.txt "$CARRELS/$NAME/etc"
 cp ./etc/queries.sql   "$CARRELS/$NAME/etc"
 cp ./etc/reader.sql    "$CARRELS/$NAME/etc"

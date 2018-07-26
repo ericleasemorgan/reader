@@ -15,9 +15,9 @@ CARRELS='./carrels'
 HOME='/afs/crc.nd.edu/user/e/emorgan/local/html/reader'
 TXT='/txt';
 NETID='emorgan'
-PARALLEL='/afs/crc.nd.edu/user/e/emorgan/bin/parallel'
-QSTAT='/opt/sge/bin/lx-amd64/qstat'
-QSUB='/opt/sge/bin/lx-amd64/qsub'
+#PARALLEL='/afs/crc.nd.edu/user/e/emorgan/bin/parallel'
+#QSTAT='/opt/sge/bin/lx-amd64/qstat'
+#QSUB='/opt/sge/bin/lx-amd64/qsub'
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -34,18 +34,18 @@ CONTINUE=0
 cd $HOME
 
 # submit the work
-find $INPUT -name '*.txt' | $PARALLEL ./bin/txt2adr.sh {}
-find $INPUT -name '*.txt' -exec $QSUB -N "$NAME" -o ./log/txt2bib.log ./bin/txt2bib.sh {} \;
-find $INPUT -name '*.txt' -exec $QSUB -N "$NAME" -o ./log/txt2ent.log ./bin/txt2ent.sh {} \;
-find $INPUT -name '*.txt' -exec $QSUB -N "$NAME" -o ./log/txt2pos.log ./bin/txt2pos.sh {} \;
-find $INPUT -name '*.txt' -exec $QSUB -N "$NAME" -o ./log/txt2wrd.log ./bin/txt2keywords.sh {} \;
-find $INPUT -name '*.txt' | $PARALLEL ./bin/txt2urls.sh {}
+find $INPUT -name '*.txt' | parallel ./bin/txt2adr.sh {}
+find $INPUT -name '*.txt' -exec qsub -N "$NAME" -o ./log/txt2bib.log ./bin/txt2bib.sh {} \;
+find $INPUT -name '*.txt' -exec qsub -N "$NAME" -o ./log/txt2ent.log ./bin/txt2ent.sh {} \;
+find $INPUT -name '*.txt' -exec qsub -N "$NAME" -o ./log/txt2pos.log ./bin/txt2pos.sh {} \;
+find $INPUT -name '*.txt' -exec qsub -N "$NAME" -o ./log/txt2wrd.log ./bin/txt2keywords.sh {} \;
+find $INPUT -name '*.txt' | parallel ./bin/txt2urls.sh {}
 
 # start waiting
 while [ $CONTINUE -eq 0 ]; do
 
 	# get and check the queue
-	QUE=$( $QSTAT -u $NETID | grep $NAME | wc -l )
+	QUE=$( qstat -u $NETID | grep $NAME | wc -l )
 	if [ $QUE -eq 0 ]; then
 		
 		# let the file system catch up?; rest some more

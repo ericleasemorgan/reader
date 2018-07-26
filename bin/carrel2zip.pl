@@ -11,6 +11,7 @@
 # configure
 use constant ETC     => 'etc';
 use constant CARRELS => '/afs/crc.nd.edu/user/e/emorgan/local/html/reader/carrels';
+use constant READER  => 'reader';
 
 # require
 use Archive::Zip;
@@ -24,11 +25,12 @@ if ( ! $name ) { die "Usage: $0 <name>\n" }
 # initialize
 my $etc     = ETC;
 my $carrels = CARRELS;
+my $reader  = READER;
 my $zip     = Archive::Zip->new();
 
 # do the work
 $zip->addTree( "$carrels/$name", $name );
-$zip->writeToFileNamed( "$carrels/$name/$etc/$name.zip" );
+$zip->writeToFileNamed( "$carrels/$name/$etc/$reader.zip" );
 
 # done
 exit;
