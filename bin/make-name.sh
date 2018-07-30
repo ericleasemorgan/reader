@@ -10,5 +10,5 @@
 
 # do the work, output, and done
 NAME=$( cat /dev/urandom | tr -cd 'a-zA-Z' | head -c 7 )
-echo $NAME
+echo -n $NAME
 exit
