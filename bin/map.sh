@@ -55,7 +55,7 @@ while [ $CONTINUE -eq 0 ]; do
 		
 		# continue waiting
 		printf "Items in the queue ($NAME): $QUE     \r" >&2
-		sleep 1
+		sleep 10
 	fi
 	
 done

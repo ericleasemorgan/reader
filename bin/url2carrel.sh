@@ -22,6 +22,7 @@ CARREL2ZIP='./bin/carrel2zip.pl'
 PREFIX='http://cds.crc.nd.edu/reader/carrels'
 SUFFIX='etc'
 LOG='./log'
+TIMEOUT=5
 
 # validate input
 if [[ -z $1 ]]; then
@@ -50,7 +51,7 @@ $INITIALIZECARREL $NAME
 
 # get the given url and cache the content locally
 echo "Getting URL ($URL) and saving it ($TMP/$NAME)" >> "$LOG/$NAME.log"
-wget -k -O "$TMP/$NAME" $URL
+wget -t $TIMEOUT -k -O "$TMP/$NAME" $URL >> "$LOG/$NAME.log"
 
 # extract the urls in the cache
 echo "Extracting URLs ($TMP/NAME) and saving ($TMP/$NAME.txt)" >> "$LOG/$NAME.log"
