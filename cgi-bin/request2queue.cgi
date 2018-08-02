@@ -17,6 +17,8 @@ use constant MAKENAME => '../bin/make-name.sh';
 use constant TMP      => '/afs/crc.nd.edu/user/e/emorgan/local/html/reader/tmp';
 use constant CMDS     => ( 'url2carrel' => 1, 'file2carrel' => 1, 'zotero2carrel' => 1, 'urls2carrel' => 1 );
 use constant STATUS   => 'queued';
+use constant NOTE     => 'So far, so good.';
+
 
 # require
 use CGI;
@@ -34,8 +36,9 @@ my $database  = DATABASE;
 my $driver    = DRIVER;
 my $make_name = MAKENAME;
 my $status    = STATUS;
+my $note      = NOTE;
 my $dbh       = DBI->connect( "DBI:$driver:dbname=$database", '', '', { RaiseError => 1 } ) or die $DBI::errstr;
-my $sth       = $dbh->prepare( "INSERT INTO acquisitions ( 'date_created', 'process', 'data', 'key', 'email', 'ip', 'date_updated', 'status' ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ? );" ) or die $DBI::errstr;
+my $sth       = $dbh->prepare( "INSERT INTO acquisitions ( 'date_created', 'process', 'data', 'key', 'email', 'ip', 'date_updated', 'status', 'note' ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? );" ) or die $DBI::errstr;
 
 # get/create values for the database table; get now
 my $now = DateTime->now->datetime( ' ' );
@@ -67,7 +70,7 @@ my $email = $cgi->param( 'address' ); if ( ! $email ) { &error( "No value for em
 my $ip    = $ENV{ REMOTE_ADDR };
 
 # do the work; update the database
-$sth->execute( $now, $cmd, $data, $key, $email, $ip, $now, $status ) or die $DBI::errstr;
+$sth->execute( $now, $cmd, $data, $key, $email, $ip, $now, $status, $note ) or die $DBI::errstr;
 $dbh->disconnect;
 
 # echo next steps and done

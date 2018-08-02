@@ -8,6 +8,7 @@ create table acquisitions (
     email         TEXT,
     ip            TEXT,
     date_updated  DATETIME,
-    status        TEXT
+    status        TEXT,
+    note          TEXT
 );
 
