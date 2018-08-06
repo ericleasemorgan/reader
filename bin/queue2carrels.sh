@@ -66,8 +66,8 @@ if [[ $COUNT > 0 ]]; then
 				fi
 				
 				# do the work and update the queue
-				$COMMAND $INPUT $EMAIL
 				echo "UPDATE acquisitions SET 'date_updated'=datetime(), 'status'='running', 'note'='Still, so far, so good.' WHERE id='$ID';" | sqlite3 $DB 
+				$COMMAND $INPUT $EMAIL
 
 			fi
 				
@@ -86,8 +86,8 @@ if [[ $COUNT > 0 ]]; then
 			else
 
 				# do the work and update the queue
-				$URL2CARREL $INPUT $EMAIL
 				echo "UPDATE acquisitions SET 'date_updated'=datetime(), 'status'='running', 'note'='Still, so far, so good.' WHERE id='$ID';" | sqlite3 $DB 
+				$URL2CARREL $INPUT $EMAIL
 
 			fi
 

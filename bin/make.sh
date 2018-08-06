@@ -16,6 +16,7 @@ MAP='./bin/map.sh'
 REDUCE='./bin/reduce.sh'
 DB2REPORT='./bin/db2report.sh'
 REPORT='etc/report.txt'
+CARREL2VEC='./bin/carrel2vec.sh'
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -37,6 +38,9 @@ $MAP $NAME
 
 # build the database
 $REDUCE $NAME
+
+# create semantic index
+$CARREL2VEC $NAME
 
 # output a report against the database
 $DB2REPORT $NAME > "$CARRELS/$NAME/$REPORT"
