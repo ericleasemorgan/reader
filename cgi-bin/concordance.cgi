@@ -63,7 +63,7 @@ else :
 			right = index._tokens[ i + 1 : i + WIDTH ]
 			lines.append( ' '.join([' '.join( left )[ -half : ], token, ' '.join( right )[ : half ] ] ) )
 
-		for i, line in enumerate( lines ) : print( "% 4d) %s" % ( i + 1, line ) )
+		for i, line in enumerate( lines ) : print( "% 4d) %s" % ( i + 1, line.encode( 'utf-8' ) ) )
 	
 	else : print( "%s not found." % ( word ) )
 		
