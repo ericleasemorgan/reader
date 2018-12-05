@@ -1,4 +1,4 @@
-#!/afs/crc.nd.edu/user/e/emorgan/local/anaconda/bin/python
+#!/usr/bin/env python
 
 # txt2pos.py - given a plain text file, output a tab-delimited file of parts-of-speech
 

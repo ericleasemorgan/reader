@@ -1,8 +1,8 @@
 
 # configure
-HOME='/afs/crc.nd.edu/user/e/emorgan/local/html/reader'
-WORD2PHRASE='/afs/crc.nd.edu/user/e/emorgan/local/bin/word2phrase'
-WORD2VEC='/afs/crc.nd.edu/user/e/emorgan/local/bin/word2vec'
+HOME='/home/emorgan/reader'
+WORD2PHRASE='/home/emorgan/bin/word2phrase'
+WORD2VEC='/home/emorgan/bin/word2vec'
 
 # sanity check
 if [[ -z "$1" ]]; then

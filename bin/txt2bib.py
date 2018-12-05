@@ -1,4 +1,4 @@
-#!/afs/crc.nd.edu/user/e/emorgan/local/anaconda/bin/python
+#!/usr/bin/env python
 
 # txt2bib.sh - given a file, output a tab-delimited bibliographic characteristics, sort of
 

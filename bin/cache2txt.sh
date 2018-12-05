@@ -10,14 +10,14 @@
 
 # configure
 CARRELS='./carrels'
-HOME='/afs/crc.nd.edu/user/e/emorgan/local/html/reader'
+HOME='/home/emorgan/reader'
 TIKA='./bin/tika-server.sh'
 PIDFILE='./tmp/tika-server.pid'
 FILE2TXT='./bin/file2txt.sh'
 SECONDS=10
 CACHE='/cache'
 TXT='/txt'
-PARALLEL='/afs/crc.nd.edu/user/e/emorgan/bin/parallel'
+PARALLEL='/usr/bin/parallel'
 
 # sanity check
 if [[ -z "$1" ]]; then

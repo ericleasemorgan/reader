@@ -11,7 +11,7 @@
 
 
 # configure
-HOME='/afs/crc.nd.edu/user/e/emorgan/local/html/reader'
+HOME='/home/emorgan/reader'
 MAKENAME='./bin/make-name.sh'
 INITIALIZECARREL='./bin/initialize-carrel.sh'
 URL2CACHE='./bin/urls2cache.pl'

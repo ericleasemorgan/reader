@@ -10,7 +10,7 @@
 
 # configure
 CARRELS='./carrels'
-HOME='/afs/crc.nd.edu/user/e/emorgan/local/html/reader'
+HOME='/home/emorgan/reader'
 QUERIES='./etc/queries.sql'
 DB='/etc/reader.db'
 

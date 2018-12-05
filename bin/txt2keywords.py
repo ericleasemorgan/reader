@@ -1,4 +1,4 @@
-#!/afs/crc.nd.edu/user/e/emorgan/local/anaconda/bin/python
+#!/usr/bin/env python
 
 # txt2keywords.sh - given a file, output a tab-delimited list of keywords
 

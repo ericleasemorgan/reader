@@ -9,7 +9,7 @@
 
 
 # configure
-HOME='/afs/crc.nd.edu/user/e/emorgan/local/html/reader'
+HOME='/home/emorgan/readerr'
 MAKENAME='./bin/make-name.sh'
 INITIALIZECARREL='./bin/initialize-carrel.sh'
 TMP='./tmp'

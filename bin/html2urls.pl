@@ -1,4 +1,4 @@
-#!/afs/crc.nd.edu/user/e/emorgan/bin/perl
+#!/usr/bin/env perl
 
 # html2urls.pl - given an html file, extract all of its links
 

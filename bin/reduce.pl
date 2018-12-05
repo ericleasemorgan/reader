@@ -1,4 +1,4 @@
-#!/afs/crc.nd.edu/user/e/emorgan/bin/perl
+#!/usr/bin/env perl
 
 # carrel2db.pl - given a directory name, create an sqlite database
 

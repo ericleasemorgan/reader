@@ -9,10 +9,10 @@
 
 # configure
 CARRELS='./carrels'
-HOME='/afs/crc.nd.edu/user/e/emorgan/local/html/reader'
+HOME='/home/emorgan/reader'
 REDUCE='./bin/reduce.pl'
 INITIALIZEDB='./bin/initialize-database.sh'
-PARALLEL='/afs/crc.nd.edu/user/e/emorgan/bin/parallel'
+PARALLEL='/usr/bin/parallel'
 
 # sanity check
 if [[ -z "$1" ]]; then

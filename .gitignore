@@ -1,5 +1,6 @@
 ._*
 .DS_Store
+.local
 .parallel
 carrels
 collections

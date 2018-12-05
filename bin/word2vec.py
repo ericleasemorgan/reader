@@ -1,4 +1,4 @@
-#!/afs/crc.nd.edu/user/e/emorgan/local/anaconda/bin/python
+#!/usr/bin/env python
 
 # word2vec.py - cli to word2vec functions
 
