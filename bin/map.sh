@@ -15,6 +15,7 @@ CARRELS='./carrels'
 HOME='/home/emorgan/reader'
 TXT='/txt';
 NETID='emorgan'
+JOBS=40
 #PARALLEL='/afs/crc.nd.edu/user/e/emorgan/bin/parallel'
 #QSTAT='/opt/sge/bin/lx-amd64/qstat'
 #QSUB='/opt/sge/bin/lx-amd64/qsub'
@@ -34,12 +35,12 @@ CONTINUE=0
 cd $HOME
 
 # submit the work
-find $INPUT -name '*.txt' | parallel ./bin/txt2adr.sh {}
-find $INPUT -name '*.txt' | parallel ./bin/txt2bib.sh {}
-find $INPUT -name '*.txt' | parallel ./bin/txt2ent.sh {}
-find $INPUT -name '*.txt' | parallel ./bin/txt2pos.sh {}
-find $INPUT -name '*.txt' | parallel ./bin/txt2keywords.sh {}
-find $INPUT -name '*.txt' | parallel ./bin/txt2urls.sh {}
+find $INPUT -name '*.txt' | parallel --jobs $JOBS  ./bin/txt2adr.sh {}
+find $INPUT -name '*.txt' | parallel --jobs $JOBS  ./bin/txt2bib.sh {}
+find $INPUT -name '*.txt' | parallel --jobs $JOBS  ./bin/txt2ent.sh {}
+find $INPUT -name '*.txt' | parallel --jobs $JOBS  ./bin/txt2pos.sh {}
+find $INPUT -name '*.txt' | parallel --jobs $JOBS  ./bin/txt2keywords.sh {}
+find $INPUT -name '*.txt' | parallel --jobs $JOBS  ./bin/txt2urls.sh {}
 
 # done
 echo "Que is empty; done" >&2

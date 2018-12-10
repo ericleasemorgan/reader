@@ -13,6 +13,7 @@ HOME='/home/emorgan/reader'
 REDUCE='./bin/reduce.pl'
 INITIALIZEDB='./bin/initialize-database.sh'
 PARALLEL='/usr/bin/parallel'
+JOBS=40
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -30,9 +31,9 @@ cd $HOME
 echo "$NAME" >&2
 
 $INITIALIZEDB "$CARRELS/$NAME"
-find "$CARRELS/$NAME" -name '*.pos' | $PARALLEL $REDUCE "$CARRELS/$NAME" pos {} \;
-find "$CARRELS/$NAME" -name '*.ent' | $PARALLEL $REDUCE "$CARRELS/$NAME" ent {} \;
-find "$CARRELS/$NAME" -name '*.wrd' | $PARALLEL $REDUCE "$CARRELS/$NAME" wrd {} \;
-find "$CARRELS/$NAME" -name '*.adr' | $PARALLEL $REDUCE "$CARRELS/$NAME" adr {} \;
-find "$CARRELS/$NAME" -name '*.url' | $PARALLEL $REDUCE "$CARRELS/$NAME" url {} \;
-find "$CARRELS/$NAME" -name '*.bib' | $PARALLEL $REDUCE "$CARRELS/$NAME" bib {} \;
+find "$CARRELS/$NAME" -name '*.pos' | $PARALLEL --jobs $JOBS  $REDUCE "$CARRELS/$NAME" pos {} \;
+find "$CARRELS/$NAME" -name '*.ent' | $PARALLEL --jobs $JOBS  $REDUCE "$CARRELS/$NAME" ent {} \;
+find "$CARRELS/$NAME" -name '*.wrd' | $PARALLEL --jobs $JOBS  $REDUCE "$CARRELS/$NAME" wrd {} \;
+find "$CARRELS/$NAME" -name '*.adr' | $PARALLEL --jobs $JOBS  $REDUCE "$CARRELS/$NAME" adr {} \;
+find "$CARRELS/$NAME" -name '*.url' | $PARALLEL --jobs $JOBS  $REDUCE "$CARRELS/$NAME" url {} \;
+find "$CARRELS/$NAME" -name '*.bib' | $PARALLEL --jobs $JOBS  $REDUCE "$CARRELS/$NAME" bib {} \;

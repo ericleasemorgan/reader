@@ -18,6 +18,7 @@ SECONDS=10
 CACHE='/cache'
 TXT='/txt'
 PARALLEL='/usr/bin/parallel'
+JOBS=40
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -38,10 +39,10 @@ sleep $SECONDS
 mkdir -p $OUTPUT
 
 # find desirable file types and do the work
-find $INPUT -name '*.html' | $PARALLEL $FILE2TXT {} $OUTPUT
-find $INPUT -name '*.pdf'  | $PARALLEL $FILE2TXT {} $OUTPUT
-find $INPUT -name '*.txt'  | $PARALLEL $FILE2TXT {} $OUTPUT
-find $INPUT -name '*.xml'  | $PARALLEL $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.html' | $PARALLEL --jobs $JOBS $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.pdf'  | $PARALLEL --jobs $JOBS $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.txt'  | $PARALLEL --jobs $JOBS $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.xml'  | $PARALLEL --jobs $JOBS $FILE2TXT {} $OUTPUT
 
 # kill the server and done
 PID=$( cat $PIDFILE )
