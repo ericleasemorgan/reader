@@ -1,16 +1,10 @@
 #!/usr/bin/env bash
 
-# file2txt.sh - convert a file harvested from the Web file to plain text; wrapper around tika-client.pl
-# usage: find corpora/wikipedia/text-mining -name '*.html' -exec ./bin/file2txt.sh {} \;
-
-# Eric Lease Morgan <emorgan@nd.edu>
-# April 10, 2018 - first documentation; getting closer to Prague
-
-# (c) University of Notre Dame under a GNU Public License
+# file2txt.sh - given a file, output plain text; a front-end to file2txt.py
 
 
 # configure
-TIKACLIENT='./bin/tika-client.pl'
+FILE2TXT='./bin/file2txt.py'
 
 # sanity check
 if [[ -z "$1" || -z "$2" ]]; then
@@ -22,16 +16,11 @@ fi
 FILE=$1
 DIRECTORY=$2
 
-# just in case
-mkdir -p $DIRECTORY
-
 # initialize
-DIRNAME=$( dirname $FILE )
-BASENAME=$( basename "$FILE" )
-BASENAME="${BASENAME%.*}"
+BASENAME=$( basename $FILE )
+BASENAME=${BASENAME%.*}
+OUTPUT="$DIRECTORY/$BASENAME.txt"
 
-# do the work
-$TIKACLIENT $FILE > "$DIRECTORY/$BASENAME.txt"
-
-# done
+# do the work and done
+$FILE2TXT $FILE > $OUTPUT
 exit

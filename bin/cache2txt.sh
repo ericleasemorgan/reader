@@ -11,13 +11,13 @@
 # configure
 CARRELS='./carrels'
 HOME='/home/emorgan/reader'
-TIKA='./bin/tika-server.sh'
-PIDFILE='./tmp/tika-server.pid'
+#TIKA='./bin/tika-server.sh'
+#PIDFILE='./tmp/tika-server.pid'
 FILE2TXT='./bin/file2txt.sh'
-SECONDS=10
-CACHE='/cache'
-TXT='/txt'
-PARALLEL='/usr/bin/parallel'
+#SECONDS=10
+CACHE='cache'
+TXT='txt'
+#PARALLEL='/usr/bin/parallel'
 JOBS=40
 
 # sanity check
@@ -28,24 +28,24 @@ fi
 
 # initialize
 NAME=$1
-INPUT="$CARRELS/$NAME$CACHE"
-OUTPUT="$CARRELS/$NAME$TXT"
+INPUT="$CARRELS/$NAME/$CACHE"
+OUTPUT="$CARRELS/$NAME/$TXT"
 
 # fire up the tika server
-$TIKA
-sleep $SECONDS
+#$TIKA
+#sleep $SECONDS
 
 # make sane
 mkdir -p $OUTPUT
 
 # find desirable file types and do the work
-find $INPUT -name '*.html' | $PARALLEL --jobs $JOBS $FILE2TXT {} $OUTPUT
-find $INPUT -name '*.pdf'  | $PARALLEL --jobs $JOBS $FILE2TXT {} $OUTPUT
-find $INPUT -name '*.txt'  | $PARALLEL --jobs $JOBS $FILE2TXT {} $OUTPUT
-find $INPUT -name '*.xml'  | $PARALLEL --jobs $JOBS $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.html' | parallel --jobs $JOBS $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.pdf'  | parallel --jobs $JOBS $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.txt'  | parallel --jobs $JOBS $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.xml'  | parallel --jobs $JOBS $FILE2TXT {} $OUTPUT
 
 # kill the server and done
-PID=$( cat $PIDFILE )
-kill $PID
-rm $PIDFILE
+#PID=$( cat $PIDFILE )
+#kill $PID
+#rm $PIDFILE
 exit
