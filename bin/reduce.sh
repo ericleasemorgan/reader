@@ -9,7 +9,7 @@
 
 # configure
 CARRELS='./carrels'
-HOME='/home/emorgan/reader'
+HOME='/usr/local/reader'
 REDUCE='./bin/reduce.pl'
 INITIALIZEDB='./bin/initialize-database.sh'
 PARALLEL='/usr/bin/parallel'

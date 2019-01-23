@@ -11,7 +11,7 @@
 
 
 # configure
-HOME='/home/emorgan/reader'
+HOME='/usr/local/reader'
 CARRELS='./carrels'
 
 # sanity check

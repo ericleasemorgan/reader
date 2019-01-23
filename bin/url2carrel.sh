@@ -9,7 +9,7 @@
 
 
 # configure
-HOME='/home/emorgan/reader'
+HOME='/usr/local/reader'
 MAKENAME='./bin/make-name.sh'
 INITIALIZECARREL='./bin/initialize-carrel.sh'
 TMP='./tmp'

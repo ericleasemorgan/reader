@@ -1,8 +1,8 @@
 
 # configure
-HOME='/home/emorgan/reader'
-WORD2PHRASE='/home/emorgan/bin/word2phrase'
-WORD2VEC='/home/emorgan/bin/word2vec'
+HOME='/usr/local/reader'
+WORD2PHRASE='/usr/local/word2vec/bin/word2phrase'
+WORD2VEC='/usr/local/word2vec/bin/word2vec'
 
 # sanity check
 if [[ -z "$1" ]]; then
