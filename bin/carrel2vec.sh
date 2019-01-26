@@ -1,8 +1,8 @@
 
 # configure
-HOME='/usr/local/reader'
-WORD2PHRASE='/usr/local/word2vec/bin/word2phrase'
-WORD2VEC='/usr/local/word2vec/bin/word2vec'
+HOME=$READER_HOME
+WORD2PHRASE='word2phrase'
+WORD2VEC='word2vec'
 
 # sanity check
 if [[ -z "$1" ]]; then

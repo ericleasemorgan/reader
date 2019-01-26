@@ -12,7 +12,7 @@
 
 # configure
 CARRELS='./carrels'
-HOME='/usr/local/reader'
+HOME=$READER_HOME
 TXT='/txt';
 NETID='emorgan'
 JOBS=40

@@ -11,7 +11,7 @@
 
 
 # configure
-HOME='/home/emorgan/reader'
+HOME=$READER_HOME
 MAKENAME='./bin/make-name.sh'
 INITIALIZECARREL='./bin/initialize-carrel.sh'
 URL2CACHE='./bin/urls2cache.pl'

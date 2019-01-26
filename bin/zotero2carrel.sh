@@ -12,7 +12,7 @@
 CACHE='cache';
 CARREL2ZIP='./bin/carrel2zip.pl'
 CARRELS='./carrels'
-HOME='/afs/crc.nd.edu/user/e/emorgan/local/html/reader'
+HOME=$READER_HOME
 INITIALIZECARREL='./bin/initialize-carrel.sh'
 MAKE='./bin/make.sh'
 MAKENAME='./bin/make-name.sh'

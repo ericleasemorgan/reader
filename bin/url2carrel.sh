@@ -9,7 +9,7 @@
 
 
 # configure
-HOME='/usr/local/reader'
+HOME=$READER_HOME
 MAKENAME='./bin/make-name.sh'
 INITIALIZECARREL='./bin/initialize-carrel.sh'
 TMP='./tmp'

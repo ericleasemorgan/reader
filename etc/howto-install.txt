@@ -1,0 +1,43 @@
+
+# make sane
+cd srcs
+
+# build & install perl
+cd perl-5.28.1
+sh Configure -Dprefix=/export/perl -des
+make
+make install
+
+# install perl libraries
+cpan install HTML::LinkExtor
+cpan install LWP::UserAgent
+cpan install DBI
+cpan install DBD::SQLite
+cpan install Archive::Zip
+
+# install Anaconda
+cd ..
+mkdir /export/python
+bash ./Anaconda3-2018.12-Linux-x86_64.sh -u
+
+# install python modules
+pip install tika
+pip install textatistic
+pip install --upgrade gensim
+pip install -U spacy
+python -m spacy download en
+
+# install ntlk dependency; kinda dumb
+python
+import nltk
+nltk.download('punkt', download_dir='/export/python/share/nltk_data')
+
+# unpack & install java
+cd ../zips
+tar xvf jdk-8u201-linux-i586.tar.gz
+cp -r jdk1.8.0_201 /export/java
+rm -rf jdk1.8.0_201
+
+# install word2vec
+cd ../srcs
+cp -r word2vec /export

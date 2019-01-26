@@ -10,7 +10,7 @@
 
 # configure
 CARRELS='./carrels'
-HOME='/usr/local/reader'
+HOME=$READER_HOME
 QUERIES='./etc/queries.sql'
 DB='/etc/reader.db'
 

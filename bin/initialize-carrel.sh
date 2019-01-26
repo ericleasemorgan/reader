@@ -11,7 +11,7 @@
 
 
 # configure
-HOME='/usr/local/reader'
+HOME=$READER_HOME
 CARRELS='./carrels'
 
 # sanity check

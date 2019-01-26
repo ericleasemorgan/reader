@@ -10,7 +10,7 @@
 
 
 # configure
-HOME='/afs/crc.nd.edu/user/e/emorgan/local/html/reader'
+HOME=$READER_HOME
 MAKENAME='./bin/make-name.sh'
 INITIALIZECARREL='./bin/initialize-carrel.sh'
 TMP='tmp'

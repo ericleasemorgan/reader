@@ -10,7 +10,7 @@
 
 # configure
 use constant ETC     => 'etc';
-use constant CARRELS => '/usr/local/reader/carrels';
+use constant CARRELS => '/export/reader/carrels';
 use constant READER  => 'reader';
 
 # require

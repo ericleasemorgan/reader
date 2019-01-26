@@ -10,7 +10,7 @@
 
 # configure
 CARRELS='./carrels'
-HOME='/usr/local/reader'
+HOME=$READER_HOME
 #TIKA='./bin/tika-server.sh'
 #PIDFILE='./tmp/tika-server.pid'
 FILE2TXT='./bin/file2txt.sh'

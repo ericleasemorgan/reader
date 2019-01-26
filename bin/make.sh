@@ -9,7 +9,7 @@
 
 
 # configure
-HOME='/usr/local/reader'
+HOME=$READER_HOME
 CARRELS='./carrels'
 CACHE2TXT='./bin/cache2txt.sh'
 MAP='./bin/map.sh'
