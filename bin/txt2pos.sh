@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 
 # txt2pos.sh - given a file name, run txt2pos.py
-# usage: find carrels/word2vec/txt -name '*.txt' -exec ./bin/txt2pos.sh {} \;
+# usage: find ./carrels/leatherstocking/txt -name '*.txt' -exec sbatch ./bin/txt2pos.sh {} \;
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
 
 # June 26, 2018 - first cut
 
+
+#SBATCH -N 1 
+#SBATCH -J pos2txt
+#SBATCH -o /home/centos/reader/log/pos2txt-%A.log
 
 # configure
 ID2POS='./bin/txt2pos.py'
@@ -37,6 +41,13 @@ if [ -f "$OUTPUT" ]; then
 else
 	$ID2POS $FILE 1> $OUTPUT
 fi
+
+
+# MONITOR SQUEUE HERE
+
+# done
+exit
+
 
 
 

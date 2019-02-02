@@ -2,6 +2,11 @@
 
 # file2txt.sh - given a file, output plain text; a front-end to file2txt.py
 
+# Eric Lease Morgan <emorgan@nd.edu>
+# (c) University of Notre Dame; distributed under a GNU Public License
+
+# February 2, 2019 - first documentation; written a while ago; "Happy birthday, Mary!"
+
 
 # configure
 FILE2TXT='./bin/file2txt.py'

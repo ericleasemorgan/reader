@@ -35,12 +35,12 @@ CONTINUE=0
 cd $HOME
 
 # submit the work
-find $INPUT -name '*.txt' | parallel --jobs $JOBS  ./bin/txt2adr.sh {}
-find $INPUT -name '*.txt' | parallel --jobs $JOBS  ./bin/txt2bib.sh {}
-find $INPUT -name '*.txt' | parallel --jobs $JOBS  ./bin/txt2ent.sh {}
-find $INPUT -name '*.txt' | parallel --jobs $JOBS  ./bin/txt2pos.sh {}
-find $INPUT -name '*.txt' | parallel --jobs $JOBS  ./bin/txt2keywords.sh {}
-find $INPUT -name '*.txt' | parallel --jobs $JOBS  ./bin/txt2urls.sh {}
+find $INPUT -name '*.txt' -exec ./bin/txt2adr.sh {} \;
+find $INPUT -name '*.txt' -exec ./bin/txt2bib.sh {} \;
+find $INPUT -name '*.txt' -exec ./bin/txt2ent.sh {} \;
+find $INPUT -name '*.txt' -exec ./bin/txt2pos.sh {} \;
+find $INPUT -name '*.txt' -exec ./bin/txt2keywords.sh {} \;
+find $INPUT -name '*.txt' -exec ./bin/txt2urls.sh {} \;
 
 # done
 echo "Que is empty; done" >&2
