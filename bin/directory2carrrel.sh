@@ -8,6 +8,10 @@
 # July 19, 2018 - first cut
 
 
+#SBATCH -N 1
+#SBATCH -J dir2c
+#SBATCH -o /home/centos/reader/log/directory2carrel-%A.log
+
 # configure
 CACHE='cache';
 CARREL2ZIP='./bin/carrel2zip.pl'

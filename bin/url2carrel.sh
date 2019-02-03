@@ -7,6 +7,10 @@
 
 # July 17, 2018 - first cut
 
+#SBATCH -N 1
+#SBATCH -J url2c
+#SBATCH -o /home/centos/reader/log/url2carrel-%A.log
+
 
 # configure
 HOME=$READER_HOME

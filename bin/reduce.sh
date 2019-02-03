@@ -12,8 +12,8 @@ CARRELS='./carrels'
 HOME=$READER_HOME
 REDUCE='./bin/reduce.pl'
 INITIALIZEDB='./bin/initialize-database.sh'
-PARALLEL='/usr/bin/parallel'
-JOBS=40
+PARALLEL='/export/bin/parallel'
+JOBS=12
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -31,9 +31,9 @@ cd $HOME
 echo "$NAME" >&2
 
 $INITIALIZEDB "$CARRELS/$NAME"
-find "$CARRELS/$NAME" -name '*.pos' | $PARALLEL --jobs $JOBS  $REDUCE "$CARRELS/$NAME" pos {} \;
-find "$CARRELS/$NAME" -name '*.ent' | $PARALLEL --jobs $JOBS  $REDUCE "$CARRELS/$NAME" ent {} \;
-find "$CARRELS/$NAME" -name '*.wrd' | $PARALLEL --jobs $JOBS  $REDUCE "$CARRELS/$NAME" wrd {} \;
-find "$CARRELS/$NAME" -name '*.adr' | $PARALLEL --jobs $JOBS  $REDUCE "$CARRELS/$NAME" adr {} \;
-find "$CARRELS/$NAME" -name '*.url' | $PARALLEL --jobs $JOBS  $REDUCE "$CARRELS/$NAME" url {} \;
-find "$CARRELS/$NAME" -name '*.bib' | $PARALLEL --jobs $JOBS  $REDUCE "$CARRELS/$NAME" bib {} \;
+find "$CARRELS/$NAME" -name '*.pos' | $PARALLEL --will-cite $REDUCE "$CARRELS/$NAME" pos {} \;
+find "$CARRELS/$NAME" -name '*.ent' | $PARALLEL --will-cite $REDUCE "$CARRELS/$NAME" ent {} \;
+find "$CARRELS/$NAME" -name '*.wrd' | $PARALLEL --will-cite $REDUCE "$CARRELS/$NAME" wrd {} \;
+find "$CARRELS/$NAME" -name '*.adr' | $PARALLEL --will-cite $REDUCE "$CARRELS/$NAME" adr {} \;
+find "$CARRELS/$NAME" -name '*.url' | $PARALLEL --will-cite $REDUCE "$CARRELS/$NAME" url {} \;
+find "$CARRELS/$NAME" -name '*.bib' | $PARALLEL --will-cite $REDUCE "$CARRELS/$NAME" bib {} \;

@@ -8,6 +8,9 @@
 # July 19, 2018 - first cut
 # July 20, 2018 - started getting to work from a remote machine and sending email
 
+#SBATCH -N 1
+#SBATCH -J file2c
+#SBATCH -o /home/centos/reader/log/file2carrel-%A.log
 
 # configure
 HOME=$READER_HOME

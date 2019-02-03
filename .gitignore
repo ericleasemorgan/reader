@@ -6,5 +6,5 @@ carrels
 collections
 Library
 library.db
-log/*
-tmp/*
+log/.keep
+tmp/.keep

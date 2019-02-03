@@ -9,6 +9,10 @@
 # July 14, 2018 - more investigation
 # July 16, 2018 - made things more module
 
+#SBATCH -N 1
+#SBATCH -J urls2c
+#SBATCH -o /home/centos/reader/log/urls2carrel-%A.log
+
 
 # configure
 HOME=$READER_HOME

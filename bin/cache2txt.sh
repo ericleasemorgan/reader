@@ -9,9 +9,9 @@
 # January 31, 2019 - removed the use of parallel
 # February 2, 2019 - started using Tika more intelligently; "Happy birthday, Mary!"
 
-#SBATCH -N 1 
-#SBATCH -J c2txt
-#SBATCH -o /home/centos/reader/log/cache2txt-%A.log
+##SBATCH -N 1 
+##SBATCH -J c2txt
+##SBATCH -o /home/centos/reader/log/cache2txt-%A.log
 
 
 # configure
