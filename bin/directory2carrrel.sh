@@ -9,8 +9,9 @@
 
 
 #SBATCH -N 1
+#SBATCH --exclusive
 #SBATCH -J dir2c
-#SBATCH -o /home/centos/reader/log/directory2carrel-%A.log
+#SBATCH -o /export/reader/log/directory2carrel-%A.log
 
 # configure
 CACHE='cache';

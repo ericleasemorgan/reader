@@ -9,10 +9,6 @@
 # January 31, 2019 - removed the use of parallel
 # February 2, 2019 - started using Tika more intelligently; "Happy birthday, Mary!"
 
-##SBATCH -N 1 
-##SBATCH -J c2txt
-##SBATCH -o /home/centos/reader/log/cache2txt-%A.log
-
 
 # configure
 HOME=$READER_HOME
@@ -21,6 +17,7 @@ CACHE='cache'
 CARRELS='./carrels'
 FILE2TXT='./bin/file2txt.sh'
 TXT='txt'
+PARALLEL='/export/bin/parallel'
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -43,15 +40,12 @@ export TIKA_LOG_PATH
 cd $HOME
 mkdir -p $OUTPUT
 
-# find desirable file types and do the work
-find $INPUT -name '*.html' -exec $FILE2TXT {} $OUTPUT \;
-find $INPUT -name '*.pdf'  -exec $FILE2TXT {} $OUTPUT \;
-find $INPUT -name '*.txt'  -exec $FILE2TXT {} $OUTPUT \;
-find $INPUT -name '*.xml'  -exec $FILE2TXT {} $OUTPUT \;
-
-
-# MONITOR SQUEUE HERE
-
+# find desirable file types, submit the work, wait, and done
+find $INPUT -name '*.html' | $PARALLEL --will-cite  $FILE2TXT {} $OUTPUT &
+find $INPUT -name '*.pdf'  | $PARALLEL --will-cite  $FILE2TXT {} $OUTPUT &
+find $INPUT -name '*.txt'  | $PARALLEL --will-cite  $FILE2TXT {} $OUTPUT &
+find $INPUT -name '*.xml'  | $PARALLEL --will-cite  $FILE2TXT {} $OUTPUT &
+wait
 
 # done
 exit

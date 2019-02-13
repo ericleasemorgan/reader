@@ -14,7 +14,7 @@
 CARRELS='./carrels'
 HOME=$READER_HOME
 TXT='/txt';
-JOBS=12
+JOBS=1
 PARALLEL='/export/bin/parallel'
 
 # sanity check
@@ -31,13 +31,22 @@ CONTINUE=0
 # make sane
 cd $HOME
 
-# submit the work
-find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2adr.sh {}
-find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2bib.sh {} \;
-find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2ent.sh {} \;
-find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2pos.sh {} \;
-find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2keywords.sh {} \;
-find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2urls.sh {} \;
+# set up multi-threading environment
+OMP_NUM_THREADS=2
+OPENBLAS_NUM_THREADS=2
+MKL_NUM_THREADS=2
+export OMP_NUM_THREADS
+export OPENBLAS_NUM_THREADS
+export MKL_NUM_THREADS
+
+# submit the work and wait, submit some more
+find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2adr.sh {}      &
+find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2bib.sh {}      &
+find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2urls.sh {}     &
+find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2keywords.sh {} &
+find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2ent.sh {}      &
+find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2pos.sh {}      &
+wait
 
 # done
 echo "Que is empty; done" >&2

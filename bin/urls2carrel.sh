@@ -10,8 +10,9 @@
 # July 16, 2018 - made things more module
 
 #SBATCH -N 1
+#SBATCH --exclusive
 #SBATCH -J urls2c
-#SBATCH -o /home/centos/reader/log/urls2carrel-%A.log
+#SBATCH -o /export/reader/log/urls2carrel-%A.log
 
 
 # configure

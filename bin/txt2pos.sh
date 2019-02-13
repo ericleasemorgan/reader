@@ -9,11 +9,11 @@
 # June 26, 2018 - first cut
 
 
-##SBATCH -N 1 
-##SBATCH -J pos2txt
-##SBATCH -o /home/centos/reader/log/pos2txt-%A.log
+###SBATCH -N 1 
+###SBATCH -J pos2txt
+###SBATCH -o /export/reader/log/pos2txt-%A.log
 
-##srun --pty bash
+###srun --pty bash
 
 # configure
 ID2POS='./bin/txt2pos.py'
