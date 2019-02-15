@@ -31,9 +31,9 @@ cd $HOME
 echo "$NAME" >&2
 
 $INITIALIZEDB "$CARRELS/$NAME"
-find "$CARRELS/$NAME" -name '*.pos' | $PARALLEL --will-cite $REDUCE "$CARRELS/$NAME" pos {} \;
-find "$CARRELS/$NAME" -name '*.ent' | $PARALLEL --will-cite $REDUCE "$CARRELS/$NAME" ent {} \;
-find "$CARRELS/$NAME" -name '*.wrd' | $PARALLEL --will-cite $REDUCE "$CARRELS/$NAME" wrd {} \;
-find "$CARRELS/$NAME" -name '*.adr' | $PARALLEL --will-cite $REDUCE "$CARRELS/$NAME" adr {} \;
-find "$CARRELS/$NAME" -name '*.url' | $PARALLEL --will-cite $REDUCE "$CARRELS/$NAME" url {} \;
-find "$CARRELS/$NAME" -name '*.bib' | $PARALLEL --will-cite $REDUCE "$CARRELS/$NAME" bib {} \;
+find "$CARRELS/$NAME" -name '*.pos' -exec $REDUCE "$CARRELS/$NAME" pos {} \;
+find "$CARRELS/$NAME" -name '*.ent' -exec $REDUCE "$CARRELS/$NAME" ent {} \;
+find "$CARRELS/$NAME" -name '*.wrd' -exec $REDUCE "$CARRELS/$NAME" wrd {} \;
+find "$CARRELS/$NAME" -name '*.adr' -exec $REDUCE "$CARRELS/$NAME" adr {} \;
+find "$CARRELS/$NAME" -name '*.url' -exec $REDUCE "$CARRELS/$NAME" url {} \;
+find "$CARRELS/$NAME" -name '*.bib' -exec $REDUCE "$CARRELS/$NAME" bib {} \;

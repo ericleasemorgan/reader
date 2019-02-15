@@ -28,12 +28,13 @@ nlp  = spacy.load( 'en' )
 os.system( "taskset -pc 0-1 %d > /dev/null" % os.getpid() )
 
 # open the given file and unwrap it
-handle = open( file, 'r' )
-text   = handle.read()
-text   = re.sub( '\r', '\n', text )
-text   = re.sub( '\n+', ' ', text )
-text   = re.sub( ' +', ' ', text )
-text   = re.sub( '^\W+', '', text )
+text = open( file, 'r' ).read()
+text = re.sub( '\r', '\n', text )
+text = re.sub( '\n+', ' ', text )
+text = re.sub( '^\W+', '', text )
+text = re.sub( '\t', ' ',  text )
+text = re.sub( ' +', ' ',  text )
+
 
 # initialize output, the header
 print( "\t".join( [ 'id', 'sid', 'tid', 'token', 'lemma', 'pos' ] ) )

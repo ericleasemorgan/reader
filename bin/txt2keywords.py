@@ -27,8 +27,9 @@ file = sys.argv[ 1 ]
 text = open( file, 'r' ).read()
 text = re.sub( '\r', '\n', text )
 text = re.sub( '\n+', ' ', text )
-text = re.sub( ' +', ' ', text )
 text = re.sub( '^\W+', '', text )
+text = re.sub( '\t', ' ',  text )
+text = re.sub( ' +', ' ',  text )
 
 # compute the identifier
 id = os.path.basename( os.path.splitext( file )[ 0 ] )

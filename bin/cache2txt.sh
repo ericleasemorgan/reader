@@ -12,7 +12,7 @@
 
 # configure
 HOME=$READER_HOME
-TIKA_HOME='/export/tika'
+TIKA_HOME='/export/lib/tika'
 CACHE='cache'
 CARRELS='./carrels'
 FILE2TXT='./bin/file2txt.sh'
@@ -33,18 +33,29 @@ OUTPUT="$CARRELS/$NAME/$TXT"
 # set up tika environment
 TIKA_PATH=$TIKA_HOME
 TIKA_LOG_PATH=$TIKA_HOME
+#TIKA_STARTUP_MAX_RETRY=10
+TIKA_STARTUP_SLEEP=10
 export TIKA_PATH
 export TIKA_LOG_PATH
+#export TIKA_STARTUP_MAX_RETRY
+export TIKA_STARTUP_SLEEP
 
 # make sane
 cd $HOME
 mkdir -p $OUTPUT
 
 # find desirable file types, submit the work, wait, and done
-find $INPUT -name '*.html' | $PARALLEL --will-cite  $FILE2TXT {} $OUTPUT &
-find $INPUT -name '*.pdf'  | $PARALLEL --will-cite  $FILE2TXT {} $OUTPUT &
-find $INPUT -name '*.txt'  | $PARALLEL --will-cite  $FILE2TXT {} $OUTPUT &
-find $INPUT -name '*.xml'  | $PARALLEL --will-cite  $FILE2TXT {} $OUTPUT &
+#find $INPUT -name '*.html' | $PARALLEL --will-cite  $FILE2TXT {} $OUTPUT &
+#find $INPUT -name '*.pdf'  | $PARALLEL --will-cite  $FILE2TXT {} $OUTPUT &
+#find $INPUT -name '*.txt'  | $PARALLEL --will-cite  $FILE2TXT {} $OUTPUT &
+#find $INPUT -name '*.xml'  | $PARALLEL --will-cite  $FILE2TXT {} $OUTPUT &
+#wait
+
+# find desirable file types, submit the work, wait, and done
+find $INPUT -name '*.html' -exec $FILE2TXT {} $OUTPUT \;
+find $INPUT -name '*.pdf'  -exec $FILE2TXT {} $OUTPUT \;
+find $INPUT -name '*.txt'  -exec $FILE2TXT {} $OUTPUT \;
+find $INPUT -name '*.xml'  -exec $FILE2TXT {} $OUTPUT \;
 wait
 
 # done

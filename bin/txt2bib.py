@@ -32,8 +32,9 @@ id = os.path.basename( os.path.splitext( file )[ 0 ] )
 text = open( file, 'r' ).read()
 text = re.sub( '\r', '\n', text )
 text = re.sub( '\n+', ' ', text )
-text = re.sub( ' +', ' ', text )
-text = re.sub( '^\s+', '', text )
+text = re.sub( '^\W+', '', text )
+text = re.sub( '\t', ' ',  text )
+text = re.sub( ' +', ' ',  text )
 
 # get all document statistics and summary
 statistics = Textatistic( text )

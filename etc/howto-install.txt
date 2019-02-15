@@ -15,6 +15,9 @@ cpan install DBI
 cpan install DBD::SQLite
 cpan install Archive::Zip
 
+sudo yum install openssl-devel.x86_64
+cpan install LWP::Protocol::https
+
 # install Anaconda
 cd ..
 mkdir /export/python

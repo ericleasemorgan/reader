@@ -6,11 +6,6 @@ carrels
 collections
 Library
 library.db
-log/.keep
-tmp/.keep
-tmp/english
-tmp/gender
-tmp/leatherstocking
-tmp/american
-tmp/bar
+log
+tmp
 

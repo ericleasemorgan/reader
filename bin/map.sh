@@ -32,9 +32,9 @@ CONTINUE=0
 cd $HOME
 
 # set up multi-threading environment
-OMP_NUM_THREADS=2
-OPENBLAS_NUM_THREADS=2
-MKL_NUM_THREADS=2
+OMP_NUM_THREADS=1
+OPENBLAS_NUM_THREADS=1
+MKL_NUM_THREADS=1
 export OMP_NUM_THREADS
 export OPENBLAS_NUM_THREADS
 export MKL_NUM_THREADS
@@ -44,6 +44,16 @@ find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2adr.sh {}      &
 find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2bib.sh {}      &
 find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2urls.sh {}     &
 find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2keywords.sh {} &
+wait
+
+# set up multi-threading environment, again
+OMP_NUM_THREADS=2
+OPENBLAS_NUM_THREADS=2
+MKL_NUM_THREADS=2
+export OMP_NUM_THREADS
+export OPENBLAS_NUM_THREADS
+export MKL_NUM_THREADS
+
 find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2ent.sh {}      &
 find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2pos.sh {}      &
 wait
