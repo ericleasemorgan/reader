@@ -11,11 +11,10 @@
 
 
 # configure
-HOME=$READER_HOME
 TIKA_HOME='/export/lib/tika'
 CACHE='cache'
-CARRELS='./carrels'
-FILE2TXT='./bin/file2txt.sh'
+CARRELS='/export/reader/carrels'
+FILE2TXT='/export/reader/bin/file2txt.sh'
 TXT='txt'
 PARALLEL='/export/bin/parallel'
 
@@ -27,29 +26,19 @@ fi
 
 # initialize
 NAME=$1
-INPUT="$CARRELS/$NAME/$CACHE"
-OUTPUT="$CARRELS/$NAME/$TXT"
+INPUT="$CACHE"
+OUTPUT="$TXT"
 
 # set up tika environment
 TIKA_PATH=$TIKA_HOME
-TIKA_LOG_PATH=$TIKA_HOME
-#TIKA_STARTUP_MAX_RETRY=10
+TIKA_LOG_PATH="./log"
 TIKA_STARTUP_SLEEP=10
 export TIKA_PATH
 export TIKA_LOG_PATH
-#export TIKA_STARTUP_MAX_RETRY
 export TIKA_STARTUP_SLEEP
 
 # make sane
-cd $HOME
 mkdir -p $OUTPUT
-
-# find desirable file types, submit the work, wait, and done
-#find $INPUT -name '*.html' | $PARALLEL --will-cite  $FILE2TXT {} $OUTPUT &
-#find $INPUT -name '*.pdf'  | $PARALLEL --will-cite  $FILE2TXT {} $OUTPUT &
-#find $INPUT -name '*.txt'  | $PARALLEL --will-cite  $FILE2TXT {} $OUTPUT &
-#find $INPUT -name '*.xml'  | $PARALLEL --will-cite  $FILE2TXT {} $OUTPUT &
-#wait
 
 # find desirable file types, submit the work, wait, and done
 find $INPUT -name '*.html' -exec $FILE2TXT {} $OUTPUT \;

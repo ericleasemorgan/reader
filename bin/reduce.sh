@@ -8,12 +8,10 @@
 # June 28, 2018 - first cut
 
 # configure
-CARRELS='./carrels'
-HOME=$READER_HOME
-REDUCE='./bin/reduce.pl'
-INITIALIZEDB='./bin/initialize-database.sh'
+CARRELS='/export/reader/carrels'
+REDUCE='/export/reader/bin/reduce.pl'
+INITIALIZEDB='/export/reader/bin/initialize-database.sh'
 PARALLEL='/export/bin/parallel'
-JOBS=12
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -23,9 +21,6 @@ fi
 
 # get input
 NAME=$1
-
-# make sane
-cd $HOME
 
 # echo and do the work
 echo "$NAME" >&2

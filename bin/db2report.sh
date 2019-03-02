@@ -9,9 +9,8 @@
 
 
 # configure
-CARRELS='./carrels'
-HOME=$READER_HOME
-QUERIES='./etc/queries.sql'
+CARRELS='/export/reader/carrels'
+QUERIES='/export/reader/etc/queries.sql'
 DB='/etc/reader.db'
 
 # sanity check
@@ -22,9 +21,6 @@ fi
 
 # initialize
 NAME=$1
-
-# make sane
-cd $HOME
 
 # do the work
 cat $QUERIES | sqlite3 "$CARRELS/$NAME/$DB"

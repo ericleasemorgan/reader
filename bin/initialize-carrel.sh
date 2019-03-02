@@ -11,8 +11,7 @@
 
 
 # configure
-HOME=$READER_HOME
-CARRELS='./carrels'
+CARRELS='/export/reader/carrels'
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -20,29 +19,27 @@ if [[ -z "$1" ]]; then
 	exit
 fi
 
-# get input
+# get input and make sane
 NAME=$1
-
-# make sane
-cd $HOME
+cd "$CARRELS/$NAME"
 
 # create file system
-mkdir -p "$CARRELS/$NAME"
-mkdir -p "$CARRELS/$NAME/adr"
-mkdir -p "$CARRELS/$NAME/bib"
-mkdir -p "$CARRELS/$NAME/cache"
-mkdir -p "$CARRELS/$NAME/ent"
-mkdir -p "$CARRELS/$NAME/etc"
-mkdir -p "$CARRELS/$NAME/pos"
-mkdir -p "$CARRELS/$NAME/txt"
-mkdir -p "$CARRELS/$NAME/urls"
-mkdir -p "$CARRELS/$NAME/wrd"
-mkdir -p "$CARRELS/$NAME/log"
+mkdir -p "./adr"
+mkdir -p "./bib"
+mkdir -p "./cache"
+mkdir -p "./ent"
+mkdir -p "./etc"
+mkdir -p "./pos"
+mkdir -p "./txt"
+mkdir -p "./urls"
+mkdir -p "./wrd"
+mkdir -p "./log"
+mkdir -p "./tmp"
 
 # fill file system
-cp ./etc/README        "$CARRELS/$NAME"
-cp ./etc/LICENSE       "$CARRELS/$NAME"
-cp ./etc/home.html     "$CARRELS/$NAME"
-cp ./etc/stopwords.txt "$CARRELS/$NAME/etc"
-cp ./etc/queries.sql   "$CARRELS/$NAME/etc"
-cp ./etc/reader.sql    "$CARRELS/$NAME/etc"
+cp ../../etc/README        "./"
+cp ../../etc/LICENSE       "./"
+cp ../../etc/home.html     "./"
+cp ../../etc/stopwords.txt "./etc"
+cp ../../etc/queries.sql   "./etc"
+cp ../../etc/reader.sql    "./etc"

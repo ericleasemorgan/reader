@@ -1,6 +1,5 @@
 
 # configure
-HOME=$READER_HOME
 WORD2PHRASE='word2phrase'
 WORD2VEC='word2vec'
 
@@ -12,12 +11,11 @@ fi
 
 # initialize
 NAME=$1
-CARREL="./carrels/$NAME"
-CORPUS="$CARREL/etc/$NAME.txt"
-MODEL="$CARREL/etc/$NAME.vec"
+CARREL="/export/reader/carrels/$NAME"
+CORPUS="$CARREL/etc/reader.txt"
+MODEL="$CARREL/etc/reader.vec"
 
 # initialize
-cd $HOME
 rm -rf $CORPUS
 
 # build corpus
@@ -29,9 +27,9 @@ tr '\n' ' ' < ./tmp/corpus.003 > ./tmp/corpus.004
 tr -s ' ' < ./tmp/corpus.004 > $CORPUS
 
 # create a model
-$WORD2PHRASE -train $CORPUS -output ./tmp/phrases-01.txt
-$WORD2PHRASE -train ./tmp/phrases-01.txt -output ./tmp/phrases-02.txt
-$WORD2VEC -train ./tmp/phrases-02.txt -output $MODEL -sq 1 -size 10 -window 10 -negative 10 -hs 0 -sample 1e-5 -threads 40 -binary 1 -iter 3 -min-count 10
+$WORD2PHRASE -train $CORPUS -output ./tmp/phrases-01.txt >&2
+$WORD2PHRASE -train ./tmp/phrases-01.txt -output ./tmp/phrases-02.txt >&2
+$WORD2VEC -train ./tmp/phrases-02.txt -output $MODEL -sq 1 -size 10 -window 10 -negative 10 -hs 0 -sample 1e-5 -threads 40 -binary 1 -iter 3 -min-count 10 >&2
 
 # done
 exit

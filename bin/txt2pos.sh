@@ -9,14 +9,8 @@
 # June 26, 2018 - first cut
 
 
-###SBATCH -N 1 
-###SBATCH -J pos2txt
-###SBATCH -o /export/reader/log/pos2txt-%A.log
-
-###srun --pty bash
-
 # configure
-ID2POS='./bin/txt2pos.py'
+ID2POS='/export/reader/bin/txt2pos.py'
 POS='pos'
 
 # sanity check

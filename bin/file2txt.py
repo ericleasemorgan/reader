@@ -9,14 +9,16 @@
 
 
 # require
-from tika import parser
 import sys
-import tika
+import os
 
 # sanity check
 if len( sys.argv ) != 2 :
 	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <file>\n" )
 	exit()
+
+from tika import parser
+import tika
 
 # initialize
 tika.initVM()

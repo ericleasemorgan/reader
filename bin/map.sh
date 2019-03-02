@@ -11,10 +11,7 @@
 
 
 # configure
-CARRELS='./carrels'
-HOME=$READER_HOME
-TXT='/txt';
-JOBS=1
+TXT='txt';
 PARALLEL='/export/bin/parallel'
 
 # sanity check
@@ -25,11 +22,7 @@ fi
 
 # initialize
 NAME=$1
-INPUT="$CARRELS/$NAME$TXT"
-CONTINUE=0
-
-# make sane
-cd $HOME
+INPUT="$TXT"
 
 # set up multi-threading environment
 OMP_NUM_THREADS=1
@@ -40,10 +33,10 @@ export OPENBLAS_NUM_THREADS
 export MKL_NUM_THREADS
 
 # submit the work and wait, submit some more
-find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2adr.sh {}      &
-find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2bib.sh {}      &
-find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2urls.sh {}     &
-find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2keywords.sh {} &
+find $INPUT -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2adr.sh {}      &
+find $INPUT -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2bib.sh {}      &
+find $INPUT -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2urls.sh {}     &
+find $INPUT -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2keywords.sh {} &
 wait
 
 # set up multi-threading environment, again
@@ -54,8 +47,8 @@ export OMP_NUM_THREADS
 export OPENBLAS_NUM_THREADS
 export MKL_NUM_THREADS
 
-find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2ent.sh {}      &
-find $INPUT -name '*.txt' | $PARALLEL --will-cite ./bin/txt2pos.sh {}      &
+find $INPUT -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2ent.sh {}     &
+find $INPUT -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2pos.sh {}     &
 wait
 
 # done

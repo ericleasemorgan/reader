@@ -11,7 +11,7 @@
 # configure
 ETC='etc'
 DATABASE="reader.db"
-SCHEMA='./etc/reader.sql'
+SCHEMA='/export/reader/etc/reader.sql'
 
 # sanity check
 if [[ -z "$1" ]]; then

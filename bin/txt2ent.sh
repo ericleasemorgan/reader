@@ -11,7 +11,7 @@
 
 
 # configure
-ID2ENT='./bin/txt2ent.py'
+ID2ENT='/export/reader/bin/txt2ent.py'
 ENT='ent'
 
 # sanity check

@@ -9,14 +9,13 @@
 
 
 # configure
-HOME=$READER_HOME
-CARRELS='./carrels'
-CACHE2TXT='./bin/cache2txt.sh'
-MAP='./bin/map.sh'
-REDUCE='./bin/reduce.sh'
-DB2REPORT='./bin/db2report.sh'
+CARRELS='/export/reader/carrels'
+CACHE2TXT='/export/reader/bin/cache2txt.sh'
+MAP='/export/reader/bin/map.sh'
+REDUCE='/export/reader/bin/reduce.sh'
+DB2REPORT='/export/reader/bin/db2report.sh'
 REPORT='etc/report.txt'
-CARREL2VEC='./bin/carrel2vec.sh'
+CARREL2VEC='/export/reader/bin/carrel2vec.sh'
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -26,9 +25,6 @@ fi
 
 # get input
 NAME=$1
-
-# make sane
-cd $HOME
 
 # transform cache to plain text files
 $CACHE2TXT $NAME

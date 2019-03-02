@@ -15,7 +15,7 @@ use constant TIMEOUT => 10;
 # require
 use LWP::UserAgent;
 use strict;
-require './lib/reader.pl';
+require '/export/reader/lib/reader.pl';
 
 # read input
 my $url       = $ARGV[ 0 ];
@@ -47,6 +47,7 @@ if ( $response->is_success ) {
 			
 		# build file name
 		my $filename = &make_filename( $url, $directory, $extension );
+		warn "filename: $filename\n";
 		
 		# check for html
 		if ( $extension eq 'html' ) {

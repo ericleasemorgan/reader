@@ -9,7 +9,7 @@
 
 
 # configure
-FILE2TXT='./bin/file2txt.py'
+FILE2TXT='/export/reader/bin/file2txt.py'
 
 # sanity check
 if [[ -z "$1" || -z "$2" ]]; then
@@ -25,6 +25,9 @@ DIRECTORY=$2
 BASENAME=$( basename $FILE )
 BASENAME=${BASENAME%.*}
 OUTPUT="$DIRECTORY/$BASENAME.txt"
+
+echo "  FILE: $FILE" >&2
+echo "OUTPUT: $OUTPUT" >&2
 
 # do the work and done
 $FILE2TXT $FILE > $OUTPUT

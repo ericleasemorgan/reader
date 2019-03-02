@@ -10,7 +10,7 @@
 
 
 # configure
-TXT2KEYWORDS='./bin/txt2keywords.py'
+TXT2KEYWORDS='/export/reader/bin/txt2keywords.py'
 WRD='wrd'
 
 # sanity check

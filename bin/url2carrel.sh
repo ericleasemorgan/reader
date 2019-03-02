@@ -14,19 +14,17 @@
 
 
 # configure
-HOME=$READER_HOME
-MAKENAME='./bin/make-name.sh'
-INITIALIZECARREL='./bin/initialize-carrel.sh'
+INITIALIZECARREL='/export/reader/bin/initialize-carrel.sh'
 TMP='./tmp'
-HTML2URLS='./bin/html2urls.pl'
-URL2CACHE='./bin/urls2cache.pl'
+HTML2URLS='/export/reader/bin/html2urls.pl'
+URL2CACHE='/export/reader/bin/urls2cache.pl'
 CACHE='cache';
-CARRELS='./carrels'
-MAKE='./bin/make.sh'
-CARREL2ZIP='./bin/carrel2zip.pl'
+CARRELS='/export/reader/carrels'
+MAKE='/export/reader/bin/make.sh'
+CARREL2ZIP='/export/reader/bin/carrel2zip.pl'
 PREFIX='http://cds.crc.nd.edu/reader/carrels'
 SUFFIX='etc'
-LOG='./log'
+LOG='/export/reader/log'
 TIMEOUT=5
 
 # validate input

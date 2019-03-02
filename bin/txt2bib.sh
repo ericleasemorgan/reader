@@ -10,7 +10,7 @@
 # June 26, 2018 - first cut
 
 # configure
-TXT2BIB='./bin/txt2bib.py'
+TXT2BIB='/export/reader/bin/txt2bib.py'
 BIB='bib'
 
 # sanity check

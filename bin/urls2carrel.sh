@@ -9,73 +9,61 @@
 # July 14, 2018 - more investigation
 # July 16, 2018 - made things more module
 
-#SBATCH -N 1
-#SBATCH --exclusive
-#SBATCH -J urls2c
-#SBATCH -o /export/reader/log/urls2carrel-%A.log
 
+# set up environment
+PERL_HOME='/export/perl/bin'
+JAVA_HOME='/export/java/bin'
+PYTHON_HOME='/export/python/bin'
+WORD2VEC_HOME='/export/word2vec/bin'
+PATH=$PYTHON_HOME:$WORD2VEC_HOME:$PERL_HOME:$JAVA_HOME:$PATH
+export PATH
+
+# get the name of newly created directory
+NAME=$( pwd )
+NAME=$( basename $NAME )
+echo "Created carrel: $NAME" >&2
+echo "" >&2
+
+# get the input; how do I get user input?
+FILE=./emerson.txt
 
 # configure
-HOME=$READER_HOME
-MAKENAME='./bin/make-name.sh'
-INITIALIZECARREL='./bin/initialize-carrel.sh'
-URL2CACHE='./bin/urls2cache.pl'
-CARRELS='./carrels'
+INITIALIZECARREL='/export/reader/bin/initialize-carrel.sh'
+URL2CACHE='/export/reader/bin/urls2cache.pl'
+CARRELS='/export/reader/carrels'
 CACHE='cache';
-TMP='./tmp'
-MAKE='./bin/make.sh'
-CARREL2ZIP='./bin/carrel2zip.pl'
-PREFIX='http://cds.crc.nd.edu/reader/carrels'
-LOG='./log'
+TMP="$CARRELS/$NAME/tmp"
+MAKE='/export/reader/bin/make.sh'
+CARREL2ZIP='/export/reader/bin/carrel2zip.pl'
+LOG="$CARRELS/$NAME/log"
 
-# validate input
-if [[ -z $1 ]]; then
-
-	echo "Usage: $0 <file> [<address>]" >&2
-	exit
-
-fi
-
-# get the input
-FILE=$1
-
-# make sane
-cd $HOME
-
-# initialize a (random) name
-NAME=$( $MAKENAME )
-echo "Created random name: $NAME" > "$LOG/$NAME.log"
 
 # create a study carrel
-echo "Creating study carrel named $NAME" >> "$LOG/$NAME.log"
+echo "Creating study carrel named $NAME" >&2
+echo "" >&2
 $INITIALIZECARREL $NAME
 
 # process each line from input; harvest & cache
 while read URL; do
 
     # debug and do the work
-    echo "Caching $URL to $CARRELS/$NAME/$CACHE" >> "$LOG/$NAME.log"
-    $URL2CACHE $URL "$CARRELS/$NAME/$CACHE"
+    echo "Caching $URL to $CACHE" >&2
+    $URL2CACHE $URL "$CACHE"
     sleep 1
     
-done < "$TMP/$FILE"
+done < "./$FILE"
+echo "" >&2
 
 # build the carrel; the magic happens here
-echo "Building study carrel named $NAME" >> "$LOG/$NAME.log"
+echo "Building study carrel named $NAME" >&2
 $MAKE $NAME
+echo "" >&2
 
 # zip it up
-echo "Zipping study carrel" >> "$LOG/$NAME.log"
-cp "$LOG/$NAME.log" "$CARRELS/$NAME/log" 
+echo "Zipping study carrel" >&2
+cp "$LOG/$NAME.log" "$NAME/log" 
 $CARREL2ZIP $NAME
-
-# notify completion
-if [[ $2 ]]; then
-	ADDRESS=$2
-	echo "$PREFIX/$NAME/" | mailx -s "distant reader results" $ADDRESS
-else
-	echo "$HOME/$CARRELS/$NAME/"
-fi
+echo "" >&2
 
 # done
 exit
