@@ -10,6 +10,9 @@
 # July 16, 2018 - made things more module
 
 
+# configure input
+FILE=./input-file.txt
+
 # set up environment
 PERL_HOME='/export/perl/bin'
 JAVA_HOME='/export/java/bin'
@@ -24,10 +27,7 @@ NAME=$( basename $NAME )
 echo "Created carrel: $NAME" >&2
 echo "" >&2
 
-# get the input; how do I get user input?
-FILE=./emerson.txt
-
-# configure
+# configure some more
 INITIALIZECARREL='/export/reader/bin/initialize-carrel.sh'
 URL2CACHE='/export/reader/bin/urls2cache.pl'
 CARRELS='/export/reader/carrels'
@@ -36,7 +36,6 @@ TMP="$CARRELS/$NAME/tmp"
 MAKE='/export/reader/bin/make.sh'
 CARREL2ZIP='/export/reader/bin/carrel2zip.pl'
 LOG="$CARRELS/$NAME/log"
-
 
 # create a study carrel
 echo "Creating study carrel named $NAME" >&2
@@ -64,6 +63,10 @@ echo "Zipping study carrel" >&2
 cp "$LOG/$NAME.log" "$NAME/log" 
 $CARREL2ZIP $NAME
 echo "" >&2
+
+# make zip file accessible
+cp "./etc/reader.zip" "./study-carrel.zip"
+
 
 # done
 exit
