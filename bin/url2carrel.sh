@@ -5,26 +5,36 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
 
-# July 17, 2018 - first cut
+# July  17, 2018 - first cut
+# April 12, 2019 - got it working on the Science Gateway cluster
 
-#SBATCH -N 1
-#SBATCH --exclusive
-#SBATCH -J url2c
-#SBATCH -o /export/reader/log/url2carrel-%A.log
 
+# set up environment
+PERL_HOME='/export/perl/bin'
+JAVA_HOME='/export/java/bin'
+PYTHON_HOME='/export/python/bin'
+WORD2VEC_HOME='/export/word2vec/bin'
+PATH=$PYTHON_HOME:$WORD2VEC_HOME:$PERL_HOME:$JAVA_HOME:$PATH
+export PATH
+
+# get the name of newly created directory
+NAME=$( pwd )
+NAME=$( basename $NAME )
+echo "Created carrel: $NAME" >&2
+echo "" >&2
 
 # configure
+CARRELS='/export/reader/carrels'
 INITIALIZECARREL='/export/reader/bin/initialize-carrel.sh'
-TMP='./tmp'
+TMP="$CARRELS/$NAME/tmp"
 HTML2URLS='/export/reader/bin/html2urls.pl'
 URL2CACHE='/export/reader/bin/urls2cache.pl'
 CACHE='cache';
-CARRELS='/export/reader/carrels'
 MAKE='/export/reader/bin/make.sh'
 CARREL2ZIP='/export/reader/bin/carrel2zip.pl'
 PREFIX='http://cds.crc.nd.edu/reader/carrels'
 SUFFIX='etc'
-LOG='/export/reader/log'
+LOG="$CARRELS/$NAME/log"
 TIMEOUT=5
 
 # validate input
@@ -41,50 +51,40 @@ echo "$0 $1 $2" >&2
 # get the input
 URL=$1
 
-# make sane
-cd $HOME
-
-# initialize a (random) name
-NAME=$( $MAKENAME )
-echo "Created random name: $NAME" > "$LOG/$NAME.log"
-
 # create a study carrel
-echo "Creating study carrel named $NAME" >> "$LOG/$NAME.log"
+echo "Creating study carrel named $NAME" >&2
+echo "" >&2
 $INITIALIZECARREL $NAME
 
 # get the given url and cache the content locally
-echo "Getting URL ($URL) and saving it ($TMP/$NAME)" >> "$LOG/$NAME.log"
-wget -t $TIMEOUT -k -O "$TMP/$NAME" $URL >> "$LOG/$NAME.log"
+echo "Getting URL ($URL) and saving it ($TMP/$NAME)" >&2
+wget -t $TIMEOUT -k -O "$TMP/$NAME" $URL  >&2
 
 # extract the urls in the cache
-echo "Extracting URLs ($TMP/NAME) and saving ($TMP/$NAME.txt)" >> "$LOG/$NAME.log"
+echo "Extracting URLs ($TMP/NAME) and saving ($TMP/$NAME.txt)" >&2
 $HTML2URLS "$TMP/$NAME" > "$TMP/$NAME.txt"
 
 # process each line from cache and... cache again
-echo "Processing each URL in $TMP/$NAME.txt" >> "$LOG/$NAME.log"
+echo "Processing each URL in $TMP/$NAME.txt" >&2
 while read URL; do
 
     # debug and do the work
-    echo "Caching $URL to $CARRELS/$NAME/$CACHE" >> "$LOG/$NAME.log"
+    echo "Caching $URL to $CARRELS/$NAME/$CACHE" >&2
     $URL2CACHE $URL "$CARRELS/$NAME/$CACHE"
     sleep 1
     
 done < "$TMP/$NAME.txt"
 
 # build the carrel; the magic happens here
-echo "Building study carrel named $NAME" >> "$LOG/$NAME.log"
+echo "Building study carrel named $NAME" >&2
 $MAKE $NAME
+echo "" >&2
 
 # zip it up
-echo "Zipping study carrel" >> "$LOG/$NAME.log"
+echo "Zipping study carrel" >&2
 cp "$LOG/$NAME.log" "$CARRELS/$NAME/log" 
 $CARREL2ZIP $NAME
 
-# notify completion
-if [[ $2 ]]; then
-	ADDRESS=$2
-	echo "$PREFIX/$NAME/" | mailx -s "distant reader results" $ADDRESS
-else
-	echo "$HOME/$CARRELS/$NAME/"
-fi
-
+# done
+echo "Done" >&2
+exit
