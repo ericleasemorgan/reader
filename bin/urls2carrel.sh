@@ -42,16 +42,20 @@ echo "Creating study carrel named $NAME" >&2
 echo "" >&2
 $INITIALIZECARREL $NAME
 
-# process each line from input; harvest & cache
-while read URL; do
+# process each line from cache and... cache again
+echo "Processing each URL in $TMP/$NAME.txt" >&2
+cat "./$FILE" | /export/bin/parallel $URL2CACHE {} "$CACHE"
 
-    # debug and do the work
-    echo "Caching $URL to $CACHE" >&2
-    $URL2CACHE $URL "$CACHE"
-    sleep 1
-    
-done < "./$FILE"
-echo "" >&2
+# process each line from input; harvest & cache
+#while read URL; do
+#
+#    # debug and do the work
+#    echo "Caching $URL to $CACHE" >&2
+#   $URL2CACHE $URL "$CACHE"
+#    sleep 1
+#    
+#done < "./$FILE"
+#echo "" >&2
 
 # build the carrel; the magic happens here
 echo "Building study carrel named $NAME" >&2

@@ -66,14 +66,7 @@ $HTML2URLS "$TMP/$NAME" > "$TMP/$NAME.txt"
 
 # process each line from cache and... cache again
 echo "Processing each URL in $TMP/$NAME.txt" >&2
-while read URL; do
-
-    # debug and do the work
-    echo "Caching $URL to $CARRELS/$NAME/$CACHE" >&2
-    $URL2CACHE $URL "$CARRELS/$NAME/$CACHE"
-    sleep 1
-    
-done < "$TMP/$NAME.txt"
+cat "$TMP/$NAME.txt" | /export/bin/parallel --will-cite $URL2CACHE {} "$CARRELS/$NAME/$CACHE"
 
 # build the carrel; the magic happens here
 echo "Building study carrel named $NAME" >&2
@@ -82,8 +75,12 @@ echo "" >&2
 
 # zip it up
 echo "Zipping study carrel" >&2
-cp "$LOG/$NAME.log" "$CARRELS/$NAME/log" 
+cp "$LOG/$NAME.log" "$NAME/log" 
 $CARREL2ZIP $NAME
+echo "" >&2
+
+# make zip file accessible
+cp "./etc/reader.zip" "./study-carrel.zip"
 
 # done
 echo "Done" >&2

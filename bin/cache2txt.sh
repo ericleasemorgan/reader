@@ -41,10 +41,10 @@ export TIKA_STARTUP_SLEEP
 mkdir -p $OUTPUT
 
 # find desirable file types, submit the work, wait, and done
-find $INPUT -name '*.html' -exec $FILE2TXT {} $OUTPUT \;
-find $INPUT -name '*.pdf'  -exec $FILE2TXT {} $OUTPUT \;
-find $INPUT -name '*.txt'  -exec $FILE2TXT {} $OUTPUT \;
-find $INPUT -name '*.xml'  -exec $FILE2TXT {} $OUTPUT \;
+find $INPUT -name '*.html' | $PARALLEL $FILE2TXT {} $OUTPUT &
+find $INPUT -name '*.pdf'  | $PARALLEL $FILE2TXT {} $OUTPUT &
+find $INPUT -name '*.txt'  | $PARALLEL$FILE2TXT {} $OUTPUT  &
+find $INPUT -name '*.xml'  | $PARALLEL $FILE2TXT {} $OUTPUT &
 wait
 
 # done

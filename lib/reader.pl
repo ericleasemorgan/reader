@@ -24,7 +24,7 @@ sub make_filename {
 	# return a filename
 	my $host     =  lc( URI->new( $url )->host );
 	$host        =~ s/\./-/g;
-	return( $path . '/' . $host . '-' . time . ".$extension" );
+	return( $path . '/' . $host . '-' . int(rand(10000)) . ".$extension" );
 
 }
 
