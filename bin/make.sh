@@ -26,8 +26,15 @@ fi
 # get input
 NAME=$1
 
+# start tika
+java -jar /export/lib/tika/tika-server.jar &
+PID=$!
+sleep 10
+
 # transform cache to plain text files
 $CACHE2TXT $NAME
+
+kill $PID
 
 # extract parts-of-speech, named entities, etc
 $MAP $NAME

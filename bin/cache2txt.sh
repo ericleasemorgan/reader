@@ -30,11 +30,11 @@ INPUT="$CACHE"
 OUTPUT="$TXT"
 
 # set up tika environment
-TIKA_PATH=$TIKA_HOME
+#TIKA_PATH=$TIKA_HOME
 TIKA_LOG_PATH="./log"
 TIKA_STARTUP_SLEEP=5
 TIKA_STARTUP_MAX_RETRY=25
-export TIKA_PATH
+#export TIKA_PATH
 export TIKA_LOG_PATH
 export TIKA_STARTUP_SLEEP
 export TIKA_STARTUP_MAX_RETRY
@@ -50,5 +50,5 @@ find $INPUT -name '*.xml'  | $PARALLEL $FILE2TXT {} $OUTPUT
 find $INPUT -name '*.ukn'  | $PARALLEL $FILE2TXT {} $OUTPUT
 wait
 
-# done
+# clean up and done
 exit
