@@ -8,10 +8,11 @@
 
 
 # define
-use constant LOWERBOUNDS  => .05;
-use constant EXTRAS       => ( 'upon', 'one', 'though', 'will', 'shall' );
+use constant LOWERBOUNDS  => .0005;
+use constant EXTRAS       => ( 'upon', 'one', 'though', 'will', 'shall', 'yet', 'thus', 'thou' );
+use constant DIRECTORY    => './txt';
 
-my $directory = $ARGV[ 0 ];
+my $directory = DIRECTORY;
 if ( ! $directory ) { die "Usage $0 <directory>\n" }
 
 # use/require
