@@ -61,7 +61,7 @@ select '
 
 Top 50 statistically significant keywords; "What is my collection about?"
 -------------------------------------------------------------------------';
-select count(keyword) as c, keyword from wrd group by keyword order by c desc;
+select count(keyword) as c, keyword from wrd group by keyword order by c desc limit 50;
 
 
 -- nouns
