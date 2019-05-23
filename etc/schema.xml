@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema name="carrels-reader" version="1.6">
+  <uniqueKey>bid</uniqueKey>
+
+  <!-- local field types -->
+  <fieldType name="string" class="solr.StrField" sortMissingLast="true" docValues="true"/>
+  <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100" multiValued="true">
+    <analyzer type="index">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>
+      <filter class="solr.SynonymFilterFactory" expand="true" ignoreCase="true" synonyms="synonyms.txt"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="int" class="solr.TrieIntField" positionIncrementGap="0" docValues="true" precisionStep="0"/>
+  <fieldType name="long" class="solr.TrieLongField" positionIncrementGap="0" docValues="true" precisionStep="0"/>
+
+  <!-- good to have fields -->
+  <field name="_root_"    type="string"       docValues="false"   indexed="true" stored="false"/>
+  <field name="_text_"    type="text_general" multiValued="true"  indexed="true" stored="false"/>
+  <field name="_version_" type="long"         indexed="true"      stored="false"/>
+  
+  <!-- my fields -->
+  <field name="bid"            type="string"        multiValued="false"  indexed="true"   stored="true"   />
+  <field name="carrel"         type="string"        multiValued="false"  indexed="true"   stored="true"   />
+  <field name="facet_keyword"  type="string"        multiValued="true"   indexed="true"   stored="true"   />
+  <field name="facet_person"   type="string"        multiValued="true"   indexed="true"   stored="true"   />
+  <field name="flesch"         type="int"           multiValued="false"  indexed="true"   stored="true"   />
+  <field name="fulltext"       type="text_general"  multiValued="false"  indexed="true"   stored="false"  />
+  <field name="keyword"        type="text_general"  multiValued="true"   indexed="true"   stored="true"   />
+  <field name="person"         type="text_general"  multiValued="true"   indexed="true"   stored="true"   />
+  <field name="sentences"      type="int"           multiValued="false"  indexed="true"   stored="true"   />
+  <field name="summary"        type="text_general"  multiValued="false"  indexed="true"   stored="true"   />
+  <field name="words"          type="int"           multiValued="false"  indexed="true"   stored="true"   />
+
+  <!-- cool field -->
+  <copyField source="*" dest="_text_"/>
+  
+</schema>
