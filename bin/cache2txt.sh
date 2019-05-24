@@ -43,11 +43,16 @@ export TIKA_STARTUP_MAX_RETRY
 mkdir -p $OUTPUT
 
 # find desirable file types, submit the work, wait, and done
+find $INPUT -name '*.doc'  | $PARALLEL $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.docx' | $PARALLEL $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.htm'  | $PARALLEL $FILE2TXT {} $OUTPUT
 find $INPUT -name '*.html' | $PARALLEL $FILE2TXT {} $OUTPUT
 find $INPUT -name '*.pdf'  | $PARALLEL $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.ppt'  | $PARALLEL $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.pptx' | $PARALLEL $FILE2TXT {} $OUTPUT
 find $INPUT -name '*.txt'  | $PARALLEL $FILE2TXT {} $OUTPUT 
-find $INPUT -name '*.xml'  | $PARALLEL $FILE2TXT {} $OUTPUT
 find $INPUT -name '*.ukn'  | $PARALLEL $FILE2TXT {} $OUTPUT
+find $INPUT -name '*.xml'  | $PARALLEL $FILE2TXT {} $OUTPUT
 wait
 
 # clean up and done
