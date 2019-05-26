@@ -69,7 +69,23 @@ select '
 
 Top 50 lemmatized nouns; "What is discussed?"
 ---------------------------------------------';
-select count(lemma) as c, lemma from pos where pos like 'N%' group by lemma order by c desc limit 50;
+select count(lemma) as c, lemma from pos where pos is 'NN' or pos is 'NNS' group by lemma order by c desc limit 50;
+
+
+-- proper nouns
+select '
+
+Top 50 proper nouns; "What are the names of persons or places?"
+--------------------------------------------------------------';
+select count(token) as c, token from pos where pos LIKE 'NNP%' group by token order by c desc limit 50;
+
+
+-- personal pronouns
+select '
+
+Top 50 personal pronouns nouns; "To whom are things referred?"
+-------------------------------------------------------------';
+select count(lower(token)) as c, lower(token) from pos where pos is 'PRP' group by lower(token) order by c desc limit 50;
 
 
 -- verbs
@@ -86,6 +102,22 @@ select '
 Top 50 lemmatized adjectives and adverbs; "How are things described?"
 ---------------------------------------------------------------------';
 select count(lemma) as c, lemma from pos where (pos like 'J%' or pos like 'R%') group by lemma order by c desc limit 50;
+
+
+-- superlatives (adjective or adverb)
+select '
+
+Top 50 lemmatized superlative adjectives; "How are things described to the extreme?"
+-------------------------------------------------------------------------';
+select count(lemma) as c, lemma from pos where (pos is 'JJS') group by lemma order by c desc limit 50;
+
+
+-- superlatives (adjective or adverb)
+select '
+
+Top 50 lemmatized superlative adverbs; "How do things do to the extreme?"
+------------------------------------------------------------------------';
+select count(lemma) as c, lemma from pos where (pos is 'RBS') group by lemma order by c desc limit 50;
 
 
 -- people

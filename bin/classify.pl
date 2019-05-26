@@ -7,25 +7,22 @@
 # April 12, 2009 - added dynamic corpus
 
 
-# define
-use constant LOWERBOUNDS  => .0005;
-use constant EXTRAS       => ( 'upon', 'one', 'though', 'will', 'shall', 'yet', 'thus', 'thou' );
-use constant DIRECTORY    => './txt';
-
-my $directory = DIRECTORY;
-if ( ! $directory ) { die "Usage $0 <directory>\n" }
+# configure
+use constant DIRECTORY => './txt';
 
 # use/require
 use strict;
 use Lingua::StopWords qw( getStopWords );
 require './etc/tfidf-toolbox.pl';
 
+# make sane
+my $lowerbounds = $ARGV[ 0 ];
+if ( ! $lowerbounds ) { die "Usage $0 <number>\n" }
+
 # initialize
+my $directory = DIRECTORY;
 my @corpus    = &corpus( $directory );
 my $stopwords = &getStopWords( 'en' );
-
-# update stopwords
-foreach ( EXTRAS ) { $$stopwords{ $_ } = 1 }
 
 # index, sans stopwords
 my %index = ();
@@ -37,12 +34,11 @@ foreach my $file ( @corpus ) {
 
 	my $tags = &classify( \%index, $file, [ @corpus ] );
 	my $found = 0;
-	my $directory = $directory;
 	
 	# list tags greater than a given score
 	foreach my $tag ( sort { $$tags{ $b } <=> $$tags{ $a } } keys %$tags ) {
 	
-		if ( $$tags{ $tag } > LOWERBOUNDS ) {
+		if ( $$tags{ $tag } > $lowerbounds ) {
 		
 			$file =~ s/$directory\///e;
 			print "$tag (" . $$tags{ $tag } . ") $file\n";
