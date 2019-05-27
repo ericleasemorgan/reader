@@ -9,7 +9,7 @@
 
 
 # configure
-COUNT=75
+COUNT=150
 RATIO=0.05
 
 # require
