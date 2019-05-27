@@ -19,14 +19,21 @@ create table ent (
 
 -- keywords
 create table wrd (
-    id     TEXT,
-    keyword TEXT
+    id      TEXT,
+    keyword TEXT,
+    lemma   TEXT
 );
 
 -- email addresses
 create table adr (
     id      TEXT,
     address TEXT
+);
+
+-- questions
+create table questions (
+    id       TEXT,
+    question TEXT
 );
 
 -- urls
@@ -42,6 +49,10 @@ create table bib (
     words     INT,
     sentences INT,
     flesch    FLOAT,
-    summary   TEXT
+    summary   TEXT,
+    title     TEXT,
+    creator   TEXT,
+    date      TEXT,
+    genre     TEXT
 );
 
