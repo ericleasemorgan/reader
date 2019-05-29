@@ -44,11 +44,11 @@ while( my $result = $handle->fetchrow_hashref ) {
 	my $sentence = join( ' ', @sentence );
 	$sentence =~ s/ ([[:punct:]])/$1/g;
 	$sentence =~ s/("|') /$1/g;
-	print "$sentence\n";
-	print "\n";
+	push( @sentences, $sentence )
 	
 }
 
 # output and done
+foreach ( @sentences ) { print "$_\n" }
 exit;
 

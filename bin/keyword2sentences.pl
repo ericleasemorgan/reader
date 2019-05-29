@@ -21,16 +21,16 @@ my $dbh       = DBI->connect( "DBI:$driver:dbname=$database", '', '', { RaiseErr
 binmode( STDOUT, ':utf8' );
 
 # find all documents having the given keyword
-my $sql    = "select id from ent where entity is '$keyword';";
+my $sql    = "select id from wrd where keyword is LOWER('$keyword');";
 my $handle = $dbh->prepare( $sql );
 $handle->execute() or die $DBI::errstr;
 
 # process each document
+my @sentences = ();
 while( my $document = $handle->fetchrow_hashref ) {
 
 	# parse
 	my $did = $$document{ 'id' };
-	print "$did\n";
 	
 	# find all sentences with the given keyword
 	my $sql       = "select sid from pos where token is '$keyword' and id is '$did';";
@@ -52,16 +52,19 @@ while( my $document = $handle->fetchrow_hashref ) {
 		my @sentence = ();
 		while( my $token = $subsubhandle->fetchrow_hashref ) { push( @sentence, $$token{ 'token' } ) }
 		
-		# output
-		print '  * ' . join( ' ', @sentence ), "\n";
+		# normalize
+		my $sentence = join( ' ', @sentence );
+		$sentence =~ s/ ([[:punct:]])/$1/g;
+		$sentence =~ s/("|') /$1/g;
+
+		# update
+		push( @sentences, join( ' ', $sentence ) );
 		
 	}		
-	
-	# delimit
-	print "\n";
-	
+
 }
 
-# done
+# output and done
+foreach ( @sentences ) { print "$_\n" }
 exit;
 

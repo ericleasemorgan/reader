@@ -4,6 +4,7 @@
 -- (c) University of Notre Dame; distributed under a GNU Public License
 
 -- May 23, 2019 - calling it version 1.0
+-- May 27, 2019 - replaced named-entities with various types of pronouns
 
 
 -- set mode so sub-results can be copy & pasted into spreadsheets, etc
@@ -28,7 +29,7 @@ characteristics can help you summarize the collection as well as
 enumerate things you might want to investigate more closely.
 
                                Eric Lease Morgan <emorgan@nd.edu>
-                                                     May 23, 2019";
+                                                     May 27, 2019";
 
 
 
@@ -120,28 +121,30 @@ Top 50 lemmatized superlative adverbs; "How do things do to the extreme?"
 select count(lemma) as c, lemma from pos where (pos is 'RBS') group by lemma order by c desc limit 50;
 
 
--- people
-select '
+-- named entities; they don't work so well
 
-Top 50 names of people; "Who is mentioned in the corpus?"
----------------------------------------------------------';
-select count(entity) as c, entity from ent where type is 'PERSON' group by entity order by c desc limit 50;
+-- people
+-- select '
+-- 
+-- Top 50 names of people; "Who is mentioned in the corpus?"
+-- ---------------------------------------------------------';
+-- select count(entity) as c, entity from ent where type is 'PERSON' group by entity order by c desc limit 50;
 
 
 -- organizations
-select '
-
-Top 50 names of organizations; "What group of people are in the corpus?"
-------------------------------------------------------------------------';
-select count(entity) as c, entity from ent where (type is 'ORG') group by entity order by c desc limit 50;
+-- select '
+-- 
+-- Top 50 names of organizations; "What group of people are in the corpus?"
+-- ------------------------------------------------------------------------';
+-- select count(entity) as c, entity from ent where (type is 'ORG') group by entity order by c desc limit 50;
 
 
 -- places
-select '
-
-Top 50 names of places; "What locations are mentioned in the corpus?"
----------------------------------------------------------------------';
-select count(entity) as c, entity from ent where (type is 'GPE' or type is 'LOC') group by entity order by c desc limit 50;
+-- select '
+-- 
+-- Top 50 names of places; "What locations are mentioned in the corpus?"
+-- ---------------------------------------------------------------------';
+-- select count(entity) as c, entity from ent where (type is 'GPE' or type is 'LOC') group by entity order by c desc limit 50;
 
 
 -- domains (from urls)
