@@ -31,7 +31,7 @@ files      = int( sys.argv[ 3 ] )
 
 # initialize
 filenames  = sorted( [ os.path.join( DIRECTORY, filename ) for filename in os.listdir( DIRECTORY ) ] )
-vectorizer = TfidfVectorizer( input = 'filename', max_df = 0.95, min_df = 2, stop_words = 'english' )
+vectorizer = TfidfVectorizer( input = 'filename', stop_words = 'english' )
 
 # vectorize and create a model against the corpus; extract the features
 tfidf    = vectorizer.fit_transform( filenames )
