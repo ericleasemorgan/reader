@@ -10,8 +10,8 @@
 CLOUD='./bin/cloud.py'
 DB='./etc/reader.db'
 TABULATIONS='./tmp/tabulations'
-OUTPUT='/Users/eric/Desktop'
-LIMIT=50
+OUTPUT='./tmp'
+LIMIT=150
 
 # sanity check
 if [[ -z "$1" ]]; then

@@ -51,6 +51,14 @@ foreach my $phrase ( sort { $$ngrams{ $b } <=> $$ngrams{ $a } } keys %$ngrams ) 
 		
 		}
 		
+		# remove errors
+		if ( $_ =~ /\W/ ) {
+	
+			$found = 1;
+			last;
+		
+		}
+		
 		# conditionally remove stopwords
 		if ( $size < 3 ) {
 		
@@ -72,7 +80,7 @@ foreach my $phrase ( sort { $$ngrams{ $b } <=> $$ngrams{ $a } } keys %$ngrams ) 
 	last if ( $$ngrams{ $phrase } == 1 );
 	
 	# echo
-	print $$ngrams{ $phrase }, "\t$phrase\n";
+	print join( "\t", ( $phrase, $$ngrams{ $phrase } ) ), "\n";
 	
 }
 
