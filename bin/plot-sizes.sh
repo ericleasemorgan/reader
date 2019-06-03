@@ -7,7 +7,7 @@
 DB='./etc/reader.db'
 SQL='.headers on\n.mode tabs\nSELECT words AS "sizes in words" FROM bib ORDER BY words DESC;'
 RESULT='./tmp/sizes.tsv'
-PLOT='./bin/plot.py'
+PLOT='../../bin/plot.py'
 
 # sanity check
 if [[ -z $1 || -z $2 ]]; then

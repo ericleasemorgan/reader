@@ -16,6 +16,7 @@ REDUCE='/export/reader/bin/reduce.sh'
 DB2REPORT='/export/reader/bin/db2report.sh'
 REPORT='etc/report.txt'
 CARREL2VEC='/export/reader/bin/carrel2vec.sh'
+ABOUT='/export/reader/bin/about.pl'
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -48,6 +49,9 @@ $CARREL2VEC $NAME
 # output a report against the database
 $DB2REPORT $NAME > "$CARRELS/$NAME/$REPORT"
 cat "$CARRELS/$NAME/$REPORT"
+
+# create about file
+$ABOUT > ./about.html
 
 # done
 exit
