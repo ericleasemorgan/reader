@@ -22,7 +22,7 @@ FILE=$1
 DIRECTORY=$2
 
 # initialize
-BASENAME=$( basename $FILE )
+BASENAME=$( basename "$FILE" )
 BASENAME=${BASENAME%.*}
 OUTPUT="$DIRECTORY/$BASENAME.txt"
 
@@ -30,5 +30,5 @@ echo "  FILE: $FILE" >&2
 echo "OUTPUT: $OUTPUT" >&2
 
 # do the work and done
-$FILE2TXT $FILE > $OUTPUT
+$FILE2TXT "$FILE" > "$OUTPUT"
 exit

@@ -33,10 +33,10 @@ export OPENBLAS_NUM_THREADS
 export MKL_NUM_THREADS
 
 # submit the work and wait, submit some more
-find $INPUT -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2adr.sh {}      &
-find $INPUT -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2bib.sh {}      &
-find $INPUT -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2urls.sh {}     &
-find $INPUT -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2keywords.sh {} &
+find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2adr.sh {}      &
+find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2bib.sh {}      &
+find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2urls.sh {}     &
+find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2keywords.sh {} &
 wait
 
 # set up multi-threading environment, again
@@ -47,8 +47,8 @@ export OMP_NUM_THREADS
 export OPENBLAS_NUM_THREADS
 export MKL_NUM_THREADS
 
-find $INPUT -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2ent.sh {}     &
-find $INPUT -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2pos.sh {}     &
+find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2ent.sh {}     &
+find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2pos.sh {}     &
 wait
 
 # done

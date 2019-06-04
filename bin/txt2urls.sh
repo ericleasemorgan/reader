@@ -35,10 +35,10 @@ SIZE=${#RECORDS}
 if [[ $SIZE > 0 ]]; then
 
 	# proces each item in the data
-	printf "id\tdomain\turl\n" >  $OUTPUT
+	printf "id\tdomain\turl\n" >  "$OUTPUT"
 	while read -r RECORD; do
 		DOMAIN=$(echo $RECORD | sed -e 's/http:\/\///g' | sed -e 's/\/.*$//g')
-		echo -e "$LEAF\t$DOMAIN\t$RECORD" >> $OUTPUT
+		echo -e "$LEAF\t$DOMAIN\t$RECORD" >> "$OUTPUT"
 	done <<< "$RECORDS"
 
 fi

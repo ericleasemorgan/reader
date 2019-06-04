@@ -29,15 +29,15 @@ mkdir -p "$ORIGINAL/../$ADR"
 OUTPUT="$ORIGINAL/../$ADR/$LEAF.adr"
 
 # extract the data
-RECORDS=$( cat $FILE | grep -i -o '[A-Z0-9._%+-]\+@[A-Z0-9.-]\+\.[A-Z]\{2,4\}' )
+RECORDS=$( cat "$FILE" | grep -i -o '[A-Z0-9._%+-]\+@[A-Z0-9.-]\+\.[A-Z]\{2,4\}' )
 
 SIZE=${#RECORDS} 
 if [[ $SIZE > 0 ]]; then
 
 	# proces each item in the data
-	printf "id\taddress\n" >  $OUTPUT
+	printf "id\taddress\n" >  "$OUTPUT"
 	while read -r RECORD; do
-		printf "$LEAF\t$RECORD\n" >> $OUTPUT
+		printf "$LEAF\t$RECORD\n" >> "$OUTPUT"
 	done <<< "$RECORDS"
 
 fi

@@ -35,7 +35,7 @@ echo "$LEAF  $OUTPUT" >&2
 if [ -f "$OUTPUT" ]; then
 	echo "$OUTPUT exist" >&2
 else
-	$ID2POS $FILE 1> $OUTPUT
+	$ID2POS "$FILE" 1> "$OUTPUT"
 fi
 
 

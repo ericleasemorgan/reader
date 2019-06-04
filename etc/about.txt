@@ -1,0 +1,102 @@
+
+
+About your study carrel
+
+This page outlines the breadth & depth of your "study carrel" -- the results & analysis of your Distant Reader submission. Peruse the content of this page, and then consider learning how to dig deeper by reading the Distant Reader Study Carrel Cookbook. If you want "just the facts", then consider reading this text's synopsis. 
+
+
+Simple things
+
+First, the simple things. Your study carrel was created through the submission of a [SINGLE URL|FILE OF URLS|FILE FROM YOUR COMPUTER|ZIP FILE]. This ultimately resulted in a collection of [NUMBER] item(s). The original versions of these items have been saved in a cache, and each of them have been transformed & saved as a set of plain text files. All of the following analysis has been done against these plain text files.
+
+Each item in your study carrel is, on average, [NUMBER] words long. [1] If you dig deeper, then you might want to save yourself some time by reading a shorter item. On the other hand, if your desire is for more detail, then you might consider reading a longer item. On a scale from 0 to 100, where 0 is very difficult and 100 is very easy, your documents have an average readability score of [NUMBER]. [2] Consequently, if you want to read something more simplistic, then consider a document with a higher score. If you want something more specialized, then consider something with a lower score. The following histograms and box plots illustrate the overall size and readability of your study carrel.
+
+  [HISTOGRAM OF SIZES]   [BOXPLOT OF SIZES]
+  [HISTOGRAM OF SCORES]  [BOXPLOT OF SCORES]
+
+
+Aboutness
+
+By merely counting & tabulating the frequency of individual words or phrases, you can begin to get an understanding of your carrel's "aboutness". Excluding "stop words", some of the more frequent words and phrases in your carrel include: [WORDS AND PHRASES]. [3] While often deemed superficial or sophomoric, rudimentary frequencies and their associated "word clouds" can be quite insightful:
+
+  [WORDCLOUD OF WORDS]  [WORDCLOUD OF PHRASES]
+
+Concordancing these words -- displaying them as keywords in context -- provides additional insight: [4]
+
+  [CONCORDANCE OF FREQUENT WORDS]
+  
+Illustrating where these words appear in a text also gives insight about the text. "Do the words appear only in the beginning of the text, the middle, the end? Is the idea manifested by the words merely introduced, or is it alluded to consistently throughout the corpus?" 
+
+  [DISPERSION CHART OF FREQUENT WORDS]
+
+Your study carrel can be characterized with the following statistically significant lemmatized keywords: [KEYWORDS].[5] These words are denoted by comparing their raw frequencies with the over frequencies of every other word in the corpus. Again, word clouds, concordances, and disperson charts provide more context:
+
+  [WORDCLOUD OF KEYWORDS]
+  [CONCORDANCE OF KEYWORDS]
+  [DISPERSION CHART OF KEYWORDS]
+
+Yet an additional way to learn the "aboutness" of your study carrel is through the use of topic modeling. [6] If your study carrel were described with a single word, then that word or concept might be [SINGLE WORD]. If your study carrel were described with three words/concepts, then those words might be [THREE WORDS]. If your study carrel was grouped into five concepts/clusters and each concept was denoted by three words, then those concepts/clusters might be:
+
+  [CLUSTER A]
+  [CLUSTER B]
+  [CLUSTER C]
+  [CLUSTER D]
+  [CLUSTER E]
+
+Each of these clusters carry a weight making up the whole, and the following pie chart illustrates the significance of each cluster: 
+
+  [PIE CHART]
+
+Again, a concordance and dispersion chart can be useful. Here is the most significant cluster is concordanced and illustrated as a disperson chart:
+
+  [CONCORDANCE OF CLUSTER A]
+  [DISPERSION CHART OF CLUSTER A]
+
+
+Parts-of-speech analysis
+
+Through an analysis of your study carrel's parts-of-speech, you are able to answer question beyonds aboutness. For example, a list of the most frequent nouns () helps you answer what questions; "What is discussed in this collection?"
+
+  [WORDCLOUD OF NOUNS]
+
+An extraction of proper nouns helps you determine the names of people and places in your study carrel:
+
+  [WORDCLOUD OF PROPER NOUNS]
+
+Below is a word cloud your your study carrel's personal pronouns:
+
+  [WORDCLOUD OF PERSONAL PRONOUNS]
+
+An analysis of personal pronouns enables you to answer at least two questions: 1) "What, if any, is the overall gender of my study carrel?", and 2) "To what degree are the texts in my study carrel self-centered versus inclusive?"
+
+An enumeration of the lemmatized verbs helps you learn what actions take place in a text or what the things in the text do. Very frequently, the most common lemmatized verbs are "be", "have", and "do"; the more interesting verbs usually occur further down the list of frequencies:
+
+  [WORDCLOUD OF VERBS]
+
+Learning about a corpus's adjectives and adverbs helps you answer how questions: "How are things described and how are things done?" 
+
+  [WORDCLOUD OF ADJECTIVES AND ADVERBS]
+
+An analysis of adjectives and adverbs also points to a corpus's overall sentiment. "In general, is my study carrel positive or negative?"
+
+Speaking of questions, an enumeration of a study carrel's question statement can be quite interesting as well as informative:
+
+  [QUESTIONS]
+
+
+Notes
+
+[1] To put this into context, the typical scholarly journal article is about [NUMBER] words long, Shakespeare's Hamlet is [NUMBER] words long, and the Bible is [NUMBER] words long. 
+
+[2] In this case, a Flesch readability score is being calculated. It is based on things like the number of words in a document, the lengths of the words, the number of sentences, the lengths on the sentences, etc. In general children's stories are have lower Flesch scores while insurance documents and doctoral dissertations have higher scores. 
+
+[3] "Stop words" are sometimes called "function words", and they are words which carry little or no meaning. Every language has stop words, and in English they include but are not limited to "the", "a", "an", etc. A single set of stop words has been used through out the analysis of your collection. 
+
+[4] Concordances are one of the oldest forms of text mining, first developed in the 13th century to "read" religious documents.
+
+[6] An unsupervised machine learning process, topic modeling is a very popular text mining operation. Assuming that a word is known by the company it keeps, topic modeling identifies sets of keywords denoted by their centrality in the text. Words which are both frequent as well as in close proximity to each other are considered significant. 
+
+--
+Eric Lease Morgan <emorgan@nd.edu>
+June 1, 2019
+
