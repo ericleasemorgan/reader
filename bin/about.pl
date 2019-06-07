@@ -2,7 +2,7 @@
 
 # about.pl - summarize the contents of a study carrel
 
-use constant TEMPLATE => './etc/about.htm';
+use constant TEMPLATE => '/export/reader/etc/about.htm';
 
 use strict;
 
@@ -23,10 +23,10 @@ my $averagereadabilityscore = `../../bin/query.sh 'SELECT ROUND(AVG( flesch ) ) 
 chop( $averagereadabilityscore );
 
 # plot sizes and readability
-`../../bin/plot-sizes.sh  histogram ./tmp/sizes-histogram.jpg`;
-`../../bin/plot-sizes.sh  boxplot   ./tmp/sizes-boxplot.jpg`;
-`../../bin/plot-flesch.sh histogram ./tmp/flesch-histogram.jpg`;
-`../../bin/plot-flesch.sh boxplot   ./tmp/flesch-boxplot.jpg`;
+if ( ! -e './figures/sizes-histogram.png' )  { `../../bin/plot-sizes.sh  histogram ./figures/sizes-histogram.png`  }
+if ( ! -e './figures/sizes-boxplot.png' )    { `../../bin/plot-sizes.sh  boxplot   ./figures/sizes-boxplot.png`    }
+if ( ! -e './figures/flesch-histogram.png' ) { `../../bin/plot-flesch.sh histogram ./figures/flesch-histogram.png` }
+if ( ! -e './figures/flesch-boxplot.png' )   { `../../bin/plot-flesch.sh boxplot   ./figures/flesch-boxplot.png`   }  
 
 # frequent ngrams
 my $frequentunigrams = `../../bin/ngrams.pl ./etc/reader.txt 1 | head -n 7 | cut -f1`;
@@ -36,9 +36,10 @@ my @frequentbigrams  = split /\n/, $frequentbigrams;
 
 # plot the respective word clouds
 `../../bin/ngrams.pl ./etc/reader.txt 1 | head -n 150 > ./tmp/unigrams.tsv`;
-`../../bin/cloud.py ./tmp/unigrams.tsv white ./tmp/unigrams.jpg`;
+if ( ! -e './figures/unigrams.png' ) { `../../bin/cloud.py ./tmp/unigrams.tsv white ./figures/unigrams.png` }
 `../../bin/ngrams.pl ./etc/reader.txt 2 | head -n 150 > ./tmp/bigrams.tsv`;
-`../../bin/cloud.py ./tmp/bigrams.tsv white ./tmp/bigrams.jpg`;
+if ( ! -e './figures/bigrams.png' ) { `../../bin/cloud.py ./tmp/bigrams.tsv white ./figures/bigrams.png`; }
+
 
 # plot even more word clouds
 `../../bin/cloud.sh nouns`;

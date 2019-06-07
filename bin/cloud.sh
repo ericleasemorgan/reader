@@ -10,7 +10,7 @@
 CLOUD='../../bin/cloud.py'
 DB='./etc/reader.db'
 TABULATIONS='./tmp/tabulations'
-OUTPUT='./tmp'
+OUTPUT='./figures'
 LIMIT=150
 
 # sanity check
@@ -28,7 +28,7 @@ if [[ $TYPE = 'keywords' ]]; then
 	SQL=".mode tabs\nselect keyword, count(keyword) as c from wrd group by keyword order by c desc limit $LIMIT;"
 	TABULATIONS="$TABULATIONS-keywords.txt"
 	COLOR='white'
-	OUTPUT="$OUTPUT/keywords.jpg"
+	OUTPUT="$OUTPUT/keywords.png"
 	
 # nouns
 elif [[ $TYPE = 'nouns' ]]; then
@@ -36,7 +36,7 @@ elif [[ $TYPE = 'nouns' ]]; then
 	SQL=".mode tabs\nselect lemma, count(lemma) as c from pos where pos is 'NN' or pos is 'NNS' group by lemma order by c desc limit $LIMIT;"
 	TABULATIONS="$TABULATIONS-nouns.txt"
 	COLOR='black'
-	OUTPUT="$OUTPUT/nouns.jpg"
+	OUTPUT="$OUTPUT/nouns.png"
 
 # pronouns
 elif [[ $TYPE = 'pronouns' ]]; then
@@ -44,7 +44,7 @@ elif [[ $TYPE = 'pronouns' ]]; then
 	SQL=".mode tabs\nselect lower(token), count(lower(token)) as c from pos where pos is 'PRP' group by lower(token) order by c desc limit $LIMIT;"
 	TABULATIONS="$TABULATIONS-pronouns.txt"
 	COLOR='gray'
-	OUTPUT="$OUTPUT/pronouns.jpg"
+	OUTPUT="$OUTPUT/pronouns.png"
 
 # proper nouns
 elif [[ $TYPE = 'proper' ]]; then
@@ -52,7 +52,7 @@ elif [[ $TYPE = 'proper' ]]; then
 	SQL=".mode tabs\nselect token, count(token) as c from pos where pos LIKE 'NNP%%' group by token order by c desc limit $LIMIT;"
 	TABULATIONS="$TABULATIONS-proper.txt"
 	COLOR='blue'
-	OUTPUT="$OUTPUT/proper.jpg"
+	OUTPUT="$OUTPUT/proper.png"
 
 # verbs
 elif [[ $TYPE = 'verbs' ]]; then
@@ -60,7 +60,7 @@ elif [[ $TYPE = 'verbs' ]]; then
 	SQL=".mode tabs\nselect lemma, count(lemma) as c from pos where pos like 'V%%' group by lemma order by c desc limit $LIMIT;"
 	TABULATIONS="$TABULATIONS-verbs.txt"
 	COLOR='gray'
-	OUTPUT="$OUTPUT/verbs.jpg"
+	OUTPUT="$OUTPUT/verbs.png"
 
 # adjectives
 elif [[ $TYPE = 'adjectives' ]]; then
@@ -68,7 +68,7 @@ elif [[ $TYPE = 'adjectives' ]]; then
 	SQL=".mode tabs\nselect lemma, count(lemma) as c from pos where (pos like 'J%%' or pos like 'R%%') group by lemma order by c desc limit $LIMIT;"
 	TABULATIONS="$TABULATIONS-adjectives.txt"
 	COLOR='red'
-	OUTPUT="$OUTPUT/adjectives.jpg"
+	OUTPUT="$OUTPUT/adjectives.png"
 
 # superlative adjectives
 elif [[ $TYPE = 'supadj' ]]; then
@@ -76,7 +76,7 @@ elif [[ $TYPE = 'supadj' ]]; then
 	SQL=".mode tabs\nselect lemma, count(lemma) as c from pos where (pos is 'JJS') group by lemma order by c desc limit $LIMIT;"
 	TABULATIONS="$TABULATIONS-supadj.txt"
 	COLOR='yellow'
-	OUTPUT="$OUTPUT/supadj.jpg"
+	OUTPUT="$OUTPUT/supadj.png"
 
 # superlative adverbs
 elif [[ $TYPE = 'supadv' ]]; then
@@ -84,7 +84,7 @@ elif [[ $TYPE = 'supadv' ]]; then
 	SQL=".mode tabs\nselect lemma, count(lemma) as c from pos where (pos is 'RBS') group by lemma order by c desc limit $LIMIT;"
 	TABULATIONS="$TABULATIONS-supadv.txt"
 	COLOR='green'
-	OUTPUT="$OUTPUT/supadv.jpg"
+	OUTPUT="$OUTPUT/supadv.png"
 
 # error
 else
@@ -94,7 +94,9 @@ else
 
 fi
 
-# do the work and done
+# conditionally do the work and done
 printf "$SQL" | sqlite3 $DB > $TABULATIONS
-$CLOUD $TABULATIONS $COLOR $OUTPUT
+if [[ ! -f $OUTPUT ]]; then
+	$CLOUD $TABULATIONS $COLOR $OUTPUT
+fi
 exit

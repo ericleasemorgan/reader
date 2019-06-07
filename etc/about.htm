@@ -1,7 +1,12 @@
 <html>
 <head><title>About your study carrel</title><head>
+<style>
+	table { margin: auto; }
+	td    { text-align: center; }
+</style>
 
 <body style='margin: 7%'>
+
 <h1>About your study carrel</h1>
 
 <p>
@@ -19,25 +24,31 @@ First, the simple things. Your study carrel was created through the submission o
 Each item in your study carrel is, on average, <strong>##AVERAGESIZEINWORDS## words long</strong>. [1] If you dig deeper, then you might want to save yourself some time by reading a shorter item. On the other hand, if your desire is for more detail, then you might consider reading a longer item. On a scale from 0 to 100, where 0 is very difficult and 100 is very easy, your documents have an <strong>average readability score of ##AVERAGEREADABILITSCORE##</strong>. [2] Consequently, if you want to read something more simplistic, then consider a document with a higher score. If you want something more specialized, then consider something with a lower score. The following histograms and box plots illustrate the overall size and readability of your study carrel.
 </p>
 
-<p style='text-align: center'>
-<a href='./tmp/sizes-histogram.jpg'><img width='40%' src='./tmp/sizes-histogram.jpg' /></a>
-<a href='./tmp/sizes-boxplot.jpg'><img width='40%' src='./tmp/sizes-boxplot.jpg' /></a>
-</p>
+<table>
+	<tr>
+	<td><a href='./figures/sizes-histogram.png'><img width='100%' src='./figures/sizes-histogram.png' /></a></td>
+	<td><a href='./figures/sizes-boxplot.png'><img width='100%' src='./figures/sizes-boxplot.png' /></a></td>
+	</tr>
+</table>
 
-<p style='text-align: center'>
-<a href='./tmp/flesch-histogram.jpg'><img width='40%' src='./tmp/flesch-histogram.jpg' /></a>
-<a href='./tmp/flesch-boxplot.jpg'><img width='40%' src='./tmp/flesch-boxplot.jpg' /></a>
-</p>
+<table>
+	<tr>
+	<td><a href='./figures/flesch-histogram.png'><img width='100%' src='./figures/flesch-histogram.png' /></a></td>
+	<td><a href='./figures/flesch-boxplot.png'><img width='100%' src='./figures/flesch-boxplot.png' /></a></td>
+	</tr>
+</table>
 
 
 <h2>Aboutness</h2>
 
 By merely counting &amp; tabulating the frequency of individual words or phrases, you can begin to get an understanding of your carrel's "aboutness". Excluding "stop words", some of the more frequent words include: <strong>##FREQUENTUNIGRAMS##</strong>. And the most frequent two-word phrases (bigrams) include: <strong>##FREQUENTBIGRAMS##</strong> [3] While often deemed superficial or sophomoric, rudimentary frequencies and their associated "word clouds" can be quite insightful:
 
-<p style='text-align: center'>
-<a href='./tmp/unigrams.jpg'><img width='40%' src='./tmp/unigrams.jpg' /></a>
-<a href='./tmp/bigrams.jpg'><img width='40%' src='./tmp/bigrams.jpg' /></a>
-</p>  
+<table>
+	<tr>
+	<td><a href='./figures/unigrams.png'><img width='100%' src='./figures/unigrams.png' /></a><br />unigrams</td>
+	<td><a href='./figures/bigrams.png'><img width='100%' src='./figures/bigrams.png' /></a><br />bigrams</td>
+	</tr>
+</table>
 
 <p>
 Concordancing these words -- displaying them as keywords in context -- provides additional insight: [4]
@@ -47,25 +58,82 @@ Concordancing these words -- displaying them as keywords in context -- provides 
   [CONCORDANCE OF FREQUENT WORDS]
 </p>
 
-<p style='text-align: center'>
-  <a href='./tmp/nouns.jpg'><img width='40%' src='./tmp/nouns.jpg' /></a>
-  <a href='./tmp/verbs.jpg'><img width='40%' src='./tmp/verbs.jpg' /></a>
+
+<h2>Parts-of-speech analysis</h2>
+
+<p>
+Through an analysis of your study carrel's parts-of-speech, you are able to answer question beyonds aboutness. For example, a list of the most frequent nouns () helps you answer what questions; "What is discussed in this collection?" An enumeration of the lemmatized verbs helps you learn what actions take place in a text or what the things in the text do. Very frequently, the most common lemmatized verbs are "be", "have", and "do"; the more interesting verbs usually occur further down the list of frequencies:
+
 </p>
 
-<p style='text-align: center'>
-  <a href='./tmp/proper.jpg'><img width='40%' src='./tmp/proper.jpg' /></a>
-  <a href='./tmp/pronouns.jpg'><img width='40%' src='./tmp/pronouns.jpg' /></a>
+
+
+<table>
+	<tr>
+	<td><a href='./figures/nouns.png'><img width='100%' src='./figures/nouns.png' /></a><br />nouns</td>
+	<td><a href='./figures/verbs.png'><img width='100%' src='./figures/verbs.png' /></a><br />verbs</td>
+	</tr>
+</table>
+
+
+<p>
+An extraction of proper nouns helps you determine the names of people and places in your study carrel. Below is a word cloud your your study carrel's personal pronouns. An analysis of personal pronouns enables you to answer at least two questions: 1) "What, if any, is the overall gender of my study carrel?", and 2) "To what degree are the texts in my study carrel self-centered versus inclusive?"
+
 </p>
 
-<p style='text-align: center'>
-  <a href='./tmp/adjectives.jpg'><img width='40%' src='./tmp/adjectives.jpg' /></a>
+<table>
+	<tr>
+	<td><a href='./figures/proper.png'><img width='100%' src='./figures/proper.png' /></a><br />proper nouns</td>
+	<td><a href='./figures/pronouns.png'><img width='100%' src='./figures/pronouns.png' /></a><br />pronouns</td>
+	</tr>
+</table>
+
+<p>
+Learning about a corpus's adjectives and adverbs helps you answer how questions: "How are things described and how are things done?" An analysis of adjectives and adverbs also points to a corpus's overall sentiment. "In general, is my study carrel positive or negative?"
 </p>
 
-<p style='text-align: center'>
-  <a href='./tmp/supadj.jpg'><img width='40%' src='./tmp/supadj.jpg' /></a>
-  <a href='./tmp/supadv.jpg'><img width='40%' src='./tmp/supadv.jpg' /></a>
+
+<table>
+	<tr>
+	<td><a href='./figures/adjectives.png'><img width='100%' src='./figures/adjectives.png' /></a><br />adjectives</td>
+	<td><a href='./figures/keywords.png'><img width='100%' src='./figures/keywords.png' /></a><br />keywords</td>
+	</tr>
+</table>
+
+<table>
+	<tr>
+	<td><a href='./figures/supadj.png'><img width='100%' src='./figures/supadj.png' /></a><br />superlative adjectives</td>
+ 	<td> <a href='./figures/supadv.png'><img width='100%' src='./figures/supadv.png' /></a><br />superlative adverbs</td>
+	</tr>
+</table>
+
+
+<h2>Notes</h2>
+
+<p>
+[1] To put this into context, the typical scholarly journal article is about [NUMBER] words long, Shakespeare's Hamlet is [NUMBER] words long, and the Bible is [NUMBER] words long. 
 </p>
 
+<p>
+[2] In this case, a Flesch readability score is being calculated. It is based on things like the number of words in a document, the lengths of the words, the number of sentences, the lengths on the sentences, etc. In general children's stories are have lower Flesch scores while insurance documents and doctoral dissertations have higher scores. 
+</p>
+
+<p>
+[3] "Stop words" are sometimes called "function words", and they are words which carry little or no meaning. Every language has stop words, and in English they include but are not limited to "the", "a", "an", etc. A single set of stop words has been used through out the analysis of your collection. 
+</p>
+
+<p>
+[4] Concordances are one of the oldest forms of text mining, first developed in the 13th century to "read" religious documents.
+</p>
+
+<p>
+[6] An unsupervised machine learning process, topic modeling is a very popular text mining operation. Assuming that a word is known by the company it keeps, topic modeling identifies sets of keywords denoted by their centrality in the text. Words which are both frequent as well as in close proximity to each other are considered significant. 
+</p>
+
+<hr />
+<p style='text-align: right'>Eric Lease Morgan &lt;emorgan@nd.edu&gt;<br />
+June 1, 2019
+</p>
 
 </body>
 </html>
