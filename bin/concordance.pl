@@ -31,7 +31,7 @@ close INPUT;
 my $concordance = Lingua::Concordance->new;
 $concordance->text( $text );
 $concordance->query( $query );
-$concordance->radius( 40 );
+$concordance->radius( 45 );
 $concordance->sort( 'none' );
 $concordance->ordinal( 1 );
 

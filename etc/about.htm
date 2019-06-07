@@ -1,8 +1,9 @@
 <html>
 <head><title>About your study carrel</title><head>
 <style>
-	table { margin: auto; }
-	td    { text-align: center; }
+	table  { margin: auto; }
+	td     { text-align: center; }
+	strong { background-color: silver; }
 </style>
 
 <body style='margin: 7%'>
@@ -41,7 +42,8 @@ Each item in your study carrel is, on average, <strong>##AVERAGESIZEINWORDS## wo
 
 <h2>Aboutness</h2>
 
-By merely counting &amp; tabulating the frequency of individual words or phrases, you can begin to get an understanding of your carrel's "aboutness". Excluding "stop words", some of the more frequent words include: <strong>##FREQUENTUNIGRAMS##</strong>. And the most frequent two-word phrases (bigrams) include: <strong>##FREQUENTBIGRAMS##</strong> [3] While often deemed superficial or sophomoric, rudimentary frequencies and their associated "word clouds" can be quite insightful:
+<p>By merely counting &amp; tabulating the frequency of individual words or phrases, you can begin to get an understanding of your carrel's "aboutness". Excluding "stop words", some of the more frequent words include: <strong>##FREQUENTUNIGRAMS##</strong>. And the most frequent two-word phrases (bigrams) include: <strong>##FREQUENTBIGRAMS##</strong> [3] While often deemed superficial or sophomoric, rudimentary frequencies and their associated "word clouds" can be quite insightful:
+</p>
 
 <table>
 	<tr>
@@ -50,11 +52,15 @@ By merely counting &amp; tabulating the frequency of individual words or phrases
 	</tr>
 </table>
 
-<p>
-Concordancing these words -- displaying them as keywords in context -- provides additional insight: [4]
+<p>Sets of keywords -- statistically significant words -- can be enumerated by comparing the relative frequency of words with the number of times the words appear in an entire corpus. Some of the most statistically significant keywords in your study carrel include: <strong>##KEYWORDS##</strong>. And now word clouds really begin to shine:
+</p>
+
+<p style='text-align: center'>
+<a href='./figures/keywords.png'><img width='66%' src='./figures/keywords.png' /><br />keywords</a>
 </p>
 
 <p>
+Through the use of a concordance -- a keyword-in-context tool, or a "poor man's search engine" -- you can see how words are used in relation to other words. Here is a random sample of concordance entries using the two most significant keyword as input:
 <pre style='text-align: center'>##CONCORDANCE##</pre>
 </p>
 
@@ -62,11 +68,8 @@ Concordancing these words -- displaying them as keywords in context -- provides 
 <h2>Parts-of-speech analysis</h2>
 
 <p>
-Through an analysis of your study carrel's parts-of-speech, you are able to answer question beyonds aboutness. For example, a list of the most frequent nouns () helps you answer what questions; "What is discussed in this collection?" An enumeration of the lemmatized verbs helps you learn what actions take place in a text or what the things in the text do. Very frequently, the most common lemmatized verbs are "be", "have", and "do"; the more interesting verbs usually occur further down the list of frequencies:
-
+Through an analysis of your study carrel's parts-of-speech, you are able to answer question beyonds aboutness. For example, a list of the most frequent nouns (<strong>##NOUNS##</strong>) helps you answer what questions; "What is discussed in this collection?" An enumeration of the lemmatized verbs (<strong>##VERBS##</strong>) helps you learn what actions take place in a text or what the things in the text do. Very frequently, the most common lemmatized verbs are "be", "have", and "do"; the more interesting verbs usually occur further down the list of frequencies:
 </p>
-
-
 
 <table>
 	<tr>
@@ -75,10 +78,8 @@ Through an analysis of your study carrel's parts-of-speech, you are able to answ
 	</tr>
 </table>
 
-
 <p>
-An extraction of proper nouns helps you determine the names of people and places in your study carrel. Below is a word cloud your your study carrel's personal pronouns. An analysis of personal pronouns enables you to answer at least two questions: 1) "What, if any, is the overall gender of my study carrel?", and 2) "To what degree are the texts in my study carrel self-centered versus inclusive?"
-
+An extraction of proper nouns (<strong>##PROPER##</strong>) helps you determine the names of people and places in your study carrel. An analysis of personal pronouns (<strong>##PRONOUNS##</strong>) enables you to answer at least two questions: 1) "What, if any, is the overall gender of my study carrel?", and 2) "To what degree are the texts in my study carrel self-centered versus inclusive?" Below are words cloud of your study carrel's proper &amp; personal pronouns. 
 </p>
 
 <table>
@@ -89,21 +90,14 @@ An extraction of proper nouns helps you determine the names of people and places
 </table>
 
 <p>
-Learning about a corpus's adjectives and adverbs helps you answer how questions: "How are things described and how are things done?" An analysis of adjectives and adverbs also points to a corpus's overall sentiment. "In general, is my study carrel positive or negative?"
+Learning about a corpus's adjectives (<strong>##ADJECTIVES##</strong>) and adverbs (<strong>##ADVERBS##</strong>) helps you answer how questions: "How are things described and how are things done?" An analysis of adjectives and adverbs also points to a corpus's overall sentiment. "In general, is my study carrel positive or negative?"
 </p>
-
 
 <table>
 	<tr>
 	<td><a href='./figures/adjectives.png'><img width='100%' src='./figures/adjectives.png' /></a><br />adjectives</td>
-	<td><a href='./figures/keywords.png'><img width='100%' src='./figures/keywords.png' /></a><br />keywords</td>
-	</tr>
-</table>
-
-<table>
-	<tr>
-	<td><a href='./figures/supadj.png'><img width='100%' src='./figures/supadj.png' /></a><br />superlative adjectives</td>
- 	<td> <a href='./figures/supadv.png'><img width='100%' src='./figures/supadv.png' /></a><br />superlative adverbs</td>
+	<td><a href='./figures/adjectives.png'><img width='100%' src='./figures/adverbs.png' /></a><br />adverbs</td>
+	<td></td>
 	</tr>
 </table>
 

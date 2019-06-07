@@ -15,7 +15,7 @@ LIMIT=150
 
 # sanity check
 if [[ -z "$1" ]]; then
-	echo "Usage: $0 <nouns|keywords|pronouns|verbs|proper|adjectives|supadj|supadv>" >&2
+	echo "Usage: $0 <nouns|keywords|pronouns|verbs|proper|adjectives|adverbs|supadj|supadv>" >&2
 	exit
 fi
 
@@ -65,10 +65,18 @@ elif [[ $TYPE = 'verbs' ]]; then
 # adjectives
 elif [[ $TYPE = 'adjectives' ]]; then
 
-	SQL=".mode tabs\nselect lemma, count(lemma) as c from pos where (pos like 'J%%' or pos like 'R%%') group by lemma order by c desc limit $LIMIT;"
+	SQL=".mode tabs\nselect lemma, count(lemma) as c from pos where (pos like 'J%%') group by lemma order by c desc limit $LIMIT;"
 	TABULATIONS="$TABULATIONS-adjectives.txt"
 	COLOR='red'
 	OUTPUT="$OUTPUT/adjectives.png"
+
+# adverbs
+elif [[ $TYPE = 'adverbs' ]]; then
+
+	SQL=".mode tabs\nselect lemma, count(lemma) as c from pos where (pos like 'R%%') group by lemma order by c desc limit $LIMIT;"
+	TABULATIONS="$TABULATIONS-adverbs.txt"
+	COLOR='red'
+	OUTPUT="$OUTPUT/adverbs.png"
 
 # superlative adjectives
 elif [[ $TYPE = 'supadj' ]]; then
@@ -89,7 +97,7 @@ elif [[ $TYPE = 'supadv' ]]; then
 # error
 else
 
-	echo "Usage: $0 <nouns|keywords|pronouns|verbs|proper|adjectives|supadj|supadv>" >&2
+	echo "Usage: $0 <nouns|keywords|pronouns|verbs|proper|adjectives|adverbs|supadj|supadv>" >&2
 	exit
 
 fi
