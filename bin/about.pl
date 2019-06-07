@@ -40,7 +40,12 @@ if ( ! -e './figures/unigrams.png' ) { `../../bin/cloud.py ./tmp/unigrams.tsv wh
 `../../bin/ngrams.pl ./etc/reader.txt 2 | head -n 150 > ./tmp/bigrams.tsv`;
 if ( ! -e './figures/bigrams.png' ) { `../../bin/cloud.py ./tmp/bigrams.tsv white ./figures/bigrams.png`; }
 
+# get the most significant keyword
+my $keyword = `../../bin/query.sh 'SELECT keyword FROM wrd GROUP BY keyword ORDER BY COUNT( keyword ) DESC LIMIT 1;'`;
+chop( $keyword );
+my $concordance = `../../bin/concordance.pl ./etc/reader.txt $keyword | head -n 33`;
 
+print
 # plot even more word clouds
 `../../bin/cloud.sh nouns`;
 `../../bin/cloud.sh keywords`;
@@ -63,6 +68,7 @@ $html =~ s/##AVERAGESIZEINWORDS##/$averagesizeinwords/;
 $html =~ s/##AVERAGEREADABILITSCORE##/$averagereadabilityscore/;
 $html =~ s/##FREQUENTUNIGRAMS##/join( ', ', @frequentunigrams )/e;
 $html =~ s/##FREQUENTBIGRAMS##/join( ', ', @frequentbigrams )/e;
+$html =~ s/##CONCORDANCE##/$concordance/e;
 
 # output and done
 print $html;
