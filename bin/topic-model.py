@@ -1,59 +1,55 @@
 #!/usr/bin/env python
 
-# topic-model.py - given a directory of plain text files, compute t topics with d dimensions exemplified by f files
-# see -> https://medium.com/@aneesha/topic-modeling-with-scikit-learn-e80d33668730
-# see also -> https://de.dariah.eu/tatom/topic_model_python.html
+# topic-model.py - given a directory of plain text files, compute t topics with d dimensions
+# see -> https://scikit-learn.org/stable/auto_examples/applications/plot_topics_extraction_with_nmf_lda.html#sphx-glr-auto-examples-applications-plot-topics-extraction-with-nmf-lda-py
 
 # Eric Lease Morgan <emorgan@nd.edu>
-# September 25, 2017 - first cut; needs to list documents
-# September 27, 2017 - started adding documents; "Thanks Jason Thomale!"
-# September 28, 2017 - calling it version 1.0, but it can easy get creeping feature-itis
+# June 8, 2019 - re-wrote to use LDA; output pie chart
 
 
 # configure
-DIRECTORY = './txt'
+DIRECTORY  = './txt'
+TOPICS     = 5
+DIMENSIONS = 5
 
 # require
-from sklearn.decomposition import NMF
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.decomposition import LatentDirichletAllocation
+from sklearn.feature_extraction.text import CountVectorizer
+import matplotlib.pyplot as plt
+import numpy as np
 import os
-import sys
+import pandas as pd
 
-# sanity check
-if len( sys.argv ) != 4 :
-	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <number of topics> <number of dimensions> <number of files>\n" )
-	quit()
+# initialize the vectors
+filenames  = [ os.path.join( DIRECTORY, filename ) for filename in os.listdir( DIRECTORY ) ]
+vectorizer = CountVectorizer( input = 'filename', stop_words='english' )
+vectors    = vectorizer.fit_transform( filenames )
 
-# get input
-topics     = int( sys.argv[ 1 ] )
-dimensions = int( sys.argv[ 2 ] )
-files      = int( sys.argv[ 3 ] )
+# create the model
+model = LatentDirichletAllocation( n_components=TOPICS, learning_method='batch', random_state = 1 )
+model.fit( vectors )
 
-# initialize
-filenames  = sorted( [ os.path.join( DIRECTORY, filename ) for filename in os.listdir( DIRECTORY ) ] )
-vectorizer = TfidfVectorizer( input = 'filename', stop_words = 'english' )
-
-# vectorize and create a model against the corpus; extract the features
-tfidf    = vectorizer.fit_transform( filenames )
-model    = NMF( n_components=topics, random_state=1 ).fit( tfidf )
+# extract the features
 features = vectorizer.get_feature_names()
 
-# process each topic in the model
-for item, topic in enumerate( model.components_ ) :
-	
-	# output most significant topic word(s)
-	i = 0
-	print( '  * ' + "; ".join( [ features[ i ] for i in topic.argsort()[ :-dimensions - 1:-1 ] ] ) )
-	
-	# output file names ordered by significance with the given feature, "Thanks Jason Thomale!"
-	scores    = tfidf.getcol( i ).toarray().tolist() 
-	documents = [ ( item[ 0 ], item[ 1 ] ) for item in enumerate( scores ) ]
-	rankings  = sorted( documents, key=lambda x: x[ 1 ], reverse=True )
-	for r in range( 0, files ) :
-		print( '    o ' + filenames[ rankings[ r ][ 0 ] ] )
-	
-	# delimit
-	print()
+# create a dictionary of results
+results = {}
+for index, matrix in enumerate( model.components_ ):
+	index = index + 1
+	score = int( np.sum( matrix ) )
+	words = " ".join( [ features[ i ] for i in matrix.argsort()[ :-DIMENSIONS - 1:-1 ] ] )
+	results[ index ] = [ score, words ]
+
+# stuff the results into a sorted dataframe, which is easier to manipulate
+df = pd.DataFrame.from_dict(results, orient='index', columns = [ 'score', 'words' ] )
+df = df.sort_values( by=[ 'score' ] )
+
+# visualize
+figure, axis = plt.subplots(figsize=(6, 6))
+axis.pie( df[ 'score' ], startangle = 90 )
+axis.legend( title = "Topics", labels = df[ 'words' ] )
+figure.savefig( './chart.png' )
 
 # done
 exit()
+
