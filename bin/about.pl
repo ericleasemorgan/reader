@@ -34,6 +34,27 @@ my @frequentunigrams = split /\n/, $frequentunigrams;
 my $frequentbigrams  = `../../bin/ngrams.pl ./etc/reader.txt 2 | head -n 25 | cut -f1`;
 my @frequentbigrams  = split /\n/, $frequentbigrams;
 
+# topic model with a single word and single file
+my $model  = `../../bin/topic-model.py ./txt 1 1`;
+my $topics = &readModel( $model, 1 );
+my ( $topicssingle, $topicssinglefile ) = split( "\t", @$topics[ 0 ] );
+
+# topic model with three words and a single file
+my $model  = `../../bin/topic-model.py ./txt 3 1`;
+my $topics = &readModel( $model, 1 );
+my ( $topicstriple01, $topicstriplefile01 ) = split( "\t", @$topics[ 0 ] );
+my ( $topicstriple02, $topicstriplefile02 ) = split( "\t", @$topics[ 1 ] );
+my ( $topicstriple03, $topicstriplefile03 ) = split( "\t", @$topics[ 2 ] );
+
+# topic model with five words, five dimensions and a single file
+my $model  = `../../bin/topic-model.py ./txt 5 3 ./figures/topics.png`;
+my $topics = &readModel( $model, 1 );
+my ( $topicsquin01, $topicsquinfile01 ) = split( "\t", @$topics[ 0 ] );
+my ( $topicsquin02, $topicsquinfile02 ) = split( "\t", @$topics[ 1 ] );
+my ( $topicsquin03, $topicsquinfile03 ) = split( "\t", @$topics[ 2 ] );
+my ( $topicsquin04, $topicsquinfile04 ) = split( "\t", @$topics[ 3 ] );
+my ( $topicsquin05, $topicsquinfile05 ) = split( "\t", @$topics[ 4 ] );
+
 # plot the respective word clouds
 `../../bin/ngrams.pl ./etc/reader.txt 1 | head -n 150 > ./tmp/unigrams.tsv`;
 if ( ! -e './figures/unigrams.png' ) { `../../bin/cloud.py ./tmp/unigrams.tsv white ./figures/unigrams.png` }
@@ -105,8 +126,54 @@ $html =~ s/##PROPER##/join( ', ', @proper )/e;
 $html =~ s/##ADJECTIVES##/join( ', ', @adjectives )/e;
 $html =~ s/##ADVERBS##/join( ', ', @adverbs )/e;
 $html =~ s/##CONCORDANCE##/$concordance/e;
+$html =~ s/##TOPICSSINGLE##/$topicssingle/e;
+$html =~ s/##TOPICSSINGLEFILE##/$topicssinglefile/eg;
+$html =~ s/##TOPICSTRIPLE01##/$topicstriple01/eg;
+$html =~ s/##TOPICSTRIPLE02##/$topicstriple02/eg;
+$html =~ s/##TOPICSTRIPLE03##/$topicstriple03/eg;
+$html =~ s/##TOPICSTRIPLEFILE01##/$topicstriplefile01/eg;
+$html =~ s/##TOPICSTRIPLEFILE02##/$topicstriplefile02/eg;
+$html =~ s/##TOPICSTRIPLEFILE03##/$topicstriplefile03/eg;
+$html =~ s/##TOPICSQUIN01##/$topicsquin01/eg;
+$html =~ s/##TOPICSQUIN02##/$topicsquin02/eg;
+$html =~ s/##TOPICSQUIN03##/$topicsquin03/eg;
+$html =~ s/##TOPICSQUIN04##/$topicsquin04/eg;
+$html =~ s/##TOPICSQUIN05##/$topicsquin05/eg;
+$html =~ s/##TOPICSQUINFILE01##/$topicsquinfile01/eg;
+$html =~ s/##TOPICSQUINFILE02##/$topicsquinfile02/eg;
+$html =~ s/##TOPICSQUINFILE03##/$topicsquinfile03/eg;
+$html =~ s/##TOPICSQUINFILE04##/$topicsquinfile04/eg;
+$html =~ s/##TOPICSQUINFILE05##/$topicsquinfile05/eg;
 
 # output and done
 print $html;
 exit;
 
+
+sub readModel {
+
+	# get input
+	my $model  = shift;
+	my $n      = shift;
+	my @topics = ();
+		
+	foreach ( split( "\n", $model ) ) {
+
+		# parse
+		my ( $id, $score, $words, $files ) = split( "\t", $_ );
+	
+		# parse some more
+		my @files = split( ';', $files );
+			
+		# create listing of n desired documents
+		my @documents = ();
+		for ( my $i = 0; $i <= $n - 1; $i++ ) { push( @documents, $files[ $i ] ) }
+				
+		# output
+		push( @topics, join( "\t", ( $words, join( ' ', @documents ) ) ) );
+
+	}
+		
+	return [ @topics ];
+
+}
