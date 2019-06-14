@@ -9,8 +9,8 @@
 
 
 # configure
-use constant BASE       => 'http://dh.crc.nd.edu/sandbox/reader/hackaton/aesthetics/';
-use constant CARREL     => 'A1556617766';
+use constant BASE       => 'http://dh.crc.nd.edu/sandbox/reader/hackaton/plato/';
+use constant CARREL     => 'A1050380141';
 use constant FACETFIELD => ( 'facet_keyword', 'facet_person' );
 use constant ROWS       => 499;
 use constant SOLR       => 'http://localhost:8983/solr/carrels-reader';
