@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/export/perl/bin/perl
 
 # search-solr.cgi - CGI interface to search a solr instance
 
@@ -9,8 +9,8 @@
 
 
 # configure
-use constant BASE       => 'http://dh.crc.nd.edu/sandbox/reader/hackaton/plato/';
-use constant CARREL     => 'A1050380141';
+use constant BASE       => 'http://carrels.distantreader.org/library/code4lib-journal/';
+use constant CARREL     => 'A686801809';
 use constant FACETFIELD => ( 'facet_keyword', 'facet_person' );
 use constant ROWS       => 499;
 use constant SOLR       => 'http://localhost:8983/solr/carrels-reader';
