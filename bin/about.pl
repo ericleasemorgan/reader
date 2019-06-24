@@ -9,25 +9,25 @@
 
 
 # configure
-use constant TEMPLATE => '/export/reader/etc/about.htm';
+use constant TEMPLATE => './etc/about.htm';
 
 # require; out-of-the-box Perl
 use strict;
 
 # number of items
-my $numberofitems = `../../bin/query.sh 'SELECT COUNT( id ) FROM bib;'`;
+my $numberofitems = `./bin/query.sh 'SELECT COUNT( id ) FROM bib;'`;
 chop( $numberofitems );
 
 # number of words
-my $sumofwords = `../../bin/query.sh 'SELECT SUM( words ) FROM bib;'`;
+my $sumofwords = `./bin/query.sh 'SELECT SUM( words ) FROM bib;'`;
 chop( $sumofwords );
 
 # average size in words
-my $averagesizeinwords = `../../bin/query.sh 'SELECT ROUND(AVG( words ) ) FROM bib;'`;
+my $averagesizeinwords = `./bin/query.sh 'SELECT ROUND(AVG( words ) ) FROM bib;'`;
 chop( $averagesizeinwords );
 
 # average readability score
-my $averagereadabilityscore = `../../bin/query.sh 'SELECT ROUND(AVG( flesch ) ) FROM bib;'`;
+my $averagereadabilityscore = `./bin/query.sh 'SELECT ROUND(AVG( flesch ) ) FROM bib;'`;
 chop( $averagereadabilityscore );
 
 # plot sizes and readability
@@ -36,8 +36,57 @@ if ( ! -e './figures/sizes-boxplot.png' )    { `../../bin/plot-sizes.sh  boxplot
 if ( ! -e './figures/flesch-histogram.png' ) { `../../bin/plot-flesch.sh histogram ./figures/flesch-histogram.png` }
 if ( ! -e './figures/flesch-boxplot.png' )   { `../../bin/plot-flesch.sh boxplot   ./figures/flesch-boxplot.png`   }  
 
+# create tsv files; keywords
+`./bin/query.sh ".output ./tsv/keywords.tsv\n.headers on\n.mode tabs\nselect lower(keyword) as 'keyword', count(keyword) as frequency from wrd group by lower(keyword) order by frequency desc;"`;
+
+# nouns
+`./bin/query.sh ".output ./tsv/nouns.tsv\n.headers on\n.mode tabs\nselect lower(token) as 'noun', count(lower(token)) as frequency from pos where pos is 'NN' or pos is 'NNS' group by lower(token) order by frequency desc;"`;
+
+# verbs
+`./bin/query.sh ".output ./tsv/verbs.tsv\n.headers on\n.mode tabs\nselect lower(token) as 'verb', count(lower(token)) as frequency from pos where pos like 'VB%%' group by lower(token) order by frequency desc;"`;
+
+# adjectives
+`./bin/query.sh ".output ./tsv/adjectives.tsv\n.headers on\n.mode tabs\nselect lower(token) as 'adjective', count(lower(token)) as frequency from pos where pos like 'J%%' group by lower(token) order by frequency desc;"`;
+
+# adverb
+`./bin/query.sh ".output ./tsv/adverbs.tsv\n.headers on\n.mode tabs\nselect lower(token) as 'adverb', count(lower(token)) as frequency from pos where pos like 'R%%' group by lower(token) order by frequency desc;"`;
+
+# pronouns
+`./bin/query.sh ".output ./tsv/pronouns.tsv\n.headers on\n.mode tabs\nselect lower(token) as 'pronoun', count(lower(token)) as frequency from pos where pos like 'PR%%' group by lower(token) order by frequency desc;"`;
+
+# proper nouns
+`./bin/query.sh ".output ./tsv/proper.tsv\n.headers on\n.mode tabs\nselect lower(token) as 'proper', count(lower(token)) as frequency from pos where pos like 'NNP%%' group by lower(token) order by frequency desc;"`;
+
+# unigrams
+`printf "unigram\tfrequency\n" > ./tsv/unigrams.tsv`;
+`./bin/ngrams.pl ./etc/reader.txt 1 >> ./tsv/unigrams.tsv`;
+
+# bigrams
+`printf "bigram\tfrequency\n" > ./tsv/bigrams.tsv`;
+`./bin/ngrams.pl ./etc/reader.txt 2 >> ./tsv/bigrams.tsv`;
+
+# trigram
+`printf "trigram\tfrequency\n" > ./tsv/trigrams.tsv`;
+`./bin/ngrams.pl ./etc/reader.txt 3 >> ./tsv/trigrams.tsv`;
+
+# quadgrams
+`printf "quadgram\tfrequency\n" > ./tsv/quadgrams.tsv`;
+`./bin/ngrams.pl ./etc/reader.txt 4 >> ./tsv/quadgrams.tsv`;
+
+# quintgrams
+`printf "quintgram\tfrequency\n" > ./tsv/quintgrams.tsv`;
+`./bin/ngrams.pl ./etc/reader.txt 5 >> ./tsv/quintgrams.tsv`;
+
+# noun-verb
+`printf "noun\tverb\tfrequency\n" > ./tsv/noun-verb.tsv`;
+`./bin/query.sh ".mode tabs\nSELECT ( LOWER( t.token || char(9) || c.token )) AS sentence, COUNT( LOWER( t.token || ' ' || c.token ) ) AS frequency FROM pos AS t JOIN pos AS c ON c.tid=t.tid+1 AND c.sid=t.sid AND c.id=t.id WHERE t.lemma IN (select lemma from pos where pos like 'N%%' or pos like 'P%%' group by lemma order by count(lemma) desc) AND c.lemma in (select lemma from pos where pos like 'V%%' group by lemma order by count(lemma) desc) GROUP BY sentence ORDER BY frequency DESC, ( LOWER( t.token || ' ' || c.token ) );" >> ./tsv/noun-verb.tsv`;
+
+# adjective-noun
+`printf "adjective\tnoun\tfrequency\n" > ./tsv/adjective-noun.tsv`;
+`./bin/query.sh ".mode tabs\nSELECT ( LOWER( t.token || char(9) || c.token )) AS sentence, COUNT( LOWER( t.token || ' ' || c.token ) ) AS frequency FROM pos AS t JOIN pos AS c ON c.tid=t.tid+1 AND c.sid=t.sid AND c.id=t.id WHERE t.lemma IN (select lemma from pos where pos like 'J%%' group by lemma order by count(lemma) desc limit 30) AND c.lemma in (select lemma from pos where pos like 'N%%' group by lemma order by count(lemma) desc limit 30) GROUP BY sentence ORDER BY frequency DESC, ( LOWER( t.token || ' ' || c.token ) );" >> ./tsv/adjective-noun.tsv`;
+
 # unigrams and their files
-my $frequentunigrams      = `../../bin/ngrams.pl ./etc/reader.txt 1 | head -n25 | cut -f1`;
+my $frequentunigrams      = `./bin/ngrams.pl ./etc/reader.txt 1 | head -n25 | cut -f1`;
 my @frequentunigrams      = split( /\n/, $frequentunigrams );
 my $pattern               = join( '\|', ( '\\b' . $frequentunigrams[ 0 ] . '\\b', '\\b' . $frequentunigrams[ 1 ] . '\\b', '\\b' . $frequentunigrams[ 2 ] . '\\b' ) );
 my $frequentunigramfiles  = `grep -Hice "$pattern" ./txt/*.txt | tr ':' ' ' | sort -rnk2 | head -n3 | cut -d ' ' -f1`;
@@ -48,7 +97,7 @@ my $frequentunigramfile02 = $frequentunigramfiles[ 1 ];
 my $frequentunigramfile03 = $frequentunigramfiles[ 2 ];
 
 # bigrams and their files
-my $frequentbigrams  = `../../bin/ngrams.pl ./etc/reader.txt 2 | head -n 25 | cut -f1`;
+my $frequentbigrams  = `./bin/ngrams.pl ./etc/reader.txt 2 | head -n 25 | cut -f1`;
 my @frequentbigrams  = split /\n/, $frequentbigrams;
 my $pattern               = join( '\|', ( $frequentbigrams[ 0 ], $frequentbigrams[ 1 ], $frequentbigrams[ 2 ] ) );
 my $frequentbigramfiles  = `grep -Hice "$pattern" ./txt/*.txt | tr ':' ' ' | sort -rnk2 | head -n3 | cut -d ' ' -f1`;
@@ -59,9 +108,9 @@ my $frequentbigramfile02 = $frequentbigramfiles[ 1 ];
 my $frequentbigramfile03 = $frequentbigramfiles[ 2 ];
 
 # plot the respective word clouds
-`../../bin/ngrams.pl ./etc/reader.txt 1 | head -n 150 > ./tmp/unigrams.tsv`;
+`./bin/ngrams.pl ./etc/reader.txt 1 | head -n 150 > ./tmp/unigrams.tsv`;
 if ( ! -e './figures/unigrams.png' ) { `../../bin/cloud.py ./tmp/unigrams.tsv white ./figures/unigrams.png` }
-`../../bin/ngrams.pl ./etc/reader.txt 2 | head -n 150 > ./tmp/bigrams.tsv`;
+`./bin/ngrams.pl ./etc/reader.txt 2 | head -n 150 > ./tmp/bigrams.tsv`;
 if ( ! -e './figures/bigrams.png' ) { `../../bin/cloud.py ./tmp/bigrams.tsv white ./figures/bigrams.png`; }
 
 # topic model with a single word and single file
@@ -86,37 +135,37 @@ my ( $topicsquin04, $topicsquinfile04 ) = split( "\t", @$topics[ 3 ] );
 my ( $topicsquin05, $topicsquinfile05 ) = split( "\t", @$topics[ 4 ] );
 
 # get top 25 nouns
-my $nouns = `../../bin/query.sh 'SELECT lemma FROM pos where pos like "N%%" GROUP BY lemma ORDER BY COUNT( lemma ) DESC LIMIT 25;'`;
+my $nouns = `./bin/query.sh 'SELECT lemma FROM pos where pos like "N%%" GROUP BY lemma ORDER BY COUNT( lemma ) DESC LIMIT 25;'`;
 my @nouns = split /\n/, $nouns;
 
 # get top 25 verbs
-my $verbs = `../../bin/query.sh 'SELECT lemma FROM pos where pos like "V%%" GROUP BY lemma ORDER BY COUNT( lemma ) DESC LIMIT 25;'`;
+my $verbs = `./bin/query.sh 'SELECT lemma FROM pos where pos like "V%%" GROUP BY lemma ORDER BY COUNT( lemma ) DESC LIMIT 25;'`;
 my @verbs = split /\n/, $verbs;
 
 # get top 25 pronouns
-my $pronouns = `../../bin/query.sh 'SELECT lower(token) FROM pos where pos is "PRP" GROUP BY lower(token) ORDER BY count(lower(token)) DESC LIMIT 25;'`;
+my $pronouns = `./bin/query.sh 'SELECT lower(token) FROM pos where pos is "PRP" GROUP BY lower(token) ORDER BY count(lower(token)) DESC LIMIT 25;'`;
 my @pronouns = split /\n/, $pronouns;
 
 # get top 25 proper nouns
-my $proper = `../../bin/query.sh 'SELECT token FROM pos where pos LIKE "NNP%%" GROUP BY token ORDER BY COUNT( token ) DESC LIMIT 25;'`;
+my $proper = `./bin/query.sh 'SELECT token FROM pos where pos LIKE "NNP%%" GROUP BY token ORDER BY COUNT( token ) DESC LIMIT 25;'`;
 my @proper = split /\n/, $proper;
 
 # get top 25 adjectives
-my $adjectives = `../../bin/query.sh 'SELECT lemma FROM pos where pos like "J%%" GROUP BY lemma ORDER BY COUNT( lemma ) DESC LIMIT 25;'`;
+my $adjectives = `./bin/query.sh 'SELECT lemma FROM pos where pos like "J%%" GROUP BY lemma ORDER BY COUNT( lemma ) DESC LIMIT 25;'`;
 my @adjectives = split /\n/, $adjectives;
 
 # get top 25 adverbs
-my $adverbs = `../../bin/query.sh 'SELECT lemma FROM pos where pos like "R%%" GROUP BY lemma ORDER BY COUNT( lemma ) DESC LIMIT 25;'`;
+my $adverbs = `./bin/query.sh 'SELECT lemma FROM pos where pos like "R%%" GROUP BY lemma ORDER BY COUNT( lemma ) DESC LIMIT 25;'`;
 my @adverbs = split /\n/, $adverbs;
 
 # get top 3 keywords
-my $keywords = `../../bin/query.sh 'SELECT keyword FROM wrd GROUP BY keyword ORDER BY COUNT( keyword ) DESC LIMIT 2;'`;
+my $keywords = `./bin/query.sh 'SELECT keyword FROM wrd GROUP BY keyword ORDER BY COUNT( keyword ) DESC LIMIT 2;'`;
 my @keywords = split /\n/, $keywords;
 $keywords = '\b' . join( '\b|\b', @keywords ) . '\b';
-my $concordance = `../../bin/concordance.pl ./etc/reader.txt '$keywords' | shuf -n 25`;
+my $concordance = `./bin/concordance.pl ./etc/reader.txt '$keywords' | shuf -n 25`;
 
 # get top 7 keywords
-my $keywords = `../../bin/query.sh 'SELECT keyword FROM wrd GROUP BY keyword ORDER BY COUNT( keyword ) DESC LIMIT 25;'`;
+my $keywords = `./bin/query.sh 'SELECT keyword FROM wrd GROUP BY keyword ORDER BY COUNT( keyword ) DESC LIMIT 25;'`;
 my @keywords = split /\n/, $keywords;
 
 # plot even more word clouds
