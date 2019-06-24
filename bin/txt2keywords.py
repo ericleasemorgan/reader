@@ -6,6 +6,7 @@
 # (c) University of Notre Dame and distributed under a GNU Public License
 
 # June 26, 2018 - first cut
+# June 24, 2018 - lemmatized output
 
 
 # configure
@@ -38,7 +39,7 @@ id = os.path.basename( os.path.splitext( file )[ 0 ] )
 print( "id\tkeyword" )
 
 # process each keyword; can't get much simpler
-for keyword in keywords( text, ratio=RATIO, split=True ) : print( "\t".join( ( id, keyword ) ) )
+for keyword in keywords( text, ratio=RATIO, split=True, lemmatize=True ) : print( "\t".join( ( id, keyword ) ) )
 
 # done
 quit()

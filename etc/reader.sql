@@ -20,8 +20,7 @@ create table ent (
 -- keywords
 create table wrd (
     id      TEXT,
-    keyword TEXT,
-    lemma   TEXT
+    keyword TEXT
 );
 
 -- email addresses
