@@ -1,4 +1,4 @@
-#!/usr/local/anaconda/bin/python
+#!/export/python/bin/python
 
 # concordance.cgi - keyword-in-context index
 
@@ -10,7 +10,7 @@
 
 
 # configure
-FILE  = '../carrels/##ID##/etc/##ID##.txt';
+FILE  = '../txt/##ID##.txt';
 WIDTH = 80
 
 # require
@@ -30,7 +30,8 @@ input = cgi.FieldStorage()
 if "id" not in input or "word" not in input :
 
 	print( 'Content-Type: text/html\n' )
-	print ( '''<html><head><title>Distant Reader - Simple concordance</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/reader/etc/style.css"></head><body><div class="header"><h1>Distant Reader - Simple concordance</h1></div><div class="col-3 col-m-3 menu"><ul><li><a href="/reader/home.html">Home</a></li><li><a href="/reader/about/">About</a></li></ul></div><div class="col-9 col-m-9"><p>Given a Distant Reader identifier and an word, this form returns a list of lines from the given text containing the word -- a keyword in context search result.</p><form method="GET" action="/reader/cgi-bin/concordance.cgi">Identifier: <input type="text" name="id" value="ZebMBln" /><br />Word: <input type="text" name="word" value="love"/><br /><input type="submit" value="List lines" /></form><div class="footer"><p style="text-align: right">Eric Lease Morgan &amp; Team Distant Reader<br />August 7, 2018</p></div></div></body></html>''' )
+	print ( '''<html><head><title>Distant Reader - Simple concordance</title><base href="http://carrels.distantreader.org/library/homer/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="./etc/style.css"></head><body><div class="header"><h1>Distant Reader - Simple concordance</h1></div><div class="col-3 col-m-3 menu"><ul><li><a href="./about.html">Home</a></li><li><a href="/reader/about/">About</a></li></ul></div><div class="col-9 col-m-9"><p>Given a Distant Reader identifier and an word, this form returns a list of lines from the given text containing the word -- a keyword in context search result.</p><form method="GET" action="./cgi-bin/concordance.cgi">Identifier: <input type="text" name="id" value="homer-iliad-850_16" /><br />Word: <input type="text" name="word" value="love"/><br /><input type="submit" value="List lines" /></form><div class="footer"><p style="text-align: right">Eric Lease Morgan &amp; Team Distant Reader<br />August 7, 2018</p></div></div></body></html>''' )
 
 # process the input
 else :
@@ -63,7 +64,7 @@ else :
 			right = index._tokens[ i + 1 : i + WIDTH ]
 			lines.append( ' '.join([' '.join( left )[ -half : ], token, ' '.join( right )[ : half ] ] ) )
 
-		for i, line in enumerate( lines ) : print( "% 4d) %s" % ( i + 1, line.encode( 'utf-8' ) ) )
+		for i, line in enumerate( lines ) : print( "% 4d) %s" % ( i + 1, line ) )
 	
 	else : print( "%s not found." % ( word ) )
 		
