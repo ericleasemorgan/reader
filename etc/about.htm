@@ -1,11 +1,40 @@
 <html>
-<head><title>About your study carrel</title><head>
-<style>
-	table  { margin: auto; }
-	td     { text-align: center; }
-</style>
+<head>
+	<title>Distant Reader Study Carrel</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="##BASE##" />
+	<link rel="stylesheet" href="./etc/style.css">
+	<style>
+		.item { margin-bottom: 1em }
+	</style>
+</head>
+<body>
+<div class="header">
+	<h1>Distant Reader Study Carrel</h1>
+</div>
 
-<body style='margin: 7%'>
+<div class="col-3 col-m-3 menu">
+  <ul>
+		<li><a href="./about.html">Home</a></li>
+		<li><a href="./cgi-bin/search-solr.cgi">Search</a></li>
+		<ul>
+			<li><a href="./tsv/nouns.tsv">Nouns</a></li>
+			<li><a href="./tsv/pronouns.tsv">Pronouns</a></li>
+			<li><a href="./tsv/proper.tsv">Proper nouns</a></li>
+			<li><a href="./tsv/verbs.tsv">Verbs</a></li>
+			<li><a href="./tsv/adverbs.tsv">Adverbs</a></li>
+			<li><a href="./tsv/adjectives.tsv">Adjectives</a></li>
+			<li><a href="./tsv/noun-verb.tsv">Noun-verb</a></li>
+			<li><a href="./tsv/adjective-noun.tsv">Adjective-noun</a></li>
+			<li><a href="./tsv/unigrams.tsv">Unigrams</a></li>
+			<li><a href="./tsv/bigrams.tsv">Bigrams</a></li>
+			<li><a href="./tsv/trigrams.tsv">Trigrams</a></li>
+			<li><a href="./tsv/quadgrams.tsv">Quadgrams</a></li>
+		</ul>
+ </ul>
+</div>
+
+<div class="col-9 col-m-9">
 
 <h1>About your study carrel</h1>
 
@@ -169,10 +198,14 @@ Learning about a corpus's adjectives (<strong>##ADJECTIVES##</strong>) and adver
 [6] An unsupervised machine learning process, topic modeling is a very popular text mining operation. Assuming that a word is known by the company it keeps, topic modeling identifies sets of keywords denoted by their centrality in the text. Words which are both frequent as well as in close proximity to each other are considered significant. 
 </p>
 
-<hr />
-<p style='text-align: right'>Eric Lease Morgan &lt;emorgan@nd.edu&gt;<br />
-June 11, 2019
-</p>
+	<div class="footer">
+		<p style='text-align: right'>
+		Eric Lease Morgan<br />
+		June 14, 2019
+		</p>
+	</div>
+
+</div>
 
 </body>
 </html>

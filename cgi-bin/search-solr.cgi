@@ -227,7 +227,22 @@ sub template {
 
 <div class="col-3 col-m-3 menu">
   <ul>
-		<li><a href="./cgi-bin/search-solr.cgi">Home</a></li>
+		<li><a href="./about.html">Home</a></li>
+		<li><a href="./cgi-bin/search-solr.cgi">Search</a></li>
+		<ul>
+			<li><a href="./tsv/nouns.tsv">Nouns</a></li>
+			<li><a href="./tsv/pronouns.tsv">Pronouns</a></li>
+			<li><a href="./tsv/proper.tsv">Proper nouns</a></li>
+			<li><a href="./tsv/verbs.tsv">Verbs</a></li>
+			<li><a href="./tsv/adverbs.tsv">Adverbs</a></li>
+			<li><a href="./tsv/adjectives.tsv">Adjectives</a></li>
+			<li><a href="./tsv/noun-verb.tsv">Noun-verb</a></li>
+			<li><a href="./tsv/adjective-noun.tsv">Adjective-noun</a></li>
+			<li><a href="./tsv/unigrams.tsv">Unigrams</a></li>
+			<li><a href="./tsv/bigrams.tsv">Bigrams</a></li>
+			<li><a href="./tsv/trigrams.tsv">Trigrams</a></li>
+			<li><a href="./tsv/quadgrams.tsv">Quadgrams</a></li>
+		</ul>
  </ul>
 </div>
 
@@ -264,7 +279,7 @@ sub results_template {
 	return <<EOF
 <html>
 <head>
-	<title>Project Gutenberg - Search results</title>
+	<title>Distant Reader - Search results</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<base href="##BASE##" />
 	<link rel="stylesheet" href="./etc/style.css">
@@ -279,7 +294,22 @@ sub results_template {
 
 <div class="col-3 col-m-3 menu">
   <ul>
-		<li><a href="./cgi-bin/search-solr.cgi">Home</a></li>
+		<li><a href="./about.html">Home</a></li>
+		<li><a href="./cgi-bin/search-solr.cgi">Search</a></li>
+		<ul>
+			<li><a href="./tsv/nouns.tsv">Nouns</a></li>
+			<li><a href="./tsv/pronouns.tsv">Pronouns</a></li>
+			<li><a href="./tsv/proper.tsv">Proper nouns</a></li>
+			<li><a href="./tsv/verbs.tsv">Verbs</a></li>
+			<li><a href="./tsv/adverbs.tsv">Adverbs</a></li>
+			<li><a href="./tsv/adjectives.tsv">Adjectives</a></li>
+			<li><a href="./tsv/noun-verb.tsv">Noun-verb</a></li>
+			<li><a href="./tsv/adjective-noun.tsv">Adjective-noun</a></li>
+			<li><a href="./tsv/unigrams.tsv">Unigrams</a></li>
+			<li><a href="./tsv/bigrams.tsv">Bigrams</a></li>
+			<li><a href="./tsv/trigrams.tsv">Trigrams</a></li>
+			<li><a href="./tsv/quadgrams.tsv">Quadgrams</a></li>
+		</ul>
  </ul>
 </div>
 
