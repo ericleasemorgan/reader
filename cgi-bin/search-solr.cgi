@@ -9,8 +9,8 @@
 
 
 # configure
-use constant BASE       => 'http://carrels.distantreader.org/library/code4lib-journal/';
-use constant CARREL     => 'A686801809';
+use constant BASE       => 'http://carrels.distantreader.org/library/##SHORTNAME##/';
+use constant CARREL     => '##CARREL##';
 use constant FACETFIELD => ( 'facet_keyword', 'facet_person' );
 use constant ROWS       => 499;
 use constant SOLR       => 'http://localhost:8983/solr/carrels-reader';
@@ -227,22 +227,47 @@ sub template {
 
 <div class="col-3 col-m-3 menu">
   <ul>
-		<li><a href="./about.html">Home</a></li>
+		<li><a href="./">Home</a></li>
+		<li><a href="./about.html">About</a></li>
+		<li><hr /></li>
+
 		<li><a href="./cgi-bin/search-solr.cgi">Search</a></li>
-		<ul>
-			<li><a href="./tsv/nouns.tsv">Nouns</a></li>
-			<li><a href="./tsv/pronouns.tsv">Pronouns</a></li>
-			<li><a href="./tsv/proper.tsv">Proper nouns</a></li>
-			<li><a href="./tsv/verbs.tsv">Verbs</a></li>
-			<li><a href="./tsv/adverbs.tsv">Adverbs</a></li>
-			<li><a href="./tsv/adjectives.tsv">Adjectives</a></li>
-			<li><a href="./tsv/noun-verb.tsv">Noun-verb</a></li>
-			<li><a href="./tsv/adjective-noun.tsv">Adjective-noun</a></li>
-			<li><a href="./tsv/unigrams.tsv">Unigrams</a></li>
-			<li><a href="./tsv/bigrams.tsv">Bigrams</a></li>
-			<li><a href="./tsv/trigrams.tsv">Trigrams</a></li>
-			<li><a href="./tsv/quadgrams.tsv">Quadgrams</a></li>
-		</ul>
+		<li><a href="./cgi-bin/concordance.cgi">Concordance</a></li>
+		<li><hr /></li>
+		
+		<li><a href="./cache/">Cached files</a></li>
+		<li><a href="./txt/">Plain text files</a></li>
+		<li><hr /></li>
+		
+		<li><a href="./tsv/unigrams.tsv">Unigrams</a></li>
+		<li><a href="./tsv/bigrams.tsv">Bigrams</a></li>
+		<li><a href="./tsv/trigrams.tsv">Trigrams</a></li>
+		<li><a href="./tsv/quadgrams.tsv">Quadgrams</a></li>
+		<li><hr /></li>
+
+		<li><a href="./tsv/nouns.tsv">Nouns</a></li>
+		<li><a href="./tsv/pronouns.tsv">Pronouns</a></li>
+		<li><a href="./tsv/proper.tsv">Proper nouns</a></li>
+		<li><a href="./tsv/verbs.tsv">Verbs</a></li>
+		<li><a href="./tsv/adverbs.tsv">Adverbs</a></li>
+		<li><a href="./tsv/adjectives.tsv">Adjectives</a></li>
+		<li><hr /></li>
+
+		<li><a href="./tsv/noun-verb.tsv">Noun-verb</a></li>
+		<li><a href="./tsv/adjective-noun.tsv">Adjective-noun</a></li>
+		<li><hr /></li>
+
+		<li><a href="./pos/">Parts-of-speech files</a></li>
+		<li><a href="./ent/">Named-entity files</a></li>
+		<li><a href="./wrd/">Keyword files</a></li>
+		<li><a href="./bib/">Bibliographic files</a></li>
+		<li><a href="./adr/">Email address files</a></li>
+		<li><a href="./urls/">URL files</a></li>
+		<li><hr /></li>
+		
+		<li><a href="./study-carrel.zip">Whole study carrel</a></li>
+		<li><a href="./etc/report.txt">Ugly SQL report</a></li>
+
  </ul>
 </div>
 
@@ -294,22 +319,47 @@ sub results_template {
 
 <div class="col-3 col-m-3 menu">
   <ul>
-		<li><a href="./about.html">Home</a></li>
+		<li><a href="./">Home</a></li>
+		<li><a href="./about.html">About</a></li>
+		<li><hr /></li>
+
 		<li><a href="./cgi-bin/search-solr.cgi">Search</a></li>
-		<ul>
-			<li><a href="./tsv/nouns.tsv">Nouns</a></li>
-			<li><a href="./tsv/pronouns.tsv">Pronouns</a></li>
-			<li><a href="./tsv/proper.tsv">Proper nouns</a></li>
-			<li><a href="./tsv/verbs.tsv">Verbs</a></li>
-			<li><a href="./tsv/adverbs.tsv">Adverbs</a></li>
-			<li><a href="./tsv/adjectives.tsv">Adjectives</a></li>
-			<li><a href="./tsv/noun-verb.tsv">Noun-verb</a></li>
-			<li><a href="./tsv/adjective-noun.tsv">Adjective-noun</a></li>
-			<li><a href="./tsv/unigrams.tsv">Unigrams</a></li>
-			<li><a href="./tsv/bigrams.tsv">Bigrams</a></li>
-			<li><a href="./tsv/trigrams.tsv">Trigrams</a></li>
-			<li><a href="./tsv/quadgrams.tsv">Quadgrams</a></li>
-		</ul>
+		<li><a href="./cgi-bin/concordance.cgi">Concordance</a></li>
+		<li><hr /></li>
+		
+		<li><a href="./cache/">Cached files</a></li>
+		<li><a href="./txt/">Plain text files</a></li>
+		<li><hr /></li>
+		
+		<li><a href="./tsv/unigrams.tsv">Unigrams</a></li>
+		<li><a href="./tsv/bigrams.tsv">Bigrams</a></li>
+		<li><a href="./tsv/trigrams.tsv">Trigrams</a></li>
+		<li><a href="./tsv/quadgrams.tsv">Quadgrams</a></li>
+		<li><hr /></li>
+
+		<li><a href="./tsv/nouns.tsv">Nouns</a></li>
+		<li><a href="./tsv/pronouns.tsv">Pronouns</a></li>
+		<li><a href="./tsv/proper.tsv">Proper nouns</a></li>
+		<li><a href="./tsv/verbs.tsv">Verbs</a></li>
+		<li><a href="./tsv/adverbs.tsv">Adverbs</a></li>
+		<li><a href="./tsv/adjectives.tsv">Adjectives</a></li>
+		<li><hr /></li>
+
+		<li><a href="./tsv/noun-verb.tsv">Noun-verb</a></li>
+		<li><a href="./tsv/adjective-noun.tsv">Adjective-noun</a></li>
+		<li><hr /></li>
+
+		<li><a href="./pos/">Parts-of-speech files</a></li>
+		<li><a href="./ent/">Named-entity files</a></li>
+		<li><a href="./wrd/">Keyword files</a></li>
+		<li><a href="./bib/">Bibliographic files</a></li>
+		<li><a href="./adr/">Email address files</a></li>
+		<li><a href="./urls/">URL files</a></li>
+		<li><hr /></li>
+		
+		<li><a href="./study-carrel.zip">Whole study carrel</a></li>
+		<li><a href="./etc/report.txt">Ugly SQL report</a></li>
+
  </ul>
 </div>
 

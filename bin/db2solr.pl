@@ -11,7 +11,7 @@ use constant DRIVER   => 'SQLite';
 use constant SOLR     => 'http://localhost:8983/solr/carrels-reader';
 use constant QUERY    => 'SELECT * FROM bib ORDER BY id;';
 use constant TXT      => './txt';
-use constant CARREL   => 'A686801809';
+use constant CARREL   => '##CARREL##';
 
 # require
 use DBI;
