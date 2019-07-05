@@ -50,7 +50,7 @@ create table bib (
     flesch    FLOAT,
     summary   TEXT,
     title     TEXT,
-    creator   TEXT,
+    author    TEXT,
     date      TEXT,
     genre     TEXT
 );

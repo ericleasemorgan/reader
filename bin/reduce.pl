@@ -51,7 +51,7 @@ sub bib {
 	# prepare the database
 	my $sth = $dbh->prepare( "BEGIN TRANSACTION;" ) or die $DBI::errstr;
 	$sth->execute or die $DBI::errstr;
-	$sth = $dbh->prepare( "INSERT INTO bib ( 'id', 'words', 'sentences', 'flesch', 'summary' ) VALUES ( ?, ?, ?, ?, ? );" ) or die $DBI::errstr;
+	$sth = $dbh->prepare( "UPDATE bib SET words = '?', sentences = '?', flesch = '?', summary = '?' WHERE id is '?' " ) or die $DBI::errstr;
 
 	# open the given file
 	open FILE, " < $file" or die "Can't open $file ($!)\n";
@@ -69,7 +69,7 @@ sub bib {
 		my ( $id, $words, $sentences, $flesch, $summary ) = split( "\t", $_ );
 		$id      =~ s/'/''/g;
 		$summary =~ s/'/''/g;
-		$sth->execute( $id, $words, $sentences, $flesch, $summary ) or die $DBI::errstr;
+		$sth->execute( $words, $sentences, $flesch, $summary, $id ) or die $DBI::errstr;
 
 	}
 	

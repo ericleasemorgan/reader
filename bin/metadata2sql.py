@@ -11,6 +11,7 @@
 # require
 import sys
 import pandas as pd
+import os
 
 # sanity check
 if len( sys.argv ) != 2 :
@@ -45,23 +46,27 @@ metadata.set_index( 'file', inplace=True )
 # process each row
 for file, row in metadata.iterrows() :
 
-	# initialize record
-	print( "INSERT INTO bib ( 'id' ) VALUES ( '%s' );" % file )
+	# initialize id
+	id = os.path.splitext( file )[0]
+	print( "INSERT INTO bib ( 'id' ) VALUES ( '%s' );" % id )
 	
 	# author
 	if 'author' in metadata :
 		author = row[ 'author' ]
-		print( "UPDATE bib SET author = '%s' WHERE id is '%s';" % ( author, file ) )
+		author = author.replace( "'", "''" )
+		print( "UPDATE bib SET author = '%s' WHERE id is '%s';" % ( author, id ) )
 	
 	# title
 	if 'title' in metadata :
 		title = row[ 'title' ]
-		print( "UPDATE bib SET title = '%s' WHERE id is '%s';" % ( title, file ) )
+		title = title.replace( "'", "''" )
+		print( "UPDATE bib SET title = '%s' WHERE id is '%s';" % ( title, id ) )
 	
 	# date
 	if 'date' in metadata :
 		date = row[ 'date' ]
-		print( "UPDATE bib SET date = '%s' WHERE id is '%s';" % ( date, file ) )
+		date = date.replace( "'", "''" )
+		print( "UPDATE bib SET date = '%s' WHERE id is '%s';" % ( date, id ) )
 	
 	# delimit
 	print()

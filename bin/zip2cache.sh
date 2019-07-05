@@ -38,30 +38,42 @@ find tmp/input -name "*.doc"  | $PARALLEL --will-cite mv {} cache
 find tmp/input -name "*.docx" | $PARALLEL --will-cite mv {} cache
 find tmp/input -name "*.pptx" | $PARALLEL --will-cite mv {} cache
 
+# configure possible metadata file
+DIRECTORIES=( $(find ./tmp/input -type d) )
+DIRECTORY=${DIRECTORIES[1]}
+METADATA="$DIRECTORY/metadata.csv"
+
+# re-initialize bibliographics sql
+rm -rf ./tmp/bibliographics.sql
+
 # check for optional metadata file
-if [ -f 'tmp/input/metadata.csv' ]; then
+if [ -f $METADATA ]; then
 
 	# process metadata
-    $METADATA2SQL 'tmp/input/metadata.csv' > ./tmp/bibliographics.sql
+    $METADATA2SQL $METADATA > ./tmp/bibliographics.sql
 
+# initialize bib table
 else
 	
 	# process each file in the cache
-	for FILE in cache ; do
+	for FILE in cache/* ; do
     
-    	echo $FILE
+    	# parse
+    	FILE=$( basename $FILE )
+    	ID=$( echo ${FILE%.*} )
+    	
+		# output
+		echo "INSERT INTO bib ( 'id' ) VALUES ( '$ID' );" >> ./tmp/bibliographics.sql
     	
 	done
 
 fi
 
 # update the bibliographic table
-echo "BEGIN TRANSACTION;" > ./tmp/update-bibliographics.sql
+echo "BEGIN TRANSACTION;"     > ./tmp/update-bibliographics.sql
 cat ./tmp/bibliographics.sql >> ./tmp/update-bibliographics.sql
-echo "END TRANSACTION;" >> ./tmp/update-bibliographics.sql
+echo "END TRANSACTION;"      >> ./tmp/update-bibliographics.sql
 cat ./tmp/update-bibliographics.sql | sqlite3 $DB
-    
-
 
 # done
 exit

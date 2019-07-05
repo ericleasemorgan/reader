@@ -10,7 +10,6 @@
 # configure
 CARRELS='/export/reader/carrels'
 REDUCE='/export/reader/bin/reduce.pl'
-INITIALIZEDB='/export/reader/bin/initialize-database.sh'
 PARALLEL='/export/bin/parallel'
 
 # sanity check
@@ -25,7 +24,6 @@ NAME=$1
 # echo and do the work
 echo "$NAME" >&2
 
-$INITIALIZEDB "$CARRELS/$NAME"
 find "$CARRELS/$NAME" -name '*.pos' -exec $REDUCE "$CARRELS/$NAME" pos {} \;
 find "$CARRELS/$NAME" -name '*.ent' -exec $REDUCE "$CARRELS/$NAME" ent {} \;
 find "$CARRELS/$NAME" -name '*.wrd' -exec $REDUCE "$CARRELS/$NAME" wrd {} \;

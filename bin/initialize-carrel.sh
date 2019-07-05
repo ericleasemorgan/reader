@@ -13,6 +13,7 @@
 
 # configure
 CARRELS='/export/reader/carrels'
+INITIALIZEDB='/export/reader/bin/initialize-database.sh'
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -68,3 +69,7 @@ cp ../../etc/schema.xml           "./etc"
 cp ../../etc/stopwords.txt        "./etc"
 cp ../../etc/style.css            "./etc"
 cp ../../etc/tfidf-toolbox.pl     "./etc"
+
+$INITIALIZEDB "$CARRELS/$NAME"
+
+
