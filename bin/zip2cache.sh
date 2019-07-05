@@ -11,6 +11,8 @@
 # configure
 CARRELS='/export/reader/carrels'
 PARALLEL='/export/bin/parallel'
+METADATA2SQL='/export/reader/bin/metadata2sql.py'
+DB='./etc/reader.db'
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -35,6 +37,31 @@ find tmp/input -name "*.txt"  | $PARALLEL --will-cite mv {} cache
 find tmp/input -name "*.doc"  | $PARALLEL --will-cite mv {} cache
 find tmp/input -name "*.docx" | $PARALLEL --will-cite mv {} cache
 find tmp/input -name "*.pptx" | $PARALLEL --will-cite mv {} cache
+
+# check for optional metadata file
+if [ -f 'tmp/input/metadata.csv' ]; then
+
+	# process metadata
+    $METADATA2SQL 'tmp/input/metadata.csv' > ./tmp/bibliographics.sql
+
+else
+	
+	# process each file in the cache
+	for FILE in cache ; do
+    
+    	echo $FILE
+    	
+	done
+
+fi
+
+# update the bibliographic table
+echo "BEGIN TRANSACTION;" > ./tmp/update-bibliographics.sql
+cat ./tmp/bibliographics.sql >> ./tmp/update-bibliographics.sql
+echo "END TRANSACTION;" >> ./tmp/update-bibliographics.sql
+cat ./tmp/update-bibliographics.sql | sqlite3 $DB
+    
+
 
 # done
 exit
