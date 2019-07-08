@@ -12,6 +12,7 @@
 
 # configure
 TXT='txt';
+CACHE='cache'
 PARALLEL='/export/bin/parallel'
 
 # sanity check
@@ -32,9 +33,11 @@ export OMP_NUM_THREADS
 export OPENBLAS_NUM_THREADS
 export MKL_NUM_THREADS
 
-# submit the work and wait, submit some more
+# extract bibliographics
+find $CACHE -type f | $PARALLEL --will-cite /export/reader/bin/file2bib.sh {}      &
+
+# extract addresses, urls, and keywords
 find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2adr.sh {}      &
-find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2bib.sh {}      &
 find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2urls.sh {}     &
 find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2keywords.sh {} &
 wait

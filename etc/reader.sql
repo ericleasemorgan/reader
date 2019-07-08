@@ -46,12 +46,15 @@ create table url (
 create table bib (
     id        TEXT,
     words     INT,
-    sentences INT,
-    flesch    FLOAT,
+    sentence  INT,
+    flesch    INT,
     summary   TEXT,
     title     TEXT,
     author    TEXT,
     date      TEXT,
+    pages     INT,
+    extension TEXT,
+    mime      TEXT,
     genre     TEXT
 );
 

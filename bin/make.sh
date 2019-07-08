@@ -67,10 +67,9 @@ sleep 10
 # transform cache to plain text files
 $CACHE2TXT $NAME
 
-kill $PID
-
 # extract parts-of-speech, named entities, etc
 $MAP $NAME
+kill $PID
 
 # build the database
 $REDUCE $NAME

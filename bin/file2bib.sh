@@ -9,8 +9,8 @@
 # June 26, 2018 - first cut
 
 # configure
-FILE2BIB='./file2bib.py'
-BIB='./bib'
+FILE2BIB='/export/reader/bin/file2bib.py'
+BIB='bib'
 
 # set up environment
 export PYTHONIOENCODING=utf8
