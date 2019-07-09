@@ -36,12 +36,14 @@ while( my $bibliographics = $handle->fetchrow_hashref ) {
 	
 	# parse the easy stuff
 	my $bid       = $$bibliographics{ 'id' };
+	my $author    = $$bibliographics{ 'author' };
+	my $title     = $$bibliographics{ 'title' };
+	my $date      = $$bibliographics{ 'date' };
 	my $words     = $$bibliographics{ 'words' };
-	my $sentences = $$bibliographics{ 'sentences' };
+	my $sentence  = $$bibliographics{ 'sentence' };
 	my $summary   = $$bibliographics{ 'summary' };
-
-	# flesch
-	my $flesch = int( $$bibliographics{ 'flesch' } );
+	my $flesch    = $$bibliographics{ 'flesch' };
+	my $extension = $$bibliographics{ 'extension' };
 
 	# get and normalize the full text
 	my $fulltext = &slurp( "$txt/$bid.txt" );
@@ -67,27 +69,35 @@ while( my $bibliographics = $handle->fetchrow_hashref ) {
 	# debug; dump
 	warn "     carrel: $carrel\n";
 	warn "        bid: $bid\n";
+	warn "     author: $author\n";
+	warn "      title: $title\n";
+	warn "       date: $date\n";
 	warn "      words: $words\n";
-	warn "  sentences: $sentences\n";
+	warn "   sentence: $sentence\n";
 	warn "     flesch: $flesch\n";
 	warn "    summary: $summary\n";
+	warn "  extension: $extension\n";
 	warn " keyword(s): " . join( '; ', @keywords ) . "\n";
 	warn "  person(s): " . join( '; ', @persons ) . "\n";
 	#warn "  full text: $fulltext\n";
 	warn "\n";
 		
 	# create data
-	my $solr_bid            = WebService::Solr::Field->new( 'bid'       => $bid );
-	my $solr_carrel         = WebService::Solr::Field->new( 'carrel'    => $carrel );
-	my $solr_flesch         = WebService::Solr::Field->new( 'flesch'    => $flesch );
-	my $solr_fulltext       = WebService::Solr::Field->new( 'fulltext'  => $fulltext );
-	my $solr_sentences      = WebService::Solr::Field->new( 'sentences' => $sentences );
-	my $solr_summary        = WebService::Solr::Field->new( 'summary'   => $summary );
-	my $solr_words          = WebService::Solr::Field->new( 'words'     => $words );
+	my $solr_bid       = WebService::Solr::Field->new( 'bid'       => $bid );
+	my $solr_carrel    = WebService::Solr::Field->new( 'carrel'    => $carrel );
+	my $solr_flesch    = WebService::Solr::Field->new( 'flesch'    => $flesch );
+	my $solr_fulltext  = WebService::Solr::Field->new( 'fulltext'  => $fulltext );
+	my $solr_sentences = WebService::Solr::Field->new( 'sentences' => $sentence );
+	my $solr_summary   = WebService::Solr::Field->new( 'summary'   => $summary );
+	my $solr_words     = WebService::Solr::Field->new( 'words'     => $words );
+	my $solr_author    = WebService::Solr::Field->new( 'author'    => $author );
+	my $solr_title     = WebService::Solr::Field->new( 'title'     => $title );
+	my $solr_date      = WebService::Solr::Field->new( 'date'      => $date );
+	my $solr_extension = WebService::Solr::Field->new( 'extension' => $extension );
 
 	# fill a solr document with simple fields
 	my $doc = WebService::Solr::Document->new;
-	$doc->add_fields( $solr_bid, $solr_carrel, $solr_flesch, $solr_fulltext, $solr_sentences, $solr_summary, $solr_words );
+	$doc->add_fields( $solr_bid, $solr_carrel, $solr_flesch, $solr_fulltext, $solr_sentences, $solr_summary, $solr_words, $solr_author, $solr_title, $solr_date, $solr_extension );
 
 	# add complex fields
 	foreach ( @keywords ) { $doc->add_fields( ( WebService::Solr::Field->new( 'facet_keyword' => $_ ) ) ) }

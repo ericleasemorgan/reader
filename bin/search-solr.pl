@@ -5,13 +5,14 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # April 30, 2019 - first cut; based on earlier work
 # May    2, 2019 - added classification and files (urls)
+# July 8, 2019 - added author, title, and date
 
 
 # configure
 use constant FACETFIELD => ( 'facet_keyword', 'facet_person' );
 use constant SOLR       => 'http://localhost:8983/solr/carrels-reader';
 use constant TXT        => './txt';
-use constant CARREL     => 'plato';
+use constant CARREL     => 'A443285322';
 
 # require
 use strict;
@@ -61,6 +62,9 @@ for my $doc ( $response->docs ) {
 	# parse
 	my $bid       = $doc->value_for(  'bid' );
 	my $words     = $doc->value_for(  'words' );
+	my $author    = $doc->value_for(  'author' );
+	my $title     = $doc->value_for(  'title' );
+	my $date      = $doc->value_for(  'date' );
 	my $sentences = $doc->value_for(  'sentences' );
 	my $flesch    = $doc->value_for(  'flesch' );
 	my $summary   = $doc->value_for(  'summary' );
@@ -70,6 +74,9 @@ for my $doc ( $response->docs ) {
 	
 	# output
 	print "$bid\n";
+	print "     author: $author\n";
+	print "      title: $title\n";
+	print "       date: $date\n";
 	print "     summary: $summary\n";
 	print "  keyword(s): " . join( '; ', @keywords ), "\n";
 	print "  persons(s): " . join( '; ', @persons ), "\n";

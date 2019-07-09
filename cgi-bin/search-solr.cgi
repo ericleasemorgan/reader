@@ -14,7 +14,7 @@ use constant CARREL     => '##CARREL##';
 use constant FACETFIELD => ( 'facet_keyword', 'facet_person' );
 use constant ROWS       => 499;
 use constant SOLR       => 'http://localhost:8983/solr/carrels-reader';
-use constant TXT        => './txt';
+use constant CACHE      => './cache';
 
 # require
 use CGI;
@@ -26,7 +26,7 @@ use URI::Encode qw(uri_encode uri_decode);
 use HTML::Escape qw/escape_html/;
 
 # initialize
-my $txt    = TXT;
+my $cache  = CACHE;
 my $base   = BASE;
 my $carrel = CARREL;
 my $cgi    = CGI->new;
@@ -96,9 +96,13 @@ else {
 		# parse
 		my $bid       = $doc->value_for( 'bid' );
 		my $words     = $doc->value_for( 'words' );
+		my $author    = $doc->value_for( 'author' );
+		my $title     = $doc->value_for( 'title' );
+		my $date      = $doc->value_for( 'date' );
 		my $sentences = $doc->value_for( 'sentences' );
 		my $flesch    = $doc->value_for( 'flesch' );
-		my $filename  = "$txt/$bid.txt";
+		my $extension = $doc->value_for( 'extension' );
+		my $filename  = "$cache/$bid$extension";
 		my $summary   = $doc->value_for( 'summary' ) ? escape_html( $doc->value_for( 'summary' ) ) : $doc->value_for( 'summary' );
 		
 		# update the list of dids
@@ -125,6 +129,7 @@ else {
 		# create a item
 		my $item = &item( $summary, scalar( @keywords ), scalar( @keywords ) );
 		$item =~ s/##FILENAME##/$filename/eg;
+		$item =~ s/##TITLE##/$title/eg;
 		$item =~ s/##SUMMARY##/$summary/eg;
 		$item =~ s/##KEYWORDS##/join( '; ', @keywords )/eg;
 		$item =~ s/##SENTENCES##/$sentences/e;
@@ -194,7 +199,7 @@ sub item {
 	my $title    = shift;
 	my $summary  = shift;
 	my $keywords = shift;
-	my $item      = "<li class='item'><a href='##FILENAME##'>##FILENAME##</a><ul>";
+	my $item      = "<li class='item'><a href='##FILENAME##'>##TITLE##</a><ul>";
 	if ( $summary ) { $item .= "<li style='list-style-type:circle'><strong>summary:</strong> ##SUMMARY##</li>" }
 	if ( $keywords ) { $item .= "<li style='list-style-type:circle'><strong>keywords:</strong> ##KEYWORDS##</li>" }
 	$item      .= "<li style='list-style-type:circle'><strong>statistics:</strong> ##SENTENCES## (sentences); ##WORDS## (words); ##FLESCH## (Flesch)</li>";
