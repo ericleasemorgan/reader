@@ -52,7 +52,8 @@ sub bib {
 	# prepare the database
 	my $sth = $dbh->prepare( "BEGIN TRANSACTION;" ) or die $DBI::errstr;
 	$sth->execute or die $DBI::errstr;
-	$sth = $dbh->prepare( "INSERT INTO bib ( 'id', 'author', 'title', 'date', 'pages', 'extension', 'mime', 'words', 'sentence', 'flesch', 'summary' ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);" ) or die $DBI::errstr;
+	#$sth = $dbh->prepare( "INSERT INTO bib ( 'id', 'author', 'title', 'date', 'pages', 'extension', 'mime', 'words', 'sentence', 'flesch', 'summary' ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);" ) or die $DBI::errstr;
+	$sth = $dbh->prepare( "UPDATE bib SET author = ?, title = ?, date = ?, pages = ?, extension = ?, mime = ?, words = ?, sentence = ?, flesch = ?, summary = ? where id = ?;" ) or die $DBI::errstr;
 
 	# open the given file
 	open FILE, " < $file" or die "Can't open $file ($!)\n";
@@ -72,7 +73,7 @@ sub bib {
 		$summary =~ s/'/''/g;
 		$author  =~ s/'/''/g;
 		$title   =~ s/'/''/g;
-		$sth->execute( $id, $author, $title, $date, $pages, $extension, $mime, $words, $sentences, $flesch, $summary ) or die $DBI::errstr;
+		$sth->execute( $author, $title, $date, $pages, $extension, $mime, $words, $sentences, $flesch, $summary, $id ) or die $DBI::errstr;
 
 	}
 	

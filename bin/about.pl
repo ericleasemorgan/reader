@@ -79,7 +79,7 @@ if ( ! -e './figures/flesch-boxplot.png' )   { `../../bin/plot-flesch.sh boxplot
 
 # noun-verb
 `printf "noun\tverb\tfrequency\n" > ./tsv/noun-verb.tsv`;
-`./bin/query.sh ".mode tabs\nSELECT ( LOWER( t.token || char(9) || c.token )) AS sentence, COUNT( LOWER( t.token || ' ' || c.token ) ) AS frequency FROM pos AS t JOIN pos AS c ON c.tid=t.tid+1 AND c.sid=t.sid AND c.id=t.id WHERE t.lemma IN (select lemma from pos where pos like 'N%%' or pos like 'P%%' group by lemma order by count(lemma) desc) AND c.lemma in (select lemma from pos where pos like 'V%%' group by lemma order by count(lemma) desc) GROUP BY sentence ORDER BY frequency DESC, ( LOWER( t.token || ' ' || c.token ) );" >> ./tsv/noun-verb.tsv`;
+`./bin/query.sh ".mode tabs\nSELECT ( LOWER( t.token || char(9) || c.token )) AS sentence, COUNT( LOWER( t.token || ' ' || c.token ) ) AS frequency FROM pos AS t JOIN pos AS c ON c.tid=t.tid+1 AND c.sid=t.sid AND c.id=t.id WHERE t.lemma IN (select lemma from pos where pos like 'NN%%' or pos like 'PR%%' group by lemma order by count(lemma) desc limit 30) AND c.lemma in (select lemma from pos where pos like 'V%%' group by lemma order by count(lemma) desc limit 30) GROUP BY sentence ORDER BY frequency DESC, ( LOWER( t.token || ' ' || c.token ) );" >> ./tsv/noun-verb.tsv`;
 
 # adjective-noun
 `printf "adjective\tnoun\tfrequency\n" > ./tsv/adjective-noun.tsv`;

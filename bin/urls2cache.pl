@@ -9,7 +9,7 @@
 
 
 # configure
-use constant MIME    => ( 'application/xml' => 'xml', 'application/atom+xml' => 'xml', 'image/png' => 'png', 'application/rss+xml' => 'xml', 'text/xml' => 'xml', 'image/jpeg' => 'jpg', 'text/csv' => 'csv', 'text/plain' => 'txt', 'text/html' => 'html', 'image/gif' => 'gif', 'application/pdf' => 'pdf' );
+use constant MIME    => ( 'application/xml' => 'xml', 'application/atom+xml' => 'xml', 'image/png' => 'png', 'application/rss+xml' => 'xml', 'text/xml' => 'xml', 'image/jpeg' => 'jpg', 'text/csv' => 'csv', 'text/plain' => 'txt', 'text/html' => 'html', 'image/gif' => 'gif', 'application/pdf' => 'pdf', 'application/octet-stream' => 'ukn', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' => 'xlsx', 'application/vnd.openxmlformats-officedocument.presentationml.presentation' => 'pptx' );
 use constant TIMEOUT => 10;
 
 # require

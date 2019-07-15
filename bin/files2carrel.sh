@@ -29,7 +29,7 @@ CACHE='cache';
 CARREL2ZIP='/export/reader/bin/carrel2zip.pl'
 INITIALIZECARREL='/export/reader/bin/initialize-carrel.sh'
 MAKE='/export/reader/bin/make.sh'
-
+DB='./etc/reader.db'
 
 # create a study carrel
 echo "Creating study carrel named $NAME" >&2
@@ -40,6 +40,24 @@ $INITIALIZECARREL $NAME
 echo "Building cache" >&2
 echo "" >&2
 find ./ -name "*.ukn" -exec cp {} "$CACHE" \;
+
+# process each file in the cache
+for FILE in cache/* ; do
+
+	# parse
+	FILE=$( basename $FILE )
+	ID=$( echo ${FILE%.*} )
+	
+	# output
+	echo "INSERT INTO bib ( 'id' ) VALUES ( '$ID' );" >> ./tmp/bibliographics.sql
+	
+done
+
+# update the bibliographic table
+echo "BEGIN TRANSACTION;"     > ./tmp/update-bibliographics.sql
+cat ./tmp/bibliographics.sql >> ./tmp/update-bibliographics.sql
+echo "END TRANSACTION;"      >> ./tmp/update-bibliographics.sql
+cat ./tmp/update-bibliographics.sql | sqlite3 $DB
 
 # build the carrel; the magic happens here
 echo "Building study carrel named $NAME" >&2

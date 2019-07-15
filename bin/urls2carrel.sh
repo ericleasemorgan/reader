@@ -36,6 +36,7 @@ TMP="$CARRELS/$NAME/tmp"
 MAKE='/export/reader/bin/make.sh'
 CARREL2ZIP='/export/reader/bin/carrel2zip.pl'
 LOG="$CARRELS/$NAME/log"
+DB='./etc/reader.db'
 
 # create a study carrel
 echo "Creating study carrel named $NAME" >&2
@@ -46,16 +47,23 @@ $INITIALIZECARREL $NAME
 echo "Processing each URL in $TMP/$NAME.txt" >&2
 cat "./$FILE" | /export/bin/parallel $URL2CACHE {} "$CACHE"
 
-# process each line from input; harvest & cache
-#while read URL; do
-#
-#    # debug and do the work
-#    echo "Caching $URL to $CACHE" >&2
-#   $URL2CACHE $URL "$CACHE"
-#    sleep 1
-#    
-#done < "./$FILE"
-#echo "" >&2
+# process each file in the cache
+for FILE in cache/* ; do
+
+	# parse
+	FILE=$( basename $FILE )
+	ID=$( echo ${FILE%.*} )
+	
+	# output
+	echo "INSERT INTO bib ( 'id' ) VALUES ( '$ID' );" >> ./tmp/bibliographics.sql
+	
+done
+
+# update the bibliographic table
+echo "BEGIN TRANSACTION;"     > ./tmp/update-bibliographics.sql
+cat ./tmp/bibliographics.sql >> ./tmp/update-bibliographics.sql
+echo "END TRANSACTION;"      >> ./tmp/update-bibliographics.sql
+cat ./tmp/update-bibliographics.sql | sqlite3 $DB
 
 # build the carrel; the magic happens here
 echo "Building study carrel named $NAME" >&2

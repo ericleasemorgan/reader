@@ -70,6 +70,7 @@ cp ../../etc/stopwords.txt        "./etc"
 cp ../../etc/style.css            "./etc"
 cp ../../etc/tfidf-toolbox.pl     "./etc"
 
+echo "Initializing database" >&2
 $INITIALIZEDB "$CARRELS/$NAME"
 
 

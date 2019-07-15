@@ -47,7 +47,7 @@ METADATA="$DIRECTORY/metadata.csv"
 rm -rf ./tmp/bibliographics.sql
 
 # check for optional metadata file
-if [ -f $METADATA ]; then
+if [[ -f $METADATA ]]; then
 
 	# process metadata
     $METADATA2SQL $METADATA > ./tmp/bibliographics.sql
