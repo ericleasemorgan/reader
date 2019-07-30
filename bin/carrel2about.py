@@ -14,7 +14,7 @@
 CLOUD      = '/export/reader/bin/cloud.py'
 CLOUDCOUNT = 150
 CORPUS     = './etc/reader.txt'
-COUNT      = 10
+COUNT      = 50
 DATABASE   = './etc/reader.db'
 DIRECTORY  = './txt'
 NGRAMS     = '/export/reader/bin/ngrams.pl'
@@ -244,13 +244,14 @@ if ( not os.path.exists( './tsv/unigrams.tsv' ) ) :
 if ( not os.path.exists( './figures/unigrams.png' ) ) :	
 	data = unigrams.split( '\n' )
 	handle   = open( './tmp/unigrams.tsv', 'w' )
-	handle.write( '\n'.join( data[ 0:CLOUDCOUNT ] ) ) 
+	handle.write( '\n'.join( unigrams[ 0:CLOUDCOUNT ] ) ) 
 	handle.close()
 	subprocess.run( [ CLOUD, './tmp/unigrams.tsv', 'white', './figures/unigrams.png' ] )
-foobar = []
-for unigram in unigrams.split( '\n' ) :
+data     = unigrams
+unigrams = []
+for unigram in data.split( '\n' ) :
 	fields = unigram.split( '\t' )
-	foobar.append( fields[ 0 ] )
+	unigrams.append( fields[ 0 ] )
 	
 # bigrams
 bigrams = subprocess.check_output( [ NGRAMS, CORPUS, '2' ] ).decode( 'utf-8' )
@@ -265,6 +266,11 @@ if ( not os.path.exists( './figures/bigrams.png' ) ) :
 	handle.write( '\n'.join( bigrams[ 0:CLOUDCOUNT ] ) ) 
 	handle.close()
 	subprocess.run( [ CLOUD,  './tmp/bigrams.tsv', 'white', './figures/bigrams.png' ] )
+data     = bigrams
+bigrams = []
+for bigram in data.split( '\n' ) :
+	fields = bigram.split( '\t' )
+	bigrams.append( fields[ 0 ] )
 
 # trigrams
 if ( not os.path.exists( './tsv/trigrams.tsv' ) ) :
@@ -314,11 +320,46 @@ sys.stderr.write( '\n' )
 
 # open the template and do the substitutions
 with open( TEMPLATE, 'r' ) as handle : html = handle.read()
-html = html.replace( '##NUMBEROFITEMS##', str( numberOfItems ) )
-html = html.replace( '##SUMOFWORDS##', str( sumOfWords ) )
-html = html.replace( '##AVERAGESIZEINWORDS##', str( averageSizeInWords)  )
+html = html.replace( '##NUMBEROFITEMS##',          str( numberOfItems ) )
+html = html.replace( '##SUMOFWORDS##',             str( sumOfWords ) )
+html = html.replace( '##AVERAGESIZEINWORDS##',     str( averageSizeInWords)  )
 html = html.replace( '##AVERAGEREADABILITSCORE##', str( averageReadabilityScore ) )
-html = html.replace( '##FREQUENTUNIGRAMS##', ', '.join( foobar[ 0:25 ] ) )
+html = html.replace( '##FREQUENTUNIGRAMS##',       ', '.join( unigrams[ 0:50 ] ) )
+html = html.replace( '##FREQUENTBIGRAMS##',        ', '.join( bigrams[ 0:50 ] ) )
+html = html.replace( '##KEYWORDS##',               ', '.join( keywords ) )
+html = html.replace( '##NOUNS##',                  ', '.join( nouns ) )
+html = html.replace( '##VERBS##',                  ', '.join( verbs ) )
+html = html.replace( '##PROPER##',                 ', '.join( properNouns ) )
+html = html.replace( '##PRONOUNS##',               ', '.join( pronouns ) )
+html = html.replace( '##ADJECTIVES##',             ', '.join( adjectives ) )
+html = html.replace( '##ADVERBS##',                ', '.join( adverbs ) )
+html = html.replace( '##TOPICSSINGLEWORD##',       topicSingleWords[ 0 ] )
+html = html.replace( '##TOPICSSINGLEFILE##',       topicSingleFiles[ 0 ][ 0 ] )
+html = html.replace( '##TOPICSSINGLETITLE##',      topicSingleTitles[ 0 ][ 0 ] )
+html = html.replace( '##TOPICSTRIPLEWORD01##',     topicTripleWords[ 0 ] )
+html = html.replace( '##TOPICSTRIPLEWORD02##',     topicTripleWords[ 1 ] )
+html = html.replace( '##TOPICSTRIPLEWORD03##',     topicTripleWords[ 2 ] )
+html = html.replace( '##TOPICSTRIPLEFILE01##',     topicTripleFiles[ 0 ][ 0 ] )
+html = html.replace( '##TOPICSTRIPLEFILE02##',     topicTripleFiles[ 1 ][ 0 ] )
+html = html.replace( '##TOPICSTRIPLEFILE03##',     topicTripleFiles[ 2 ][ 0 ] )
+html = html.replace( '##TOPICSTRIPLETITLE01##',    topicTripleTitles[ 0 ][ 0 ] )
+html = html.replace( '##TOPICSTRIPLETITLE02##',    topicTripleTitles[ 1 ][ 0 ] )
+html = html.replace( '##TOPICSTRIPLETITLE03##',    topicTripleTitles[ 2 ][ 0 ] )
+html = html.replace( '##TOPICSQUINWORDS01##',      ', '.join( topicQuintupleWords[ 0 ].split( ' ' ) ) )
+html = html.replace( '##TOPICSQUINWORDS02##',      ', '.join( topicQuintupleWords[ 1 ].split( ' ' ) ) )
+html = html.replace( '##TOPICSQUINWORDS03##',      ', '.join( topicQuintupleWords[ 2 ].split( ' ' ) ) )
+html = html.replace( '##TOPICSQUINWORDS04##',      ', '.join( topicQuintupleWords[ 3 ].split( ' ' ) ) )
+html = html.replace( '##TOPICSQUINWORDS05##',      ', '.join( topicQuintupleWords[ 4 ].split( ' ' ) ) )
+html = html.replace( '##TOPICSQUINFILE01##',       topicQuintupleFiles[ 0 ][ 0 ] )
+html = html.replace( '##TOPICSQUINFILE02##',       topicQuintupleFiles[ 1 ][ 0 ] )
+html = html.replace( '##TOPICSQUINFILE03##',       topicQuintupleFiles[ 2 ][ 0 ] )
+html = html.replace( '##TOPICSQUINFILE04##',       topicQuintupleFiles[ 3 ][ 0 ] )
+html = html.replace( '##TOPICSQUINFILE05##',       topicQuintupleFiles[ 4 ][ 0 ] )
+html = html.replace( '##TOPICSQUINTITLE01##',      topicQuintupleTitles[ 0 ][ 0 ] )
+html = html.replace( '##TOPICSQUINTITLE02##',      topicQuintupleTitles[ 1 ][ 0 ] )
+html = html.replace( '##TOPICSQUINTITLE03##',      topicQuintupleTitles[ 2 ][ 0 ] )
+html = html.replace( '##TOPICSQUINTITLE04##',      topicQuintupleTitles[ 3 ][ 0 ] )
+html = html.replace( '##TOPICSQUINTITLE05##',      topicQuintupleTitles[ 4 ][ 0 ] )
 
 # output and done
 print( html )
