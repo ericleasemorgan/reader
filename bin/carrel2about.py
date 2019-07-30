@@ -7,6 +7,7 @@
 
 # June 11, 2019 - first documentation
 # July 21, 2019 - switching to Python
+# July 30, 2019 - hacking at PEARC '19
 
 
 # configure
@@ -20,6 +21,7 @@ NGRAMS     = '/export/reader/bin/ngrams.pl'
 PLOTFLESCH = '/export/reader/bin/plot-flesch.sh'
 PLOTSIZES  = '/export/reader/bin/plot-sizes.sh'
 TOPICMODEL = '/export/reader/bin/topic-model.py'
+TEMPLATE   = './etc/about.htm'
 
 # require
 from sqlalchemy import create_engine
@@ -240,12 +242,16 @@ if ( not os.path.exists( './tsv/unigrams.tsv' ) ) :
 	handle.write( unigrams ) 
 	handle.close()
 if ( not os.path.exists( './figures/unigrams.png' ) ) :	
-	unigrams = unigrams.split( '\n' )
+	data = unigrams.split( '\n' )
 	handle   = open( './tmp/unigrams.tsv', 'w' )
-	handle.write( '\n'.join( unigrams[ 0:CLOUDCOUNT ] ) ) 
+	handle.write( '\n'.join( data[ 0:CLOUDCOUNT ] ) ) 
 	handle.close()
 	subprocess.run( [ CLOUD, './tmp/unigrams.tsv', 'white', './figures/unigrams.png' ] )
-
+foobar = []
+for unigram in unigrams.split( '\n' ) :
+	fields = unigram.split( '\t' )
+	foobar.append( fields[ 0 ] )
+	
 # bigrams
 bigrams = subprocess.check_output( [ NGRAMS, CORPUS, '2' ] ).decode( 'utf-8' )
 if ( not os.path.exists( './tsv/bigrams.tsv' ) ) :
@@ -305,3 +311,15 @@ sys.stderr.write( '  five topics; three dimensions: ' + '; '.join( topicQuintupl
 sys.stderr.write( '                        file(s): ' + ', '.join( [ '; '.join( files ) for files in topicQuintupleFiles ] )     + '\n' )
 sys.stderr.write( '                      titles(s): ' + ' | '.join( [ '; '.join( titles ) for titles in topicQuintupleTitles ] ) + '\n' )
 sys.stderr.write( '\n' )
+
+# open the template and do the substitutions
+with open( TEMPLATE, 'r' ) as handle : html = handle.read()
+html = html.replace( '##NUMBEROFITEMS##', str( numberOfItems ) )
+html = html.replace( '##SUMOFWORDS##', str( sumOfWords ) )
+html = html.replace( '##AVERAGESIZEINWORDS##', str( averageSizeInWords)  )
+html = html.replace( '##AVERAGEREADABILITSCORE##', str( averageReadabilityScore ) )
+html = html.replace( '##FREQUENTUNIGRAMS##', ', '.join( foobar[ 0:25 ] ) )
+
+# output and done
+print( html )
+exit()
