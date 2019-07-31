@@ -1,0 +1,29 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" language="javascript" src="../js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" class="init">
+		$(document).ready(function() { $('#tsv').DataTable( {
+        "order": [[ 1, "desc" ]],
+        "pageLength": 100
+    } ); } );
+	</script>
+</head>
+<body style='margin: 3%' >
+<h1>TSV</h1>
+<p>This is a TSV file.</p>
+
+<table id="tsv" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>item</th>
+                <th>frequency</th>
+            </tr>
+        </thead>
+        <tbody>
+        ##ROWS##
+        </tbody>
+    </table>
+</body>
+</html>
