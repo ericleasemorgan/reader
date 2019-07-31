@@ -238,7 +238,7 @@ if ( not os.path.exists( './tsv/verbs.tsv' ) ) :
 unigrams = subprocess.check_output( [ NGRAMS, CORPUS, '1' ] ).decode( 'utf-8' )
 if ( not os.path.exists( './tsv/unigrams.tsv' ) ) :
 	handle = open( './tsv/unigrams.tsv', 'w' ) 
-	handle.write( "unigram\tfrequecy\n" ) 
+	handle.write( "unigram\tfrequency\n" ) 
 	handle.write( unigrams ) 
 	handle.close()
 if ( not os.path.exists( './figures/unigrams.png' ) ) :	
@@ -261,7 +261,7 @@ unigramfiles = unigramfiles.rstrip().split( '\n' )
 bigrams = subprocess.check_output( [ NGRAMS, CORPUS, '2' ] ).decode( 'utf-8' )
 if ( not os.path.exists( './tsv/bigrams.tsv' ) ) :
 	handle = open( './tsv/bigrams.tsv', 'w' ) 
-	handle.write( "bigram\tfrequecy\n" ) 
+	handle.write( "bigram\tfrequency\n" ) 
 	handle.write( bigrams ) 
 	handle.close() 
 if ( not os.path.exists( './figures/bigrams.png' ) ) :	
@@ -283,14 +283,14 @@ bigramfiles = bigramfiles.rstrip().split( '\n' )
 # trigrams
 if ( not os.path.exists( './tsv/trigrams.tsv' ) ) :
 	handle = open( './tsv/trigrams.tsv', 'w' ) 
-	handle.write( "trigram\tfrequecy\n" ) 
+	handle.write( "trigram\tfrequency\n" ) 
 	handle.write( subprocess.check_output( [ NGRAMS, CORPUS, '3' ] ).decode( 'utf-8' ) ) 
 	handle.close() 
 
 # quadgrams
 if ( not os.path.exists( './tsv/quadgrams.tsv' ) ) :
 	handle = open( './tsv/quadgrams.tsv', 'w' ) 
-	handle.write( "quadgrams\tfrequecy\n" ) 
+	handle.write( "quadgrams\tfrequency\n" ) 
 	handle.write( subprocess.check_output( [ NGRAMS, CORPUS, '4' ] ).decode( 'utf-8' ) ) 
 	handle.close() 
 
