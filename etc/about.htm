@@ -1,236 +1,351 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-	<title>Distant Reader Study Carrel</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<base href="##BASE##" />
-	<link rel="stylesheet" href="./etc/style.css">
-	<style>
-		.item { margin-bottom: 1em }
-	</style>
+
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Distant Reader</title>
+
+   <!-- Bootstrap CSS files-->
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+
+   <!-- jQuery Javascript Library -->
+   <script src="js/jquery.min.js"></script><!-- Bootstrap Library -->
+   <script src="js/bootstrap.min.js"></script>
+
+   <!-- Local Javascript add on -->
+   <script src="js/main.js" type="text/javascript"></script>
+
+   <!-- Google Open Sans web font -->
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
+
+   <!-- Font Awesome Web Icons -->
+   <link rel="stylesheet" href="css/font-awesome.min.css">
+
+   <!-- custom local css file -->
+   <link rel="stylesheet" href="css/main.css">
+
 </head>
-<body>
-<div class="header">
-	<h1>Distant Reader Study Carrel</h1>
-</div>
 
-<div class="col-3 col-m-3 menu">
-  <ul>
-		<li><a href="./">Home</a></li>
-		<li><a href="./about.html">About</a></li>
-		<li><hr /></li>
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="40">
 
-		<li><a href="./cgi-bin/search-solr.cgi">Search</a></li>
-		<li><a href="./cgi-bin/concordance.cgi">Concordance</a></li>
-		<li><hr /></li>
-		
-		<li><a href="./cache/">Cached files</a></li>
-		<li><a href="./txt/">Plain text files</a></li>
-		<li><hr /></li>
-		
-		<li><a href="./tsv/unigrams.tsv">Unigrams</a></li>
-		<li><a href="./tsv/bigrams.tsv">Bigrams</a></li>
-		<li><a href="./tsv/trigrams.tsv">Trigrams</a></li>
-		<li><a href="./tsv/quadgrams.tsv">Quadgrams</a></li>
-		<li><hr /></li>
+   <!-- Navbar -->
+   <nav class="navbar yamm navbar-inverse navbar-fixed-top">
+      <div class="container">
+         <!-- Brand and toggle get grouped for better mobile display -->
+         <div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
+                  class="icon-bar"></span><span class="icon-bar"></span></button>
+            <h1><a class="navbar-brand" href="index.html">Distant Reader</a></h1>
+         </div> <!-- Collect the nav links, forms, and other content for toggling -->
+         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
 
-		<li><a href="./tsv/nouns.tsv">Nouns</a></li>
-		<li><a href="./tsv/pronouns.tsv">Pronouns</a></li>
-		<li><a href="./tsv/proper.tsv">Proper nouns</a></li>
-		<li><a href="./tsv/verbs.tsv">Verbs</a></li>
-		<li><a href="./tsv/adverbs.tsv">Adverbs</a></li>
-		<li><a href="./tsv/adjectives.tsv">Adjectives</a></li>
-		<li><hr /></li>
-
-		<li><a href="./tsv/noun-verb.tsv">Noun-verb</a></li>
-		<li><a href="./tsv/adjective-noun.tsv">Adjective-noun</a></li>
-		<li><hr /></li>
-
-		<li><a href="./pos/">Parts-of-speech files</a></li>
-		<li><a href="./ent/">Named-entity files</a></li>
-		<li><a href="./wrd/">Keyword files</a></li>
-		<li><a href="./bib/">Bibliographic files</a></li>
-		<li><a href="./adr/">Email address files</a></li>
-		<li><a href="./urls/">URL files</a></li>
-		<li><hr /></li>
-		
-		<li><a href="./study-carrel.zip">Whole study carrel</a></li>
-		<li><a href="./etc/report.txt">Ugly SQL report</a></li>
-
- </ul>
-</div>
-
-<div class="col-9 col-m-9">
-
-<h1>About your study carrel</h1>
-
-<p>
-This page outlines the breadth & depth of your "study carrel" -- the results & analysis of your Distant Reader submission. Peruse the content of this page, and then consider learning how to dig deeper by reading the Distant Reader Study Carrel Cookbook. If you want "just the facts", then consider reading this text's synopsis. 
-</p>
+               <li class="dropdown" id="grammar-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grammar <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                     <li><a href="noun-verb.html">Noun – Verb</a></li>
+                     <li><a href="adjective-noun.html">Adjective – Noun</a></li>
+                     <li><a href="questions.html">Questions</a></li>
+                  </ul>
+               </li>
+               <li class="dropdown" id="grams-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grams <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                     <li><a href="unigram.html">Uni</a></li>
+                     <li><a href="bigram.html">Bi</a></li>
+                     <li><a href="trigram.html">Tri</a></li>
+                     <li><a href="quadgram.html">Quad</a></li>
+                  </ul>
+               </li>
+               <li class="dropdown" id="pos-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">POS <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                     <li><a href="nouns.html">Nouns</a></li>
+                     <li><a href="verbs.html">Verbs</a></li>
+                     <li><a href="adjectives.html">Adjectives</a></li>
+                     <li><a href="adverbs.html">Adverbs</a></li>
+                  </ul>
+               </li>
+               <li class="dropdown" id="named-entities-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Named Entities <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                     <li><a href="people.html">People</a></li>
+                     <li><a href="places.html">Places</a></li>
+                     <li><a href="religions.html">Religions</a></li>
+                     <li><a href="dollar.html">Dollar Amounts</a></li>
+                  </ul>
+               </li>
+               <li class="dropdown" id="miscellaneous-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Other <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                     <li><a href="keywords.html">Keywords</a></li>
+                     <li><a href="emails.html">Emails</a></li>
+                     <li><a href="urls.html">URLs</a></li>
+                  </ul>
+               </li>
+            </ul>
+         </div><!-- /.navbar-collapse -->
+      </div>
+   </nav>
 
 
-<h2>Size &amp; scope</h2>
 
-<p>
-First, the simple things. Your study carrel was created through the submission of a [SINGLE URL|FILE OF URLS|FILE FROM YOUR COMPUTER|ZIP FILE]. This ultimately resulted in a <strong>collection of ##NUMBEROFITEMS## item(s)</strong>. The original versions of these items have been saved in a <a href='./cache'>cache</a>, and each of them have been transformed &amp; saved as a <a href='./txt'>set of plain text files</a>. All of the following analysis has been done against these plain text files.
-</p>
+   <div class="container">
 
-<p>
-Your study carrel is <strong>##SUMOFWORDS## words</strong> long. [0] Each item in your study carrel is, on average, <strong>##AVERAGESIZEINWORDS## words long</strong>. [1] If you dig deeper, then you might want to save yourself some time by reading a shorter item. On the other hand, if your desire is for more detail, then you might consider reading a longer item. The following histograms and box plots illustrate the overall size of your study carrel.</p>
+      <div class="row push-down-4">
+         <nav class="col-sm-3" id="myScrollspy">
+            <ul class="nav nav-pills nav-stacked">
 
-<table>
-	<tr>
-	<td><a href='./figures/sizes-histogram.png'><img width='100%' src='./figures/sizes-histogram.png' /></a></td>
-	<td><a href='./figures/sizes-boxplot.png'><img width='100%' src='./figures/sizes-boxplot.png' /></a></td>
-	</tr>
-</table>
+               <li class="active"><a class="dr-smooth-scroll" href="#size-scope">Size &amp; Scope</a></li>
+               <li><a class="dr-smooth-scroll" href="#readability">Readability</a></li>
+               <li><a class="dr-smooth-scroll" href="#word-frequencies">Word Frequencies</a></li>
+               <li><a class="dr-smooth-scroll" href="#keywords">Keywords</a></li>
+               <li><a class="dr-smooth-scroll" href="#topic-modeling">Topic Modeling</a></li>
+               <li><a class="dr-smooth-scroll" href="#noun-verbs">Nouns &amp; Verbs</a></li>
+               <li><a class="dr-smooth-scroll" href="#proper-nouns">Proper Nouns &amp; Pronouns</a></li>
+               <li><a class="dr-smooth-scroll" href="#adjectives-adverbs">Adjectives &amp; Adverbs</a></li>
+
+            </ul>
+         </nav>
+         <div class="col-sm-9">
+            <div>
+               <h1 id="page-header">Basic Reports</h1>
+               <hr>
+            </div>
+            <div class="dr-subsection" id="size-scope">
+               <h2>Size &amp; Scope</h2>
+			   <p>
+			   First, the simple things. Your study carrel was created through the submission of a [SINGLE URL|FILE OF URLS|FILE FROM YOUR COMPUTER|ZIP FILE]. This ultimately resulted in a collection of <strong>##NUMBEROFITEMS## item(s)</strong>. The original versions of these items have been saved in a <a href='./cache'>cache</a>, and each of them have been transformed &amp; saved as a <a href='./txt'>set of plain text files</a>. All of the following analysis has been done against these plain text files.
+			   </p>
+
+			   <p>
+			   Your study carrel is <strong>##SUMOFWORDS## words</strong> long. [0] Each item in your study carrel is, on average, <strong>##AVERAGESIZEINWORDS## words long</strong>. [1] If you dig deeper, then you might want to save yourself some time by reading a shorter item. On the other hand, if your desire is for more detail, then you might consider reading a longer item. The following illustrate the overall size of your study carrel.
+			   </p>
+
+               <div class="row image-row">
+                  <div class="col-sm-6">
+                     <figure>
+                        <img class="img img-responsive center-block" src="./figures/sizes-histogram.png" alt="left image">
+                        <figcaption>histogram of sizes</figcaption>
+                     </figure>
+                  </div>
+                  <div class="col-sm-6">
+                     <figure>
+                        <img class="img img-responsive center-block" src="./figures/sizes-boxplot.png" alt="left image">
+                        <figcaption>box plot of sizes</figcaption>
+                     </figure>
+                  </div>
+               </div>
+               <!-- .row -->
+
+            </div>
+            <div class="dr-subsection" id="readability">
+               <h2>Readability</h2>
+			   <p>
+			   On a scale from 0 to 100, where 0 is very difficult and 100 is very easy, your documents have an <strong>average readability score of ##AVERAGEREADABILITSCORE##</strong>. [2] Consequently, if you want to read something more simplistic, then consider a document with a higher score. If you want something more specialized, then consider something with a lower score. The following illustrate the overall readability of your study carrel.
+			   </p>
+
+               <div class="row image-row">
+                  <div class="col-sm-6">
+                     <figure>
+                        <img class="img img-responsive center-block" src="./figures/flesch-histogram.png" alt="left image">
+                        <figcaption>histogram of readability</figcaption>
+                     </figure>
+                  </div>
+                  <div class="col-sm-6">
+                     <figure>
+                        <img class="img img-responsive center-block" src="./figures/flesch-boxplot.png" alt="left image">
+                        <figcaption>box plot of readability</figcaption>
+                     </figure>
+                  </div>
+               </div>
+               <!-- .row -->
+
+            </div>
+            <div class="dr-subsection" id="word-frequencies">
+               <h2>Word Frequencies</h2>
+			   <p>By merely counting &amp; tabulating the frequency of individual words or phrases, you can begin to get an understanding of your carrel's "aboutness". Excluding "stop words", some of the more frequent words include: [3]</p>
+			   <p><blockquote>##FREQUENTUNIGRAMS##</blockquote></p>
+			   <p>Using the three most frequent words, the three files containing all of those words the most are <strong><a href='##FREQUENTUNIGRAMFILE01##'>##FREQUENTUNIGRAMFILE01##</a></strong>, <strong><a href='##FREQUENTUNIGRAMFILE02##'>##FREQUENTUNIGRAMFILE02##</a></strong>, and <strong><a href='##FREQUENTUNIGRAMFILE03##'>##FREQUENTUNIGRAMFILE03##</a></strong>.</p>
+			   <p>The most frequent two-word phrases (bigrams) include:</p>
+			   <p><blockquote>##FREQUENTBIGRAMS##</blockquote></p>
+			   <p>And the three file that use all of the three most frequent phrases are <strong><a href='##FREQUENTBIGRAMFILE01##'>##FREQUENTBIGRAMFILE01##</a></strong> <strong><a href='##FREQUENTBIGRAMFILE02##'>##FREQUENTBIGRAMFILE02##</a></strong>, and <strong><a href='##FREQUENTBIGRAMFILE03##'>##FREQUENTBIGRAMFILE03##</a></strong>.</p>
+
+			   <p>While often deemed superficial or sophomoric, rudimentary frequencies and their associated "word clouds" can be quite insightful:
+			   </p>
+
+               <div class="row image-row">
+                  <div class="col-sm-6">
+                     <figure>
+                        <img class="img img-responsive center-block" src="./figures/unigrams.png" alt="left image">
+                        <figcaption>unigrams</figcaption>
+                     </figure>
+                  </div>
+                  <div class="col-sm-6">
+                     <figure>
+                        <img class="img img-responsive center-block" src="./figures/bigrams.png" alt="left image">
+                        <figcaption>bigrams</figcaption>
+                     </figure>
+                  </div>
+               </div>
+               <!-- .row -->
+
+            </div>
+            <div class="dr-subsection" id="keywords">
+               <h2>Keywords</h2>
+			   <p>Sets of keywords -- statistically significant words -- can be enumerated by comparing the relative frequency of words with the number of times the words appear in an entire corpus. Some of the most statistically significant keywords in your study carrel include:</p>
+			   <p><blockquote>##KEYWORDS##</blockquote></p>
+			   <p>And now word clouds really begin to shine:</p>
+ 
+               <div class="row image-row">
+                  <figure>
+                     <img class="img img-responsive center-block" src="./figures/keywords.png" alt="left image">
+                     <figcaption>keywords</figcaption>
+                  </figure>
+               </div>
+
+            </div>
+            <div class="dr-subsection" id="topic-modeling">
+               <h2>Topic Modeling</h2>
+			   <p>Topic modeling is another popular approach to connoting the aboutness of a corpus. If your study carrel could be summed up in a single word, then that word might be <strong>##TOPICSSINGLEWORD##</strong>, and <strong><a href='##TOPICSSINGLEFILE##'>##TOPICSSINGLETITLE##</a></strong> is most about that word.</p>
+
+			   <p>If your study carrel could be summed up in three words ("topics") then those words and their significantly associated titles include:</p>
+			   <ol>
+			   <li>##TOPICSTRIPLEWORD01## - <a href='##TOPICSTRIPLEFILE01##'>##TOPICSTRIPLETITLE01##</a></li>
+			   <li>##TOPICSTRIPLEWORD02## - <a href='##TOPICSTRIPLEFILE02##'>##TOPICSTRIPLETITLE02##</a></li>
+			   <li>##TOPICSTRIPLEWORD03## - <a href='##TOPICSTRIPLEFILE03##'>##TOPICSTRIPLETITLE03##</a></li>
+			   </ol>
+				
+			   <p>If your study carrel could be summed up in five topics, and each topic were each denoted with three words, then those topics and their most significantly associated files would be:</p>
+
+			   <ol>
+			   <li>##TOPICSQUINWORDS01## - <a href='##TOPICSQUINFILE01##'>##TOPICSQUINTITLE01##</a></li>
+			   <li>##TOPICSQUINWORDS02## - <a href='##TOPICSQUINFILE02##'>##TOPICSQUINTITLE02##</a></li>
+			   <li>##TOPICSQUINWORDS03## - <a href='##TOPICSQUINFILE03##'>##TOPICSQUINTITLE03##</a></li>
+			   <li>##TOPICSQUINWORDS04## - <a href='##TOPICSQUINFILE04##'>##TOPICSQUINTITLE04##</a></li>
+			   <li>##TOPICSQUINWORDS05## - <a href='##TOPICSQUINFILE05##'>##TOPICSQUINTITLE05##</a></li>
+			   </ol>
+
+			   <p>Moreover, the totality of the study carrel's aboutness, can be visualized with the following pie chart:</p>
+
+               <div class="row image-row">
+                  <figure>
+                     <img class="img img-responsive center-block" src="./figures/topics.png" alt="left image">
+                     <figcaption>topic model</figcaption>
+                  </figure>
+               </div>
+
+            </div>
+            <div class="dr-subsection" id="noun-verbs">
+               <h2>Noun &amp; Verbs</h2>
+			   <p>
+			   Through an analysis of your study carrel's parts-of-speech, you are able to answer question beyonds aboutness. For example, a list of the most frequent nouns helps you answer what questions; "What is discussed in this collection?":</p>
+			   <p><blockquote>##NOUNS##</blockquote></p>
+			   <p>An enumeration of the verbs helps you learn what actions take place in a text or what the things in the text do. Very frequently, the most common lemmatized verbs are "be", "have", and "do"; the more interesting verbs usually occur further down the list of frequencies:</p>
+			   <p><blockquote>##VERBS##</blockquote></p>
+
+               <div class="row image-row">
+                  <div class="col-sm-6">
+                     <figure>
+                        <img class="img img-responsive center-block" src="./figures/nouns.png" alt="left image">
+                        <figcaption>nouns</figcaption>
+                     </figure>
+                  </div>
+                  <div class="col-sm-6">
+                     <figure>
+                        <img class="img img-responsive center-block" src="./figures/verbs.png" alt="left image">
+                        <figcaption>verbs</figcaption>
+                     </figure>
+                  </div>
+               </div>
+               <!-- .row -->
+
+            </div>
+            <div class="dr-subsection" id="proper-nouns">
+               <h2>Proper Nouns</h2>
+			   <p>
+			   An extraction of proper nouns helps you determine the names of people and places in your study carrel.</p>
+			   <p><blockquote>##PROPER##</blockquote></p>
+			   <p>An analysis of personal pronouns enables you to answer at least two questions: 1) "What, if any, is the overall gender of my study carrel?", and 2) "To what degree are the texts in my study carrel self-centered versus inclusive?"</p>
+			   <p><blockquote>##PRONOUNS##</blockquote></p>
+			   <p>Below are words cloud of your study carrel's proper &amp; personal pronouns. 
+			   </p>
 
 
-<h2>Readability</h2>
+               <div class="row image-row">
+                  <div class="col-sm-6">
+                     <figure>
+                        <img class="img img-responsive center-block" src="./figures/proper-nouns.png" alt="left image">
+                        <figcaption>proper nouns</figcaption>
+                     </figure>
+                  </div>
+                  <div class="col-sm-6">
+                     <figure>
+                        <img class="img img-responsive center-block" src="./figures/pronouns.png" alt="left image">
+                        <figcaption>pronouns</figcaption>
+                     </figure>
+                  </div>
+               </div>
+               <!-- .row -->
 
-<p>
-On a scale from 0 to 100, where 0 is very difficult and 100 is very easy, your documents have an <strong>average readability score of ##AVERAGEREADABILITSCORE##</strong>. [2] Consequently, if you want to read something more simplistic, then consider a document with a higher score. If you want something more specialized, then consider something with a lower score. The following histograms and box plots illustrate the overall readability of your study carrel.
-</p>
+            </div>
+            <div class="dr-subsection" id="adjectives-adverbs">
+               <h2>Adjectives &amp; Verbs</h2>
+			   <p>
+			   Learning about a corpus's adjectives and adverbs helps you answer how questions: "How are things described and how are things done?" An analysis of adjectives and adverbs also points to a corpus's overall sentiment. "In general, is my study carrel positive or negative?"</p>
+			   <p><blockquote>##ADJECTIVES##</blockquote></p>
+			   <p><blockquote>##ADVERBS##</blockquote></p>
 
-<table>
-	<tr>
-	<td><a href='./figures/flesch-histogram.png'><img width='100%' src='./figures/flesch-histogram.png' /></a></td>
-	<td><a href='./figures/flesch-boxplot.png'><img width='100%' src='./figures/flesch-boxplot.png' /></a></td>
-	</tr>
-</table>
+               <div class="row image-row">
+                  <div class="col-sm-6">
+                     <figure>
+                        <img class="img img-responsive center-block" src="./figures/adjectives.png" alt="left image">
+                        <figcaption>adjectives</figcaption>
+                     </figure>
+                  </div>
+                  <div class="col-sm-6">
+                     <figure>
+                        <img class="img img-responsive center-block" src="./figures/adverbs.png" alt="left image">
+                        <figcaption>adverbs</figcaption>
+                     </figure>
+                  </div>
+               </div>
+               <!-- .row -->
 
+            </div>
 
-<h2>Word frequencies</h2>
+         </div>
+         <!-- .col-sm-9 -->
 
-<p>By merely counting &amp; tabulating the frequency of individual words or phrases, you can begin to get an understanding of your carrel's "aboutness". Excluding "stop words", some of the more frequent words include: <strong>##FREQUENTUNIGRAMS##</strong>. [3] Using the three most frequent words, the three files containing all of those words the most are <strong><a href='##FREQUENTUNIGRAMFILE01##'>##FREQUENTUNIGRAMFILE01##</a></strong>, <strong><a href='##FREQUENTUNIGRAMFILE02##'>##FREQUENTUNIGRAMFILE02##</a></strong>, and <strong><a href='##FREQUENTUNIGRAMFILE03##'>##FREQUENTUNIGRAMFILE03##</a></strong>.</p>
+      </div>
+      <!-- .row -->
 
-<p>The most frequent two-word phrases (bigrams) include: <strong>##FREQUENTBIGRAMS##</strong>, and the three file that use all of the three most frequent phrases are <strong><a href='##FREQUENTBIGRAMFILE01##'>##FREQUENTBIGRAMFILE01##</a></strong> <strong><a href='##FREQUENTBIGRAMFILE02##'>##FREQUENTBIGRAMFILE02##</a></strong>, and <strong><a href='##FREQUENTBIGRAMFILE03##'>##FREQUENTBIGRAMFILE03##</a></strong>.</p>
-
-<p>While often deemed superficial or sophomoric, rudimentary frequencies and their associated "word clouds" can be quite insightful:
-</p>
-
-<table>
-	<tr>
-	<td><a href='./figures/unigrams.png'><img width='100%' src='./figures/unigrams.png' /></a><br />unigrams</td>
-	<td><a href='./figures/bigrams.png'><img width='100%' src='./figures/bigrams.png' /></a><br />bigrams</td>
-	</tr>
-</table>
-
-
-<h2>Keywords</h2>
-
-<p>Sets of keywords -- statistically significant words -- can be enumerated by comparing the relative frequency of words with the number of times the words appear in an entire corpus. Some of the most statistically significant keywords in your study carrel include: <strong>##KEYWORDS##</strong>. And now word clouds really begin to shine:
-</p>
-
-<p style='text-align: center'>
-<a href='./figures/keywords.png'><img width='66%' src='./figures/keywords.png' /><br />keywords</a>
-</p>
-
-<p>
-Through the use of a concordance -- a keyword-in-context tool, or a "poor man's search engine" -- you can see how words are used in relation to other words. Here is a random sample of concordance entries using the two most significant keyword as input:
-<pre style='text-align: center'>##CONCORDANCE##</pre>
-</p>
-
-
-<h2>Topic modeling</h2>
-
-<p>Topic modeling is another popular approach to connoting the aboutness of a corpus. If your study carrel could be summed up in a single word, then that word might be <strong>##TOPICSSINGLE##</strong>, and <strong><a href='##TOPICSSINGLEFILE##'>##TOPICSSINGLEFILE##</a></strong> is most about that word.</p>
-
-<p>If your study carrel could be summed up in three words ("topics") then those words might be: <strong>##TOPICSTRIPLE01##</strong>, <strong>##TOPICSTRIPLE02##</strong>, and <strong>##TOPICSTRIPLE03##</strong>. And the respective files would be: <a href='##TOPICSTRIPLEFILE01##'><strong>##TOPICSTRIPLEFILE01##</strong></a>, <a href='##TOPICSTRIPLEFILE02##'><strong>##TOPICSTRIPLEFILE02##</strong></a>, and <a href='##TOPICSTRIPLEFILE03##'><strong>##TOPICSTRIPLEFILE03##</strong></a>.</p>
-
-<p>If your study carrel could be summed up in five topics, and each topic were each denoted with three words, then those topics and their most significantly associated files would be:</p>
-
-<ol>
-<li>##TOPICSQUIN01## - <a href='##TOPICSQUINFILE01##'>##TOPICSQUINFILE01##</a></li>
-<li>##TOPICSQUIN02## - <a href='##TOPICSQUINFILE02##'>##TOPICSQUINFILE02##</a></li>
-<li>##TOPICSQUIN03## - <a href='##TOPICSQUINFILE03##'>##TOPICSQUINFILE03##</a></li>
-<li>##TOPICSQUIN04## - <a href='##TOPICSQUINFILE04##'>##TOPICSQUINFILE04##</a></li>
-<li>##TOPICSQUIN05## - <a href='##TOPICSQUINFILE05##'>##TOPICSQUINFILE05##</a></li>
-</ol>
-
-<p>Moreover, the totality of the study carrel's aboutness, can be visualized with the following pie chart:</p>
-
-<p style='text-align: center'>
-<a href='./figures/topics.png'><img width='66%' src='./figures/topics.png' /></a>
-</p>
+   </div>
+   <!-- .container -->
 
 
-<h2>Nouns &amp; verbs</h2>
 
-<p>
-Through an analysis of your study carrel's parts-of-speech, you are able to answer question beyonds aboutness. For example, a list of the most frequent nouns (<strong>##NOUNS##</strong>) helps you answer what questions; "What is discussed in this collection?" An enumeration of the lemmatized verbs (<strong>##VERBS##</strong>) helps you learn what actions take place in a text or what the things in the text do. Very frequently, the most common lemmatized verbs are "be", "have", and "do"; the more interesting verbs usually occur further down the list of frequencies:
-</p>
+   <!-- Footer -->
+   <footer class="footer">
+      <div class="container">
+         <hr>
+         <div class="row">
 
-<table>
-	<tr>
-	<td><a href='./figures/nouns.png'><img width='100%' src='./figures/nouns.png' /></a><br />nouns</td>
-	<td><a href='./figures/verbs.png'><img width='100%' src='./figures/verbs.png' /></a><br />verbs</td>
-	</tr>
-</table>
+            <div class="col-sm-4">
+               <p class="text-muted text-center">&copy; 2019 Eric Lease Morgan</p>
+            </div>
+            <div class="col-sm-4">
+               <p class="text-center"><a href="#">Contact Webmaster</a></p>
+            </div>
+            <div class="col-sm-4">
+               <p class="text-center">
+                  <a href="about.html">About Distant Reader</a>
+               </p>
+            </div>
 
-
-<h2>Proper nouns &amp; pronouns</h2>
-
-<p>
-An extraction of proper nouns (<strong>##PROPER##</strong>) helps you determine the names of people and places in your study carrel. An analysis of personal pronouns (<strong>##PRONOUNS##</strong>) enables you to answer at least two questions: 1) "What, if any, is the overall gender of my study carrel?", and 2) "To what degree are the texts in my study carrel self-centered versus inclusive?" Below are words cloud of your study carrel's proper &amp; personal pronouns. 
-</p>
-
-<table>
-	<tr>
-	<td><a href='./figures/proper.png'><img width='100%' src='./figures/proper.png' /></a><br />proper nouns</td>
-	<td><a href='./figures/pronouns.png'><img width='100%' src='./figures/pronouns.png' /></a><br />pronouns</td>
-	</tr>
-</table>
+         </div>
 
 
-<h2>Adjectives &amp; adverbs</h2>
-
-<p>
-Learning about a corpus's adjectives (<strong>##ADJECTIVES##</strong>) and adverbs (<strong>##ADVERBS##</strong>) helps you answer how questions: "How are things described and how are things done?" An analysis of adjectives and adverbs also points to a corpus's overall sentiment. "In general, is my study carrel positive or negative?"
-</p>
-
-<table>
-	<tr>
-	<td><a href='./figures/adjectives.png'><img width='100%' src='./figures/adjectives.png' /></a><br />adjectives</td>
-	<td><a href='./figures/adverbs.png'><img width='100%' src='./figures/adverbs.png' /></a><br />adverbs</td>
-	<td></td>
-	</tr>
-</table>
-
-
-<h2>Notes</h2>
-
-<p>
-[0] Once upon a time, a corpus of a million words was deemed large.
-</p>
-
-<p>
-[1] To put this into context, the typical scholarly journal article is about [NUMBER] words long, Shakespeare's Hamlet is [NUMBER] words long, and the Bible is [NUMBER] words long. 
-</p>
-
-<p>
-[2] In this case, a Flesch readability score is being calculated. It is based on things like the number of words in a document, the lengths of the words, the number of sentences, the lengths on the sentences, etc. In general children's stories are have lower Flesch scores while insurance documents and doctoral dissertations have higher scores. 
-</p>
-
-<p>
-[3] "Stop words" are sometimes called "function words", and they are words which carry little or no meaning. Every language has stop words, and in English they include but are not limited to "the", "a", "an", etc. A single set of stop words has been used through out the analysis of your collection. 
-</p>
-
-<p>
-[4] Concordances are one of the oldest forms of text mining, first developed in the 13th century to "read" religious documents.
-</p>
-
-<p>
-[6] An unsupervised machine learning process, topic modeling is a very popular text mining operation. Assuming that a word is known by the company it keeps, topic modeling identifies sets of keywords denoted by their centrality in the text. Words which are both frequent as well as in close proximity to each other are considered significant. 
-</p>
-
-	<div class="footer">
-		<p style='text-align: right'>
-		Eric Lease Morgan<br />
-		June 14, 2019
-		</p>
-	</div>
-
-</div>
+      </div>
+   </footer>
 
 </body>
+
 </html>

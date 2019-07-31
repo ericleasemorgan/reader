@@ -21,7 +21,7 @@ NGRAMS     = '/export/reader/bin/ngrams.pl'
 PLOTFLESCH = '/export/reader/bin/plot-flesch.sh'
 PLOTSIZES  = '/export/reader/bin/plot-sizes.sh'
 TOPICMODEL = '/export/reader/bin/topic-model.py'
-TEMPLATE   = './etc/about.htm'
+TEMPLATE   = '/export/reader/etc/about.htm'
 
 # require
 from sqlalchemy import create_engine
@@ -252,7 +252,11 @@ unigrams = []
 for unigram in data.split( '\n' ) :
 	fields = unigram.split( '\t' )
 	unigrams.append( fields[ 0 ] )
-	
+pattern      = '|'.join( unigrams[ 0:2 ] )
+command      = "grep -Hice '" + pattern + "' ./txt/*.txt | tr ':' ' ' | sort -rnk2 | head -n3 | cut -d ' ' -f1"
+unigramfiles = subprocess.check_output( command, shell=True ).decode( 'utf-8' )
+unigramfiles = unigramfiles.rstrip().split( '\n' )
+
 # bigrams
 bigrams = subprocess.check_output( [ NGRAMS, CORPUS, '2' ] ).decode( 'utf-8' )
 if ( not os.path.exists( './tsv/bigrams.tsv' ) ) :
@@ -271,6 +275,10 @@ bigrams = []
 for bigram in data.split( '\n' ) :
 	fields = bigram.split( '\t' )
 	bigrams.append( fields[ 0 ] )
+pattern      = '|'.join( bigrams[ 0:2 ] )
+command      = "grep -Hice '" + pattern + "' ./txt/*.txt | tr ':' ' ' | sort -rnk2 | head -n3 | cut -d ' ' -f1"
+bigramfiles = subprocess.check_output( command, shell=True ).decode( 'utf-8' )
+bigramfiles = bigramfiles.rstrip().split( '\n' )
 
 # trigrams
 if ( not os.path.exists( './tsv/trigrams.tsv' ) ) :
@@ -290,6 +298,7 @@ if ( not os.path.exists( './tsv/quadgrams.tsv' ) ) :
 topicSingleWords, topicSingleFiles, topicSingleTitles          = readModel( DIRECTORY, engine, 1, 1, 1 )
 topicTripleWords, topicTripleFiles, topicTripleTitles          = readModel( DIRECTORY, engine, 3, 1, 1 )
 topicQuintupleWords, topicQuintupleFiles, topicQuintupleTitles = readModel( DIRECTORY, engine, 5, 3, 1 )
+subprocess.check_output( TOPICMODEL + ' ./txt 5 3 ./figures/topics.png', shell=True )
 
 # debug
 sys.stderr.write( '                number of items: ' + str( numberOfItems )           + '\n' )
@@ -360,6 +369,12 @@ html = html.replace( '##TOPICSQUINTITLE02##',      topicQuintupleTitles[ 1 ][ 0 
 html = html.replace( '##TOPICSQUINTITLE03##',      topicQuintupleTitles[ 2 ][ 0 ] )
 html = html.replace( '##TOPICSQUINTITLE04##',      topicQuintupleTitles[ 3 ][ 0 ] )
 html = html.replace( '##TOPICSQUINTITLE05##',      topicQuintupleTitles[ 4 ][ 0 ] )
+html = html.replace( '##FREQUENTUNIGRAMFILE01##',  unigramfiles[ 0 ] )
+html = html.replace( '##FREQUENTUNIGRAMFILE02##',  unigramfiles[ 1 ] )
+html = html.replace( '##FREQUENTUNIGRAMFILE03##',  unigramfiles[ 2 ] )
+html = html.replace( '##FREQUENTBIGRAMFILE01##',   bigramfiles[ 0 ] )
+html = html.replace( '##FREQUENTBIGRAMFILE02##',   bigramfiles[ 1 ] )
+html = html.replace( '##FREQUENTBIGRAMFILE03##',   bigramfiles[ 2 ] )
 
 # output and done
 print( html )
