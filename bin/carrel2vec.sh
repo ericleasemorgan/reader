@@ -19,12 +19,13 @@ MODEL="$CARREL/etc/reader.vec"
 rm -rf $CORPUS
 
 # build corpus
+rm $CORPUS
 find "$CARREL/txt" -name '*.txt' -exec cat {} >> $CORPUS \;
-sed -e "s/[[:punct:]]\+//g" $CORPUS > ./tmp/corpus.001
-tr '[:upper:]' '[:lower:]' < ./tmp/corpus.001 > ./tmp/corpus.002
-tr '[:digit:]' ' ' < ./tmp/corpus.002 > ./tmp/corpus.003
-tr '\n' ' ' < ./tmp/corpus.003 > ./tmp/corpus.004
-tr -s ' ' < ./tmp/corpus.004 > $CORPUS
+#sed -e "s/[[:punct:]]\+//g" $CORPUS > ./tmp/corpus.001
+tr '[:upper:]' '[:lower:]' < $CORPUS > ./tmp/corpus.001
+tr '[:digit:]' ' ' < ./tmp/corpus.001 > ./tmp/corpus.002
+tr '\n' ' ' < ./tmp/corpus.002 > ./tmp/corpus.003
+tr -s ' ' < ./tmp/corpus.003 > $CORPUS
 
 # create a model
 $WORD2PHRASE -train $CORPUS -output ./tmp/phrases-01.txt >&2

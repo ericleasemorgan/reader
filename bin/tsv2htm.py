@@ -32,6 +32,7 @@ for index, row in df.iterrows() :
 # slurp up the template and do the substitution
 with open( TEMPLATE, 'r' ) as handle : htm = handle.read()
 htm = htm.replace( '##ROWS##', rows )
+htm = htm.replace( '##TYPE##', type )
 
 # output and done
 print( htm )

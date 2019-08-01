@@ -290,7 +290,7 @@ if ( not os.path.exists( './tsv/trigrams.tsv' ) ) :
 # quadgrams
 if ( not os.path.exists( './tsv/quadgrams.tsv' ) ) :
 	handle = open( './tsv/quadgrams.tsv', 'w' ) 
-	handle.write( "quadgrams\tfrequency\n" ) 
+	handle.write( "quadgram\tfrequency\n" ) 
 	handle.write( subprocess.check_output( [ NGRAMS, CORPUS, '4' ] ).decode( 'utf-8' ) ) 
 	handle.close() 
 

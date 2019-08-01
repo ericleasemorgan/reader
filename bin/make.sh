@@ -16,7 +16,7 @@ REDUCE='/export/reader/bin/reduce.sh'
 DB2REPORT='/export/reader/bin/db2report.sh'
 REPORT='etc/report.txt'
 CARREL2VEC='/export/reader/bin/carrel2vec.sh'
-ABOUT='/export/reader/bin/about.pl'
+MAKEPAGES='/export/reader/bin/make-pages.sh'
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -82,7 +82,7 @@ $DB2REPORT $NAME > "$CARRELS/$NAME/$REPORT"
 cat "$CARRELS/$NAME/$REPORT"
 
 # create about file
-$ABOUT > ./about.html
+$MAKEPAGES $NAME
 
 # done
 exit

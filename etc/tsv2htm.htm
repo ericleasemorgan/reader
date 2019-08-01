@@ -1,23 +1,23 @@
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.min.css">
+	<link   rel="stylesheet"       type="text/css"       href="../css/jquery.dataTables.min.css">
 	<script type="text/javascript" language="javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" language="javascript" src="../js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" class="init">
 		$(document).ready(function() { $('#tsv').DataTable( {
         "order": [[ 1, "desc" ]],
-        "pageLength": 100
+        "pageLength": 10
     } ); } );
 	</script>
 </head>
 <body style='margin: 3%' >
-<h1>TSV</h1>
-<p>This is a TSV file.</p>
+<h1>##TYPE##</h1>
+<p>This is a table of type ##TYPE## and their frequencies. Use it to search &amp; browse the list to learn more about your study carrel.</p>
 
-<table id="tsv" class="display" style="width:100%">
+<table id="tsv" class="display" style="width:50%">
         <thead>
             <tr>
-                <th>item</th>
+                <th>##TYPE##</th>
                 <th>frequency</th>
             </tr>
         </thead>
