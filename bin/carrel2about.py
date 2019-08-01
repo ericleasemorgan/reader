@@ -265,9 +265,9 @@ if ( not os.path.exists( './tsv/bigrams.tsv' ) ) :
 	handle.write( bigrams ) 
 	handle.close() 
 if ( not os.path.exists( './figures/bigrams.png' ) ) :	
-	bigrams = bigrams.split( '\n' )
+	data = bigrams.split( '\n' )
 	handle  = open( './tmp/bigrams.tsv', 'w' )
-	handle.write( '\n'.join( bigrams[ 0:CLOUDCOUNT ] ) ) 
+	handle.write( '\n'.join( data[ 0:CLOUDCOUNT ] ) ) 
 	handle.close()
 	subprocess.run( [ CLOUD,  './tmp/bigrams.tsv', 'white', './figures/bigrams.png' ] )
 data     = bigrams
