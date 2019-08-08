@@ -89,10 +89,15 @@ def addBibliographics( df, engine ) :
 			# update with found values
 			else :
 			
-				author.append( result.iloc[ 0, 0 ] )
-				title.append( result.iloc[ 0, 1 ] )
-				date.append( result.iloc[ 0, 2 ] )
-						
+				if ( result.iloc[ 0, 0 ] ) : author.append( result.iloc[ 0, 0 ] )
+				else : author.append( '' )
+					
+				if ( result.iloc[ 0, 1 ] ) : title.append( result.iloc[ 0, 1 ] )
+				else : title.append( '' )
+					
+				if ( result.iloc[ 0, 2 ] ) : date.append( result.iloc[ 0, 2 ] )
+				else : date.append( '' )
+											
 		# update
 		authors.append( '|'.join( author ) )
 		titles.append( '|'.join( title ) )
@@ -177,6 +182,7 @@ if ( not os.path.exists( './figures/verbs.png' ) ) :
 	subprocess.run( [ CLOUD, './tmp/verbs.tsv', 'white', './figures/verbs.png' ] )
 verbs = verbs[ 'verb' ].iloc[ : COUNT ].tolist()
 
+
 # adjectives
 adjectives = pd.read_sql_query( "select lower(token) as 'adjective', count(lower(token)) as frequency from pos where pos like 'J%%' group by lower(token) order by frequency desc", engine )
 if ( not os.path.exists( './tsv/adjectives.tsv' ) ) : adjectives.to_csv( './tsv/adjectives.tsv', sep='\t', columns=[ 'adjective', 'frequency' ], index=False )
@@ -185,6 +191,7 @@ if ( not os.path.exists( './figures/adjectives.png' ) ) :
 	data.to_csv( './tmp/adjectives.tsv', columns=[ 'adjective', 'frequency' ], header=False, sep='\t', index=False )
 	subprocess.run( [ CLOUD, './tmp/adjectives.tsv', 'white', './figures/adjectives.png' ] )
 adjectives = adjectives[ 'adjective' ].iloc[ : COUNT ].tolist()
+
 
 # adverbs
 adverbs = pd.read_sql_query( "select lower(token) as 'adverb', count(lower(token)) as frequency from pos where pos like 'R%%' group by lower(token) order by frequency desc", engine )
@@ -244,7 +251,7 @@ if ( not os.path.exists( './tsv/unigrams.tsv' ) ) :
 if ( not os.path.exists( './figures/unigrams.png' ) ) :	
 	data = unigrams.split( '\n' )
 	handle   = open( './tmp/unigrams.tsv', 'w' )
-	handle.write( '\n'.join( unigrams[ 0:CLOUDCOUNT ] ) ) 
+	handle.write( '\n'.join( data[ 0:CLOUDCOUNT ] ) ) 
 	handle.close()
 	subprocess.run( [ CLOUD, './tmp/unigrams.tsv', 'white', './figures/unigrams.png' ] )
 data     = unigrams

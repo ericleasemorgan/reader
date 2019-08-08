@@ -23,7 +23,7 @@ rows = ''
 for index, row in df.iterrows() :
 	
 	# parse
-	item      = row[ type ]
+	item      = str( row[ type ] )
 	frequency = str( row[ 'frequency' ] )
 	
 	# build
