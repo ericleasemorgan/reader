@@ -43,6 +43,7 @@ mkdir -p "./tmp"
 mkdir -p "./tsv"
 mkdir -p "./txt"
 mkdir -p "./urls"
+mkdir -p "./lib"
 mkdir -p "./wrd"
 
 # fill file system
@@ -74,6 +75,8 @@ cp ../../etc/stopwords.txt        "./etc"
 cp ../../etc/style.css            "./etc"
 cp ../../etc/tfidf-toolbox.pl     "./etc"
 cp ../../js/*                     "./js"
+cp ../../lib/*.js                 "./lib"
+cp ../../lib/*.css                "./lib"
 
 echo "Initializing database" >&2
 $INITIALIZEDB "$CARRELS/$NAME"
