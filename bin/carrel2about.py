@@ -231,7 +231,7 @@ keywords = keywords[ 'keyword' ].iloc[ : COUNT ].tolist()
 
 # grammers; noun-verb
 if ( not os.path.exists( './tsv/noun-verb.tsv' ) ) :
-	nounVerb = pd.read_sql_query( "SELECT ( LOWER( t.token || ' ' || c.token )) AS sentence, COUNT( LOWER( t.token || ' ' || c.token ) ) AS frequency FROM pos AS t JOIN pos AS c ON c.tid=t.tid+1 AND c.sid=t.sid AND c.id=t.id WHERE t.lemma IN (select lemma from pos where pos like 'N%%' or pos like 'P%%' group by lemma order by count(lemma) desc) AND c.lemma in (select lemma from pos where pos like 'V%%' group by lemma order by count(lemma) desc) GROUP BY sentence ORDER BY frequency DESC, ( LOWER( t.token || ' ' || c.token ) )", engine )
+	nounVerb = pd.read_sql_query( "SELECT ( LOWER( t.token || ' ' || c.token )) AS sentence, COUNT( LOWER( t.token || ' ' || c.token ) ) AS frequency FROM pos AS t JOIN pos AS c ON c.tid=t.tid+1 AND c.sid=t.sid AND c.id=t.id WHERE t.lemma IN (select lemma from pos where pos like 'NN%%' or pos like 'PR%%' group by lemma order by count(lemma) desc limit 30) AND c.lemma in (select lemma from pos where pos like 'V%%' group by lemma order by count(lemma) desc limit 30) GROUP BY sentence ORDER BY frequency DESC, ( LOWER( t.token || ' ' || c.token ) )", engine )
 	nounVerb[ [ 'noun', 'verb' ] ] = nounVerb.sentence.str.split( ' ', expand=True )
 	nounVerb.to_csv( './tsv/noun-verb.tsv', columns=[ 'noun', 'verb', 'frequency' ], sep='\t', index=False )
 
