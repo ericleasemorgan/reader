@@ -4,6 +4,8 @@
 # configure
 CARREL2ABOUT='/export/reader/bin/carrel2about.py'
 TSV2HTM='/export/reader/bin/tsv2htm.py'
+TSV2COMPLEX='/export/reader/bin/tsv2htm-complex.py'
+TSV2ENTITIES='/export/reader/bin/tsv2htm-entities.py'
 CARRELS='/export/reader/carrels'
 
 # sanity check
@@ -33,6 +35,13 @@ $TSV2HTM quadgram    ./tsv/quadgrams.tsv    > ./htm/quadgrams.htm    &
 $TSV2HTM trigram     ./tsv/trigrams.tsv     > ./htm/trigrams.htm     &
 $TSV2HTM unigram     ./tsv/unigrams.tsv     > ./htm/unigrams.htm     &
 $TSV2HTM verb        ./tsv/verbs.tsv        > ./htm/verbs.htm        &
+
+# more complex tsv files
+$TSV2COMPLEX noun      verb ./tsv/noun-verb.tsv       > ./htm/noun-verb.htm      &
+$TSV2COMPLEX adjective noun ./tsv/adjective-noun.tsv  > ./htm/adjective-noun.htm &
+
+# named entities
+$TSV2ENTITIES ./tsv/entities.tsv  > ./htm/entities.htm &
 
 # done
 wait

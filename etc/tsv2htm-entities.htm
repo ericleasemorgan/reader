@@ -1,0 +1,30 @@
+<html>
+<head>
+	<link   rel="stylesheet"       type="text/css"       href="../css/jquery.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" language="javascript" src="../js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" class="init">
+		$(document).ready(function() { $('#tsv').DataTable( {
+        "order": [[ 2, "desc" ]],
+        "pageLength": 10
+    } ); } );
+	</script>
+</head>
+<body style='margin: 3%' >
+<h1>Named entities</h1>
+<p>This is a table of named entities, their types, and their frequencies from sentences in your study carrel. Use it to search &amp; browse the list to learn more about your study carrel. Please keep in mind that named-entity extraction is not as accurate as more generic parts-of-speech extraction. Unusual results will appear here.</p>
+
+<table id="tsv" class="display" style="width:50%">
+        <thead>
+            <tr>
+                <th>entity</th>
+                <th>type</th>
+                <th>frequency</th>
+            </tr>
+        </thead>
+        <tbody>
+        ##ROWS##
+        </tbody>
+    </table>
+</body>
+</html>

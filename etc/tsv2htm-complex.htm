@@ -1,0 +1,30 @@
+<html>
+<head>
+	<link   rel="stylesheet"       type="text/css"       href="../css/jquery.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" language="javascript" src="../js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" class="init">
+		$(document).ready(function() { $('#tsv').DataTable( {
+        "order": [[ 2, "desc" ]],
+        "pageLength": 10
+    } ); } );
+	</script>
+</head>
+<body style='margin: 3%' >
+<h1>##ITEM01##/##ITEM02##</h1>
+<p>This is a table of ##ITEM01##/##ITEM02## combinations and their frequencies from sentences in your study carrel. Use it to search &amp; browse the list to learn more about your study carrel.</p>
+
+<table id="tsv" class="display" style="width:50%">
+        <thead>
+            <tr>
+                <th>##ITEM01##</th>
+                <th>##ITEM02##</th>
+                <th>frequency</th>
+            </tr>
+        </thead>
+        <tbody>
+        ##ROWS##
+        </tbody>
+    </table>
+</body>
+</html>

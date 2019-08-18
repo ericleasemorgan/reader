@@ -236,10 +236,15 @@ if ( not os.path.exists( './tsv/noun-verb.tsv' ) ) :
 	nounVerb.to_csv( './tsv/noun-verb.tsv', columns=[ 'noun', 'verb', 'frequency' ], sep='\t', index=False )
 
 # adjective-noun
-if ( not os.path.exists( './tsv/verbs.tsv' ) ) :
+if ( not os.path.exists( './tsv/adjective-noun.tsv' ) ) :
 	adjectiveNoun = pd.read_sql_query( "SELECT ( LOWER( t.token || ' ' || c.token )) AS sentence, COUNT( LOWER( t.token || ' ' || c.token ) ) AS frequency FROM pos AS t JOIN pos AS c ON c.tid=t.tid+1 AND c.sid=t.sid AND c.id=t.id WHERE t.lemma IN (select lemma from pos where pos like 'J%%' group by lemma order by count(lemma) desc limit 30) AND c.lemma in (select lemma from pos where pos like 'N%%' group by lemma order by count(lemma) desc limit 30) GROUP BY sentence ORDER BY frequency DESC, ( LOWER( t.token || ' ' || c.token ) )", engine )
 	adjectiveNoun[ [ 'adjective', 'noun' ] ] = adjectiveNoun.sentence.str.split( ' ', expand=True )
 	adjectiveNoun.to_csv( './tsv/adjective-noun.tsv', columns=[ 'adjective', 'noun', 'frequency' ], sep='\t', index=False )
+
+# named-entities
+if ( not os.path.exists( './tsv/entities.tsv' ) ) :
+	entities = pd.read_sql_query( "select lower(entity) as entity, type, count(lower(entity)) as frequency from ent where (type is 'PERSON' or type is 'GPE' or type is 'LOC' or type is 'ORG') group by entity order by frequency desc", engine )
+	entities.to_csv( './tsv/entities.tsv', columns=[ 'entity', 'type', 'frequency' ], sep='\t', index=False )
 
 # unigrams
 unigrams = subprocess.check_output( [ NGRAMS, CORPUS, '1' ] ).decode( 'utf-8' )
