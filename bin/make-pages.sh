@@ -6,6 +6,8 @@ CARREL2ABOUT='/export/reader/bin/carrel2about.py'
 TSV2HTM='/export/reader/bin/tsv2htm.py'
 TSV2COMPLEX='/export/reader/bin/tsv2htm-complex.py'
 TSV2ENTITIES='/export/reader/bin/tsv2htm-entities.py'
+TSV2QUESTIONS='/export/reader/bin/tsv2htm-questions.py'
+LISTQUESTIONS='/export/reader/bin/list-questions.sh'
 CARRELS='/export/reader/carrels'
 
 # sanity check
@@ -42,6 +44,11 @@ $TSV2COMPLEX adjective noun ./tsv/adjective-noun.tsv  > ./htm/adjective-noun.htm
 
 # named entities
 $TSV2ENTITIES ./tsv/entities.tsv  > ./htm/entities.htm &
+
+# list questions
+echo -e "identifier\tquestion"      > ./tsv/questions.tsv
+$LISTQUESTIONS $CARREL             >> ./tsv/questions.tsv
+$TSV2QUESTIONS ./tsv/questions.tsv  > ./htm/questions.htm
 
 # done
 wait

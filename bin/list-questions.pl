@@ -6,7 +6,7 @@
 # configure
 use constant DATABASE => './etc/reader.db';
 use constant DRIVER   => 'SQLite';
-
+use constant SIZE     => 150;
 # require
 use DBI;
 use strict;
@@ -49,6 +49,13 @@ while( my $result = $handle->fetchrow_hashref ) {
 }
 
 # output and done
-foreach ( @sentences ) { print "$_\n" }
+foreach my $sentence ( sort( @sentences ) ) {
+
+	next if( length( $sentence ) > SIZE );
+	print join( "\t", ( $did, $sentence ) ), "\n";
+	
+}
+
+# done
 exit;
 

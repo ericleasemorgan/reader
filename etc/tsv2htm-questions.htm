@@ -1,0 +1,29 @@
+<html>
+<head>
+	<link   rel="stylesheet"       type="text/css"       href="../css/jquery.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" language="javascript" src="../js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" class="init">
+		$(document).ready(function() { $('#tsv').DataTable( {
+        "order": [[ 0, "desc" ]],
+        "pageLength": 10
+    } ); } );
+	</script>
+</head>
+<body style='margin: 3%' >
+<h1>Questions</h1>
+<p>This is a list of all the questions and their associated study carrel identifiers. One can learn a lot of the "aboutness" of a text simply by reading the questions.</p>
+
+<table id="tsv" class="display" style="width:50%">
+        <thead>
+            <tr>
+                <th>identifier</th>
+                <th>question</th>
+            </tr>
+        </thead>
+        <tbody>
+        ##ROWS##
+        </tbody>
+    </table>
+</body>
+</html>
