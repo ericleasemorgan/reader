@@ -51,7 +51,7 @@ while( my $result = $handle->fetchrow_hashref ) {
 # output and done
 foreach my $sentence ( sort( @sentences ) ) {
 
-	next if( length( $sentence ) > SIZE );
+	next if ( length( $sentence ) > SIZE );
 	print join( "\t", ( $did, $sentence ) ), "\n";
 	
 }

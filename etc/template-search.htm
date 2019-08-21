@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="../lib/elasticlunr.js"></script>
+</head>
+<body>
+
+<form>
+<input id='query' type='text' />
+<input onclick="search()" type='submit' value='search' />
+</form>
+
+<script>
+	function search() {
+		
+		var query = document.getElementById("query").value;
+		var data  = ##JSON##;
+		
+		// initialize the index
+		var index = elasticlunr(function () {
+			this.setRef('id');
+			this.addField('title');
+			this.addField('summary');
+		});
+
+		// loop through each item in the data
+		for ( var item in data ) {
+	
+			// parse
+			var record = {
+				'id'      : data[item].id,
+				'title'   : data[item].title,
+				'summary' : data[item].summary,
+			}
+	
+			// update the index
+			index.addDoc( record );
+	
+		}
+
+		// configure searching
+		var configuration = { bool: "and" };
+
+		// search
+		var results = index.search( query, configuration );
+
+		// initialize and build a list of search results
+		var list = '<ol>';
+		for ( var item in results ) {
+
+			list += '<li>' + results[item].doc.title
+			list += '<ul>'
+			if (results[item].doc.summary ) { list += '<li>' + results[item].doc.summary + '</li>' }
+			list += '<li>' + results[item].ref + '</li>'
+			list += '<li>' + results[item].score + '</li>'
+			list += '</ul>'
+
+		}
+		list += '</ol>'
+
+		// output & done
+		document.write( list )
+
+	}
+</script>
+
+</body>
+</html>

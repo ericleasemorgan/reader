@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+	<head>
+
+		<!-- meta data -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>Network diagram</title>
+
+		<!-- require -->
+		<script type="text/javascript" src="../lib/d3.v4.min.js"></script>
+	
+		<!-- style -->
+		<style type="text/css">
+		   .link         { stroke: #999; stroke-opacity: .6; stroke-width: 1px; }
+		   .links line   { stroke: #999; stroke-opacity: 0.6; }
+		   .node         {}
+		   .nodes circle { stroke: #fff; stroke-width: 1.5px; }
+		   .text label   { font-family: sans-serif; font-size: 10px; }
+		   text          { font-family: sans-serif; font-size: 10px; }
+		</style>
+
+		<!-- define the input and do the work -->
+		<script type="text/javascript">var filename = '../etc/network-graph.json'</script>
+		<script type="text/javascript" src="../lib/knowledge_graph.js" defer></script>
+
+	</head>
+	
+	<body style='margin: 7%'>
+
+		<div style='text-align: center'>
+			<h1>Network diagram</h1>
+			<div id="diagram"></div>
+		</div>
+		
+	</body>
+	
+</html>

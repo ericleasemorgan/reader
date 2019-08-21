@@ -3,12 +3,16 @@
 
 # configure
 CARREL2ABOUT='/export/reader/bin/carrel2about.py'
-TSV2HTM='/export/reader/bin/tsv2htm.py'
+CARREL2SEARCH='/export/reader/bin/carrel2search.pl'
+CARRELS='/export/reader/carrels'
+CORPUS2FILE='/export/reader/bin/corpus2file.sh'
+LISTQUESTIONS='/export/reader/bin/list-questions.sh'
 TSV2COMPLEX='/export/reader/bin/tsv2htm-complex.py'
 TSV2ENTITIES='/export/reader/bin/tsv2htm-entities.py'
+TSV2HTM='/export/reader/bin/tsv2htm.py'
 TSV2QUESTIONS='/export/reader/bin/tsv2htm-questions.py'
-LISTQUESTIONS='/export/reader/bin/list-questions.sh'
-CARRELS='/export/reader/carrels'
+CARREL2JSON='/export/reader/bin/carrel2json.py'
+TXT='txt/*.txt'
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -49,6 +53,18 @@ $TSV2ENTITIES ./tsv/entities.tsv  > ./htm/entities.htm &
 echo -e "identifier\tquestion"      > ./tsv/questions.tsv
 $LISTQUESTIONS $CARREL             >> ./tsv/questions.tsv
 $TSV2QUESTIONS ./tsv/questions.tsv  > ./htm/questions.htm
+
+# create search page
+$CARREL2SEARCH $CARREL > ./htm/search.htm
+
+# create data and page for topic modeling
+find $TXT | parallel $CORPUS2FILE {} > ./etc/model-data.txt
+cp /export/reader/etc/template-model.htm ./htm/topic-model.htm
+
+# create cool network diagram ("Thanks, Team JAMS!")
+$CARREL2JSON > ./etc/network-graph.json
+cp /export/reader/etc/template-diagram.htm ./htm/network-diagram.htm
+
 
 # done
 wait
