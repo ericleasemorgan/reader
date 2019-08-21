@@ -13,6 +13,7 @@ TSV2HTM='/export/reader/bin/tsv2htm.py'
 TSV2QUESTIONS='/export/reader/bin/tsv2htm-questions.py'
 CARREL2JSON='/export/reader/bin/carrel2json.py'
 TXT='txt/*.txt'
+PARALLEL='/export/bin/parallel'
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -58,7 +59,7 @@ $TSV2QUESTIONS ./tsv/questions.tsv  > ./htm/questions.htm
 $CARREL2SEARCH $CARREL > ./htm/search.htm
 
 # create data and page for topic modeling
-find $TXT | parallel $CORPUS2FILE {} > ./etc/model-data.txt
+find $TXT | $PARALLEL --will-cite $CORPUS2FILE {} > ./etc/model-data.txt
 cp /export/reader/etc/template-model.htm ./htm/topic-model.htm
 
 # create cool network diagram ("Thanks, Team JAMS!")

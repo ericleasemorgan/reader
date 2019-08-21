@@ -9,6 +9,7 @@
 CARRELS='/export/reader/carrels'
 LISTQUESTIONS='/export/reader/bin/list-questions.pl'
 TXT='./txt/*.txt'
+PARALLEL='/export/bin/parallel'
 
 if [[ -z $1 ]]; then
 	echo "Usage: $0 <short-name>"  >&2
@@ -22,5 +23,5 @@ CARREL=$1
 cd "$CARRELS/$CARREL"
 
 # do the work and done
-find $TXT | while read FILE; do echo $( basename $FILE .txt ); done | parallel $LISTQUESTIONS {}
+find $TXT | while read FILE; do echo $( basename $FILE .txt ); done | $PARALLEL --will-cite $LISTQUESTIONS {}
 exit
