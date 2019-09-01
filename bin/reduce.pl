@@ -5,8 +5,9 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame, distributed under a GNU Public License
 
-# June 28, 2018 - first investigations
-# July 8,  2019 - changed shape of bibliographics
+# June     28, 2018 - first investigations
+# July      8, 2019 - changed shape of bibliographics
+# September 1, 2019 - added cache and txt fields to bib
 
 
 # configure
@@ -53,7 +54,7 @@ sub bib {
 	my $sth = $dbh->prepare( "BEGIN TRANSACTION;" ) or die $DBI::errstr;
 	$sth->execute or die $DBI::errstr;
 	#$sth = $dbh->prepare( "INSERT INTO bib ( 'id', 'author', 'title', 'date', 'pages', 'extension', 'mime', 'words', 'sentence', 'flesch', 'summary' ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);" ) or die $DBI::errstr;
-	$sth = $dbh->prepare( "UPDATE bib SET author = ?, title = ?, date = ?, pages = ?, extension = ?, mime = ?, words = ?, sentence = ?, flesch = ?, summary = ? where id = ?;" ) or die $DBI::errstr;
+	$sth = $dbh->prepare( "UPDATE bib SET author = ?, title = ?, date = ?, pages = ?, extension = ?, mime = ?, words = ?, sentence = ?, flesch = ?, summary = ?, cache = ?, txt = ? where id = ?;" ) or die $DBI::errstr;
 
 	# open the given file
 	open FILE, " < $file" or die "Can't open $file ($!)\n";
@@ -68,12 +69,12 @@ sub bib {
 	
 		# parse, escape, and do the work
 		chop;
-		my ( $id, $author, $title, $date, $pages, $extension, $mime, $words, $sentences, $flesch, $summary ) = split( "\t", $_ );
+		my ( $id, $author, $title, $date, $pages, $extension, $mime, $words, $sentences, $flesch, $summary, $cache, $txt ) = split( "\t", $_ );
 		$id      =~ s/'/''/g;
 		$summary =~ s/'/''/g;
 		$author  =~ s/'/''/g;
 		$title   =~ s/'/''/g;
-		$sth->execute( $author, $title, $date, $pages, $extension, $mime, $words, $sentences, $flesch, $summary, $id ) or die $DBI::errstr;
+		$sth->execute( $author, $title, $date, $pages, $extension, $mime, $words, $sentences, $flesch, $summary, $cache, $txt, $id ) or die $DBI::errstr;
 
 	}
 	

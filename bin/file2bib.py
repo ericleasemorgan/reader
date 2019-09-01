@@ -1,17 +1,20 @@
 #!/usr/bin/env python
 
-# file2metadata.py - given a file name, output metadata as a TSV file
+# file2bib.py - given a file name, output metadata as a TSV file
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame; distributed under a GNU Public License
 
 # July 6, 2019 - first working version
 # July 7, 2019 - combined with txt2bib.py
+# September 1, 2019 - added cache and txt fields
 
 
 # configure
 COUNT=150
 RATIO=0.05
+CACHE='./cache'
+TXT='./txt'
 
 # require
 from gensim.summarization import summarize
@@ -34,6 +37,8 @@ extension  = os.path.splitext( os.path.basename( file ) )[ 1 ]
 id         = title
 date       = ''
 pages      = ''
+txt        = TXT + '/' + id + extension
+cache      = CACHE + '/' + id + extension
 
 
 # extract mime-type, just in case
@@ -70,6 +75,8 @@ sys.stderr.write( "      title: " + title + "\n" )
 sys.stderr.write( "       date: " + date + "\n" )
 sys.stderr.write( "      pages: " + pages + "\n" )
 sys.stderr.write( "  extension: " + extension + "\n" )
+sys.stderr.write( "        txt: " + txt + "\n" )
+sys.stderr.write( "      cache: " + cache + "\n" )
 sys.stderr.write( "\n" )
 
 for key in sorted( metadata.keys() ) :
@@ -102,8 +109,8 @@ flesch    = int( statistics.flesch_score )
 #print (summary)
 
 # output header, data, and then done
-print( "\t".join( ( 'id', 'author', 'title', 'date', 'pages', 'extension', 'mime', 'words', 'sentences', 'flesch', 'summary' ) ) )
-print( "\t".join( ( (str( id ), author, title, date, pages, extension, mimetype, str( words ), str( sentences ), str( flesch ), summary ) ) ) )
+print( "\t".join( ( 'id', 'author', 'title', 'date', 'pages', 'extension', 'mime', 'words', 'sentences', 'flesch', 'summary', 'cache', 'txt' ) ) )
+print( "\t".join( ( (str( id ), author, title, date, pages, extension, mimetype, str( words ), str( sentences ), str( flesch ), summary, cache, txt ) ) ) )
 
 # done
 exit()

@@ -5,9 +5,10 @@
 # Eric Lease Morgan <emorgan@nd.ed>
 # (c) University of Notre Dame; distributed under GNU Public License
 
-# June 11, 2019 - first documentation
-# July 21, 2019 - switching to Python
-# July 30, 2019 - hacking at PEARC '19
+# June     11, 2019 - first documentation
+# July     21, 2019 - switching to Python
+# July     30, 2019 - hacking at PEARC '19
+# September 1, 2019 - began linking to cached files
 
 
 # configure
@@ -31,6 +32,33 @@ import sys
 import os
 
 # define
+def id2bibliographics( id, engine ) :
+	'''Given an id and an SQL engine, return a dictionary of bibliographics'''
+	
+	# initialize
+	bibliographics = {}
+	
+	# search
+	result = pd.read_sql_query( "SELECT * FROM bib where id is '" + id + "'", engine )
+	
+	# update
+	bibliographics.update( { "author"    : result.at[ 0, 'author' ] } )
+	bibliographics.update( { "cache"     : result.at[ 0, 'cache' ] } )
+	bibliographics.update( { "date"      : result.at[ 0, 'date' ] } )
+	bibliographics.update( { "extension" : result.at[ 0, 'extension' ] } )
+	bibliographics.update( { "flesch"    : result.at[ 0, 'flesch' ] } )
+	bibliographics.update( { "genre"     : result.at[ 0, 'genre' ] } )
+	bibliographics.update( { "id"        : result.at[ 0, 'id' ] } )
+	bibliographics.update( { "mime"      : result.at[ 0, 'mime' ] } )
+	bibliographics.update( { "sentences" : result.at[ 0, 'sentence' ] } )
+	bibliographics.update( { "title"     : result.at[ 0, 'title' ] } )
+	bibliographics.update( { "txt"       : result.at[ 0, 'txt' ] } )
+	bibliographics.update( { "words"     : result.at[ 0, 'words' ] } )
+
+	# done
+	return bibliographics
+
+
 def model2dataframe( model ) :
 	'''Transform the output of topic-model.py into a data frame'''
 	
@@ -60,6 +88,7 @@ def addBibliographics( df, engine ) :
 	authors = []
 	titles  = []
 	dates   = []
+	caches  = []
 
 	# process each row in the given dataframe
 	for index, row in df.iterrows() :
@@ -68,6 +97,7 @@ def addBibliographics( df, engine ) :
 		author = []
 		title  = []
 		date   = []
+		cache  = []
 		
 		# process each file
 		for id in row[ 'files'].split( ';' ) :
@@ -77,7 +107,7 @@ def addBibliographics( df, engine ) :
 			id            = os.path.basename( id )
 			
 			# search, and conditionally update
-			result = pd.read_sql_query( "SELECT author, title, date FROM bib where id is '" + id + "'", engine )
+			result = pd.read_sql_query( "SELECT author, title, date, cache FROM bib where id is '" + id + "'", engine )
 			
 			# update with empty values
 			if ( result.empty ) :
@@ -85,6 +115,7 @@ def addBibliographics( df, engine ) :
 				author.append( '' )
 				title.append( '' )
 				date.append( '' )
+				cache.append( '' )
 				
 			# update with found values
 			else :
@@ -98,15 +129,20 @@ def addBibliographics( df, engine ) :
 				if ( result.iloc[ 0, 2 ] ) : date.append( result.iloc[ 0, 2 ] )
 				else : date.append( '' )
 											
+				if ( result.iloc[ 0, 3 ] ) : cache.append( result.iloc[ 0, 3 ] )
+				else : cache.append( '' )
+											
 		# update
 		authors.append( '|'.join( author ) )
 		titles.append( '|'.join( title ) )
 		dates.append( '|'.join( date ) )
+		caches.append( '|'.join( cache ) )
 
 	# add bibliographic columns to the dataframe and done
 	df['authors'] = authors 
 	df['titles']  = titles 
 	df['dates']   = dates 
+	df['caches']   = caches 
 	return( df )
 
 
@@ -127,8 +163,8 @@ def readModel( directory, engine, t, d, f ) :
 
 		words.append( row[ 'words' ] )
 		
-		items = row[ 'files' ]
-		items = items.split( ';' )
+		items = row[ 'caches' ]
+		items = items.split( '|' )
 		files.append( items[ 0:f ] )
 		
 		items = row[ 'titles' ]
@@ -267,7 +303,14 @@ for unigram in data.split( '\n' ) :
 pattern      = '|'.join( unigrams[ 0:2 ] )
 command      = "grep -Hice '" + pattern + "' ./txt/*.txt | tr ':' ' ' | sort -rnk2 | head -n3 | cut -d ' ' -f1"
 unigramfiles = subprocess.check_output( command, shell=True ).decode( 'utf-8' )
-unigramfiles = unigramfiles.rstrip().split( '\n' )
+unigramlinks = []
+for file in unigramfiles.rstrip().split( '\n' ) :
+	id = os.path.splitext( os.path.basename( file ) )[ 0 ]
+	bibliographics = id2bibliographics( id, engine )
+	cache = bibliographics.get('cache')
+	title = bibliographics.get('title')
+	link = "<a href='{}'>{}</a>".format( cache, title )
+	unigramlinks.append( link )
 
 # bigrams
 bigrams = subprocess.check_output( [ NGRAMS, CORPUS, '2' ] ).decode( 'utf-8' )
@@ -290,7 +333,15 @@ for bigram in data.split( '\n' ) :
 pattern      = '|'.join( bigrams[ 0:2 ] )
 command      = "grep -Hice '" + pattern + "' ./txt/*.txt | tr ':' ' ' | sort -rnk2 | head -n3 | cut -d ' ' -f1"
 bigramfiles = subprocess.check_output( command, shell=True ).decode( 'utf-8' )
-bigramfiles = bigramfiles.rstrip().split( '\n' )
+bigramlinks = []
+for file in bigramfiles.rstrip().split( '\n' ) :
+	id = os.path.splitext( os.path.basename( file ) )[ 0 ]
+	bibliographics = id2bibliographics( id, engine )
+	cache = bibliographics.get('cache')
+	title = bibliographics.get('title')
+	link = "<a href='{}'>{}</a>".format( cache, title )
+	bigramlinks.append( link )
+
 
 # trigrams
 if ( not os.path.exists( './tsv/trigrams.tsv' ) ) :
@@ -381,12 +432,12 @@ html = html.replace( '##TOPICSQUINTITLE02##',      topicQuintupleTitles[ 1 ][ 0 
 html = html.replace( '##TOPICSQUINTITLE03##',      topicQuintupleTitles[ 2 ][ 0 ] )
 html = html.replace( '##TOPICSQUINTITLE04##',      topicQuintupleTitles[ 3 ][ 0 ] )
 html = html.replace( '##TOPICSQUINTITLE05##',      topicQuintupleTitles[ 4 ][ 0 ] )
-html = html.replace( '##FREQUENTUNIGRAMFILE01##',  unigramfiles[ 0 ] )
-html = html.replace( '##FREQUENTUNIGRAMFILE02##',  unigramfiles[ 1 ] )
-html = html.replace( '##FREQUENTUNIGRAMFILE03##',  unigramfiles[ 2 ] )
-html = html.replace( '##FREQUENTBIGRAMFILE01##',   bigramfiles[ 0 ] )
-html = html.replace( '##FREQUENTBIGRAMFILE02##',   bigramfiles[ 1 ] )
-html = html.replace( '##FREQUENTBIGRAMFILE03##',   bigramfiles[ 2 ] )
+html = html.replace( '##FREQUENTUNIGRAMLINK01##',  unigramlinks[ 0 ] )
+html = html.replace( '##FREQUENTUNIGRAMLINK02##',  unigramlinks[ 1 ] )
+html = html.replace( '##FREQUENTUNIGRAMLINK03##',  unigramlinks[ 2 ] )
+html = html.replace( '##FREQUENTBIGRAMLINK01##',   bigramlinks[ 0 ] )
+html = html.replace( '##FREQUENTBIGRAMLINK02##',   bigramlinks[ 1 ] )
+html = html.replace( '##FREQUENTBIGRAMLINK03##',   bigramlinks[ 2 ] )
 
 # output and done
 print( html )

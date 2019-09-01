@@ -52,6 +52,8 @@ create table bib (
     title     TEXT,
     author    TEXT,
     date      TEXT,
+    txt       TEXT,
+    cache     TEXT,
     pages     INT,
     extension TEXT,
     mime      TEXT,
