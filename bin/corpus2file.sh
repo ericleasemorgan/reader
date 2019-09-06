@@ -18,7 +18,7 @@ fi
 FILE=$1
 
 # create a key
-KEY=$( basename $FILE .txt )
+KEY=$( basename "$FILE" .txt )
 
 # translate newlines, remove multiple spaces, remove leading space, escape special characters
 RECORD=$( cat $FILE | tr '\n' ' ' | sed -E "s/[[:space:]]+/ /g" | sed -E "s/^ //" | sed -E 's/%/%%/g' | sed -E 's/\\/\\\\/g' )

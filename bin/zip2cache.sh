@@ -5,7 +5,8 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
 
-# May 22, 2019 - first cut
+# May      22, 2019 - first cut
+# September 6, 2019 - quoted a basename file; escaped values in id
 
 
 # configure
@@ -59,8 +60,11 @@ else
 	for FILE in cache/* ; do
     
     	# parse
-    	FILE=$( basename $FILE )
+    	FILE=$( basename "$FILE" )
     	ID=$( echo ${FILE%.*} )
+    	
+    	# escape
+    	ID=$( echo "$ID" | sed "s/'/''/g" )
     	
 		# output
 		echo "INSERT INTO bib ( 'id' ) VALUES ( '$ID' );" >> ./tmp/bibliographics.sql
@@ -70,6 +74,7 @@ else
 fi
 
 # update the bibliographic table
+echo "=== updating bibliographic database" >&2
 echo "BEGIN TRANSACTION;"     > ./tmp/update-bibliographics.sql
 cat ./tmp/bibliographics.sql >> ./tmp/update-bibliographics.sql
 echo "END TRANSACTION;"      >> ./tmp/update-bibliographics.sql

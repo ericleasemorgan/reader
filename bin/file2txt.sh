@@ -23,7 +23,7 @@ DIRECTORY=$2
 
 # initialize
 BASENAME=$( basename "$FILE" )
-BASENAME=${BASENAME%.*}
+BASENAME="${BASENAME%.*}"
 OUTPUT="$DIRECTORY/$BASENAME.txt"
 
 echo "  FILE: $FILE" >&2

@@ -8,6 +8,8 @@
 
 # June 26, 2018 - first cut
 
+echo "=== file2bib.sh ===" >&2
+
 # configure
 FILE2BIB='/export/reader/bin/file2bib.py'
 BIB='bib'
@@ -25,12 +27,12 @@ fi
 FILE=$1
 
 # compute output
-LEAF=$( basename $FILE )
+LEAF=$( basename "$FILE" )
 LEAF="${LEAF%.*}"
 OUTPUT="$BIB/$LEAF.bib"
 
 # echo and do the work
-$FILE2BIB $FILE > $OUTPUT
+$FILE2BIB "$FILE" > "$OUTPUT"
 
 
 

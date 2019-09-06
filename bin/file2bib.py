@@ -37,7 +37,7 @@ extension  = os.path.splitext( os.path.basename( file ) )[ 1 ]
 id         = title
 date       = ''
 pages      = ''
-txt        = TXT + '/' + id + extension
+txt        = TXT + '/' + id + '.txt'
 cache      = CACHE + '/' + id + extension
 
 

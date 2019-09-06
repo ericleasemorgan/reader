@@ -20,6 +20,8 @@ my $driver    = DRIVER;
 my $database  = DATABASE;
 my $dbh       = DBI->connect( "DBI:$driver:dbname=$database", '', '', { RaiseError => 1 } ) or die $DBI::errstr;
 
+$did =~ s/'/''/g;
+
 # find all documents having the given keyword
 my $sql    = "select sid from pos where pos is '.' AND token IS '?' AND id IS '$did' order by sid;";
 my $handle = $dbh->prepare( $sql );

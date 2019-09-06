@@ -1,4 +1,6 @@
 
+echo "=== carrel2vec.sh ===" >&2
+
 # configure
 WORD2PHRASE='word2phrase'
 WORD2VEC='word2vec'

@@ -46,6 +46,8 @@ sub usage { die "Usage: $0 <directory> <pos|ent|wrd|adr|url|bib> <file>\n" }
 
 sub bib {
 
+	warn "=== reduce.pl bib ===\n";
+	
 	# get input
 	my $dbh  = shift;
 	my $file = shift;
@@ -70,10 +72,27 @@ sub bib {
 		# parse, escape, and do the work
 		chop;
 		my ( $id, $author, $title, $date, $pages, $extension, $mime, $words, $sentences, $flesch, $summary, $cache, $txt ) = split( "\t", $_ );
+		warn "         id = $id\n";
+		warn "     author = $author\n";
+		warn "      title = $title\n";
+		warn "       date = $date\n";
+		warn "      pages = $pages\n";
+		warn "  extension = $extension\n";
+		warn "       mime = $mime\n";
+		warn "      words = $words\n";
+		warn "  sentences = $sentences\n";
+		warn "     flesch = $flesch\n";
+		warn "    summary = $summary\n";
+		warn "      cache = $cache\n";
+		warn "       txt  = $txt\n";
+		
 		$id      =~ s/'/''/g;
 		$summary =~ s/'/''/g;
 		$author  =~ s/'/''/g;
 		$title   =~ s/'/''/g;
+		$cache   =~ s/'/''/g;
+		$txt     =~ s/'/''/g;
+		
 		$sth->execute( $author, $title, $date, $pages, $extension, $mime, $words, $sentences, $flesch, $summary, $cache, $txt, $id ) or die $DBI::errstr;
 
 	}
@@ -81,6 +100,7 @@ sub bib {
 	# close the database
 	$sth = $dbh->prepare( "END TRANSACTION;" ) or die $DBI::errstr;
 	$sth->execute or die $DBI::errstr;
+
 
  }
 

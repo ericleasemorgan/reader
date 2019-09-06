@@ -30,6 +30,7 @@ import pandas as pd
 import subprocess
 import sys
 import os
+import re
 
 # define
 def id2bibliographics( id, engine ) :
@@ -38,8 +39,11 @@ def id2bibliographics( id, engine ) :
 	# initialize
 	bibliographics = {}
 	
+	id.replace( "'", "''" )
+	
 	# search
-	result = pd.read_sql_query( "SELECT * FROM bib where id is '" + id + "'", engine )
+	query = "SELECT * FROM bib where id is '{}'".format( id )
+	result = pd.read_sql_query( query, engine )
 	
 	# update
 	bibliographics.update( { "author"    : result.at[ 0, 'author' ] } )
@@ -106,8 +110,12 @@ def addBibliographics( df, engine ) :
 			id, extention = os.path.splitext( id )
 			id            = os.path.basename( id )
 			
+			id.replace( "'", "''" )
+
+			query = 'SELECT author, title, date, cache FROM bib where id is "{}"'.format( id )
+
 			# search, and conditionally update
-			result = pd.read_sql_query( "SELECT author, title, date, cache FROM bib where id is '" + id + "'", engine )
+			result = pd.read_sql_query( query, engine )
 			
 			# update with empty values
 			if ( result.empty ) :
@@ -301,7 +309,7 @@ for unigram in data.split( '\n' ) :
 	fields = unigram.split( '\t' )
 	unigrams.append( fields[ 0 ] )
 pattern      = '|'.join( unigrams[ 0:2 ] )
-command      = "grep -Hice '" + pattern + "' ./txt/*.txt | tr ':' ' ' | sort -rnk2 | head -n3 | cut -d ' ' -f1"
+command      = "grep -HicE '" + pattern + "' ./txt/*.txt | sort -r -n -t ':' -k2 | head -n3 | cut -d ':' -f1"
 unigramfiles = subprocess.check_output( command, shell=True ).decode( 'utf-8' )
 unigramlinks = []
 for file in unigramfiles.rstrip().split( '\n' ) :
@@ -331,7 +339,7 @@ for bigram in data.split( '\n' ) :
 	fields = bigram.split( '\t' )
 	bigrams.append( fields[ 0 ] )
 pattern      = '|'.join( bigrams[ 0:2 ] )
-command      = "grep -Hice '" + pattern + "' ./txt/*.txt | tr ':' ' ' | sort -rnk2 | head -n3 | cut -d ' ' -f1"
+command      = "grep -HicE '" + pattern + "' ./txt/*.txt | sort -r -n -t ':' -k2 | head -n3 | cut -d ':' -f1"
 bigramfiles = subprocess.check_output( command, shell=True ).decode( 'utf-8' )
 bigramlinks = []
 for file in bigramfiles.rstrip().split( '\n' ) :

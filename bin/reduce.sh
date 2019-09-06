@@ -30,3 +30,4 @@ find "$CARRELS/$NAME" -name '*.wrd' -exec $REDUCE "$CARRELS/$NAME" wrd {} \;
 find "$CARRELS/$NAME" -name '*.adr' -exec $REDUCE "$CARRELS/$NAME" adr {} \;
 find "$CARRELS/$NAME" -name '*.url' -exec $REDUCE "$CARRELS/$NAME" url {} \;
 find "$CARRELS/$NAME" -name '*.bib' -exec $REDUCE "$CARRELS/$NAME" bib {} \;
+
