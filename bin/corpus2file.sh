@@ -3,7 +3,8 @@
 # corpus2file.sh - given a list of files on STDIN, output a data structure suitable for jslda.js (topic modeling)
 
 # Eric Lease Morgan <emorgan@nd.edu>
-# August 11, 2019 - first cut; at the cabin before Philadelphia
+# August   11, 2019 - first cut; at the cabin before Philadelphia
+# September 6, 2019 - quoted file names
 
 
 # configure
@@ -15,13 +16,13 @@ if [[ -z $1 ]]; then
 fi
 
 # get input
-FILE=$1
+FILE="$1"
 
 # create a key
 KEY=$( basename "$FILE" .txt )
 
 # translate newlines, remove multiple spaces, remove leading space, escape special characters
-RECORD=$( cat $FILE | tr '\n' ' ' | sed -E "s/[[:space:]]+/ /g" | sed -E "s/^ //" | sed -E 's/%/%%/g' | sed -E 's/\\/\\\\/g' )
+RECORD=$( cat "$FILE" | tr '\n' ' ' | sed -E "s/[[:space:]]+/ /g" | sed -E "s/^ //" | sed -E 's/%/%%/g' | sed -E 's/\\/\\\\/g' )
 
 # output
 printf "$KEY\t$DATE\t$RECORD\n"

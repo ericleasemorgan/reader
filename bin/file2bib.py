@@ -5,24 +5,29 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame; distributed under a GNU Public License
 
-# July 6, 2019 - first working version
-# July 7, 2019 - combined with txt2bib.py
-# September 1, 2019 - added cache and txt fields
+# July       6, 2019 - first working version
+# July       7, 2019 - combined with txt2bib.py
+# September  1, 2019 - added cache and txt fields
+# September 11, 2019 - looked for previously created bibliographic data
 
 
 # configure
-COUNT=150
-RATIO=0.05
-CACHE='./cache'
-TXT='./txt'
+COUNT    = 150
+RATIO    = 0.05
+CACHE    = './cache'
+TXT      = './txt'
+DATABASE = './etc/reader.db'
 
 # require
 from gensim.summarization import summarize
+from sqlalchemy import create_engine
 from textatistic import Textatistic
 from tika import detector
 from tika import language
 from tika import parser
 import sys, re, os
+import pandas as pd
+
 
 # sanity check
 if len( sys.argv ) != 2 :
@@ -30,8 +35,8 @@ if len( sys.argv ) != 2 :
 	exit()
 
 # initialize
-file       = sys.argv[ 1 ]
 author     = ''
+file       = sys.argv[ 1 ]
 title      = os.path.splitext( os.path.basename( file ) )[ 0 ]
 extension  = os.path.splitext( os.path.basename( file ) )[ 1 ]
 id         = title
@@ -39,7 +44,7 @@ date       = ''
 pages      = ''
 txt        = TXT + '/' + id + '.txt'
 cache      = CACHE + '/' + id + extension
-
+engine     = create_engine( 'sqlite:///' + DATABASE )
 
 # extract mime-type, just in case
 mimetype = detector.from_file( file )
@@ -48,23 +53,31 @@ mimetype = detector.from_file( file )
 parsed = parser.from_file( file )
 metadata = parsed[ "metadata" ] 
 
-# parse author
-if 'creator' in metadata :
+# get (possible) pre-existing bibliographic values
+query          = 'SELECT id, author, title, date FROM bib where id is "{}"'.format( id )
+bibliographics = pd.read_sql_query( query, engine, index_col='id' )
 
-	author = metadata[ 'creator' ]
-	if ( isinstance( author, list ) ) : author = author[ 0 ]
+# parse author
+if ( bibliographics.loc[ id ,'author'] ) : author = bibliographics.loc[ id,'author']
+else :
+	if 'creator' in metadata :
+		author = metadata[ 'creator' ]
+		if ( isinstance( author, list ) ) : author = author[ 0 ]
 	
 # title
-if 'title' in metadata :
-
-	title = metadata[ 'title' ]
-	if ( isinstance( title, list ) ) : title = title[ 0 ]
-	title = ' '.join( title.split() )
+if ( bibliographics.loc[ id ,'title'] ) : title = bibliographics.loc[ id, 'title']
+else :
+	if 'title' in metadata :
+		title = metadata[ 'title' ]
+		if ( isinstance( title, list ) ) : title = title[ 0 ]
+		title = ' '.join( title.split() )
 	
 # date
-if 'date' in metadata :
-	date = metadata[ 'date' ]
-	date = date[:date.find( 'T' ) ]
+if ( bibliographics.loc[ id ,'date'] ) : date = bibliographics.loc[ id, 'date']
+else :
+	if 'date' in metadata :
+		date = metadata[ 'date' ]
+		date = date[:date.find( 'T' ) ]
 
 # number of pages
 if 'xmpTPg:NPages' in metadata : pages = metadata[ 'xmpTPg:NPages' ]
