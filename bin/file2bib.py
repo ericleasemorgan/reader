@@ -54,11 +54,12 @@ parsed = parser.from_file( file )
 metadata = parsed[ "metadata" ] 
 
 # get (possible) pre-existing bibliographic values
-query          = 'SELECT id, author, title, date FROM bib where id is "{}"'.format( id )
+escape = id.replace( "'", "''" )
+query          = 'SELECT id, author, title, date FROM bib where id is "{}"'.format( escape )
 bibliographics = pd.read_sql_query( query, engine, index_col='id' )
 
 # parse author
-if ( bibliographics.loc[ id ,'author'] ) : author = bibliographics.loc[ id,'author']
+if ( bibliographics.loc[ escape ,'author'] ) : author = bibliographics.loc[ escape,'author']
 else :
 	if 'creator' in metadata :
 		author = metadata[ 'creator' ]
@@ -83,6 +84,7 @@ else :
 if 'xmpTPg:NPages' in metadata : pages = metadata[ 'xmpTPg:NPages' ]
 
 # debug
+sys.stderr.write( "         id: " + id + "\n" )
 sys.stderr.write( "     author: " + author + "\n" )
 sys.stderr.write( "      title: " + title + "\n" )
 sys.stderr.write( "       date: " + date + "\n" )

@@ -48,6 +48,7 @@ for file, row in metadata.iterrows() :
 
 	# initialize id
 	id = os.path.splitext( file )[0]
+	id = id.replace( "'", "''" )
 	print( "INSERT INTO bib ( 'id' ) VALUES ( '%s' );" % id )
 	
 	# author
@@ -64,7 +65,7 @@ for file, row in metadata.iterrows() :
 	
 	# date
 	if 'date' in metadata :
-		date = row[ 'date' ]
+		date = str( row[ 'date' ] )
 		date = date.replace( "'", "''" )
 		print( "UPDATE bib SET date = '%s' WHERE id is '%s';" % ( date, id ) )
 	

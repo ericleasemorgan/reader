@@ -5,10 +5,11 @@
 # Eric Lease Morgan <emorgan@nd.ed>
 # (c) University of Notre Dame; distributed under GNU Public License
 
-# June     11, 2019 - first documentation
-# July     21, 2019 - switching to Python
-# July     30, 2019 - hacking at PEARC '19
-# September 1, 2019 - began linking to cached files
+# June      11, 2019 - first documentation
+# July      21, 2019 - switching to Python
+# July      30, 2019 - hacking at PEARC '19
+# September  1, 2019 - began linking to cached files
+# September 14, 2019 - fixed unigrams & bigrams; Yoda says, "Really ugly, they are."
 
 
 # configure
@@ -290,7 +291,7 @@ if ( not os.path.exists( './tsv/entities.tsv' ) ) :
 	entities = pd.read_sql_query( "select lower(entity) as entity, type, count(lower(entity)) as frequency from ent where (type is 'PERSON' or type is 'GPE' or type is 'LOC' or type is 'ORG') group by entity order by frequency desc", engine )
 	entities.to_csv( './tsv/entities.tsv', columns=[ 'entity', 'type', 'frequency' ], sep='\t', index=False )
 
-# unigrams
+# unigrams; really ugly!
 unigrams = subprocess.check_output( [ NGRAMS, CORPUS, '1' ] ).decode( 'utf-8' )
 if ( not os.path.exists( './tsv/unigrams.tsv' ) ) :
 	handle = open( './tsv/unigrams.tsv', 'w' ) 
@@ -311,16 +312,16 @@ for unigram in data.split( '\n' ) :
 pattern      = '|'.join( unigrams[ 0:2 ] )
 command      = "grep -HicE '" + pattern + "' ./txt/*.txt | sort -r -n -t ':' -k2 | head -n3 | cut -d ':' -f1"
 unigramfiles = subprocess.check_output( command, shell=True ).decode( 'utf-8' )
-unigramlinks = []
-for file in unigramfiles.rstrip().split( '\n' ) :
+unigramlinks = [ 'None', 'None', 'None' ]
+for item, file in enumerate( unigramfiles.rstrip().split( '\n' ) ) :
 	id = os.path.splitext( os.path.basename( file ) )[ 0 ]
 	bibliographics = id2bibliographics( id, engine )
 	cache = bibliographics.get('cache')
 	title = bibliographics.get('title')
 	link = "<a href='{}'>{}</a>".format( cache, title )
-	unigramlinks.append( link )
+	unigramlinks[ item ] = link
 
-# bigrams
+# bigrams; just as ugly
 bigrams = subprocess.check_output( [ NGRAMS, CORPUS, '2' ] ).decode( 'utf-8' )
 if ( not os.path.exists( './tsv/bigrams.tsv' ) ) :
 	handle = open( './tsv/bigrams.tsv', 'w' ) 
@@ -341,15 +342,14 @@ for bigram in data.split( '\n' ) :
 pattern      = '|'.join( bigrams[ 0:2 ] )
 command      = "grep -HicE '" + pattern + "' ./txt/*.txt | sort -r -n -t ':' -k2 | head -n3 | cut -d ':' -f1"
 bigramfiles = subprocess.check_output( command, shell=True ).decode( 'utf-8' )
-bigramlinks = []
-for file in bigramfiles.rstrip().split( '\n' ) :
+bigramlinks = [ 'None', 'None', 'None']
+for item, file in enumerate( bigramfiles.rstrip().split( '\n' ) ) :
 	id = os.path.splitext( os.path.basename( file ) )[ 0 ]
 	bibliographics = id2bibliographics( id, engine )
 	cache = bibliographics.get('cache')
 	title = bibliographics.get('title')
 	link = "<a href='{}'>{}</a>".format( cache, title )
-	bigramlinks.append( link )
-
+	bigramlinks[ item ]= link 
 
 # trigrams
 if ( not os.path.exists( './tsv/trigrams.tsv' ) ) :
