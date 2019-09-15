@@ -13,6 +13,8 @@ TSV2COMPLEX='/export/reader/bin/tsv2htm-complex.py'
 TSV2ENTITIES='/export/reader/bin/tsv2htm-entities.py'
 TSV2HTM='/export/reader/bin/tsv2htm.py'
 TSV2QUESTIONS='/export/reader/bin/tsv2htm-questions.py'
+DB2BIBLIOGRAPHICS='/export/reader/bin/db2tsv-bibliographics.py'
+TSV2BIBLIOGRAPHICS='/export/reader/bin/tsv2htm-bibliographics.py'
 TXT='txt/*.txt'
 
 # sanity check
@@ -52,6 +54,11 @@ $TSV2COMPLEX adjective noun ./tsv/adjective-noun.tsv  > ./htm/adjective-noun.htm
 # named entities
 echo "==== make-pages.sh named enities" >&2
 $TSV2ENTITIES ./tsv/entities.tsv  > ./htm/entities.htm &
+
+# bibliographics
+echo "==== making bibliographics" >&2
+$DB2BIBLIOGRAPHICS > ./tsv/bibliographics.tsv
+$TSV2BIBLIOGRAPHICS ./tsv/bibliographics.tsv > ./htm/bibliographics.htm
 
 # list questions
 echo "==== make-pages.sh questions" >&2

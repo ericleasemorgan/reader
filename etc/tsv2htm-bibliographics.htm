@@ -1,0 +1,36 @@
+<html>
+<head>
+	<link   rel="stylesheet"       type="text/css"       href="../css/jquery.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" language="javascript" src="../js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" class="init">
+		$(document).ready(function() { $('#tsv').DataTable( {
+        "order": [[ 1, "asc" ]],
+        "pageLength": 10
+    } ); } );
+	</script>
+</head>
+<body style='margin: 3%' >
+<h1>Bibliographics</h1>
+<p>This is a table of authors, titles, dates and other bibliographic information; it is a list metadata describing the content of your study carrel. Think of it as your library.</p>
+
+<table id="tsv" class="display" style="width:90%">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>author</th>
+                <th>title</th>
+                <th>date</th>
+                <th>words</th>
+                <th>sentences</th>
+                <th>pages</th>
+                <th>cache</th>
+                <th>text</th>
+            </tr>
+        </thead>
+        <tbody>
+        ##ROWS##
+        </tbody>
+    </table>
+</body>
+</html>
