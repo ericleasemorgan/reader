@@ -28,7 +28,7 @@ cd "$CARRELS/$NAME"
 # initialize temporary file system and unzip
 rm -rf ./tmp/input
 mkdir ./tmp/input
-unzip input.zip -d ./tmp/input -x '*MACOSX*'
+unzip input.zip -d ./tmp/input -x '*MACOSX*' 1>&2 
 
 # copy known file types to the cache; normalize file names here
 find tmp/input -name "*.pdf"  | $PARALLEL --will-cite mv {} cache

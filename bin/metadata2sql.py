@@ -53,13 +53,13 @@ for file, row in metadata.iterrows() :
 	
 	# author
 	if 'author' in metadata :
-		author = row[ 'author' ]
+		author = str( row[ 'author' ] )
 		author = author.replace( "'", "''" )
 		print( "UPDATE bib SET author = '%s' WHERE id is '%s';" % ( author, id ) )
 	
 	# title
 	if 'title' in metadata :
-		title = row[ 'title' ]
+		title = str( row[ 'title' ] )
 		title = title.replace( "'", "''" )
 		print( "UPDATE bib SET title = '%s' WHERE id is '%s';" % ( title, id ) )
 	
