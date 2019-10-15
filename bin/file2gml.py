@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 # configure
-FILE   = './man.tsv';
 OUTPUT = '/tmp/graph.gml'
 
 # require
@@ -9,11 +8,19 @@ import networkx as nx
 import sys
 import os
 
+# sanity check
+if len( sys.argv ) != 2 :
+	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <file>\n" )
+	quit()
+
+# get input
+file = sys.argv[ 1 ]
+
 # initialize
 G = nx.DiGraph()
 
 # slurp up the data
-with open ( FILE ) as handle : records = handle.readlines()
+with open ( file ) as handle : records = handle.readlines()
 
 # process each record
 for record in records :
@@ -21,11 +28,9 @@ for record in records :
 	# parse
 	record = record.strip()
 	fields = record.split( "\t" )
-	node01 = fields[ 0 ]
-	node02 = fields[ 1 ]
-	
+		
 	# update
-	G.add_edge( node01,  node02 )
+	G.add_edge( fields[ 0 ],  fields[ 1 ] )
 
 # save, output, clean-up and done; convoluted
 nx.write_gml( G, OUTPUT )
