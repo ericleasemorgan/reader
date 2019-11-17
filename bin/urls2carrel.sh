@@ -5,10 +5,20 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
 
-# July  8, 2018 - first cut
-# July 14, 2018 - more investigation
-# July 16, 2018 - made things more module
+# July      8, 2018 - first cut
+# July     14, 2018 - more investigation
+# July     16, 2018 - made things more module
+# November 17, 2019 - hacked to accepte command line input and rename input file
 
+
+# sanity check
+if [[ -z $1 ]]; then
+	echo "Usage: $0 <file>" >&2
+	exit
+fi	
+
+# rename input to a "standard" name; a hack
+mv "$1" input-file.txt
 
 # configure input
 FILE=./input-file.txt

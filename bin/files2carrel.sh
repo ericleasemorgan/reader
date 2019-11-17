@@ -5,10 +5,20 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
 
-# July  19, 2018 - first cut
-# July  20, 2018 - started getting to work from a remote machine and sending email
-# April 20, 2019 - building off of other work; at the Culver Coffee Shop
+# July     19, 2018 - first cut
+# July     20, 2018 - started getting to work from a remote machine and sending email
+# April    20, 2019 - building off of other work; at the Culver Coffee Shop
+# November 17, 2019 - hacked to accepte command line input and rename input file
 
+
+# sanity check
+if [[ -z $1 ]]; then
+	echo "Usage: $0 <file>" >&2
+	exit
+fi	
+
+# rename input to a "standard" name; a hack
+mv "$1" ./input-file.ukn
 
 # set up environment
 PERL_HOME='/export/perl/bin'

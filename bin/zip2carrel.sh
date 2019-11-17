@@ -5,11 +5,18 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
 
-# May 22, 2019 - first cut
+# May      22, 2019 - first cut
+# November 17, 2019 - hacked to accepte command line input and rename input file
 
 
-# configure input
-ZIP=./input.zip
+# sanity check
+if [[ -z $1 ]]; then
+	echo "Usage: $0 <zip file>" >&2
+	exit
+fi	
+
+# rename input to a "standard" name; a hack
+mv "$1" ./input.zip
 
 # set up environment
 PERL_HOME='/export/perl/bin'
