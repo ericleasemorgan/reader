@@ -10,3 +10,4 @@ log
 tmp
 lib/tika-server.jar.md5
 lib/tika-server.jar
+etc/readers.tsv
