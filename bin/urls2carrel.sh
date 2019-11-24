@@ -82,7 +82,8 @@ echo "" >&2
 
 # zip it up
 echo "Zipping study carrel" >&2
-cp "$LOG/$NAME.log" "$NAME/log" 
+rm -rf ./tmp
+#cp "$LOG/$NAME.log" "$NAME/log" 
 $CARREL2ZIP $NAME
 echo "" >&2
 

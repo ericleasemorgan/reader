@@ -10,7 +10,6 @@
 use constant STOPWORDS => './etc/stopwords.txt';
 
 # require
-use lib './etc';
 use Lingua::EN::Ngram;
 use strict;
 

@@ -31,7 +31,7 @@ OUTPUT="$TXT"
 
 # set up tika environment
 #TIKA_PATH=$TIKA_HOME
-TIKA_LOG_PATH="./log"
+TIKA_LOG_PATH="./tmp"
 TIKA_STARTUP_SLEEP=5
 TIKA_STARTUP_MAX_RETRY=25
 #export TIKA_PATH

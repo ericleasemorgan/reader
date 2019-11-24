@@ -18,7 +18,7 @@ CORPUS="$CARREL/etc/reader.txt"
 MODEL="$CARREL/etc/reader.vec"
 
 # initialize
-rm -rf $CORPUS
+rm -rf $CORPUS >&2
 
 # build corpus
 rm $CORPUS
