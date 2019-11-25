@@ -17,6 +17,7 @@ DB2REPORT='/export/reader/bin/db2report.sh'
 REPORT='etc/report.txt'
 CARREL2VEC='/export/reader/bin/carrel2vec.sh'
 MAKEPAGES='/export/reader/bin/make-pages.sh'
+CORPUS="./etc/reader.txt"
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -74,8 +75,18 @@ kill $PID
 # build the database
 $REDUCE $NAME
 
+# build ./etc/reader.txt; a plain text version of the whole thing
+echo "Building ./etc/reader.txt" >&2
+rm -rf $CORPUS >&2
+find "./txt" -name '*.txt' -exec cat {} >> "$CORPUS" \;
+#sed -e "s/[[:punct:]]\+//g" $CORPUS > ./tmp/corpus.001
+tr '[:upper:]' '[:lower:]' < "$CORPUS" > ./tmp/corpus.001
+tr '[:digit:]' ' ' < ./tmp/corpus.001 > ./tmp/corpus.002
+tr '\n' ' ' < ./tmp/corpus.002 > ./tmp/corpus.003
+tr -s ' ' < ./tmp/corpus.003 > "$CORPUS"
+
 # create semantic index
-$CARREL2VEC $NAME
+#$CARREL2VEC $NAME
 
 # output a report against the database
 $DB2REPORT $NAME > "$CARRELS/$NAME/$REPORT"
