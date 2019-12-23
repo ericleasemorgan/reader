@@ -27,7 +27,9 @@ from tika import language
 from tika import parser
 import sys, re, os
 import pandas as pd
-
+import textacy
+import textacy.preprocessing
+import spacy
 
 # sanity check
 if len( sys.argv ) != 2 :
@@ -100,28 +102,29 @@ for key in sorted( metadata.keys() ) :
 
 # open the given file and unwrap it
 text = parsed[ "content" ] 
-text = re.sub( '\r', '\n', text )
-text = re.sub( '\n+', ' ', text )
-text = re.sub( '^\W+', '', text )
-text = re.sub( '\t', ' ',  text )
-text = re.sub( ' +', ' ',  text )
+text = textacy.preprocessing.normalize.normalize_quotation_marks( text )
+text = textacy.preprocessing.normalize.normalize_hyphenated_words( text )
+text = textacy.preprocessing.normalize.normalize_whitespace( text )
 
 # get all document statistics and summary
-statistics = Textatistic( text )
 summary    = summarize( text, word_count=COUNT, split=False )
 summary    = re.sub( '\n+', ' ', summary )
 summary    = re.sub( '- ', '', summary )
 summary    = re.sub( '\s+', ' ', summary )
 
-# parse out only the desired statistics
-words     = statistics.word_count
-sentences = statistics.sent_count
-flesch    = int( statistics.flesch_score )
+# initialize model
+maximum = len( text ) + 1
+model   = spacy.load( 'en', max_length=maximum )
 
-# debug
-#print( statistics.counts )
-#print( statistics.scores )
-#print (summary)
+# model the data; this needs to be improved
+doc = model( text )
+
+# parse out only the desired statistics
+statistics = textacy.text_stats.TextStats( doc )
+words      = statistics.n_words 
+sentences  = statistics.n_sents 
+syllables  = statistics.n_syllables
+flesch     = int( textacy.text_stats.flesch_reading_ease( syllables, words, sentences ) )
 
 # output header, data, and then done
 print( "\t".join( ( 'id', 'author', 'title', 'date', 'pages', 'extension', 'mime', 'words', 'sentences', 'flesch', 'summary', 'cache', 'txt' ) ) )
