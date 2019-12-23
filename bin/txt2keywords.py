@@ -5,16 +5,20 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
 
-# June 26, 2018 - first cut
-# June 24, 2018 - lemmatized output
+# June     26, 2018 - first cut
+# June     24, 2018 - lemmatized output
+# December 23, 2019 - started using Textacy
 
 
 # configure
-RATIO = 0.01
+NGRAMS = 1
+TOPN   = 0.003
 
 # require
-from gensim.summarization import keywords
-import sys, re, os
+from textacy.ke.yake import yake
+import spacy
+import sys, os
+import textacy.preprocessing
 
 # sanity check
 if len( sys.argv ) != 2 :
@@ -25,21 +29,24 @@ if len( sys.argv ) != 2 :
 file = sys.argv[ 1 ]
 
 # open the given file and unwrap it
-text = open( file, 'r' ).read()
-text = re.sub( '\r', '\n', text )
-text = re.sub( '\n+', ' ', text )
-text = re.sub( '^\W+', '', text )
-text = re.sub( '\t', ' ',  text )
-text = re.sub( ' +', ' ',  text )
+text = open( file ).read()
+text = textacy.preprocessing.normalize.normalize_quotation_marks( text )
+text = textacy.preprocessing.normalize.normalize_hyphenated_words( text )
+text = textacy.preprocessing.normalize.normalize_whitespace( text )
 
 # compute the identifier
 id = os.path.basename( os.path.splitext( file )[ 0 ] )
 
+# initialize model
+maximum = len( text ) + 1
+model   = spacy.load( 'en', max_length=maximum )
+
+# model the data; this needs to be improved
+doc = model( text )
+
 # output a header
 print( "id\tkeyword" )
 
-# process each keyword; can't get much simpler
-for keyword in keywords( text, ratio=RATIO, split=True, lemmatize=True ) : print( "\t".join( ( id, keyword ) ) )
-
-# done
-quit()
+# process and output each keyword and done; can't get much simpler
+for keyword, score in ( yake( doc, ngrams=NGRAMS, topn=TOPN ) ) : print( "\t".join( [ id, keyword ] ) )
+exit()

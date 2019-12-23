@@ -201,7 +201,7 @@ averageSizeInWords = f'{int( averageSizeInWords.iloc[ 0, 0 ] ):,}'
 
 # average readability score
 averageReadabilityScore = pd.read_sql_query( 'SELECT AVG( flesch ) FROM bib', engine )
-averageReadabilityScore = int( averageReadabilityScore.iloc[ 0, 0 ] )
+averageReadabilityScore = averageReadabilityScore.iloc[ 0, 0 ]
 
 # plot sizes and readability
 if( not os.path.exists( './figures/sizes-histogram.png' ) )  : subprocess.run( [ PLOTSIZES,  'histogram', './figures/sizes-histogram.png'  ] ) 

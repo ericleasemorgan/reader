@@ -9,6 +9,7 @@
 # July       7, 2019 - combined with txt2bib.py
 # September  1, 2019 - added cache and txt fields
 # September 11, 2019 - looked for previously created bibliographic data
+# December  23, 2019 - started using Textacy
 
 
 # configure
@@ -21,15 +22,14 @@ DATABASE = './etc/reader.db'
 # require
 from gensim.summarization import summarize
 from sqlalchemy import create_engine
-from textatistic import Textatistic
 from tika import detector
 from tika import language
 from tika import parser
-import sys, re, os
 import pandas as pd
+import spacy
+import sys, re, os
 import textacy
 import textacy.preprocessing
-import spacy
 
 # sanity check
 if len( sys.argv ) != 2 :
