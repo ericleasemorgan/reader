@@ -12,12 +12,13 @@
 
 # configure
 NGRAMS = 1
-TOPN   = 0.003
+TOPN   = 0.005
 
 # require
 from textacy.ke.yake import yake
+import os
 import spacy
-import sys, os
+import sys
 import textacy.preprocessing
 
 # sanity check
@@ -40,9 +41,7 @@ id = os.path.basename( os.path.splitext( file )[ 0 ] )
 # initialize model
 maximum = len( text ) + 1
 model   = spacy.load( 'en', max_length=maximum )
-
-# model the data; this needs to be improved
-doc = model( text )
+doc     = model( text )
 
 # output a header
 print( "id\tkeyword" )
