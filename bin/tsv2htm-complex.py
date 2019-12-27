@@ -1,7 +1,16 @@
 #!/usr/bin/env python
 
+# tsv2htm-complex.py - give a type of value and its corresponding TSV file, output a searchable, sortable, browsable HTML file
+
+# Eric Lease Morgan <emorgan@nd.edu>
+# (c) University of Notre Dame; distributed under a GNU Public license
+
+# December 27, 2019 - first documentation; sorted dataframe and truncated it for gradual degradation
+
+
 # configure
 TEMPLATE = '/export/reader/etc/tsv2htm-complex.htm'
+MAXIMUM  = 2500
 
 # require
 import sys
@@ -17,8 +26,10 @@ type01 = sys.argv[ 1 ]
 type02 = sys.argv[ 2 ]
 tsv    = sys.argv[ 3 ]
 
-# slurp up the given file
+# slurp up the given file, sort it, and truncate it
 df = pd.read_csv( tsv, sep='\t' )
+df = df.sort_values( by='frequency', ascending=False )
+df = df.head( n=MAXIMUM )
 
 rows = ''
 for index, row in df.iterrows() :
