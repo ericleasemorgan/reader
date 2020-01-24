@@ -39,6 +39,7 @@ find tmp/input -name "*.txt"  | $PARALLEL --will-cite mv {} cache
 find tmp/input -name "*.doc"  | $PARALLEL --will-cite mv {} cache
 find tmp/input -name "*.docx" | $PARALLEL --will-cite mv {} cache
 find tmp/input -name "*.pptx" | $PARALLEL --will-cite mv {} cache
+find tmp/input -name "*.xlsx" | $PARALLEL --will-cite mv {} cache
 
 # configure possible metadata file
 DIRECTORIES=( $(find ./tmp/input -type d) )

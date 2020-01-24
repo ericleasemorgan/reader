@@ -97,3 +97,8 @@ small, .text_small {
    }
 
 }
+
+.subpage {
+  /* max-width: 95% !important; */
+  margin-top: 6rem;
+}
