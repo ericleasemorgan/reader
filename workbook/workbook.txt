@@ -399,9 +399,12 @@ Again, every single file (except one) making up a study carrel is a plain text f
 
 Wordle
 
-Visualized word frequencies, while often considered sophomoric, can be quite useful when it comes to understanding a text, especially when the frequencies are focused on things like parts-of-speech, named entities, or co-occurrences. Wordle visualizes such frequencies very well. For example, the frequency of all words in the Iliad and the Odyssey, the frequency of all nouns, or the frequency of all words associated with the word ship.
+Visualized word frequencies, while often considered sophomoric, can be quite useful when it comes to understanding a text, especially when the frequencies are focused on things like parts-of-speech, named entities, or co-occurrences. Wordle visualizes such frequencies very well. For example, the 100 most frequent words in the Iliad and the Odyssey, the 100 most frequent nouns in the Iliad and the Odyssey, or the statistically significant words associated with the word ship.
 
-[INSERT IMAGES HERE.]
+./images/wordle-words.png
+./images/wordle-nouns.png
+./images/wordle-ship.png
+
 
 [INSERT RECIPE HERE.]
 
@@ -410,7 +413,10 @@ Concordancing with AntConc
 
 Concordancing is really the process of find, and AntConc is a very useful program for this purpose. Given one or more plain text files, AntConc will enable the student, researcher, or scholar to: find all the occurrences of a word, illustrate where the word is located, navigate through document where the word occurs, list word collocations, and calculate quite a number of useful statistics regarding a word. Concordancing, dating from the 13th Century, is the oldest from of text mining. Think of it as ^F (control-f) on steroids. AntConc does all this and more. For example, one can load all of the Iliad and the Odyssey into AntConc. Find all the occurrences of the word ship, visualize where ship appears in each chapter, and list the most significant words associated with the word ship.
 
-[INSERT IMAGES HERE.]
+./images/antconc-occurences.png
+./images/antconc-dispersion.png
+./images/antconc-significant.png
+
 
 [INSERT RECIPE HERE.]
 
@@ -421,9 +427,13 @@ Excel - charting tabular data
 
 OpenRefine - fielded searching and grouping
 
-OpenRefine eats delimited files for lunch. The student, researcher, or scholar can use OpenRefine to open one or more delimited file. OpenRefine will then parse the file(s) into fields. It can makes many things easy such as finding/replacing, faceting (think "grouping"), filtering (think "searching"), sorting, clustering (think "normalizing/cleannig"), counting & tabulating, and finally, exporting data. OpenRefine is an excellent go-between when spreadsheets fail and full-blown databases are too hard to use. 
+The student, researcher, or scholar can use OpenRefine to open one or more delimited files. OpenRefine will then parse the file(s) into fields. It can makes many things easy such as finding/replacing, faceting (think "grouping"), filtering (think "searching"), sorting, clustering (think "normalizing/cleannig"), counting & tabulating, and finally, exporting data. OpenRefine is an excellent go-between when spreadsheets fail and full-blown databases are too hard to use. OpenRefine eats delimited files for lunch. 
 
-[INSERT IMAGES HERE.]
+./images/openrefine-pos.png
+./images/openrefine-lemmatized-nouns.png
+./images/openrefine-entities.png
+./images/openrefine-faceted-persons.png
+
 
 [INSERT RECIPE HERE.]
 
@@ -432,9 +442,12 @@ Topic Modeling Tool - enumerating latent themes
 
 Technically speaking, topic modeling is an unsupervised machine learning process used to extract latent themes from a text. Give a text and an integer, a topic modeler will count & tabulate the frequency of words and compare those frequencies with the distances between the words. The words form "clusters" when they are both frequent and near each other, and these clusters can sometimes represent themes, topics, or subjects. Topic modeling is often used to denote the "aboutness" of a text or compare themes between authors, dates, genres, demographics, other topics, or other metadata items.
 
-Topic Modeling Tool is a GUI/desktop topic modeler based on the venerable MALLET suite of software. It can be used in a number of ways, and it is relatively easy to: list five distinct themes from the Iliad and the Odyssey, compare those themes between books, and compare those things over time (assuming each chapter happens chronologically).
+Topic Modeling Tool is a GUI/desktop topic modeler based on the venerable MALLET suite of software. It can be used in a number of ways, and it is relatively easy to: list five distinct themes from the Iliad and the Odyssey, compare those themes between books, and, assuming each chapter occurs chronologically, compare the themes over time.
 
-[INSERT IMAGES HERE.]
+./images/model-topics-01.png
+./images/model-topics-02.png
+./images/model-books.png
+./images/model-chapters.png
 
 [INSERT RECIPE HERE.]
 
