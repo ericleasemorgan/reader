@@ -15,7 +15,7 @@ I hope you enjoy using the Distant Reader. It helps me use and understand large 
 															 Eric Lease Morgan <emorgan@nd.edu>
 															 Notre Dame (Indiana)
 
-															 January 25, 2020
+															 January 28, 2020
 
 
 What is the Distant Reader, and why should I care?
@@ -399,19 +399,58 @@ Again, every single file (except one) making up a study carrel is a plain text f
 
 Wordle
 
-Visualized word frequencies, while often considered sophomoric, can be quite useful when it comes to understanding a text, especially when the frequencies are focused on things like parts-of-speech, named entities, or co-occurrences. Wordle visualizes such frequencies very well. For example, the 100 most frequent words in the Iliad and the Odyssey, the 100 most frequent nouns in the Iliad and the Odyssey, or the statistically significant words associated with the word ship.
+Visualized word frequencies, while often considered sophomoric, can be quite useful when it comes to understanding a text, especially when the frequencies are focused on things like parts-of-speech, named entities, or co-occurrences. Wordle visualizes such frequencies very well. For example, the 100 most frequent words in the Iliad and the Odyssey, the 100 most frequent nouns in the Iliad and the Odyssey, or the statistically significant words associated with the word ship from the Iliad and the Odyssey.
 
 ./images/wordle-words.png
 ./images/wordle-nouns.png
 ./images/wordle-ship.png
 
 
-[INSERT RECIPE HERE.]
+Wordle recipes
+
+Here is a generic Wordle recipe where World will calculate frequencies:
+
+  1. Download and install Wordle. It is a Java application, so you may need to download and install Java along the way, but Java is probably already installed on your computer.
+  
+  2. Use your text editor to open reader.txt which is located in the etc directory/folder. Once opened, copy all of the text.
+  
+  3. Open Wordle, select the "Your Text" tab, and paste the whole of the text file into the window.
+  
+  4. Click the "Wordle" tab and your word cloud will be generated. Use the Wordle's menu options to customize the output.
+
+Congratulations, you have just visualized the whole of your study carrel.
+
+  
+Here is another recipe, a recipe where you supply the frequencies (or any other score):
+
+  1. Download and install AntConc.
+  
+  2. Use the "Open Files(s)..." menu option to open any file in the txt directory.
+  
+  3. Click the "Word list" tab, and then click the "Start" button. The result will be a list of words and their frequencies.
+  
+  4. Use the "Save Output to Text File..." menu option, and save the frequencies accordingly.
+  
+  5. Open the resulting file in your spreadsheet.
+  
+  6. Remove any blank rows, and remove the columns that are not the words and their frequencies
+  
+  7. Invert the order of the remaining two columns; make the words the first column and the frequencies the second column. 
+
+  8. Copy the whole of the spreadsheet and paste it into your text editor. 
+  
+  9. Use the text editor's find/replace function to find all occurrences of the tab character and replace them with the colon (:) character. Copy the whole of the text editor's contents.
+  
+ 10. Open Wordle, click the "Your text" tab, paste the frequencies into the resulting window.
+  
+ 11. Finally, click the "Wordle" tab to generate the word cloud.
+
+Notice how you used a variety of generic applications to achieve the desired result. The word/value pairs given to Wordle do not have be frequencies. Instead they can be any number of different scores or weights. Keep your eyes open for word/value combinations. They are everywhere. Word clouds have been given a bad rap. Wordle is a very useful tool.
 
 
 Concordancing with AntConc
 
-Concordancing is really the process of find, and AntConc is a very useful program for this purpose. Given one or more plain text files, AntConc will enable the student, researcher, or scholar to: find all the occurrences of a word, illustrate where the word is located, navigate through document where the word occurs, list word collocations, and calculate quite a number of useful statistics regarding a word. Concordancing, dating from the 13th Century, is the oldest from of text mining. Think of it as ^F (control-f) on steroids. AntConc does all this and more. For example, one can load all of the Iliad and the Odyssey into AntConc. Find all the occurrences of the word ship, visualize where ship appears in each chapter, and list the most significant words associated with the word ship.
+Concordancing is really the process of find, and AntConc is a very useful program for this purpose. Given one or more plain text files, AntConc will enable the student, researcher, or scholar to: find all the occurrences of a word, illustrate where the word is located, navigate through documents where the word occurs, list word collocations, and calculate quite a number of useful statistics regarding a word. Concordancing, dating from the 13th Century, is the oldest from of text mining. Think of it as ^F (control-f) on steroids. AntConc does all this and more. For example, one can load all of the Iliad and the Odyssey into AntConc. Find all the occurrences of the word ship, visualize where ship appears in each chapter, and list the most significant words associated with the word ship.
 
 ./images/antconc-occurences.png
 ./images/antconc-dispersion.png
