@@ -40,7 +40,8 @@ def id2bibliographics( id, engine ) :
 	# initialize
 	bibliographics = {}
 	
-	id.replace( "'", "''" )
+	id = id.replace( "'", "''" )
+	sys.stderr.write( id + "\n" )
 	
 	# search
 	query = "SELECT * FROM bib where id is '{}'".format( id )
