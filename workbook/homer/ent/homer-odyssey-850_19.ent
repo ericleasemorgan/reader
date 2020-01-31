@@ -1,0 +1,181 @@
+id	sid	eid	entity	type
+homer-odyssey-850_19	1	1	ARMOUR	ORG
+homer-odyssey-850_19	1	2	INTERVIEWS PENELOPE	PERSON
+homer-odyssey-850_19	1	3	EURYCLEA	PERSON
+homer-odyssey-850_19	1	4	PENELOPE	PERSON
+homer-odyssey-850_19	2	1	Minerva	PERSON
+homer-odyssey-850_19	3	1	Telemachus	PERSON
+homer-odyssey-850_19	3	2	Telemachus	PERSON
+homer-odyssey-850_19	6	1	Jove	ORG
+homer-odyssey-850_19	7	1	Telemachus	ORG
+homer-odyssey-850_19	7	2	Euryclea	PERSON
+homer-odyssey-850_19	10	1	Euryclea	PERSON
+homer-odyssey-850_19	13	1	Telemachus	PERSON
+homer-odyssey-850_19	14	1	Euryclea	PERSON
+homer-odyssey-850_19	15	1	Minerva	PERSON
+homer-odyssey-850_19	15	2	Telemachus	PERSON
+homer-odyssey-850_19	17	1	Hush	PERSON
+homer-odyssey-850_19	20	1	Telemachus	PERSON
+homer-odyssey-850_19	21	1	Minerva	PERSON
+homer-odyssey-850_19	22	1	Penelope	PERSON
+homer-odyssey-850_19	22	2	Venus	PERSON
+homer-odyssey-850_19	22	3	Diana	PERSON
+homer-odyssey-850_19	23	1	Icmalius	GPE
+homer-odyssey-850_19	23	2	one	CARDINAL
+homer-odyssey-850_19	25	1	Melantho	PERSON
+homer-odyssey-850_19	25	2	second	ORDINAL
+homer-odyssey-850_19	25	3	Stranger	WORK_OF_ART
+homer-odyssey-850_19	25	4	all night	TIME
+homer-odyssey-850_19	29	1	those days	DATE
+homer-odyssey-850_19	30	1	Jove	PERSON
+homer-odyssey-850_19	31	1	Apollo	ORG
+homer-odyssey-850_19	31	2	Telemachus	PERSON
+homer-odyssey-850_19	34	1	Eurynome	PERSON
+homer-odyssey-850_19	36	1	Penelope	ORG
+homer-odyssey-850_19	36	2	Stranger	WORK_OF_ART
+homer-odyssey-850_19	43	1	Penelope	PERSON
+homer-odyssey-850_19	43	2	Stranger	WORK_OF_ART
+homer-odyssey-850_19	43	3	Argives	ORG
+homer-odyssey-850_19	43	4	Troy	PERSON
+homer-odyssey-850_19	46	1	Zacynthus	PERSON
+homer-odyssey-850_19	46	2	Ithaca	PERSON
+homer-odyssey-850_19	49	1	first	ORDINAL
+homer-odyssey-850_19	50	1	Laertes	PERSON
+homer-odyssey-850_19	52	1	all day long	DATE
+homer-odyssey-850_19	53	1	three years	DATE
+homer-odyssey-850_19	53	2	my fourth year	DATE
+homer-odyssey-850_19	59	1	Crete	ORG
+homer-odyssey-850_19	59	2	ninety	CARDINAL
+homer-odyssey-850_19	59	3	one	CARDINAL
+homer-odyssey-850_19	59	4	Achaeans	ORG
+homer-odyssey-850_19	59	5	Eteocretans	NORP
+homer-odyssey-850_19	59	6	Dorians	NORP
+homer-odyssey-850_19	59	7	Pelasgi	GPE
+homer-odyssey-850_19	60	1	Cnossus	PERSON
+homer-odyssey-850_19	60	2	Minos	ORG
+homer-odyssey-850_19	60	3	every nine years	DATE
+homer-odyssey-850_19	60	4	Jove	PERSON
+homer-odyssey-850_19	61	1	152	CARDINAL
+homer-odyssey-850_19	61	2	Minos	FAC
+homer-odyssey-850_19	61	3	two	CARDINAL
+homer-odyssey-850_19	61	4	Idomeneus	PERSON
+homer-odyssey-850_19	62	1	Troy	PERSON
+homer-odyssey-850_19	62	2	Aethon	ORG
+homer-odyssey-850_19	62	3	two	CARDINAL
+homer-odyssey-850_19	62	4	Crete	GPE
+homer-odyssey-850_19	62	5	Troy	PERSON
+homer-odyssey-850_19	62	6	Malea	PERSON
+homer-odyssey-850_19	62	7	Amnisus	GPE
+homer-odyssey-850_19	62	8	Ilithuia	ORG
+homer-odyssey-850_19	63	1	Idomeneus	PERSON
+homer-odyssey-850_19	63	2	Idomeneus	PERSON
+homer-odyssey-850_19	63	3	Troy	PERSON
+homer-odyssey-850_19	63	4	ten or twelve days earlier	DATE
+homer-odyssey-850_19	65	1	twelve days	DATE
+homer-odyssey-850_19	65	2	North	LOC
+homer-odyssey-850_19	65	3	one 's feet	QUANTITY
+homer-odyssey-850_19	66	1	the thirteenth day	DATE
+homer-odyssey-850_19	67	1	Penelope	PERSON
+homer-odyssey-850_19	68	1	South East	LOC
+homer-odyssey-850_19	68	2	West	LOC
+homer-odyssey-850_19	73	1	Twenty years	DATE
+homer-odyssey-850_19	74	1	two	CARDINAL
+homer-odyssey-850_19	77	1	153	CARDINAL
+homer-odyssey-850_19	78	1	Achaeans	ORG
+homer-odyssey-850_19	80	1	154	CARDINAL
+homer-odyssey-850_19	81	1	Eurybates	ORG
+homer-odyssey-850_19	82	1	Stranger	WORK_OF_ART
+homer-odyssey-850_19	91	1	Thesprotians	NORP
+homer-odyssey-850_19	91	2	Thrinacian	NORP
+homer-odyssey-850_19	91	3	Jove	PERSON
+homer-odyssey-850_19	92	1	Phaeacians	NORP
+homer-odyssey-850_19	94	1	Thesprotians	NORP
+homer-odyssey-850_19	94	2	me--	ORG
+homer-odyssey-850_19	94	3	so--	ORG
+homer-odyssey-850_19	95	1	first	ORDINAL
+homer-odyssey-850_19	95	2	Thesprotian	NORP
+homer-odyssey-850_19	95	3	Dulichium	GPE
+homer-odyssey-850_19	95	4	Pheidon	PERSON
+homer-odyssey-850_19	95	5	ten	CARDINAL
+homer-odyssey-850_19	95	6	Dodona	ORG
+homer-odyssey-850_19	95	7	Jove	PERSON
+homer-odyssey-850_19	95	8	Ithaca	PERSON
+homer-odyssey-850_19	96	1	Jove	PERSON
+homer-odyssey-850_19	96	2	first	ORDINAL
+homer-odyssey-850_19	97	1	this self same year	DATE
+homer-odyssey-850_19	97	2	the end of this moon	DATE
+homer-odyssey-850_19	98	1	Penelope	PERSON
+homer-odyssey-850_19	100	1	morning	TIME
+homer-odyssey-850_19	101	1	day	DATE
+homer-odyssey-850_19	101	2	Telemachus	PERSON
+homer-odyssey-850_19	104	1	a little season	DATE
+homer-odyssey-850_19	105	1	the day	DATE
+homer-odyssey-850_19	105	2	Crete	ORG
+homer-odyssey-850_19	107	1	morning	TIME
+homer-odyssey-850_19	109	1	Penelope	PERSON
+homer-odyssey-850_19	110	1	the night	TIME
+homer-odyssey-850_19	112	1	Euryclea	PERSON
+homer-odyssey-850_19	117	1	Penelope	ORG
+homer-odyssey-850_19	117	2	Penelope	ORG
+homer-odyssey-850_19	121	1	one	CARDINAL
+homer-odyssey-850_19	121	2	Mt.	LOC
+homer-odyssey-850_19	122	1	Autolycus--	PERSON
+homer-odyssey-850_19	122	2	Autolycus	GPE
+homer-odyssey-850_19	123	1	Mercury	ORG
+homer-odyssey-850_19	124	1	Autolycus	GPE
+homer-odyssey-850_19	124	2	Ithaca	PERSON
+homer-odyssey-850_19	125	1	Euryclea	PERSON
+homer-odyssey-850_19	125	2	Autolycus	GPE
+homer-odyssey-850_19	125	3	one	CARDINAL
+homer-odyssey-850_19	126	1	Autolycus	GPE
+homer-odyssey-850_19	126	2	one	CARDINAL
+homer-odyssey-850_19	127	1	Mt.	LOC
+homer-odyssey-850_19	128	1	Parnassus	ORG
+homer-odyssey-850_19	129	1	Parnassus	ORG
+homer-odyssey-850_19	129	2	Autolycus	GPE
+homer-odyssey-850_19	130	1	Amphithea	PERSON
+homer-odyssey-850_19	130	2	Autolycus	GPE
+homer-odyssey-850_19	131	1	a five year old	DATE
+homer-odyssey-850_19	133	1	morning	TIME
+homer-odyssey-850_19	133	2	Dawn	PERSON
+homer-odyssey-850_19	133	3	Autolycus	GPE
+homer-odyssey-850_19	134	1	Parnassus	ORG
+homer-odyssey-850_19	134	2	Oceanus	GPE
+homer-odyssey-850_19	135	1	Autolycus	GPE
+homer-odyssey-850_19	138	1	first	ORDINAL
+homer-odyssey-850_19	140	1	Autolycus	GPE
+homer-odyssey-850_19	141	1	Autolycus	GPE
+homer-odyssey-850_19	141	2	Ithaca	PERSON
+homer-odyssey-850_19	142	1	Autolycus	GPE
+homer-odyssey-850_19	142	2	Mt.	LOC
+homer-odyssey-850_19	143	1	Parnassus	ORG
+homer-odyssey-850_19	144	1	Euryclea	PERSON
+homer-odyssey-850_19	145	1	Euryclea	PERSON
+homer-odyssey-850_19	146	1	Penelope	ORG
+homer-odyssey-850_19	146	2	Penelope	PERSON
+homer-odyssey-850_19	146	3	Minerva	PERSON
+homer-odyssey-850_19	146	4	Euryclea	PERSON
+homer-odyssey-850_19	146	5	twenty years	DATE
+homer-odyssey-850_19	148	1	Euryclea	PERSON
+homer-odyssey-850_19	151	1	about one	CARDINAL
+homer-odyssey-850_19	152	1	Euryclea	PERSON
+homer-odyssey-850_19	152	2	first	ORDINAL
+homer-odyssey-850_19	153	1	Penelope	PERSON
+homer-odyssey-850_19	153	2	Stranger	PERSON
+homer-odyssey-850_19	156	1	the early spring	DATE
+homer-odyssey-850_19	156	2	Itylus	PRODUCT
+homer-odyssey-850_19	156	3	Zethus	PERSON
+homer-odyssey-850_19	159	1	twenty	CARDINAL
+homer-odyssey-850_19	159	2	155	CARDINAL
+homer-odyssey-850_19	163	1	Icarius	ORG
+homer-odyssey-850_19	166	1	one	CARDINAL
+homer-odyssey-850_19	167	1	one	CARDINAL
+homer-odyssey-850_19	168	1	Penelope	PERSON
+homer-odyssey-850_19	168	2	Stranger	WORK_OF_ART
+homer-odyssey-850_19	169	1	two	CARDINAL
+homer-odyssey-850_19	169	2	one	CARDINAL
+homer-odyssey-850_19	173	1	twelve	CARDINAL
+homer-odyssey-850_19	173	2	twelve	CARDINAL
+homer-odyssey-850_19	174	1	twelve	CARDINAL
+homer-odyssey-850_19	177	1	Penelope	PERSON
+homer-odyssey-850_19	180	1	Minerva	PERSON

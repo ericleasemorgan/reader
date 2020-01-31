@@ -1,0 +1,116 @@
+id	sid	eid	entity	type
+homer-odyssey-850_07	3	1	Eurymedusa of Apeira	ORG
+homer-odyssey-850_07	4	1	Apeira	ORG
+homer-odyssey-850_07	4	2	Phaeacians	NORP
+homer-odyssey-850_07	5	1	57	CARDINAL
+homer-odyssey-850_07	5	2	Nausicaa	PERSON
+homer-odyssey-850_07	6	1	Minerva	PERSON
+homer-odyssey-850_07	6	2	Phaeacians	NORP
+homer-odyssey-850_07	8	1	Ulysses	ORG
+homer-odyssey-850_07	10	1	Minerva	PERSON
+homer-odyssey-850_07	12	1	Neptune	LOC
+homer-odyssey-850_07	13	1	one	CARDINAL
+homer-odyssey-850_07	13	2	Phaeacians	NORP
+homer-odyssey-850_07	13	3	Minerva	PERSON
+homer-odyssey-850_07	14	1	Minerva	PERSON
+homer-odyssey-850_07	16	1	First	ORDINAL
+homer-odyssey-850_07	17	1	Arete	GPE
+homer-odyssey-850_07	18	1	Neptune	ORG
+homer-odyssey-850_07	18	2	Nausithous	ORG
+homer-odyssey-850_07	18	3	Periboea	GPE
+homer-odyssey-850_07	19	1	Eurymedon	ORG
+homer-odyssey-850_07	19	2	one	CARDINAL
+homer-odyssey-850_07	20	1	Neptune	ORG
+homer-odyssey-850_07	20	2	Nausithous	ORG
+homer-odyssey-850_07	20	3	Phaeacians	NORP
+homer-odyssey-850_07	21	1	Nausithous	ORG
+homer-odyssey-850_07	21	2	two	CARDINAL
+homer-odyssey-850_07	21	3	Rhexenor	GPE
+homer-odyssey-850_07	21	4	58	CARDINAL
+homer-odyssey-850_07	21	5	Apollo	ORG
+homer-odyssey-850_07	21	6	first	ORDINAL
+homer-odyssey-850_07	21	7	Arete	PERSON
+homer-odyssey-850_07	24	1	Minerva	PERSON
+homer-odyssey-850_07	24	2	Scheria	ORG
+homer-odyssey-850_07	25	1	Marathon	EVENT
+homer-odyssey-850_07	25	2	59	CARDINAL
+homer-odyssey-850_07	25	3	Athens	GPE
+homer-odyssey-850_07	25	4	Erechtheus	PERSON
+homer-odyssey-850_07	25	5	Alcinous	PRODUCT
+homer-odyssey-850_07	25	6	splendour	CARDINAL
+homer-odyssey-850_07	25	7	moon	TIME
+homer-odyssey-850_07	28	1	Vulcan	GPE
+homer-odyssey-850_07	29	1	one	CARDINAL
+homer-odyssey-850_07	30	1	Phaeacians	NORP
+homer-odyssey-850_07	30	2	all seasons	DATE
+homer-odyssey-850_07	30	3	night	TIME
+homer-odyssey-850_07	31	1	60	CARDINAL
+homer-odyssey-850_07	31	2	fifty	CARDINAL
+homer-odyssey-850_07	32	1	Phaeacians	NORP
+homer-odyssey-850_07	32	2	Minerva	PERSON
+homer-odyssey-850_07	33	1	about four acres	QUANTITY
+homer-odyssey-850_07	36	1	year	DATE
+homer-odyssey-850_07	36	2	winter	DATE
+homer-odyssey-850_07	36	3	summer	DATE
+homer-odyssey-850_07	38	1	year	DATE
+homer-odyssey-850_07	39	1	Two	CARDINAL
+homer-odyssey-850_07	42	1	Phaeacians	NORP
+homer-odyssey-850_07	42	2	Mercury	ORG
+homer-odyssey-850_07	42	3	the night	TIME
+homer-odyssey-850_07	43	1	61	CARDINAL
+homer-odyssey-850_07	43	2	Minerva	PERSON
+homer-odyssey-850_07	43	3	Arete	PRODUCT
+homer-odyssey-850_07	45	1	Rhexenor	GPE
+homer-odyssey-850_07	46	1	Echeneus	PERSON
+homer-odyssey-850_07	46	2	Phaeacians	NORP
+homer-odyssey-850_07	46	3	one	CARDINAL
+homer-odyssey-850_07	47	1	Laodamas	ORG
+homer-odyssey-850_07	49	1	Alcinous	ORG
+homer-odyssey-850_07	51	1	Alcinous	ORG
+homer-odyssey-850_07	51	2	Aldermen	GPE
+homer-odyssey-850_07	51	3	Phaeacians	NORP
+homer-odyssey-850_07	53	1	morrow	DATE
+homer-odyssey-850_07	53	2	morning	TIME
+homer-odyssey-850_07	56	1	one	CARDINAL
+homer-odyssey-850_07	56	2	Cyclopes	PRODUCT
+homer-odyssey-850_07	57	1	62	CARDINAL
+homer-odyssey-850_07	57	2	Pray, Alcinous	WORK_OF_ART
+homer-odyssey-850_07	63	1	first	ORDINAL
+homer-odyssey-850_07	64	1	63	CARDINAL
+homer-odyssey-850_07	66	1	Arete	PRODUCT
+homer-odyssey-850_07	67	1	first	ORDINAL
+homer-odyssey-850_07	67	2	Stranger	WORK_OF_ART
+homer-odyssey-850_07	70	1	Ogygian	NORP
+homer-odyssey-850_07	71	1	Calypso	PERSON
+homer-odyssey-850_07	71	2	Atlas	PERSON
+homer-odyssey-850_07	73	1	Fortune	ORG
+homer-odyssey-850_07	74	1	nine days	DATE
+homer-odyssey-850_07	74	2	tenth	ORDINAL
+homer-odyssey-850_07	74	3	Ogygian	NORP
+homer-odyssey-850_07	74	4	Calypso	PERSON
+homer-odyssey-850_07	76	1	Calypso	PERSON
+homer-odyssey-850_07	76	2	seven years	DATE
+homer-odyssey-850_07	76	3	the eighth year	DATE
+homer-odyssey-850_07	76	4	Jove	ORG
+homer-odyssey-850_07	79	1	Days seven and ten	DATE
+homer-odyssey-850_07	79	2	eighteenth	ORDINAL
+homer-odyssey-850_07	79	3	first	ORDINAL
+homer-odyssey-850_07	80	1	Neptune	ORG
+homer-odyssey-850_07	84	1	all night	TIME
+homer-odyssey-850_07	84	2	the next day	DATE
+homer-odyssey-850_07	84	3	afternoon	TIME
+homer-odyssey-850_07	88	1	Alcinous	ORG
+homer-odyssey-850_07	88	2	Stranger	WORK_OF_ART
+homer-odyssey-850_07	88	3	first	ORDINAL
+homer-odyssey-850_07	92	1	Stranger	WORK_OF_ART
+homer-odyssey-850_07	92	2	Jove	PERSON
+homer-odyssey-850_07	92	3	Minerva	PERSON
+homer-odyssey-850_07	92	4	Apollo	ORG
+homer-odyssey-850_07	93	1	tomorrow	DATE
+homer-odyssey-850_07	94	1	64	CARDINAL
+homer-odyssey-850_07	94	2	Euboea	PERSON
+homer-odyssey-850_07	94	3	Rhadamanthus	ORG
+homer-odyssey-850_07	94	4	Tityus	ORG
+homer-odyssey-850_07	94	5	a single day	DATE
+homer-odyssey-850_07	96	1	Jove	PERSON
+homer-odyssey-850_07	98	1	Arete	PERSON

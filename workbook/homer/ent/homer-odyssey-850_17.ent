@@ -1,0 +1,170 @@
+id	sid	eid	entity	type
+homer-odyssey-850_17	1	1	TELEMACHUS	ORG
+homer-odyssey-850_17	1	2	MELANTHIUS	PERSON
+homer-odyssey-850_17	2	1	morning	TIME
+homer-odyssey-850_17	2	2	Dawn	PERSON
+homer-odyssey-850_17	2	3	Telemachus	NORP
+homer-odyssey-850_17	11	1	Telemachus	PERSON
+homer-odyssey-850_17	13	1	Nurse Euryclea	PERSON
+homer-odyssey-850_17	15	1	Diana	PERSON
+homer-odyssey-850_17	15	2	Venus	WORK_OF_ART
+homer-odyssey-850_17	17	1	Pylos	PERSON
+homer-odyssey-850_17	19	1	Telemachus	PERSON
+homer-odyssey-850_17	19	2	Jove	PERSON
+homer-odyssey-850_17	20	1	Pylos	PERSON
+homer-odyssey-850_17	23	1	Telemachus	PERSON
+homer-odyssey-850_17	23	2	two	CARDINAL
+homer-odyssey-850_17	24	1	Minerva	PERSON
+homer-odyssey-850_17	24	2	Mentor	ORG
+homer-odyssey-850_17	24	3	Antiphus	NORP
+homer-odyssey-850_17	24	4	Halitherses	GPE
+homer-odyssey-850_17	25	1	Theoclymenus	PERSON
+homer-odyssey-850_17	25	2	Telemachus	PERSON
+homer-odyssey-850_17	26	1	Telemachus	PERSON
+homer-odyssey-850_17	27	1	Piraeus	ORG
+homer-odyssey-850_17	27	2	Telemachus	PERSON
+homer-odyssey-850_17	30	1	Theoclymenus	PERSON
+homer-odyssey-850_17	35	1	Penelope	PERSON
+homer-odyssey-850_17	36	1	Penelope	ORG
+homer-odyssey-850_17	36	2	Telemachus	PERSON
+homer-odyssey-850_17	36	3	Troy	PERSON
+homer-odyssey-850_17	36	4	Atreus	PERSON
+homer-odyssey-850_17	39	1	Pylos	PERSON
+homer-odyssey-850_17	39	2	Nestor	PERSON
+homer-odyssey-850_17	41	1	Helen	PERSON
+homer-odyssey-850_17	41	2	Argives	ORG
+homer-odyssey-850_17	41	3	Trojans	ORG
+homer-odyssey-850_17	42	1	Lacedaemon	PERSON
+homer-odyssey-850_17	45	1	Jove	PERSON
+homer-odyssey-850_17	45	2	Minerva	PERSON
+homer-odyssey-850_17	45	3	Apollo	ORG
+homer-odyssey-850_17	45	4	Lesbos	GPE
+homer-odyssey-850_17	45	5	Greeks	PERSON
+homer-odyssey-850_17	47	1	Calypso	PERSON
+homer-odyssey-850_17	48	1	Menelaus	PERSON
+homer-odyssey-850_17	49	1	Penelope	ORG
+homer-odyssey-850_17	50	1	Theoclymenus	PERSON
+homer-odyssey-850_17	50	2	Telemachus	PERSON
+homer-odyssey-850_17	51	1	May Jove	PERSON
+homer-odyssey-850_17	51	2	Ithaca	PERSON
+homer-odyssey-850_17	51	3	one	CARDINAL
+homer-odyssey-850_17	51	4	a day	DATE
+homer-odyssey-850_17	52	1	Telemachus	PERSON
+homer-odyssey-850_17	53	1	Penelope	PERSON
+homer-odyssey-850_17	56	1	140	CARDINAL
+homer-odyssey-850_17	56	2	Medon	ORG
+homer-odyssey-850_17	59	1	141	CARDINAL
+homer-odyssey-850_17	60	1	Stranger	WORK_OF_ART
+homer-odyssey-850_17	60	2	one	CARDINAL
+homer-odyssey-850_17	62	1	142	CARDINAL
+homer-odyssey-850_17	63	1	one	CARDINAL
+homer-odyssey-850_17	64	1	Eumaeus	PERSON
+homer-odyssey-850_17	65	1	two	CARDINAL
+homer-odyssey-850_17	67	1	Ithacus	GPE
+homer-odyssey-850_17	67	2	Neritus	PERSON
+homer-odyssey-850_17	67	3	Polyctor	ORG
+homer-odyssey-850_17	68	1	143	CARDINAL
+homer-odyssey-850_17	69	1	two	CARDINAL
+homer-odyssey-850_17	74	1	one	CARDINAL
+homer-odyssey-850_17	75	1	144	CARDINAL
+homer-odyssey-850_17	79	1	Melanthius	GPE
+homer-odyssey-850_17	79	2	Melanthius	GPE
+homer-odyssey-850_17	80	1	Jove	PERSON
+homer-odyssey-850_17	83	1	Some day	DATE
+homer-odyssey-850_17	84	1	Apollo	ORG
+homer-odyssey-850_17	84	2	Telemachus	PERSON
+homer-odyssey-850_17	84	3	this very day	DATE
+homer-odyssey-850_17	86	1	Eurymachus	ORG
+homer-odyssey-850_17	88	1	Phemius	PERSON
+homer-odyssey-850_17	89	1	Eumaeus	PERSON
+homer-odyssey-850_17	91	1	One	CARDINAL
+homer-odyssey-850_17	94	1	Eumaeus	PERSON
+homer-odyssey-850_17	95	1	first	ORDINAL
+homer-odyssey-850_17	95	2	first	ORDINAL
+homer-odyssey-850_17	96	1	some one	CARDINAL
+homer-odyssey-850_17	99	1	first	ORDINAL
+homer-odyssey-850_17	104	1	Argos	GPE
+homer-odyssey-850_17	104	2	Troy	PERSON
+homer-odyssey-850_17	105	1	the old days	DATE
+homer-odyssey-850_17	107	1	Eumaeus	PERSON
+homer-odyssey-850_17	107	2	Eumaeus	PERSON
+homer-odyssey-850_17	108	1	Eumaeus	PERSON
+homer-odyssey-850_17	109	1	Troy	PERSON
+homer-odyssey-850_17	112	1	Jove	ORG
+homer-odyssey-850_17	112	2	half	CARDINAL
+homer-odyssey-850_17	113	1	Argos	GPE
+homer-odyssey-850_17	114	1	Telemachus	ORG
+homer-odyssey-850_17	118	1	Telemachus	ORG
+homer-odyssey-850_17	118	2	two	CARDINAL
+homer-odyssey-850_17	118	3	Eumaeus	PERSON
+homer-odyssey-850_17	119	1	Eumaeus	PERSON
+homer-odyssey-850_17	119	2	Stranger	PERSON
+homer-odyssey-850_17	119	3	Telemachus	PERSON
+homer-odyssey-850_17	120	1	May King Jove	WORK_OF_ART
+homer-odyssey-850_17	120	2	Telemachus	PERSON
+homer-odyssey-850_17	121	1	Telemachus	PERSON
+homer-odyssey-850_17	123	1	Minerva	PERSON
+homer-odyssey-850_17	123	2	one	CARDINAL
+homer-odyssey-850_17	123	3	a single one	CARDINAL
+homer-odyssey-850_17	125	1	Melanthius	PERSON
+homer-odyssey-850_17	131	1	Eumaeus	PERSON
+homer-odyssey-850_17	135	1	Telemachus	NORP
+homer-odyssey-850_17	135	2	Penelope	PERSON
+homer-odyssey-850_17	136	1	Telemachus	ORG
+homer-odyssey-850_17	136	2	Hush	PERSON
+homer-odyssey-850_17	141	1	Telemachus	PERSON
+homer-odyssey-850_17	142	1	another three months	DATE
+homer-odyssey-850_17	143	1	first	ORDINAL
+homer-odyssey-850_17	144	1	those days	DATE
+homer-odyssey-850_17	145	1	Jove	PERSON
+homer-odyssey-850_17	146	1	Egypt	GPE
+homer-odyssey-850_17	147	1	Aegyptus	ORG
+homer-odyssey-850_17	148	1	Egyptians	NORP
+homer-odyssey-850_17	151	1	Egyptians	NORP
+homer-odyssey-850_17	151	2	Iasus	ORG
+homer-odyssey-850_17	151	3	Cyprus	PRODUCT
+homer-odyssey-850_17	153	1	Antinous	ORG
+homer-odyssey-850_17	154	1	145	CARDINAL
+homer-odyssey-850_17	154	2	Egypt	GPE
+homer-odyssey-850_17	154	3	Cyprus	GPE
+homer-odyssey-850_17	160	1	Queen Penelope	PERSON
+homer-odyssey-850_17	165	1	one	CARDINAL
+homer-odyssey-850_17	166	1	146	CARDINAL
+homer-odyssey-850_17	167	1	Telemachus	PERSON
+homer-odyssey-850_17	168	1	Apollo	ORG
+homer-odyssey-850_17	168	2	Eurynome	PERSON
+homer-odyssey-850_17	168	3	one	CARDINAL
+homer-odyssey-850_17	169	1	Penelope	PERSON
+homer-odyssey-850_17	169	2	147	CARDINAL
+homer-odyssey-850_17	169	3	every single one	CARDINAL
+homer-odyssey-850_17	173	1	Eumaeus	PERSON
+homer-odyssey-850_17	175	1	Eumaeus	PERSON
+homer-odyssey-850_17	175	2	Achaeans	NORP
+homer-odyssey-850_17	176	1	three days	DATE
+homer-odyssey-850_17	176	2	three nights	TIME
+homer-odyssey-850_17	176	3	first	ORDINAL
+homer-odyssey-850_17	178	1	Crete	ORG
+homer-odyssey-850_17	178	2	Minos	ORG
+homer-odyssey-850_17	178	3	Thesprotians	NORP
+homer-odyssey-850_17	179	1	Penelope	PERSON
+homer-odyssey-850_17	184	1	Telemachus	ORG
+homer-odyssey-850_17	185	1	Eumaeus	PERSON
+homer-odyssey-850_17	186	1	one	CARDINAL
+homer-odyssey-850_17	188	1	Eumaeus	PERSON
+homer-odyssey-850_17	188	2	Penelope	PERSON
+homer-odyssey-850_17	188	3	Telemachus	PERSON
+homer-odyssey-850_17	190	1	Penelope	ORG
+homer-odyssey-850_17	192	1	Telemachus	PERSON
+homer-odyssey-850_17	193	1	Tell Penelope	ORG
+homer-odyssey-850_17	194	1	first	ORDINAL
+homer-odyssey-850_17	194	2	me--	ORG
+homer-odyssey-850_17	195	1	Penelope	ORG
+homer-odyssey-850_17	195	2	Eumaeus	PERSON
+homer-odyssey-850_17	198	1	Eumaeus	PERSON
+homer-odyssey-850_17	201	1	Penelope	PERSON
+homer-odyssey-850_17	202	1	Eumaeus	PERSON
+homer-odyssey-850_17	203	1	Telemachus	PERSON
+homer-odyssey-850_17	206	1	Telemachus	PERSON
+homer-odyssey-850_17	206	2	the day	DATE
+homer-odyssey-850_17	208	1	Eumaeus	PERSON
+homer-odyssey-850_17	209	1	evening	TIME

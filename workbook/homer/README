@@ -1,0 +1,16 @@
+
+
+README
+
+This is the README file for a Distant Reader "study carrel".
+
+tl;dnr - Use your Web browser to open the file named index.htm
+
+This folder/directory is the result of the Distant Reader "reading" process. Open index.htm to read a narrative report of what the Reader did. Open ./etc/report.txt to read a more tabular report of what the reader found. All of the files in this folder/directory can be read with your plain text editor, and most of them can be read with your favorite spreadsheet, database, or analysis program. For example, use your spreadsheet application to open all of the files in the subfolder/directory named pos and you will "read" how parts-of-speech manifested themselves in your "carrel".
+
+"Reading is FUNdamental."
+
+--
+Eric Lease Morgan <emorgan@nd.edu>
+November 25, 2018
+

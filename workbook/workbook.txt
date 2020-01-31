@@ -15,7 +15,40 @@ I hope you enjoy using the Distant Reader. It helps me use and understand large 
 															 Eric Lease Morgan <emorgan@nd.edu>
 															 Notre Dame (Indiana)
 
-															 January 28, 2020
+															 January 30, 2020
+
+
+Table of contents
+-----------------
+
+    I. What is the Distant Reader, and why should I care?
+       A. The Distant Reader is a tool for reading
+       B. How it works
+       C. What it does
+   II. Five different types of input
+       A. Introduction
+       B. A file
+       C. A URL
+       D. A list of URLs
+       E. A zip file
+       F. A zip file with a companion CSV file
+       F. Summary
+  III. Submitting "experiments" and downloading "study carrels"
+   IV. An introduction to study carrels
+    V. The structured data of study carrels; taking inventory through the manifest
+   VI. Using combinations of desktop tools to analyze the data
+       A. Introduction - The three essential types of desktop tools
+       B. Text editors
+       C. Spreadsheet/database applications
+       D. Analysis applications
+           i. Wordle and Wordle recipes
+          ii. AntConc and AntConc recipes
+         iii. Excel and Excel recipes
+          iv. OpenRefine and OpenRefine recipes
+           v. Topic Modeling Tool and Tool recipes
+  VII. Using command-line tools to dig even deeper
+ VIII. Summary/conclusion
+   IX. About the author
 
 
 What is the Distant Reader, and why should I care?
@@ -383,14 +416,23 @@ Three essential types of desktop tools
 
 There are three essential types of desktop tools you will need/want in order to use the content of a study carrel. These types include: text editors, spreadsheet/database applications, and analysis programs. 
 
+
+Text editors
+
 Text editors read and write plain text files -- files with no formatting and no binary characters. Plain text files usually have a .txt extension. Every single file in a Distant Reader study carrel (except one) is a plain text file, and therefore, every single file (except one) is openable by any text editor.
 
 There are a few essencial tools you will want in a text editor, and the most important is a find/replace function. The function ought to allow you to find any character and change it to something else. This is useful for removing stopwords from a file. It is useful for removing carriage returns or newline characters, thus unwrapping your text. The text editor gets bonus points if the find/replace function supports "regular expressions". The second most important function of a text editor is a sorting feature. Each line in many text files is really an item in a list, and you will invariably want to sort the list. Another very useful function of a text editor, especially used for the purposes of text mining and natural language processing, is the ability to change the case of all letters to either their upper or lower-case forms. Such is the most basic of text normalization/cleaning processes. Religious wars are fought over text editors, and for the purposes of this workbook, only a number are listed, and not all of them support all the functions outlined above: Notepad, Wordpad, Text Edit, Notepad++, Atom, and BBedit. 
 The student, researcher, or scholar will want/need a plain text editor in order to truly exploit the use of the Distant Reader. 
 
+
+Spreadsheet/database applications
+
 Spreadsheet/database applications are designed to read "delimited" files, plain text files where each line is a row in a matrix, and each item is punctuated by some special character such as a tab character or a comma. These items are the columns in the matrix. The whole file is a kin to a spreadsheet or a database. Like a text editor, you will want to use the spreadsheet/database application to support sort. The spreadsheet/database application will need to be able to do arithmetic against items in the file. The spreadsheet/database application ought to include charting features. And the spreadsheet/database application ought to be able to save/export its data to other types of delimited files: tab-delimited files, CSV (comma-separated value) files, Excel workbook files, HTML tables, etc. 
 
 The majority of the files in a study carrel are delimited files, and these delimited files are really annotated lists. Examples include lists of word and their parts-of-speech, lists of documents and the URLs they contain, or lists of sentences and the named-entities they include. Given these files the student, researcher, or scholar can compare & contrast the ratio of named entities across a corpus, or they could plot the ebb & flow of an idea over time. 
+
+
+Analysis programs
 
 Analysis programs cover a wide spectrum of tools, and for the purposes of the workbook, these tools fall into a number of categories: counting & tabulating, concordancing, topic modeling, and visualizing. For the purpose of this workbook OpenRefine will be used to support counting & tabulating, as well as a few other things. Concordancing is really about find, and a program called AntConc is described. Topic modeling is the process of extracting latent themes from a body of text, and a GUI application called Topic Modeling Tool is demonstrated. Two visualization tools are useful: Wordle and Gephi. The former outputs tag clouds, and the later outputs network diagrams. The student, researcher, or scholar is expected to supplement visualization with the charting functions of spreadsheet/database applications.
 
@@ -450,15 +492,98 @@ Notice how you used a variety of generic applications to achieve the desired res
 
 Concordancing with AntConc
 
-Concordancing is really the process of find, and AntConc is a very useful program for this purpose. Given one or more plain text files, AntConc will enable the student, researcher, or scholar to: find all the occurrences of a word, illustrate where the word is located, navigate through documents where the word occurs, list word collocations, and calculate quite a number of useful statistics regarding a word. Concordancing, dating from the 13th Century, is the oldest from of text mining. Think of it as ^F (control-f) on steroids. AntConc does all this and more. For example, one can load all of the Iliad and the Odyssey into AntConc. Find all the occurrences of the word ship, visualize where ship appears in each chapter, and list the most significant words associated with the word ship.
+Concordancing is really a process about find, and AntConc is a very useful program for this purpose. Given one or more plain text files, AntConc will enable the student, researcher, or scholar to: find all the occurrences of a word, illustrate where the word is located, navigate through document(s) where the word occurs, list word collocations, and calculate quite a number of useful statistics regarding a word. Concordancing, dating from the 13th Century, is the oldest form of text mining. Think of it as control-F (^f) on steroids. AntConc does all this and more. For example, one can load all of the Iliad and the Odyssey into AntConc. Find all the occurrences of the word ship, visualize where ship appears in each chapter, and list the most significant words associated with the word ship.
 
 ./images/antconc-occurences.png
 ./images/antconc-dispersion.png
 ./images/antconc-significant.png
 
 
-[INSERT RECIPE HERE.]
+AntConc recipes
 
+This recipe simply implements search:
+
+  1. Download and install AntConc
+  
+  2. Use the "Open Files(s)..." menu option to open all files in the txt directory
+
+  3. Select the Concordance tab
+  
+  4. Enter a word of interest into the search box
+  
+  5. Click the Start button
+
+The result ought to be a list of phrases where the word of interest is displayed in the middle of the screen. In modern-day terms, such a list is called a "key word in context" (KWIC) index. 
+
+This recipe combines search with "control-F":
+
+  1. Select the Concordance tab
+  
+  2. Enter a word of interest into the search box
+  
+  3. Click the Start button
+  
+  4. Peruse the resulting phrases and click on one of interest; the result ought to a display of a text and the search term(s) is highlighted in the larger context
+  
+  5. Go to Step #1 until tired
+  
+This recipe produces a dispersion plot, an illustration of where a search term appears in a document:
+
+  1. Select the Concordance tab
+  
+  2. Enter a word of interest into the search box
+
+  3. Select the "Concordance Plot" tab
+  
+The result will be a list of illustrations. Each illustration will include zero or more vertical lines denoting the location of your search term in a given file. The more lines in each illustrations, the more times the search terms appear in the document.
+
+This recipe counts & tabulates the frequency of words:
+
+  1. Select the "Word List" tab
+  
+  2. Click the Start button; the result will be a list of all the words and their frequencies
+  
+  3. Scroll up and down the list to get a feel for what is common
+  
+  4. Select a word of interest; the result will be the same as if you entered the word in Recipe #1
+
+It is quite probable the most frequent words will be "stop words" like the, a, an, etc. AntConc supports the elimination of stop words, and the Reader supplies a stop word list. Describing how to implement this functionality is too difficult to put into words. (No puns intended.) But here is an outline:
+
+  5. Select the "Tool Preferences" menu option
+  
+  6. Select the "Word List" category
+  
+  7. Use the resulting dialog box to select a stop words list, and such a list is called stopwords.txt found in the etc directory
+  
+  8. Click the Apply button
+  
+  9. Go to Step #1; and the result will be a frequency list sans any stop words, and the result will be much more meaningful
+  
+Ideas are rarely articulated through the use of individual words; ideas are usually articulated through the use of sets of words (ngrams, sentences, paragraphs, etc.). Thus, as John Rupert Firth once said, "You shall know a word by the company it keeps." This recipe outlines how to list word co-occurrences and collocations:
+
+  1. Select the "Cluster/N-grams" tab
+  
+  2. Enter a word of interest in the search box
+  
+  3. Click the Start button; the result ought to be a list of two-word phrases (bigrams) sort in frequency order
+  
+  4. Select a phrase of interest, and the result will just as if you had search for the phrase in Recipe #1
+  
+  5. Go to Step #1 until tired
+  
+  6. Select the Collocates tab
+  
+  7. Enter a word of interest in the search box
+  
+  8. Click the Start button; the result ought to be a list of words and associated scores, and the scores compare the frequencies of the search word and the given word; words with higher scores can be considered "more interesting"
+  
+  9. Select "Sort by Freq" from the "Sort by" pop-up menu
+  
+ 10. Click the Sort button; the result will be the same list of words and associated scores, but this time the list will be sorted by the frequency of the search term/given word combination
+ 
+Again, a word is known by the company it keeps. Use the co-occurrences and collocations features to learn how a given word (or phrase) is associated with other words.
+
+There is much more to AntConc than outlined in the recipes outlined above. Learning more is left up to you, the studen, research, and scholar.
 
 
 Excel - charting tabular data

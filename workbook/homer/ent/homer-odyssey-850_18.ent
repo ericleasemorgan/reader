@@ -1,0 +1,114 @@
+id	sid	eid	entity	type
+homer-odyssey-850_18	1	1	BRAZIERS	NORP
+homer-odyssey-850_18	2	1	Ithaca	ORG
+homer-odyssey-850_18	3	1	one	CARDINAL
+homer-odyssey-850_18	3	2	Arnaeus	PERSON
+homer-odyssey-850_18	3	3	148	CARDINAL
+homer-odyssey-850_18	12	1	tomorrow	DATE
+homer-odyssey-850_18	17	1	one	CARDINAL
+homer-odyssey-850_18	17	2	149	CARDINAL
+homer-odyssey-850_18	19	1	two	CARDINAL
+homer-odyssey-850_18	23	1	Telemachus	PERSON
+homer-odyssey-850_18	23	2	Stranger	PERSON
+homer-odyssey-850_18	24	1	more than one	CARDINAL
+homer-odyssey-850_18	25	1	Eurymachus	PERSON
+homer-odyssey-850_18	26	1	Minerva	PERSON
+homer-odyssey-850_18	30	1	Echetus	ORG
+homer-odyssey-850_18	32	1	two	CARDINAL
+homer-odyssey-850_18	33	1	Achaeans	ORG
+homer-odyssey-850_18	37	1	May Jove	WORK_OF_ART
+homer-odyssey-850_18	38	1	Echetus	ORG
+homer-odyssey-850_18	40	1	Amphinomus	ORG
+homer-odyssey-850_18	40	2	two	CARDINAL
+homer-odyssey-850_18	42	1	Amphinomus	ORG
+homer-odyssey-850_18	46	1	daily	DATE
+homer-odyssey-850_18	46	2	day	DATE
+homer-odyssey-850_18	46	3	day	DATE
+homer-odyssey-850_18	48	1	some day	DATE
+homer-odyssey-850_18	49	1	first	ORDINAL
+homer-odyssey-850_18	49	2	the day	DATE
+homer-odyssey-850_18	50	1	Amphinomus	ORG
+homer-odyssey-850_18	51	1	Minerva	PERSON
+homer-odyssey-850_18	51	2	Telemachus	PERSON
+homer-odyssey-850_18	53	1	Minerva	PERSON
+homer-odyssey-850_18	53	2	Penelope	PERSON
+homer-odyssey-850_18	58	1	Telemachus	ORG
+homer-odyssey-850_18	59	1	Penelope	PERSON
+homer-odyssey-850_18	59	2	the day	DATE
+homer-odyssey-850_18	59	3	Autonoe	PERSON
+homer-odyssey-850_18	59	4	Hippodamia	PERSON
+homer-odyssey-850_18	61	1	150	CARDINAL
+homer-odyssey-850_18	62	1	Minerva	PERSON
+homer-odyssey-850_18	62	2	Penelope	PERSON
+homer-odyssey-850_18	63	1	Achaeans	ORG
+homer-odyssey-850_18	64	1	Venus	LOC
+homer-odyssey-850_18	65	1	Minerva	PERSON
+homer-odyssey-850_18	65	2	Penelope	PERSON
+homer-odyssey-850_18	67	1	Diana	PERSON
+homer-odyssey-850_18	67	2	Achaeans	NORP
+homer-odyssey-850_18	68	1	two	CARDINAL
+homer-odyssey-850_18	68	2	one	CARDINAL
+homer-odyssey-850_18	69	1	one	CARDINAL
+homer-odyssey-850_18	70	1	Telemachus	PERSON
+homer-odyssey-850_18	75	1	Telemachus	PERSON
+homer-odyssey-850_18	76	1	First	ORDINAL
+homer-odyssey-850_18	78	1	Jove	PERSON
+homer-odyssey-850_18	78	2	Minerva	PERSON
+homer-odyssey-850_18	78	3	Apollo	ORG
+homer-odyssey-850_18	81	1	Queen Penelope	PERSON
+homer-odyssey-850_18	81	2	Icarius	GPE
+homer-odyssey-850_18	81	3	Achaeans	NORP
+homer-odyssey-850_18	81	4	Iasian	NORP
+homer-odyssey-850_18	81	5	Argos	GPE
+homer-odyssey-850_18	81	6	tomorrow morning	TIME
+homer-odyssey-850_18	82	1	Penelope	PERSON
+homer-odyssey-850_18	82	2	Eurymachus	PERSON
+homer-odyssey-850_18	82	3	Argives	ORG
+homer-odyssey-850_18	82	4	Troy	PERSON
+homer-odyssey-850_18	85	1	Troy	GPE
+homer-odyssey-850_18	85	2	Trojans	NORP
+homer-odyssey-850_18	87	1	Troy	GPE
+homer-odyssey-850_18	91	1	A night	TIME
+homer-odyssey-850_18	91	2	Jove	ORG
+homer-odyssey-850_18	96	1	Antinous	ORG
+homer-odyssey-850_18	96	2	Queen Penelope	PERSON
+homer-odyssey-850_18	96	3	Icarius	GPE
+homer-odyssey-850_18	97	1	Antinous	ORG
+homer-odyssey-850_18	99	1	twelve	CARDINAL
+homer-odyssey-850_18	101	1	Eurydamas	ORG
+homer-odyssey-850_18	101	2	two	CARDINAL
+homer-odyssey-850_18	101	3	three	CARDINAL
+homer-odyssey-850_18	101	4	Pisander	NORP
+homer-odyssey-850_18	101	5	Polyctor	ORG
+homer-odyssey-850_18	103	1	evening	TIME
+homer-odyssey-850_18	104	1	three	CARDINAL
+homer-odyssey-850_18	104	2	151	CARDINAL
+homer-odyssey-850_18	107	1	morning	TIME
+homer-odyssey-850_18	108	1	Melantho	GPE
+homer-odyssey-850_18	109	1	Dolius	ORG
+homer-odyssey-850_18	109	2	Penelope	PERSON
+homer-odyssey-850_18	109	3	Eurymachus	PERSON
+homer-odyssey-850_18	115	1	Vixen	PERSON
+homer-odyssey-850_18	115	2	Telemachus	PERSON
+homer-odyssey-850_18	119	1	Minerva	PERSON
+homer-odyssey-850_18	119	2	one	CARDINAL
+homer-odyssey-850_18	119	3	Eurymachus	NORP
+homer-odyssey-850_18	119	4	Polybus	GPE
+homer-odyssey-850_18	120	1	Queen Penelope	PERSON
+homer-odyssey-850_18	122	1	Stranger	WORK_OF_ART
+homer-odyssey-850_18	124	1	year	DATE
+homer-odyssey-850_18	127	1	Eurymachus	PERSON
+homer-odyssey-850_18	127	2	one	CARDINAL
+homer-odyssey-850_18	127	3	early summer	DATE
+homer-odyssey-850_18	127	4	the days	DATE
+homer-odyssey-850_18	128	1	four acre	QUANTITY
+homer-odyssey-850_18	129	1	this day	DATE
+homer-odyssey-850_18	132	1	Eurymachus	ORG
+homer-odyssey-850_18	136	1	Amphinomus of Dulichium	GPE
+homer-odyssey-850_18	140	1	Telemachus	PERSON
+homer-odyssey-850_18	144	1	Amphinomus	ORG
+homer-odyssey-850_18	144	2	Nisus	PERSON
+homer-odyssey-850_18	144	3	Aretias	ORG
+homer-odyssey-850_18	147	1	Telemachus	NORP
+homer-odyssey-850_18	148	1	Mulius	GPE
+homer-odyssey-850_18	148	2	Amphinomus	GPE

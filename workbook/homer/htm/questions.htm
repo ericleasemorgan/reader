@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Distant Reader</title>
+
+	<!-- Bootstrap CSS files-->
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+
+	<!-- jQuery Javascript Library -->
+	<script src="../js/jquery.min.js"></script>
+	
+	<!-- Bootstrap Library -->
+	<script src="../js/bootstrap.min.js"></script>
+
+	<!-- Local Javascript add on -->
+	<script src="../js/main.js" type="text/javascript"></script>
+
+	<!-- Font Awesome Web Icons -->
+	<link rel="stylesheet" href="../css/font-awesome.min.css">
+
+	<!-- custom local css file -->
+	<link rel="stylesheet" href="../css/main.css">
+
+	<!-- data tables -->
+	<link   rel="stylesheet"       type="text/css"       href="../css/jquery.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="../js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" class="init">
+		$(document).ready(function() { $('#tsv').DataTable( {
+        "order": [[ 0, "desc" ]],
+        "pageLength": 10
+    } ); } );
+	</script>
+</head>
+<body>
+
+	<nav class="navbar yamm navbar-inverse navbar-fixed-top">
+		 <div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
+								 class="icon-bar"></span><span class="icon-bar"></span></button>
+					 <h1><a class="navbar-brand" href="https://distantreader.org/">Distant Reader</a></h1>
+				</div> <!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					 <ul class="nav navbar-nav navbar-right">
+
+							<li class="dropdown" id="grams-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ngrams <span class="caret"></span></a>
+								 <ul class="dropdown-menu">
+										<li><a href="unigrams.htm">Unigrams</a></li>
+										<li><a href="bigrams.htm">Bigrams</a></li>
+										<li><a href="trigrams.htm">Trigrams</a></li>
+										<li><a href="quadgrams.htm">Quadgrams</a></li>
+								 </ul>
+							</li>
+							<li class="dropdown" id="pos-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">POS <span class="caret"></span></a>
+								 <ul class="dropdown-menu">
+										<li><a href="nouns.htm">Nouns</a></li>
+										<li><a href="verbs.htm">Verbs</a></li>
+										<li><a href="adjectives.htm">Adjectives</a></li>
+										<li><a href="adverbs.htm">Adverbs</a></li>
+										<li><a href="pronouns.htm">Pronouns</a></li>
+										<li><a href="proper-nouns.htm">Proper nouns</a></li>
+								 </ul>
+							</li>
+							<li class="dropdown" id="grammar-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grammars <span class="caret"></span></a>
+								 <ul class="dropdown-menu">
+										<li><a href="noun-verb.htm">Noun – Verb</a></li>
+										<li><a href="adjective-noun.htm">Adjective – Noun</a></li>
+										<li><a href="questions.htm">Questions</a></li>
+								 </ul>
+							</li>
+							<li class="dropdown" id="miscellaneous-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Other <span class="caret"></span></a>
+								 <ul class="dropdown-menu">
+										<li><a href="bibliographics.htm">Bibliographics</a></li>
+										<li><a href="keywords.htm">Keywords</a></li>
+										<li><a href="entities.htm">Named entities</a></li>
+										<li><a href="search.htm">Search (experimental)</a></li>
+										<li><a href="topic-model.htm">Topic model (experimental)</a></li>
+								 </ul>
+							</li>
+					 </ul>
+				</div><!-- /.navbar-collapse -->
+		 </div>
+	</nav>
+
+	<div class="container subpage">
+
+		<nav aria-label="breadcrumb">
+		<ol class="breadcrumb ">
+			<li class="breadcrumb-item">
+				<a href="../index.htm">Home</a>
+			</li>
+			<li class="breadcrumb-item active" aria-current="page">Questions</li>
+		</ol>
+	</nav>
+
+<h1>Questions</h1>
+<p>This is a list of all the questions and their associated study carrel identifiers. One can learn a lot of the "aboutness" of a text simply by reading the questions.</p>
+
+<table id="tsv" class="display">
+        <thead>
+            <tr>
+                <th>identifier</th>
+                <th>question</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr><td>homer-iliad-850_07</td><td>What would you have,said he,"daughter of great Jove, that your proud spirit has sent you hither from Olympus?</td></tr>
+<tr><td>homer-iliad-850_07</td><td>Have you no pity upon the Trojans, and would you incline the scales of victory in favour of the Danaans?</td></tr>
+<tr><td>homer-iliad-850_07</td><td>How would it not grieve him could he hear of them as now quailing before Hector?</td></tr>
+<tr><td>homer-iliad-850_07</td><td>Jove was displeased and answered,"What, O shaker of the earth, are you talking about?</td></tr>
+<tr><td>homer-iliad-850_07</td><td>See you not how the Achaeans have built a wall about their ships and driven a trench all round it, without offering hecatombs to the gods?</td></tr>
+<tr><td>homer-iliad-850_07</td><td>Tell me, then, how do you propose to end this present fighting?"</td></tr>
+<tr><td>homer-iliad-850_06</td><td>Who, my good sir,said he,"who are you among men?</td></tr>
+<tr><td>homer-iliad-850_06</td><td>And the son of Hippolochus answered,"son of Tydeus, why ask me of my lineage?</td></tr>
+<tr><td>homer-iliad-850_06</td><td>Are the Achaeans, woe betide them, pressing you hard about the city that you have thought fit to come and uplift your hands to Jove from the citadel?</td></tr>
+<tr><td>homer-iliad-850_06</td><td>Has, then, your house fared so well at the hands of the Trojans?</td></tr>
+<tr><td>homer-iliad-850_06</td><td>She took his hand within her own and said,"My son, why have you left the battle to come hither?</td></tr>
+<tr><td>homer-iliad-850_06</td><td>Was it to my sisters, or to my brothers''wives?</td></tr>
+<tr><td>homer-iliad-850_06</td><td>or is she at the temple of Minerva where the other women are propitiating the awful goddess?"</td></tr>
+<tr><td>homer-iliad-850_09</td><td>Are the sons of Atreus the only men in the world who love their wives?</td></tr>
+<tr><td>homer-iliad-850_09</td><td>Sir, think you that the sons of the Achaeans are indeed as unwarlike and cowardly as you say they are?</td></tr>
+<tr><td>homer-iliad-850_09</td><td>Tell me, Ulysses,"said he,"will he save the ships from burning, or did he refuse, and is he still furious?"</td></tr>
+<tr><td>homer-iliad-850_09</td><td>Was it not for the sake of Helen?</td></tr>
+<tr><td>homer-iliad-850_09</td><td>What made the son of Atreus gather the host and bring them?</td></tr>
+<tr><td>homer-iliad-850_09</td><td>Who can be other than dismayed?</td></tr>
+<tr><td>homer-iliad-850_09</td><td>Why, pray, must the Argives needs fight the Trojans?</td></tr>
+<tr><td>homer-iliad-850_01</td><td>Dread son of Saturn,answered Juno,"what are you talking about?</td></tr>
+<tr><td>homer-iliad-850_01</td><td>Achilles drew a deep sigh and said,"You know it; why tell you what you know well already?</td></tr>
+<tr><td>homer-iliad-850_01</td><td>And Achilles answered,"Most noble son of Atreus, covetous beyond all mankind, how shall the Achaeans find you another prize?</td></tr>
+<tr><td>homer-iliad-850_01</td><td>And which of the gods was it that set them on to quarrel?</td></tr>
+<tr><td>homer-iliad-850_01</td><td>Are you to keep your own prize, while I sit tamely under my loss and give up the girl at your bidding?</td></tr>
+<tr><td>homer-iliad-850_01</td><td>Granted that the gods have made him a great warrior, have they also given him the right to speak with railing?"</td></tr>
+<tr><td>homer-iliad-850_01</td><td>I?</td></tr>
+<tr><td>homer-iliad-850_01</td><td>Pry and ask questions?</td></tr>
+<tr><td>homer-iliad-850_01</td><td>To see the pride of Agamemnon, son of Atreus?</td></tr>
+<tr><td>homer-iliad-850_01</td><td>Trickster,"she cried,"which of the gods have you been taking into your counsels now?</td></tr>
+<tr><td>homer-iliad-850_01</td><td>Was it not heaven that made you so?</td></tr>
+<tr><td>homer-iliad-850_01</td><td>What is it that grieves you?</td></tr>
+<tr><td>homer-iliad-850_01</td><td>What though you be brave?</td></tr>
+<tr><td>homer-iliad-850_01</td><td>Why are you here,"said he,"daughter of aegis- bearing Jove?</td></tr>
+<tr><td>homer-iliad-850_01</td><td>With what heart can any of the Achaeans do your bidding, either on foray or in open fighting?</td></tr>
+<tr><td>homer-iliad-850_02</td><td>Agamemnon,he cried,"what ails you now, and what more do you want?</td></tr>
+<tr><td>homer-iliad-850_02</td><td>How dare you gibe at Agamemnon because the Danaans have awarded him so many prizes?</td></tr>
+<tr><td>homer-iliad-850_02</td><td>Shall our counsels be flung into the fire, with our drink- offerings and the right hands of fellowship wherein we have put our trust?</td></tr>
+<tr><td>homer-iliad-850_02</td><td>Where are our covenants now, and where the oaths that we have taken?</td></tr>
+<tr><td>homer-iliad-850_02</td><td>Who, then, O Muse, was the foremost, whether man or horse, among those that followed after the sons of Atreus?</td></tr>
+<tr><td>homer-iliad-850_02</td><td>Why, Achaeans,''said he,''are you thus speechless?</td></tr>
+<tr><td>homer-iliad-850_02</td><td>Will you leave Priam and the Trojans the glory of still keeping Helen, for whose sake so many of the Achaeans have died at Troy, far from their homes?</td></tr>
+<tr><td>homer-iliad-850_02</td><td>Would you have yet more gold, which some Trojan is to give you as a ransom for his son, when I or another Achaean has taken him prisoner?</td></tr>
+<tr><td>homer-iliad-850_02</td><td>or is it some young girl to hide and lie with?</td></tr>
+<tr><td>homer-iliad-850_03</td><td>And now can you not dare face Menelaus and learn what manner of man he is whose wife you have stolen?</td></tr>
+<tr><td>homer-iliad-850_03</td><td>Are you going to send me afield still further to some man whom you have taken up in Phrygia or fair Meonia?</td></tr>
+<tr><td>homer-iliad-850_03</td><td>Did you not, such as you are, get your following together and sail beyond the seas?</td></tr>
+<tr><td>homer-iliad-850_03</td><td>Priam then caught sight of Ajax and asked,"Who is that great and goodly warrior whose head and broad shoulders tower above the rest of the Argives?"</td></tr>
+<tr><td>homer-iliad-850_03</td><td>Tell me, then, who is yonder huge hero so great and goodly?</td></tr>
+<tr><td>homer-iliad-850_03</td><td>Where indeed would be your lyre and your love- tricks, your comely locks and your fair favour, when you were lying in the dust before him?</td></tr>
+<tr><td>homer-iliad-850_03</td><td>Will not the Achaeans mock at us and say that we have sent one to champion us who is fair to see but who has neither wit nor courage?</td></tr>
+<tr><td>homer-iliad-850_04</td><td>Dread son of Saturn,"said she,"what, pray, is the meaning of all this?</td></tr>
+<tr><td>homer-iliad-850_04</td><td>How can you say that we are slack?</td></tr>
+<tr><td>homer-iliad-850_04</td><td>Jove was angry and answered,"My dear, what harm have Priam and his sons done you that you are so hotly bent on sacking the city of Ilius?</td></tr>
+<tr><td>homer-iliad-850_04</td><td>Son of Tydeus,"he said,"why stand you cowering here upon the brink of battle?</td></tr>
+<tr><td>homer-iliad-850_04</td><td>This shall surely be; but how, Menelaus, shall I mourn you, if it be your lot now to die?</td></tr>
+<tr><td>homer-iliad-850_04</td><td>Ulysses glared at him and answered,"Son of Atreus, what are you talking about?</td></tr>
+<tr><td>homer-iliad-850_04</td><td>We must consider what we shall do about all this; shall we set them fighting anew or make peace between them?</td></tr>
+<tr><td>homer-iliad-850_04</td><td>Will nothing do for you but you must within their walls and eat Priam raw, with his sons and all the other Trojans to boot?</td></tr>
+<tr><td>homer-iliad-850_05</td><td>Father Jove,"said she,"are you not angry with Mars for these high doings?</td></tr>
+<tr><td>homer-iliad-850_05</td><td>He showed Jove the immortal blood that was flowing from his wound, and spoke piteously, saying,"Father Jove, are you not angered by such doings?</td></tr>
+<tr><td>homer-iliad-850_05</td><td>Hector,"said he,"where is your prowess now?</td></tr>
+<tr><td>homer-iliad-850_05</td><td>Sarpedon,"said he,"councillor of the Lycians, why should you come skulking here you who are a man of peace?</td></tr>
+<tr><td>homer-iliad-850_05</td><td>Sons of Priam,"said he,"how long will you let your people be thus slaughtered by the Achaeans?</td></tr>
+<tr><td>homer-iliad-850_05</td><td>Then he said to his men,"My friends, how can we wonder that Hector wields the spear so well?</td></tr>
+<tr><td>homer-iliad-850_05</td><td>Who, then, was first and who last to be slain by Mars and Hector?</td></tr>
+<tr><td>homer-iliad-850_05</td><td>Would you wait till they are at the walls of Troy?</td></tr>
+<tr><td>homer-iliad-850_08</td><td>Son of Tydeus,replied Nestor,"what mean you?</td></tr>
+<tr><td>homer-iliad-850_08</td><td>Ulysses,he cried,"noble son of Laertes where are you flying to, with your back turned like a coward?</td></tr>
+<tr><td>homer-iliad-850_08</td><td>Are you fatigued with killing so many of your dear friends the Trojans?</td></tr>
+<tr><td>homer-iliad-850_08</td><td>Are you mad?</td></tr>
+<tr><td>homer-iliad-850_08</td><td>Can you find no compassion in your heart for the dying Danaans, who bring you many a welcome offering to Helice and to Aegae?</td></tr>
+<tr><td>homer-iliad-850_08</td><td>Father Jove, did you ever so ruin a great king and rob him so utterly of his greatness?</td></tr>
+<tr><td>homer-iliad-850_08</td><td>King Neptune was greatly troubled and answered,"Juno, rash of tongue, what are you talking about?</td></tr>
+<tr><td>homer-iliad-850_08</td><td>Then he was afraid and said to Diomed,"Son of Tydeus, turn your horses in flight; see you not that the hand of Jove is against you?</td></tr>
+<tr><td>homer-iliad-850_08</td><td>Then said she to the mighty god of Neptune,"What now, wide ruling lord of the earthquake?</td></tr>
+<tr><td>homer-iliad-850_08</td><td>What,"said she,"are you about?</td></tr>
+<tr><td>homer-iliad-850_08</td><td>Which of the Trojans did brave Teucer first kill?</td></tr>
+<tr><td>homer-iliad-850_12</td><td>Then he said to Glaucus son of Hippolochus,"Glaucus, why in Lycia do we receive especial honour as regards our place at table?</td></tr>
+<tr><td>homer-iliad-850_12</td><td>Then he turned round and shouted to the brave Lycians saying,"Lycians, why do you thus fail me?</td></tr>
+<tr><td>homer-iliad-850_12</td><td>What care I whether they fly towards dawn or dark, and whether they be on my right hand or on my left?</td></tr>
+<tr><td>homer-iliad-850_12</td><td>Why are the choicest portions served us and our cups kept brimming, and why do men look up to us as though we were gods?</td></tr>
+<tr><td>homer-iliad-850_12</td><td>Why are you so fearful?</td></tr>
+<tr><td>homer-iliad-850_11</td><td>Hero Eurypylus,replied the brave son of Menoetius,"how may these things be?</td></tr>
+<tr><td>homer-iliad-850_11</td><td>Alas,"said he to himself in his dismay,"what will become of me?</td></tr>
+<tr><td>homer-iliad-850_11</td><td>And Nestor answered,"Why should Achilles care to know how many of the Achaeans may be wounded?</td></tr>
+<tr><td>homer-iliad-850_11</td><td>But why talk to myself in this way?</td></tr>
+<tr><td>homer-iliad-850_11</td><td>My good friend, did not Menoetius charge you thus, on the day when he sent you from Phthia to Agamemnon?</td></tr>
+<tr><td>homer-iliad-850_11</td><td>Say, noble Eurypylus, will the Achaeans be able to hold great Hector in check, or will they fall now before his spear?"</td></tr>
+<tr><td>homer-iliad-850_11</td><td>Tell me now ye Muses that dwell in the mansions of Olympus, who, whether of the Trojans or of their allies, was first to face Agamemnon?</td></tr>
+<tr><td>homer-iliad-850_11</td><td>What can I do?</td></tr>
+<tr><td>homer-iliad-850_11</td><td>What do you want with me?"</td></tr>
+<tr><td>homer-iliad-850_11</td><td>What, then is the full tale of those whom Hector son of Priam killed in the hour of triumph which Jove then vouchsafed him?</td></tr>
+<tr><td>homer-iliad-850_11</td><td>Why,"said he,"Achilles, do you call me?</td></tr>
+<tr><td>homer-iliad-850_11</td><td>Will he wait till the ships, do what we may, are in a blaze, and we perish one upon the other?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>Who is it,said he,"that goes thus about the host and the ships alone and in the dead of night, when men are sleeping?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>Why,said he,"my dear brother, are you thus arming?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>Am I to stay with them and wait your coming, or shall I return here as soon as I have given your orders?"</td></tr>
+<tr><td>homer-iliad-850_10</td><td>Are there no younger men among the Achaeans who could go about to rouse the princes?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>Are you going to send any of our comrades to exploit the Trojans?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>Are you looking for one of your mules or for some comrade?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>But tell me, and tell me true, where did you leave Hector when you started?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>Can you not see that the Trojans are encamped on the brow of the plain hard by our ships, with but a little space between us and them?"</td></tr>
+<tr><td>homer-iliad-850_10</td><td>Did you steal in among the Trojan forces, or did some god meet you and give them to you?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>He came outside his tent and said,"Why do you go thus alone about the host, and along the line of the ships in the stillness of the night?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>How can you sleep on in this way?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>How, too, are the watches and sleeping- ground of the Trojans ordered?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>Is it to plunder the bodies of the slain, or did Hector send you to spy out what was going on at the ships?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>Is there one,"said he,"who for a great reward will do me the service of which I will tell you?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>Menelaus replied,"How do I take your meaning?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>Or did you come here of your own mere notion?"</td></tr>
+<tr><td>homer-iliad-850_10</td><td>Tell me,"said he,"renowned Ulysses, how did you two come by these horses?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>The Lysians and proud Mysians, with the Phrygians and Meonians, have their place on the side towards Thymbra; but why ask about all this?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>Ulysses then said,"Now tell me; are they sleeping among the Trojan troops, or do they lie apart?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>What are their plans?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>What is it that you find so urgent?"</td></tr>
+<tr><td>homer-iliad-850_10</td><td>What is your business?"</td></tr>
+<tr><td>homer-iliad-850_10</td><td>Where lies his armour and his horses?</td></tr>
+<tr><td>homer-iliad-850_10</td><td>Will they stay here by the ships and away from the city, or now that they have worsted the Achaeans, will they retire within their walls?"</td></tr>
+<tr><td>homer-iliad-850_17</td><td>As for the others that came into the fight after these, who of his own self could name them?</td></tr>
+<tr><td>homer-iliad-850_17</td><td>In his likeness, then, Apollo said,"Aeneas, can you not manage, even though heaven be against us, to save high Ilius?</td></tr>
+<tr><td>homer-iliad-850_17</td><td>Was it that you might share the sorrows that befall mankind?</td></tr>
+<tr><td>homer-iliad-850_17</td><td>What then will be our best plan both as regards rescuing the dead, and our own escape from death amid the battle- cries of the Trojans?"</td></tr>
+<tr><td>homer-iliad-850_17</td><td>Why, however, should I thus hesitate?</td></tr>
+<tr><td>homer-iliad-850_17</td><td>what shall I do?</td></tr>
+<tr><td>homer-iliad-850_19</td><td>What could I do?</td></tr>
+<tr><td>homer-iliad-850_19</td><td>Who can either hear or speak in an uproar?</td></tr>
+<tr><td>homer-iliad-850_19</td><td>Would you have men eat while the bodies of those whom Hector son of Priam slew are still lying mangled upon the plain?</td></tr>
+<tr><td>homer-iliad-850_16</td><td>Shame on you, where are you flying to?
+homer-iliad-850_16	Achilles was deeply moved and answered,What, noble Patroclus, are you saying?</td></tr>
+<tr><td>homer-iliad-850_16</td><td>And Juno answered,"Most dread son of Saturn, what is this that you are saying?</td></tr>
+<tr><td>homer-iliad-850_16</td><td>Dead though he was, Hector still spoke to him saying,"Patroclus, why should you thus foretell my doom?</td></tr>
+<tr><td>homer-iliad-850_16</td><td>Have you anything to say to the Myrmidons or to myself?</td></tr>
+<tr><td>homer-iliad-850_16</td><td>Who in future story will speak well of you unless you now save the Argives from ruin?</td></tr>
+<tr><td>homer-iliad-850_16</td><td>Who knows but Achilles, son of lovely Thetis, may be smitten by my spear and die before me?"</td></tr>
+<tr><td>homer-iliad-850_16</td><td>Who then first, and who last, was slain by you, O Patroclus, when the gods had now called you to meet your doom?</td></tr>
+<tr><td>homer-iliad-850_16</td><td>Would you snatch a mortal man, whose doom has long been fated, out of the jaws of death?</td></tr>
+<tr><td>homer-iliad-850_16</td><td>or have you had news from Phthia which you alone know?</td></tr>
+<tr><td>homer-iliad-850_14</td><td>And Juno said,"Sleep, why do you take such notions as those into your head?</td></tr>
+<tr><td>homer-iliad-850_14</td><td>Do you think Jove will be as anxious to help the Trojans, as he was about his own son?</td></tr>
+<tr><td>homer-iliad-850_14</td><td>He went up to her and said,"What do you want that you have come hither from Olympus-- and that too with neither chariot nor horses to convey you?"</td></tr>
+<tr><td>homer-iliad-850_14</td><td>Is it thus that you would quit the city of Troy, to win which we have suffered so much hardship?</td></tr>
+<tr><td>homer-iliad-850_14</td><td>Most dread son of Saturn,"she exclaimed,"what are you talking about?</td></tr>
+<tr><td>homer-iliad-850_14</td><td>Then King Agamemnon said to him,"Nestor son of Neleus, honour to the Achaean name, why have you left the battle to come hither?</td></tr>
+<tr><td>homer-iliad-850_14</td><td>Ulysses looked fiercely at him and said,"Son of Atreus, what are you talking about?</td></tr>
+<tr><td>homer-iliad-850_14</td><td>What if one of the ever- living gods should see us sleeping together, and tell the others?</td></tr>
+<tr><td>homer-iliad-850_14</td><td>Would you have us enjoy one another here on the top of Mount Ida, where everything can be seen?</td></tr>
+<tr><td>homer-iliad-850_18</td><td>Alas,"said he to himself in the heaviness of his heart,"why are the Achaeans again scouring the plain and flocking towards the ships?</td></tr>
+<tr><td>homer-iliad-850_18</td><td>And Achilles said,"Iris, which of the gods was it that sent you to me?"</td></tr>
+<tr><td>homer-iliad-850_18</td><td>And Juno answered,"Dread son of Saturn, why should you say this thing?</td></tr>
+<tr><td>homer-iliad-850_18</td><td>Have you not had enough of being cooped up behind walls?</td></tr>
+<tr><td>homer-iliad-850_18</td><td>His mother went up to him as he lay groaning; she laid her hand upon his head and spoke piteously, saying,"My son, why are you thus weeping?</td></tr>
+<tr><td>homer-iliad-850_18</td><td>May not a man though he be only mortal and knows less than we do, do what he can for another person?</td></tr>
+<tr><td>homer-iliad-850_18</td><td>Then fleet Achilles answered her saying,"How can I go up into the battle?</td></tr>
+<tr><td>homer-iliad-850_18</td><td>What is there for me?</td></tr>
+<tr><td>homer-iliad-850_18</td><td>What sorrow has now befallen you?</td></tr>
+<tr><td>homer-iliad-850_13</td><td>Alexandrus answered,"Hector, why find fault when there is no one to find fault with?</td></tr>
+<tr><td>homer-iliad-850_13</td><td>Are you wounded, and is the point of the weapon hurting you?</td></tr>
+<tr><td>homer-iliad-850_13</td><td>Idomeneus,"said he,"lawgiver to the Cretans, what has now become of the threats with which the sons of the Achaeans used to threaten the Trojans?"</td></tr>
+<tr><td>homer-iliad-850_13</td><td>On the right wing of the host, in the centre, or on the left wing, where I take it the Achaeans will be weakest?"</td></tr>
+<tr><td>homer-iliad-850_13</td><td>Paris,"said he,"evil- hearted Paris, fair to see but woman- mad and false of tongue, where are Deiphobus and King Helenus?</td></tr>
+<tr><td>homer-iliad-850_13</td><td>Sir,"he cried,"draw near; why do you think thus vainly to dismay the Argives?</td></tr>
+<tr><td>homer-iliad-850_13</td><td>Son of Deucalion,"said he,"where would you have us begin fighting?</td></tr>
+<tr><td>homer-iliad-850_13</td><td>Where are Adamas son of Asius, and Asius son of Hyrtacus?</td></tr>
+<tr><td>homer-iliad-850_13</td><td>Where too is Othryoneus?</td></tr>
+<tr><td>homer-iliad-850_13</td><td>or have you been sent to fetch me?</td></tr>
+<tr><td>homer-iliad-850_15</td><td>And you seem troubled-- has your husband the son of Saturn been frightening you?"</td></tr>
+<tr><td>homer-iliad-850_15</td><td>Apollo stood beside him and said,"Hector son of Priam, why are you so faint, and why are you here away from the others?</td></tr>
+<tr><td>homer-iliad-850_15</td><td>Can we hope to find helpers hereafter, or a wall to shield us more surely than the one we have?</td></tr>
+<tr><td>homer-iliad-850_15</td><td>Can you not hear him cheering on his whole host to fire our fleet, and bidding them remember that they are not at a dance but in battle?</td></tr>
+<tr><td>homer-iliad-850_15</td><td>Do you not remember how once upon a time I had you hanged?</td></tr>
+<tr><td>homer-iliad-850_15</td><td>Do you think, if Hector takes them, that you will be able to get home by land?</td></tr>
+<tr><td>homer-iliad-850_15</td><td>Has any mishap befallen you?"</td></tr>
+<tr><td>homer-iliad-850_15</td><td>He then with all sincerity and goodwill addressed them thus:"What, in heaven''s name, do I now see?</td></tr>
+<tr><td>homer-iliad-850_15</td><td>Hector in a weak voice answered,"And which, kind sir, of the gods are you, who now ask me thus?</td></tr>
+<tr><td>homer-iliad-850_15</td><td>Hector now rebuked him and said,"Why, Melanippus, are we thus remiss?</td></tr>
+<tr><td>homer-iliad-850_15</td><td>Iris fleet as the wind then answered,"Am I really, Neptune, to take this daring and unyielding message to Jove, or will you reconsider your answer?</td></tr>
+<tr><td>homer-iliad-850_15</td><td>Is it not Hector come to life again?</td></tr>
+<tr><td>homer-iliad-850_15</td><td>Juno,"said she,"why are you here?</td></tr>
+<tr><td>homer-iliad-850_15</td><td>do you take no note of the death of your kinsman, and do you not see how they are trying to take Dolops''s armour?</td></tr>
+<tr><td>homer-iliad-850_23</td><td>And Achilles answered,"Why, true heart, are you come hither to lay these charges upon me?</td></tr>
+<tr><td>homer-iliad-850_23</td><td>Antilochus,"said he,"what is this from you who have been so far blameless?</td></tr>
+<tr><td>homer-iliad-850_23</td><td>He stood up and said among the Argives,"My friends, princes and counsellors of the Argives, can you see the running as well as I can?</td></tr>
+<tr><td>homer-iliad-850_23</td><td>Is it not enough that I should fall short of you in actual fighting?</td></tr>
+<tr><td>homer-iliad-850_23</td><td>Why, my good fellows, are you lagging?</td></tr>
+<tr><td>homer-iliad-850_22</td><td>Alas, my son,"she cried,"what have I left to live for now that you are no more?</td></tr>
+<tr><td>homer-iliad-850_22</td><td>Have you not yet found out that it is a god whom you pursue so furiously?</td></tr>
+<tr><td>homer-iliad-850_22</td><td>Then Minerva said,"Father, wielder of the lightning, lord of cloud and storm, what mean you?</td></tr>
+<tr><td>homer-iliad-850_22</td><td>Then Phoebus Apollo spoke to the son of Peleus saying,"Why, son of Peleus, do you, who are but man, give chase to me who am immortal?</td></tr>
+<tr><td>homer-iliad-850_22</td><td>What say you?</td></tr>
+<tr><td>homer-iliad-850_22</td><td>What, again, if I were to lay down my shield and helmet, lean my spear against the wall and go straight up to noble Achilles?</td></tr>
+<tr><td>homer-iliad-850_22</td><td>Would you pluck this mortal whose doom has long been decreed out of the jaws of death?</td></tr>
+<tr><td>homer-odyssey-850_02</td><td>Has he got wind of some host approaching, and does he wish to warn us, or would he speak upon some other matter of public moment?</td></tr>
+<tr><td>homer-odyssey-850_02</td><td>Leiocritus, son of Evenor, answered him saying,"Mentor, what folly is all this, that you should set the people to stay us?</td></tr>
+<tr><td>homer-odyssey-850_02</td><td>Or will he go to Ephyra as well, for poison to put in our wine and kill us?"</td></tr>
+<tr><td>homer-odyssey-850_02</td><td>Telemachus answered,"Antinous, how can I drive the mother who bore me from my father''s house?</td></tr>
+<tr><td>homer-odyssey-850_02</td><td>Was it not enough that you should waste so much good property of mine while I was yet a boy?</td></tr>
+<tr><td>homer-odyssey-850_02</td><td>When Euryclea heard this she began to cry, and spoke fondly to him, saying,"My dear child, what ever can have put such notion as that into your head?</td></tr>
+<tr><td>homer-odyssey-850_02</td><td>Where in the world do you want to go to-- you, who are the one hope of the house?</td></tr>
+<tr><td>homer-iliad-850_20</td><td>Aeneas,"said he,"why do you stand thus out before the host to fight me?</td></tr>
+<tr><td>homer-iliad-850_20</td><td>And Aeneas answered,"Why do you thus bid me fight the proud son of Peleus, when I am in no mind to do so?</td></tr>
+<tr><td>homer-iliad-850_20</td><td>Are you considering some matter that concerns the Trojans and Achaeans-- for the blaze of battle is on the point of being kindled between them?"</td></tr>
+<tr><td>homer-iliad-850_20</td><td>Has he not at all times offered acceptable sacrifice to the gods that dwell in heaven?</td></tr>
+<tr><td>homer-iliad-850_20</td><td>Have you forgotten how when you were alone I chased you from your herds helter- skelter down the slopes of Ida?</td></tr>
+<tr><td>homer-iliad-850_20</td><td>Is it that you hope to reign over the Trojans in the seat of Priam?</td></tr>
+<tr><td>homer-iliad-850_20</td><td>Or have the Trojans been allotting you a demesne of passing richness, fair with orchard lawns and corn lands, if you should slay me?</td></tr>
+<tr><td>homer-iliad-850_20</td><td>Why should this man suffer when he is guiltless, to no purpose, and in another''s quarrel?</td></tr>
+<tr><td>homer-iliad-850_20</td><td>Why,"said he,"wielder of the lightning, have you called the gods in council?</td></tr>
+<tr><td>homer-iliad-850_20</td><td>what marvel am I now beholding?</td></tr>
+<tr><td>homer-odyssey-850_03</td><td>But how, Mentor,replied Telemachus,"dare I go up to Nestor, and how am I to address him?</td></tr>
+<tr><td>homer-odyssey-850_03</td><td>And how came false Aegisthus to kill so far better a man than himself?</td></tr>
+<tr><td>homer-odyssey-850_03</td><td>Are you traders?</td></tr>
+<tr><td>homer-odyssey-850_03</td><td>But we suffered much more than this; what mortal tongue indeed could tell the whole story?</td></tr>
+<tr><td>homer-odyssey-850_03</td><td>Do you submit to this tamely, or are public feeling and the voice of heaven against you?</td></tr>
+<tr><td>homer-odyssey-850_03</td><td>On this Minerva said,"Telemachus, what are you talking about?</td></tr>
+<tr><td>homer-odyssey-850_03</td><td>Tell me, therefore, Nestor, and tell me true; how did Agamemnon come to die in that way?</td></tr>
+<tr><td>homer-odyssey-850_03</td><td>Was Menelaus away from Achaean Argos, voyaging elsewhither among mankind, that Aegisthus took heart and killed Agamemnon?"</td></tr>
+<tr><td>homer-odyssey-850_03</td><td>What was Menelaus doing?</td></tr>
+<tr><td>homer-odyssey-850_03</td><td>Who knows but what Ulysses may come back after all, and pay these scoundrels in full, either single- handed or with a force of Achaeans behind him?</td></tr>
+<tr><td>homer-odyssey-850_03</td><td>Who, then, sir strangers, are you, and from what port have you sailed?</td></tr>
+<tr><td>homer-odyssey-850_03</td><td>or do you sail the seas as rovers with your hand against every man, and every man''s hand against you?"</td></tr>
+<tr><td>homer-odyssey-850_01</td><td>Is that so?
+homer-odyssey-850_01	And Jove said,My child, what are you talking about?</td></tr>
+<tr><td>homer-odyssey-850_01</td><td>But tell me, and tell me true, can Ulysses really have such a fine looking fellow for a son?</td></tr>
+<tr><td>homer-odyssey-850_01</td><td>But tell me, and tell me true, what is the meaning of all this feasting, and who are these people?</td></tr>
+<tr><td>homer-odyssey-850_01</td><td>Has he brought you news about the return of your father, or was he on business of his own?</td></tr>
+<tr><td>homer-odyssey-850_01</td><td>Have you some banquet, or is there a wedding in the family-- for no one seems to be bringing any provisions of his own?</td></tr>
+<tr><td>homer-odyssey-850_01</td><td>How can I forget Ulysses than whom there is no more capable man on earth, nor more liberal in his offerings to the immortal gods that live in heaven?</td></tr>
+<tr><td>homer-odyssey-850_01</td><td>Is this the worst fate you can think of for me?</td></tr>
+<tr><td>homer-odyssey-850_01</td><td>Of what family is he, and where is his estate?</td></tr>
+<tr><td>homer-odyssey-850_01</td><td>Tell me also truly, for I want to know, are you a stranger to this house, or have you been here in my father''s time?</td></tr>
+<tr><td>homer-odyssey-850_01</td><td>What country does he come from?</td></tr>
+<tr><td>homer-odyssey-850_01</td><td>What is it all about?</td></tr>
+<tr><td>homer-odyssey-850_01</td><td>Why then should you keep on being so angry with him?"</td></tr>
+<tr><td>homer-odyssey-850_01</td><td>You, sir, take no heed of this, and yet when Ulysses was before Troy did he not propitiate you with many a burnt sacrifice?</td></tr>
+<tr><td>homer-iliad-850_21</td><td>Who and whence are you,said he,"who dare to face me?</td></tr>
+<tr><td>homer-iliad-850_21</td><td>Why, vixen,said he,"have you again set the gods by the ears in the pride and haughtiness of your heart?</td></tr>
+<tr><td>homer-iliad-850_21</td><td>Baby, why keep your bow thus idle?</td></tr>
+<tr><td>homer-iliad-850_21</td><td>Bold vixen,"she cried,"how dare you cross me thus?</td></tr>
+<tr><td>homer-iliad-850_21</td><td>But why commune with myself in this way?</td></tr>
+<tr><td>homer-iliad-850_21</td><td>Could not even the waters of the grey sea imprison him, as they do many another whether he will or no?</td></tr>
+<tr><td>homer-iliad-850_21</td><td>Have you forgotten how you set Diomed son of Tydeus on to wound me, and yourself took visible spear and drove it into me to the hurt of my fair body?</td></tr>
+<tr><td>homer-iliad-850_21</td><td>I too-- see you not how I am great and goodly?</td></tr>
+<tr><td>homer-iliad-850_21</td><td>Meanwhile King Neptune turned to Apollo saying,"Phoebus, why should we keep each other at arm''s length?</td></tr>
+<tr><td>homer-iliad-850_21</td><td>Then Achilles said to himself in his surprise,"What marvel do I see here?</td></tr>
+<tr><td>homer-iliad-850_21</td><td>Then he prayed to Juno and besought her saying,"Juno, why should your son vex my stream with such especial fury?</td></tr>
+<tr><td>homer-iliad-850_21</td><td>What have I to do with quarrelling and helping people?"</td></tr>
+<tr><td>homer-iliad-850_21</td><td>What, then, if I go out and meet him in front of the city?</td></tr>
+<tr><td>homer-iliad-850_21</td><td>Why should you whine in this way?</td></tr>
+<tr><td>homer-odyssey-850_07</td><td>Did you not say you had come here from beyond the sea?"</td></tr>
+<tr><td>homer-odyssey-850_07</td><td>She stood right in front of him, and Ulysses said:"My dear, will you be so kind as to show me the house of king Alcinous?</td></tr>
+<tr><td>homer-odyssey-850_07</td><td>Who, and whence are you, and who gave you those clothes?</td></tr>
+<tr><td>homer-iliad-850_24</td><td>And Priam said,"Who are you, my friend, and who are your parents, that you speak so truly about the fate of my unhappy son?"</td></tr>
+<tr><td>homer-iliad-850_24</td><td>And Thetis answered,"Why does the mighty god so bid me?</td></tr>
+<tr><td>homer-iliad-850_24</td><td>And now tell me and tell me true, for how many days would you celebrate the funeral rites of noble Hector?</td></tr>
+<tr><td>homer-iliad-850_24</td><td>Are you not afraid of the fierce Achaeans who are hard by you, so cruel and relentless?</td></tr>
+<tr><td>homer-iliad-850_24</td><td>Did not Hector burn you thigh- bones of heifers and of unblemished goats?</td></tr>
+<tr><td>homer-iliad-850_24</td><td>Have you no grief in your own homes that you are come to plague me here?</td></tr>
+<tr><td>homer-iliad-850_24</td><td>His mother sat down beside him and caressed him with her hand saying,"My son, how long will you keep on thus grieving and making moan?</td></tr>
+<tr><td>homer-iliad-850_24</td><td>How can you venture alone to the ships of the Achaeans, and look into the face of him who has slain so many of your brave sons?</td></tr>
+<tr><td>homer-iliad-850_24</td><td>Is it a small thing, think you, that the son of Saturn has sent this sorrow upon me, to lose the bravest of my sons?</td></tr>
+<tr><td>homer-iliad-850_24</td><td>Is my son still at the ships, or has Achilles hewn him limb from limb, and given him to his hounds?"</td></tr>
+<tr><td>homer-iliad-850_24</td><td>Should some one of them see you bearing so much treasure through the darkness of the flying night, what would not your state then be?</td></tr>
+<tr><td>homer-iliad-850_24</td><td>So, then, you would all be on the side of mad Achilles, who knows neither right nor ruth?</td></tr>
+<tr><td>homer-iliad-850_24</td><td>What think you of this matter?</td></tr>
+<tr><td>homer-odyssey-850_05</td><td>Alas,he cried to himself in his dismay,"what ever will become of me, and how is it all to end?</td></tr>
+<tr><td>homer-odyssey-850_05</td><td>My poor good man,said she,"why is Neptune so furiously angry with you?</td></tr>
+<tr><td>homer-odyssey-850_05</td><td>What, my dear, are you talking about?</td></tr>
+<tr><td>homer-odyssey-850_05</td><td>Alas,"he said to himself in his dismay,"what ever will become of me?</td></tr>
+<tr><td>homer-odyssey-850_05</td><td>Calypso gave Mercury a seat and said:"Why have you come to see me, Mercury-- honoured, and ever welcome-- for you do not visit me often?</td></tr>
+<tr><td>homer-odyssey-850_05</td><td>replied her father,"did you not send him there yourself, because you thought it would help Ulysses to get home and punish the suitors?</td></tr>
+<tr><td>homer-odyssey-850_08</td><td>Did you lose some brave kinsman of your wife''s when you were before Troy?</td></tr>
+<tr><td>homer-odyssey-850_08</td><td>Ulysses answered,"Laodamas, why do you taunt me in this way?</td></tr>
+<tr><td>homer-odyssey-850_08</td><td>Where have you been wandering, and in what countries have you travelled?</td></tr>
+<tr><td>homer-odyssey-850_08</td><td>a son- in- law or father- in- law-- which are the nearest relations a man has outside his own flesh and blood?</td></tr>
+<tr><td>homer-odyssey-850_08</td><td>or was it some brave and kindly- natured comrade-- for a good friend is as dear to a man as his own brother?"</td></tr>
+<tr><td>homer-odyssey-850_12</td><td>''Is there no way,''said I,''of escaping Charybdis, and at the same time keeping Scylla off when she is trying to harm my men?''
+homer-odyssey-850_12	Why should not we drive in the best of these cows and offer them in sacrifice to the immortal gods?
+homer-odyssey-850_06	Alas,"said he to himself,"what kind of people have I come amongst?</td></tr>
+<tr><td>homer-odyssey-850_06</td><td>O queen,he said,"I implore your aid-- but tell me, are you a goddess or are you a mortal woman?</td></tr>
+<tr><td>homer-odyssey-850_06</td><td>Are they cruel, savage, and uncivilised, or hospitable and humane?</td></tr>
+<tr><td>homer-odyssey-850_06</td><td>Can you not see a man without running away from him?</td></tr>
+<tr><td>homer-odyssey-850_06</td><td>Do you take him for a robber or a murderer?</td></tr>
+<tr><td>homer-odyssey-850_06</td><td>She stopped him and said:"Papa dear, could you manage to let me have a good big waggon?</td></tr>
+<tr><td>homer-odyssey-850_06</td><td>Where did she find him?</td></tr>
+<tr><td>homer-odyssey-850_14</td><td>Why should a man like you go about telling lies in this way?</td></tr>
+<tr><td>homer-odyssey-850_10</td><td>And I answered,''Circe, how can you expect me to be friendly with you when you have just been turning all my men into pigs?
+homer-odyssey-850_10	How can it be that my drugs have no power to charm you?
+homer-odyssey-850_10	Is it that you are still suspicious?
+homer-odyssey-850_10	She passed through the midst of us without our knowing it, for who can see the comings and goings of a god, if the god does not wish to be seen?
+homer-odyssey-850_10	They were astounded when they saw us and said,''Ulysses, what brings you here?
+homer-odyssey-850_10	What god has been ill- treating you?
+homer-odyssey-850_10	You surely do not fancy that you can set them free?
+homer-odyssey-850_10	from what place and people have you come?
+homer-odyssey-850_09	Are you traders, or do you sail the sea as rovers, with your hands against every man, and every man''s hand against you?''
+homer-odyssey-850_09	Surely no man is carrying off your sheep?
+homer-odyssey-850_09	Surely no man is trying to kill you either by fraud or by force?''
+homer-odyssey-850_09	Talk to me, indeed, about fearing the gods or shunning their anger?
+homer-odyssey-850_09	Was it round the point, or is she lying straight off the land?''
+homer-odyssey-850_09	When he had got through with all his work, he lit the fire, and then caught sight of us, whereon he said:''Strangers, who are you?</td></tr>
+<tr><td>homer-odyssey-850_09</td><td>Where do sail from?</td></tr>
+<tr><td>homer-odyssey-850_09</td><td>You ought to be ashamed of yourself; how can you expect people to come see you any more if you treat them in this way?''</td></tr>
+<tr><td>homer-odyssey-850_09</td><td>You wretch, eat up your visitors in your own house?</td></tr>
+<tr><td>homer-odyssey-850_15</td><td>The man who had seduced her then said,''Would you like to come along with us to see the house of your parents and your parents themselves?
+homer-odyssey-850_15	Are they still living or are they already dead and in the house of Hades?</td></tr>
+<tr><td>homer-odyssey-850_15</td><td>Heaven help me,"he exclaimed,"what ever can have put such a notion as that into your head?</td></tr>
+<tr><td>homer-odyssey-850_15</td><td>To whose house, among all your chief men, am I to repair?</td></tr>
+<tr><td>homer-odyssey-850_15</td><td>Who and whence are you?</td></tr>
+<tr><td>homer-odyssey-850_15</td><td>or shall I go straight to your own house and to your mother?"</td></tr>
+<tr><td>homer-odyssey-850_15</td><td>{ 137} Then Theoclymenus said,"And what, my dear young friend, is to become of me?</td></tr>
+<tr><td>homer-odyssey-850_13</td><td>Alas,he exclaimed,"among what manner of people am I fallen?</td></tr>
+<tr><td>homer-odyssey-850_13</td><td>Am I on an island, or is this the sea board of some continent?"</td></tr>
+<tr><td>homer-odyssey-850_13</td><td>And Jove answered,"What, O Lord of the Earthquake, are you talking about?</td></tr>
+<tr><td>homer-odyssey-850_13</td><td>Are they savage and uncivilised or hospitable and humane?</td></tr>
+<tr><td>homer-odyssey-850_13</td><td>Did you want him too to go sailing about amid all kinds of hardship while others are eating up his estate?"</td></tr>
+<tr><td>homer-odyssey-850_13</td><td>Tell me then truly, have I really got back to my own country?"</td></tr>
+<tr><td>homer-odyssey-850_13</td><td>Tell me, then, and tell me truly, what land and country is this?</td></tr>
+<tr><td>homer-odyssey-850_13</td><td>Where shall I put all this treasure, and which way shall I go?</td></tr>
+<tr><td>homer-odyssey-850_13</td><td>Who are its inhabitants?</td></tr>
+<tr><td>homer-odyssey-850_13</td><td>{ 125}"But why,"said Ulysses,"did you not tell him, for you knew all about it?</td></tr>
+<tr><td>homer-odyssey-850_19</td><td>Madam,answered Ulysses,"who on the face of the whole earth can dare to chide with you?</td></tr>
+<tr><td>homer-odyssey-850_19</td><td>My child,answered Euryclea,"what are you talking about?</td></tr>
+<tr><td>homer-odyssey-850_19</td><td>This dream, Madam,replied Ulysses,"can admit but of one interpretation, for had not Ulysses himself told you how it shall be fulfilled?</td></tr>
+<tr><td>homer-odyssey-850_19</td><td>But who is to go with you and light you to the store- room?</td></tr>
+<tr><td>homer-odyssey-850_19</td><td>Ulysses scowled at her and answered,"My good woman, why should you be so angry with me?</td></tr>
+<tr><td>homer-odyssey-850_18</td><td>Poor wretch,said she,"are you gone clean out of your mind?</td></tr>
+<tr><td>homer-odyssey-850_18</td><td>Are you not ashamed of opening your mouth before your betters-- so many of them too?</td></tr>
+<tr><td>homer-odyssey-850_18</td><td>Can you build a stone fence, or plant trees?</td></tr>
+<tr><td>homer-odyssey-850_18</td><td>Can you not carry your meat and your liquor decently?</td></tr>
+<tr><td>homer-odyssey-850_18</td><td>Do you not see that they are all giving me the wink, and wanting me to turn you out by force, only I do not like to do so?</td></tr>
+<tr><td>homer-odyssey-850_18</td><td>Has the wine been getting into your head or do you always babble in this way?</td></tr>
+<tr><td>homer-odyssey-850_18</td><td>Has the wine been getting into your head, or do you always babble in this way?</td></tr>
+<tr><td>homer-odyssey-850_18</td><td>On this Telemachus came forward and said,"Sirs, are you mad?</td></tr>
+<tr><td>homer-odyssey-850_18</td><td>Then turning to Ulysses he said,"Stranger, will you work as a servant, if I send you to the wolds and see that you are well paid?</td></tr>
+<tr><td>homer-odyssey-850_18</td><td>What is all this disturbance that has been going on, and how came you to allow a stranger to be so disgracefully ill- treated?</td></tr>
+<tr><td>homer-odyssey-850_18</td><td>What would have happened if he had suffered serious injury while a suppliant in our house?</td></tr>
+<tr><td>homer-odyssey-850_18</td><td>Will you go, then?</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>''Can you show me,''said I,''some stratagem by means of which I may catch this old god without his suspecting it and finding me out?
+homer-odyssey-850_04	''Son of Atreus,''he answered,''why ask me?</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>I lent it him,answered Noemon,"what else could I do when a man of his position said he was in a difficulty, and asked me to oblige him?</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>Am I, then, to leave off crying and refrain from all the sad thoughts that torture me?</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>Are you on public, or private business?</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>As he crossed the threshold of her room Penelope said:"Medon, what have the suitors sent you here for?</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>At last, however, she said,"Why did my son leave me?</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>Does he want to die without leaving any one behind him to keep up his name?"</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>Is it to tell the maids to leave their master''s business and cook dinner for them?</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>Penelope, who was sleeping sweetly at the gates of dreamland, answered,"Sister, why have you come here?</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>Shall we take their horses out, or tell them to find friends elsewhere as they best can?"</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>So,"he exclaimed,"these cowards would usurp a brave man''s bed?</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>Tell me also, did you let him have the ship of your own free will because he asked you, or did he take it without your leave?"</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>Tell me truly, and what young men did he take with him?</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>Then, taking a seat near Telemachus he said:"And what, Telemachus, has led you to take this long sea voyage to Lacedaemon?</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>They thought he was only away somewhere on the farms, and was with the sheep, or with the swineherd; so Antinous said,"When did he go?</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>Were they freemen or his own bondsmen-- for he might manage that too?</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>What are we to do?</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>What business had he to go sailing off in ships that make long voyages over the ocean like sea- horses?</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>What do you want?''</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>or is he dead?</td></tr>
+<tr><td>homer-odyssey-850_04</td><td>{ 42}"Do we know, Menelaus,"said she,"the names of these strangers who have come to visit us?</td></tr>
+<tr><td>homer-odyssey-850_22</td><td>But Agelaus shouted out,"Can not some one go up to the trap door and tell the people what is going on?</td></tr>
+<tr><td>homer-odyssey-850_22</td><td>But Ulysses glared at them and said:"Dogs, did you think that I should not come back from Troy?</td></tr>
+<tr><td>homer-odyssey-850_22</td><td>He had no thought of death-- who amongst all the revellers would think that one man, however brave, would stand alone among so many and kill him?</td></tr>
+<tr><td>homer-odyssey-850_22</td><td>How comes it that you are so lamentably less valiant now that you are on your own ground, face to face with the suitors in your own house?</td></tr>
+<tr><td>homer-odyssey-850_20</td><td>Am I not a goddess, and have I not protected you throughout in all your troubles?</td></tr>
+<tr><td>homer-odyssey-850_20</td><td>Are you still here, stranger,"said he,"to pester people by begging about the house?</td></tr>
+<tr><td>homer-odyssey-850_20</td><td>Is he one of your men?</td></tr>
+<tr><td>homer-odyssey-850_20</td><td>Theoclymenus saw this and said,"Unhappy men, what is it that ails you?</td></tr>
+<tr><td>homer-odyssey-850_20</td><td>What is his family?</td></tr>
+<tr><td>homer-odyssey-850_20</td><td>Where does he come from?</td></tr>
+<tr><td>homer-odyssey-850_20</td><td>Who, Swineherd,"said he,"is this stranger that is lately come here?</td></tr>
+<tr><td>homer-odyssey-850_20</td><td>Why can you not go elsewhere?</td></tr>
+<tr><td>homer-odyssey-850_20</td><td>You beg without any sense of decency: are there not feasts elsewhere among the Achaeans, as well as here?"</td></tr>
+<tr><td>homer-odyssey-850_16</td><td>What is the news of the town?
+homer-odyssey-850_16	And Ulysses said,I am no god, why should you take me for one?</td></tr>
+<tr><td>homer-odyssey-850_16</td><td>Are you some one or other of the gods that live in heaven?</td></tr>
+<tr><td>homer-odyssey-850_16</td><td>Have the suitors returned, or are they still waiting over yonder, to take me on my way home?"</td></tr>
+<tr><td>homer-odyssey-850_16</td><td>How can I take this stranger into my house?</td></tr>
+<tr><td>homer-odyssey-850_16</td><td>Madman, why should you try to compass the death of Telemachus, and take no heed of suppliants, whose witness is Jove himself?</td></tr>
+<tr><td>homer-odyssey-850_16</td><td>May you not complain of your brothers-- for it is to these that a man may look for support, however great his quarrel may be?</td></tr>
+<tr><td>homer-odyssey-850_16</td><td>Of what nation did they declare themselves to be-- for you can not have come by land?"</td></tr>
+<tr><td>homer-odyssey-850_16</td><td>Tell me, do you submit to such treatment tamely, or has some god set your people against you?</td></tr>
+<tr><td>homer-odyssey-850_11</td><td>And I said,''Agamemnon, why do you ask me?
+homer-odyssey-850_11	Are you all this time trying to find your way home from Troy, and have you never yet got back to Ithaca nor seen your wife in your own house?''
+homer-odyssey-850_11	But give me news about my son; is he gone to the wars and will he be a great soldier, or is this not so?
+homer-odyssey-850_11	But now tell me, and tell me true, can you give me any news of my son Orestes?
+homer-odyssey-850_11	But tell me, and tell me true, in what way did you die?
+homer-odyssey-850_11	Did you have a long illness, or did heaven vouchsafe you a gentle easy passage to eternity?
+homer-odyssey-850_11	He knew me and said,''Ulysses, noble son of Laertes, why, poor man, have you left the light of day and come down to visit the dead in this sad place?
+homer-odyssey-850_11	How did you come by your death,''said I,''King Agamemnon?
+homer-odyssey-850_11	I was very sorry for him, and cried when I saw him:''Elpenor,''said I,''how did you come down here into this gloom and darkness?
+homer-odyssey-850_11	Is he not tall and good looking, and is he not clever?
+homer-odyssey-850_11	Then Arete said to them:--What do you think of this man, O Phaeacians?</td></tr>
+<tr><td>homer-odyssey-850_11</td><td>Then she knew me at once and spoke fondly to me, saying,''My son, how did you come down to this abode of darkness while you are still alive?</td></tr>
+<tr><td>homer-odyssey-850_21</td><td>You country louts,said he,"silly simpletons; why should you add to the sorrows of your mistress by crying in this way?</td></tr>
+<tr><td>homer-odyssey-850_21</td><td>Are you out of your wits?</td></tr>
+<tr><td>homer-odyssey-850_21</td><td>Say which you are disposed to do-- to side with the suitors, or with Ulysses?"</td></tr>
+<tr><td>homer-odyssey-850_21</td><td>Shall, then, this bow take the life of many a chief among us, merely because you can not bend it yourself?</td></tr>
+<tr><td>homer-odyssey-850_21</td><td>Then he took his seat again on the seat from which he had risen; and Antinous rebuked him saying:"Leiodes, what are you talking about?</td></tr>
+<tr><td>homer-odyssey-850_21</td><td>Today is the feast of Apollo throughout all the land; who can string a bow on such a day as this?</td></tr>
+<tr><td>homer-odyssey-850_21</td><td>What manner of men would you be to stand by Ulysses, if some god should bring him back here all of a sudden?</td></tr>
+<tr><td>homer-odyssey-850_21</td><td>Why then should you mind if men talk as you think they will?</td></tr>
+<tr><td>homer-odyssey-850_21</td><td>You know this as well as I do; what need have I to speak in praise of my mother?</td></tr>
+<tr><td>homer-odyssey-850_17</td><td>What do you mean, Telemachus,replied Antinous,"by this swaggering talk?</td></tr>
+<tr><td>homer-odyssey-850_17</td><td>Do you think it a small thing that such people gather here to waste your master''s property-- and must you needs bring this man as well?"</td></tr>
+<tr><td>homer-odyssey-850_17</td><td>Have we not tramps and beggars enough already to pester us as we sit at meat?</td></tr>
+<tr><td>homer-odyssey-850_17</td><td>Is he afraid that some one will ill- treat him, or is he shy of coming inside the house at all?</td></tr>
+<tr><td>homer-odyssey-850_17</td><td>Penelope laughed when she heard this, and said to Eumaeus,"Go and call the stranger; did you not hear how my son sneezed just as I was speaking?</td></tr>
+<tr><td>homer-odyssey-850_17</td><td>The swineherd went back when he heard this, and Penelope said as she saw him cross the threshold,"Why do you not bring him here, Eumaeus?</td></tr>
+<tr><td>homer-odyssey-850_17</td><td>Then Antinous said,"What god can have sent such a pestilence to plague us during our dinner?</td></tr>
+<tr><td>homer-odyssey-850_17</td><td>Then Melanthius the goatherd answered,"You ill conditioned cur, what are you talking about?</td></tr>
+<tr><td>homer-odyssey-850_17</td><td>Where, pray, master swineherd, are you taking this poor miserable object?</td></tr>
+<tr><td>homer-odyssey-850_17</td><td>Why should you want to see this stranger turned out of the house?</td></tr>
+<tr><td>homer-odyssey-850_17</td><td>Will you go inside first and join the suitors, leaving me here behind you, or will you wait here and let me go in first?</td></tr>
+<tr><td>homer-odyssey-850_17</td><td>You precious idiot,"he cried,"what have you brought this man to town for?</td></tr>
+<tr><td>homer-odyssey-850_23</td><td>My dear,answered Ulysses,"why should you press me to tell you?</td></tr>
+<tr><td>homer-odyssey-850_23</td><td>Then nurse Euryclea said,"My child, what are you talking about?</td></tr>
+<tr><td>homer-odyssey-850_23</td><td>Who has been taking my bed from the place in which I left it?</td></tr>
+<tr><td>homer-odyssey-850_23</td><td>Why do you not sit by his side and begin talking to him and asking him questions?</td></tr>
+<tr><td>homer-odyssey-850_24</td><td>Amphimedon,it said,"what has happened to all you fine young men-- all of an age too-- that you are come down here under the ground?</td></tr>
+<tr><td>homer-odyssey-850_24</td><td>And Jove answered,"My child, why should you ask me?</td></tr>
+<tr><td>homer-odyssey-850_24</td><td>But as for me, what solace had I when the days of my fighting were done?</td></tr>
+<tr><td>homer-odyssey-850_24</td><td>But tell me, and tell me true, how many years is it since you entertained this guest-- my unhappy son, as ever was?</td></tr>
+<tr><td>homer-odyssey-850_24</td><td>Do you not remember how I came to your house with Menelaus, to persuade Ulysses to join us with his ships against Troy?</td></tr>
+<tr><td>homer-odyssey-850_24</td><td>Is this place that I have come to really Ithaca?</td></tr>
+<tr><td>homer-odyssey-850_24</td><td>Or were you a passenger on some other man''s ship, and those who brought you here have gone on their way and left you?"</td></tr>
+<tr><td>homer-odyssey-850_24</td><td>Then Minerva said to Jove,"Father, son of Saturn, king of kings, answer me this question-- What do you propose to do?</td></tr>
+<tr><td>homer-odyssey-850_24</td><td>Was it not by your own arrangement that Ulysses came home and took his revenge upon the suitors?</td></tr>
+<tr><td>homer-odyssey-850_24</td><td>Where is the ship lying that has brought you and your men to Ithaca?</td></tr>
+<tr><td>homer-odyssey-850_24</td><td>Who and whence are you-- tell me of your town and parents?</td></tr>
+<tr><td>homer-odyssey-850_24</td><td>Will you set them fighting still further, or will you make peace between them?"</td></tr>
+<tr><td>homer-odyssey-850_24</td><td>{ 187} But tell me, does Penelope already know of your return, or shall we send some one to tell her?"</td></tr>
+
+        </tbody>
+    </table>
+	</div>
+	<footer class="footer">
+ 		<div class="container">
+ 			 <hr>
+ 			 <div class="row">
+
+ 					<div class="col-sm-4">
+ 						 <p class="text-muted text-center">&copy; 2019 Eric Lease Morgan</p>
+ 					</div>
+ 					<div class="col-sm-4">
+ 						 <p class="text-center"><a href="mailto:emorgan@nd.edu">Contact Webmaster</a></p>
+ 					</div>
+ 					<div class="col-sm-4">
+ 						 <p class="text-center">
+ 								<a href="https://distantreader.org/">About Distant Reader</a>
+ 						 </p>
+ 					</div>
+
+ 			 </div>
+
+
+ 		</div>
+  </footer>
+</body>
+</html>

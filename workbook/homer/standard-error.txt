@@ -1,0 +1,2693 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   238  100   118  100   120  11800  12000 --:--:-- --:--:-- --:--:-- 23800
+mv: cannot stat ‘homer.zip’: No such file or directory
+Created carrel: PROCESS_1dd0055f-d886-4284-a911-2e86ead7f195
+
+Creating study carrel named PROCESS_1dd0055f-d886-4284-a911-2e86ead7f195
+
+Initializing database
+Unzipping 
+Archive:  input.zip
+   creating: ./tmp/input/homer/
+  inflating: ./tmp/input/homer/homer-odyssey-850_24.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_18.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_19.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_09.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_21.txt  
+  inflating: ./tmp/input/homer/.DS_Store  
+  inflating: ./tmp/input/homer/homer-odyssey-850_20.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_08.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_22.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_23.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_23.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_22.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_08.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_20.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_21.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_09.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_19.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_18.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_24.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_16.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_02.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_03.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_17.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_01.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_15.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_14.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_04.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_10.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_11.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_05.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_13.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_07.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_06.txt  
+  inflating: ./tmp/input/homer/homer-iliad-850_12.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_06.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_12.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_13.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_07.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_11.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_05.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_04.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_10.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_14.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_01.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_15.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_03.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_17.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_16.txt  
+  inflating: ./tmp/input/homer/homer-odyssey-850_02.txt  
+=== updating bibliographic database
+Building study carrel named PROCESS_1dd0055f-d886-4284-a911-2e86ead7f195
+  Cool environment variables:
+         ACCOUNT_STRING: 
+       APPLICATION_NAME: 
+           CHASSIS_NAME: 
+              CPU_COUNT: 
+        EXECUTABLE_PATH: 
+                EXPORTS: 
+             GATEWAY_ID: 
+      GATEWAY_USER_NAME: 
+              INPUT_DIR: 
+                 INPUTS: 
+               JOB_NAME: 
+  JOB_SUBMITTER_COMMAND: 
+           MAIL_ADDRESS: 
+          MAX_WALL_TIME: 
+        MODULE_COMMANDS: 
+                  NODES: 
+             OUTPUT_DIR: 
+      POST_JOB_COMMANDS: 
+       PRE_JOB_COMMANDS: 
+       PROCESS_PER_NODE: 
+     QUALITY_OF_SERVICE: 
+             QUEUE_NAME: 
+            RESERVATION: 
+       SCRATCH_LOCATION: 
+             SHELL_NAME: 
+    STANDARD_ERROR_FILE: 
+      STANDARD_OUT_FILE: 
+               USED_MEM: 
+              USER_NAME: 
+            WORKING_DIR: 
+Jan 27, 2020 9:40:23 PM org.apache.tika.config.InitializableProblemHandler$3 handleInitializableProblem
+WARNING: J2KImageReader not loaded. JPEG2000 files will not be processed.
+See https://pdfbox.apache.org/2.0/dependencies.html#jai-image-io
+for optional dependencies.
+
+Jan 27, 2020 9:40:23 PM org.apache.tika.config.InitializableProblemHandler$3 handleInitializableProblem
+WARNING: org.xerial's sqlite-jdbc is not loaded.
+Please provide the jar on your classpath to parse sqlite files.
+See tika-parsers/pom.xml for the correct version.
+INFO  Starting Apache Tika 1.22 server
+INFO  Setting the server's publish address to be http://localhost:9998/
+INFO  Logging initialized @1590ms to org.eclipse.jetty.util.log.Slf4jLog
+INFO  jetty-9.4.z-SNAPSHOT; built: 2019-04-29T20:42:08.989Z; git: e1bc35120a6617ee3df052294e433f3a25ce7097; jvm 1.8.0_201-b09
+INFO  Started ServerConnector@a078fd{HTTP/1.1,[http/1.1]}{localhost:9998}
+INFO  Started @1684ms
+WARN  Empty contextPath
+INFO  Started o.e.j.s.h.ContextHandler@7a164b{/,null,AVAILABLE}
+INFO  Started Apache Tika server at http://localhost:9998/
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-odyssey-850_09.txt
+OUTPUT: txt/homer-odyssey-850_09.txt
+  FILE: cache/homer-odyssey-850_19.txt
+OUTPUT: txt/homer-odyssey-850_19.txt
+  FILE: cache/homer-odyssey-850_21.txt
+OUTPUT: txt/homer-odyssey-850_21.txt
+  FILE: cache/homer-odyssey-850_20.txt
+OUTPUT: txt/homer-odyssey-850_20.txt
+  FILE: cache/homer-odyssey-850_24.txt
+OUTPUT: txt/homer-odyssey-850_24.txt
+  FILE: cache/homer-odyssey-850_08.txt
+OUTPUT: txt/homer-odyssey-850_08.txt
+  FILE: cache/homer-iliad-850_23.txt
+OUTPUT: txt/homer-iliad-850_23.txt
+  FILE: cache/homer-odyssey-850_18.txt
+OUTPUT: txt/homer-odyssey-850_18.txt
+  FILE: cache/homer-odyssey-850_22.txt
+OUTPUT: txt/homer-odyssey-850_22.txt
+  FILE: cache/homer-iliad-850_22.txt
+OUTPUT: txt/homer-iliad-850_22.txt
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-odyssey-850_23.txt
+OUTPUT: txt/homer-odyssey-850_23.txt
+  FILE: cache/homer-iliad-850_20.txt
+OUTPUT: txt/homer-iliad-850_20.txt
+  FILE: cache/homer-iliad-850_09.txt
+OUTPUT: txt/homer-iliad-850_09.txt
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-iliad-850_08.txt
+OUTPUT: txt/homer-iliad-850_08.txt
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-iliad-850_21.txt
+OUTPUT: txt/homer-iliad-850_21.txt
+  FILE: cache/homer-iliad-850_16.txt
+OUTPUT: txt/homer-iliad-850_16.txt
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-iliad-850_24.txt
+OUTPUT: txt/homer-iliad-850_24.txt
+  FILE: cache/homer-iliad-850_02.txt
+OUTPUT: txt/homer-iliad-850_02.txt
+  FILE: cache/homer-iliad-850_18.txt
+OUTPUT: txt/homer-iliad-850_18.txt
+  FILE: cache/homer-iliad-850_19.txt
+OUTPUT: txt/homer-iliad-850_19.txt
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-iliad-850_17.txt
+OUTPUT: txt/homer-iliad-850_17.txt
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-iliad-850_03.txt
+OUTPUT: txt/homer-iliad-850_03.txt
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-iliad-850_01.txt
+OUTPUT: txt/homer-iliad-850_01.txt
+  FILE: cache/homer-iliad-850_15.txt
+OUTPUT: txt/homer-iliad-850_15.txt
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-iliad-850_04.txt
+OUTPUT: txt/homer-iliad-850_04.txt
+  FILE: cache/homer-iliad-850_14.txt
+OUTPUT: txt/homer-iliad-850_14.txt
+  FILE: cache/homer-iliad-850_10.txt
+OUTPUT: txt/homer-iliad-850_10.txt
+  FILE: cache/homer-iliad-850_11.txt
+OUTPUT: txt/homer-iliad-850_11.txt
+  FILE: cache/homer-iliad-850_13.txt
+OUTPUT: txt/homer-iliad-850_13.txt
+  FILE: cache/homer-iliad-850_05.txt
+OUTPUT: txt/homer-iliad-850_05.txt
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-iliad-850_07.txt
+OUTPUT: txt/homer-iliad-850_07.txt
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-iliad-850_06.txt
+OUTPUT: txt/homer-iliad-850_06.txt
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-odyssey-850_06.txt
+OUTPUT: txt/homer-odyssey-850_06.txt
+  FILE: cache/homer-iliad-850_12.txt
+OUTPUT: txt/homer-iliad-850_12.txt
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-odyssey-850_07.txt
+OUTPUT: txt/homer-odyssey-850_07.txt
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-odyssey-850_10.txt
+OUTPUT: txt/homer-odyssey-850_10.txt
+  FILE: cache/homer-odyssey-850_11.txt
+OUTPUT: txt/homer-odyssey-850_11.txt
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-odyssey-850_12.txt
+OUTPUT: txt/homer-odyssey-850_12.txt
+  FILE: cache/homer-odyssey-850_13.txt
+OUTPUT: txt/homer-odyssey-850_13.txt
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-odyssey-850_05.txt
+OUTPUT: txt/homer-odyssey-850_05.txt
+  FILE: cache/homer-odyssey-850_04.txt
+OUTPUT: txt/homer-odyssey-850_04.txt
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-odyssey-850_14.txt
+OUTPUT: txt/homer-odyssey-850_14.txt
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-odyssey-850_03.txt
+OUTPUT: txt/homer-odyssey-850_03.txt
+  FILE: cache/homer-odyssey-850_15.txt
+OUTPUT: txt/homer-odyssey-850_15.txt
+  FILE: cache/homer-odyssey-850_01.txt
+OUTPUT: txt/homer-odyssey-850_01.txt
+  FILE: cache/homer-odyssey-850_16.txt
+OUTPUT: txt/homer-odyssey-850_16.txt
+  FILE: cache/homer-odyssey-850_17.txt
+OUTPUT: txt/homer-odyssey-850_17.txt
+INFO  rmeta/text (autodetecting type)
+  FILE: cache/homer-odyssey-850_02.txt
+OUTPUT: txt/homer-odyssey-850_02.txt
+homer-odyssey-850_24  txt/../wrd/homer-odyssey-850_24.wrd
+txt/../wrd/homer-odyssey-850_24.wrd exist
+homer-odyssey-850_18  txt/../wrd/homer-odyssey-850_18.wrd
+txt/../wrd/homer-odyssey-850_18.wrd exist
+homer-odyssey-850_19  txt/../wrd/homer-odyssey-850_19.wrd
+txt/../wrd/homer-odyssey-850_19.wrd exist
+homer-odyssey-850_09  txt/../wrd/homer-odyssey-850_09.wrd
+txt/../wrd/homer-odyssey-850_09.wrd exist
+homer-odyssey-850_21  txt/../wrd/homer-odyssey-850_21.wrd
+txt/../wrd/homer-odyssey-850_21.wrd exist
+homer-odyssey-850_22  txt/../wrd/homer-odyssey-850_22.wrd
+txt/../wrd/homer-odyssey-850_22.wrd exist
+homer-odyssey-850_20  txt/../wrd/homer-odyssey-850_20.wrd
+txt/../wrd/homer-odyssey-850_20.wrd exist
+homer-odyssey-850_08  txt/../wrd/homer-odyssey-850_08.wrd
+txt/../wrd/homer-odyssey-850_08.wrd exist
+homer-iliad-850_22  txt/../wrd/homer-iliad-850_22.wrd
+txt/../wrd/homer-iliad-850_22.wrd exist
+homer-iliad-850_23  txt/../wrd/homer-iliad-850_23.wrd
+txt/../wrd/homer-iliad-850_23.wrd exist
+homer-odyssey-850_23  txt/../wrd/homer-odyssey-850_23.wrd
+txt/../wrd/homer-odyssey-850_23.wrd exist
+homer-iliad-850_20  txt/../wrd/homer-iliad-850_20.wrd
+txt/../wrd/homer-iliad-850_20.wrd exist
+homer-iliad-850_08  txt/../wrd/homer-iliad-850_08.wrd
+txt/../wrd/homer-iliad-850_08.wrd exist
+homer-iliad-850_21  txt/../wrd/homer-iliad-850_21.wrd
+txt/../wrd/homer-iliad-850_21.wrd exist
+homer-iliad-850_09  txt/../wrd/homer-iliad-850_09.wrd
+txt/../wrd/homer-iliad-850_09.wrd exist
+homer-iliad-850_19  txt/../wrd/homer-iliad-850_19.wrd
+txt/../wrd/homer-iliad-850_19.wrd exist
+homer-iliad-850_18  txt/../wrd/homer-iliad-850_18.wrd
+txt/../wrd/homer-iliad-850_18.wrd exist
+homer-iliad-850_16  txt/../wrd/homer-iliad-850_16.wrd
+txt/../wrd/homer-iliad-850_16.wrd exist
+homer-iliad-850_24  txt/../wrd/homer-iliad-850_24.wrd
+txt/../wrd/homer-iliad-850_24.wrd exist
+homer-iliad-850_02  txt/../wrd/homer-iliad-850_02.wrd
+txt/../wrd/homer-iliad-850_02.wrd exist
+homer-iliad-850_17  txt/../wrd/homer-iliad-850_17.wrd
+txt/../wrd/homer-iliad-850_17.wrd exist
+homer-iliad-850_03  txt/../wrd/homer-iliad-850_03.wrd
+txt/../wrd/homer-iliad-850_03.wrd exist
+homer-iliad-850_01  txt/../wrd/homer-iliad-850_01.wrd
+txt/../wrd/homer-iliad-850_01.wrd exist
+homer-iliad-850_11  txt/../wrd/homer-iliad-850_11.wrd
+txt/../wrd/homer-iliad-850_11.wrd exist
+homer-iliad-850_05  txt/../wrd/homer-iliad-850_05.wrd
+txt/../wrd/homer-iliad-850_05.wrd exist
+homer-iliad-850_14  txt/../wrd/homer-iliad-850_14.wrd
+txt/../wrd/homer-iliad-850_14.wrd exist
+homer-iliad-850_15  txt/../wrd/homer-iliad-850_15.wrd
+txt/../wrd/homer-iliad-850_15.wrd exist
+homer-iliad-850_04  txt/../wrd/homer-iliad-850_04.wrd
+txt/../wrd/homer-iliad-850_04.wrd exist
+homer-iliad-850_10  txt/../wrd/homer-iliad-850_10.wrd
+txt/../wrd/homer-iliad-850_10.wrd exist
+homer-iliad-850_13  txt/../wrd/homer-iliad-850_13.wrd
+txt/../wrd/homer-iliad-850_13.wrd exist
+homer-iliad-850_07  txt/../wrd/homer-iliad-850_07.wrd
+txt/../wrd/homer-iliad-850_07.wrd exist
+homer-iliad-850_06  txt/../wrd/homer-iliad-850_06.wrd
+txt/../wrd/homer-iliad-850_06.wrd exist
+homer-iliad-850_12  txt/../wrd/homer-iliad-850_12.wrd
+txt/../wrd/homer-iliad-850_12.wrd exist
+homer-odyssey-850_12  txt/../wrd/homer-odyssey-850_12.wrd
+txt/../wrd/homer-odyssey-850_12.wrd exist
+homer-odyssey-850_06  txt/../wrd/homer-odyssey-850_06.wrd
+txt/../wrd/homer-odyssey-850_06.wrd exist
+homer-odyssey-850_13  txt/../wrd/homer-odyssey-850_13.wrd
+txt/../wrd/homer-odyssey-850_13.wrd exist
+homer-odyssey-850_07  txt/../wrd/homer-odyssey-850_07.wrd
+txt/../wrd/homer-odyssey-850_07.wrd exist
+homer-odyssey-850_11  txt/../wrd/homer-odyssey-850_11.wrd
+txt/../wrd/homer-odyssey-850_11.wrd exist
+homer-odyssey-850_05  txt/../wrd/homer-odyssey-850_05.wrd
+txt/../wrd/homer-odyssey-850_05.wrd exist
+homer-odyssey-850_10  txt/../wrd/homer-odyssey-850_10.wrd
+txt/../wrd/homer-odyssey-850_10.wrd exist
+homer-odyssey-850_04  txt/../wrd/homer-odyssey-850_04.wrd
+txt/../wrd/homer-odyssey-850_04.wrd exist
+homer-odyssey-850_14  txt/../wrd/homer-odyssey-850_14.wrd
+txt/../wrd/homer-odyssey-850_14.wrd exist
+homer-odyssey-850_01  txt/../wrd/homer-odyssey-850_01.wrd
+txt/../wrd/homer-odyssey-850_01.wrd exist
+homer-odyssey-850_15  txt/../wrd/homer-odyssey-850_15.wrd
+txt/../wrd/homer-odyssey-850_15.wrd exist
+homer-odyssey-850_03  txt/../wrd/homer-odyssey-850_03.wrd
+txt/../wrd/homer-odyssey-850_03.wrd exist
+homer-odyssey-850_02  txt/../wrd/homer-odyssey-850_02.wrd
+txt/../wrd/homer-odyssey-850_02.wrd exist
+homer-odyssey-850_16  txt/../wrd/homer-odyssey-850_16.wrd
+txt/../wrd/homer-odyssey-850_16.wrd exist
+homer-odyssey-850_17  txt/../wrd/homer-odyssey-850_17.wrd
+txt/../wrd/homer-odyssey-850_17.wrd exist
+INFO  Detecting media type for Filename: homer-odyssey-850_19.txt
+INFO  Detecting media type for Filename: homer-iliad-850_22.txt
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-odyssey-850_08.txt
+INFO  Detecting media type for Filename: homer-iliad-850_23.txt
+INFO  Detecting media type for Filename: homer-odyssey-850_09.txt
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-odyssey-850_24.txt
+INFO  Detecting media type for Filename: homer-odyssey-850_22.txt
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-odyssey-850_21.txt
+INFO  Detecting media type for Filename: homer-odyssey-850_18.txt
+INFO  Detecting media type for Filename: homer-odyssey-850_20.txt
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+=== file2bib.sh ===
+         id: homer-odyssey-850_18
+     author: 
+      title: homer-odyssey-850_18
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_18.txt
+      cache: ./cache/homer-odyssey-850_18.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-odyssey-850_18.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_21
+     author: 
+      title: homer-odyssey-850_21
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_21.txt
+      cache: ./cache/homer-odyssey-850_21.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	1
+resourceName	homer-odyssey-850_21.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_20
+     author: 
+      title: homer-odyssey-850_20
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_20.txt
+      cache: ./cache/homer-odyssey-850_20.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	3
+resourceName	homer-odyssey-850_20.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_22
+     author: 
+      title: homer-odyssey-850_22
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_22.txt
+      cache: ./cache/homer-odyssey-850_22.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	3
+resourceName	homer-odyssey-850_22.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_22
+     author: 
+      title: homer-iliad-850_22
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_22.txt
+      cache: ./cache/homer-iliad-850_22.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-iliad-850_22.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_24
+     author: 
+      title: homer-odyssey-850_24
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_24.txt
+      cache: ./cache/homer-odyssey-850_24.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-odyssey-850_24.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_08
+     author: 
+      title: homer-odyssey-850_08
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_08.txt
+      cache: ./cache/homer-odyssey-850_08.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	3
+resourceName	homer-odyssey-850_08.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_19
+     author: 
+      title: homer-odyssey-850_19
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_19.txt
+      cache: ./cache/homer-odyssey-850_19.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-odyssey-850_19.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_09
+     author: 
+      title: homer-odyssey-850_09
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_09.txt
+      cache: ./cache/homer-odyssey-850_09.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-odyssey-850_09.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_23
+     author: 
+      title: homer-iliad-850_23
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_23.txt
+      cache: ./cache/homer-iliad-850_23.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-iliad-850_23.txt
+INFO  Detecting media type for Filename: homer-odyssey-850_23.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_20.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_08.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_09.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_19.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_21.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_16.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_18.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_24.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_02.txt
+INFO  rmeta/text (autodetecting type)
+=== file2bib.sh ===
+         id: homer-odyssey-850_23
+     author: 
+      title: homer-odyssey-850_23
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_23.txt
+      cache: ./cache/homer-odyssey-850_23.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	1
+resourceName	homer-odyssey-850_23.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_20
+     author: 
+      title: homer-iliad-850_20
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_20.txt
+      cache: ./cache/homer-iliad-850_20.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	3
+resourceName	homer-iliad-850_20.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_19
+     author: 
+      title: homer-iliad-850_19
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_19.txt
+      cache: ./cache/homer-iliad-850_19.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-iliad-850_19.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_08
+     author: 
+      title: homer-iliad-850_08
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_08.txt
+      cache: ./cache/homer-iliad-850_08.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-iliad-850_08.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_09
+     author: 
+      title: homer-iliad-850_09
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_09.txt
+      cache: ./cache/homer-iliad-850_09.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	1
+resourceName	homer-iliad-850_09.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_21
+     author: 
+      title: homer-iliad-850_21
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_21.txt
+      cache: ./cache/homer-iliad-850_21.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-iliad-850_21.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_18
+     author: 
+      title: homer-iliad-850_18
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_18.txt
+      cache: ./cache/homer-iliad-850_18.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-iliad-850_18.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_24
+     author: 
+      title: homer-iliad-850_24
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_24.txt
+      cache: ./cache/homer-iliad-850_24.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	4
+resourceName	homer-iliad-850_24.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_02
+     author: 
+      title: homer-iliad-850_02
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_02.txt
+      cache: ./cache/homer-iliad-850_02.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-iliad-850_02.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_16
+     author: 
+      title: homer-iliad-850_16
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_16.txt
+      cache: ./cache/homer-iliad-850_16.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	3
+resourceName	homer-iliad-850_16.txt
+INFO  Detecting media type for Filename: homer-iliad-850_17.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_03.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_01.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_15.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_14.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_04.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_10.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_05.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_11.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_13.txt
+INFO  rmeta/text (autodetecting type)
+=== file2bib.sh ===
+         id: homer-iliad-850_03
+     author: 
+      title: homer-iliad-850_03
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_03.txt
+      cache: ./cache/homer-iliad-850_03.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-iliad-850_03.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_17
+     author: 
+      title: homer-iliad-850_17
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_17.txt
+      cache: ./cache/homer-iliad-850_17.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-iliad-850_17.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_01
+     author: 
+      title: homer-iliad-850_01
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_01.txt
+      cache: ./cache/homer-iliad-850_01.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-iliad-850_01.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_14
+     author: 
+      title: homer-iliad-850_14
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_14.txt
+      cache: ./cache/homer-iliad-850_14.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-iliad-850_14.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_04
+     author: 
+      title: homer-iliad-850_04
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_04.txt
+      cache: ./cache/homer-iliad-850_04.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-iliad-850_04.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_15
+     author: 
+      title: homer-iliad-850_15
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_15.txt
+      cache: ./cache/homer-iliad-850_15.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-iliad-850_15.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_10
+     author: 
+      title: homer-iliad-850_10
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_10.txt
+      cache: ./cache/homer-iliad-850_10.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	1
+resourceName	homer-iliad-850_10.txt
+INFO  Detecting media type for Filename: homer-iliad-850_07.txt
+INFO  rmeta/text (autodetecting type)
+=== file2bib.sh ===
+         id: homer-iliad-850_11
+     author: 
+      title: homer-iliad-850_11
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_11.txt
+      cache: ./cache/homer-iliad-850_11.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	4
+resourceName	homer-iliad-850_11.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_05
+     author: 
+      title: homer-iliad-850_05
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_05.txt
+      cache: ./cache/homer-iliad-850_05.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	5
+resourceName	homer-iliad-850_05.txt
+=== file2bib.sh ===
+         id: homer-iliad-850_13
+     author: 
+      title: homer-iliad-850_13
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_13.txt
+      cache: ./cache/homer-iliad-850_13.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-iliad-850_13.txt
+INFO  Detecting media type for Filename: homer-iliad-850_12.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-iliad-850_06.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-odyssey-850_13.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-odyssey-850_12.txt
+INFO  Detecting media type for Filename: homer-odyssey-850_06.txt
+INFO  rmeta/text (autodetecting type)
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-odyssey-850_07.txt
+INFO  rmeta/text (autodetecting type)
+=== file2bib.sh ===
+         id: homer-iliad-850_07
+     author: 
+      title: homer-iliad-850_07
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_07.txt
+      cache: ./cache/homer-iliad-850_07.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	1
+resourceName	homer-iliad-850_07.txt
+INFO  Detecting media type for Filename: homer-odyssey-850_11.txt
+INFO  rmeta/text (autodetecting type)
+=== file2bib.sh ===
+         id: homer-iliad-850_12
+     author: 
+      title: homer-iliad-850_12
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_12.txt
+      cache: ./cache/homer-iliad-850_12.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	3
+resourceName	homer-iliad-850_12.txt
+INFO  Detecting media type for Filename: homer-odyssey-850_10.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-odyssey-850_05.txt
+INFO  rmeta/text (autodetecting type)
+=== file2bib.sh ===
+         id: homer-iliad-850_06
+     author: 
+      title: homer-iliad-850_06
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-iliad-850_06.txt
+      cache: ./cache/homer-iliad-850_06.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-iliad-850_06.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_06
+     author: 
+      title: homer-odyssey-850_06
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_06.txt
+      cache: ./cache/homer-odyssey-850_06.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	1
+resourceName	homer-odyssey-850_06.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_12
+     author: 
+      title: homer-odyssey-850_12
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_12.txt
+      cache: ./cache/homer-odyssey-850_12.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-odyssey-850_12.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_13
+     author: 
+      title: homer-odyssey-850_13
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_13.txt
+      cache: ./cache/homer-odyssey-850_13.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-odyssey-850_13.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_07
+     author: 
+      title: homer-odyssey-850_07
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_07.txt
+      cache: ./cache/homer-odyssey-850_07.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	1
+resourceName	homer-odyssey-850_07.txt
+INFO  Detecting media type for Filename: homer-odyssey-850_04.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-odyssey-850_14.txt
+INFO  rmeta/text (autodetecting type)
+=== file2bib.sh ===
+         id: homer-odyssey-850_11
+     author: 
+      title: homer-odyssey-850_11
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_11.txt
+      cache: ./cache/homer-odyssey-850_11.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-odyssey-850_11.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_05
+     author: 
+      title: homer-odyssey-850_05
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_05.txt
+      cache: ./cache/homer-odyssey-850_05.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-odyssey-850_05.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_10
+     author: 
+      title: homer-odyssey-850_10
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_10.txt
+      cache: ./cache/homer-odyssey-850_10.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	3
+resourceName	homer-odyssey-850_10.txt
+INFO  Detecting media type for Filename: homer-odyssey-850_01.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-odyssey-850_15.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-odyssey-850_03.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-odyssey-850_17.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-odyssey-850_16.txt
+INFO  rmeta/text (autodetecting type)
+INFO  Detecting media type for Filename: homer-odyssey-850_02.txt
+INFO  rmeta/text (autodetecting type)
+=== file2bib.sh ===
+         id: homer-odyssey-850_14
+     author: 
+      title: homer-odyssey-850_14
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_14.txt
+      cache: ./cache/homer-odyssey-850_14.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	4
+resourceName	homer-odyssey-850_14.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_01
+     author: 
+      title: homer-odyssey-850_01
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_01.txt
+      cache: ./cache/homer-odyssey-850_01.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	3
+resourceName	homer-odyssey-850_01.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_04
+     author: 
+      title: homer-odyssey-850_04
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_04.txt
+      cache: ./cache/homer-odyssey-850_04.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	3
+resourceName	homer-odyssey-850_04.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_03
+     author: 
+      title: homer-odyssey-850_03
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_03.txt
+      cache: ./cache/homer-odyssey-850_03.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	3
+resourceName	homer-odyssey-850_03.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_16
+     author: 
+      title: homer-odyssey-850_16
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_16.txt
+      cache: ./cache/homer-odyssey-850_16.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-odyssey-850_16.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_15
+     author: 
+      title: homer-odyssey-850_15
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_15.txt
+      cache: ./cache/homer-odyssey-850_15.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	3
+resourceName	homer-odyssey-850_15.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_17
+     author: 
+      title: homer-odyssey-850_17
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_17.txt
+      cache: ./cache/homer-odyssey-850_17.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-odyssey-850_17.txt
+=== file2bib.sh ===
+         id: homer-odyssey-850_02
+     author: 
+      title: homer-odyssey-850_02
+       date: 
+      pages: 
+  extension: .txt
+        txt: ./txt/homer-odyssey-850_02.txt
+      cache: ./cache/homer-odyssey-850_02.txt
+
+Content-Encoding	ISO-8859-1
+Content-Type	text/plain; charset=ISO-8859-1
+X-Parsed-By	['org.apache.tika.parser.DefaultParser', 'org.apache.tika.parser.csv.TextAndCSVParser']
+X-TIKA:content_handler	ToTextContentHandler
+X-TIKA:parse_time_millis	2
+resourceName	homer-odyssey-850_02.txt
+homer-odyssey-850_24  txt/../ent/homer-odyssey-850_24.ent
+txt/../ent/homer-odyssey-850_24.ent exist
+homer-odyssey-850_24  txt/../pos/homer-odyssey-850_24.pos
+txt/../pos/homer-odyssey-850_24.pos exist
+homer-odyssey-850_18  txt/../pos/homer-odyssey-850_18.pos
+txt/../pos/homer-odyssey-850_18.pos exist
+homer-odyssey-850_19  txt/../pos/homer-odyssey-850_19.pos
+txt/../pos/homer-odyssey-850_19.pos exist
+homer-odyssey-850_09  txt/../pos/homer-odyssey-850_09.pos
+txt/../pos/homer-odyssey-850_09.pos exist
+homer-odyssey-850_18  txt/../ent/homer-odyssey-850_18.ent
+txt/../ent/homer-odyssey-850_18.ent exist
+homer-odyssey-850_21  txt/../pos/homer-odyssey-850_21.pos
+txt/../pos/homer-odyssey-850_21.pos exist
+homer-odyssey-850_19  txt/../ent/homer-odyssey-850_19.ent
+txt/../ent/homer-odyssey-850_19.ent exist
+homer-odyssey-850_22  txt/../pos/homer-odyssey-850_22.pos
+txt/../pos/homer-odyssey-850_22.pos exist
+homer-odyssey-850_20  txt/../pos/homer-odyssey-850_20.pos
+txt/../pos/homer-odyssey-850_20.pos exist
+homer-odyssey-850_08  txt/../pos/homer-odyssey-850_08.pos
+txt/../pos/homer-odyssey-850_08.pos exist
+homer-iliad-850_22  txt/../pos/homer-iliad-850_22.pos
+txt/../pos/homer-iliad-850_22.pos exist
+homer-iliad-850_23  txt/../pos/homer-iliad-850_23.pos
+txt/../pos/homer-iliad-850_23.pos exist
+homer-odyssey-850_09  txt/../ent/homer-odyssey-850_09.ent
+txt/../ent/homer-odyssey-850_09.ent exist
+homer-odyssey-850_21  txt/../ent/homer-odyssey-850_21.ent
+txt/../ent/homer-odyssey-850_21.ent exist
+homer-odyssey-850_22  txt/../ent/homer-odyssey-850_22.ent
+txt/../ent/homer-odyssey-850_22.ent exist
+homer-odyssey-850_20  txt/../ent/homer-odyssey-850_20.ent
+txt/../ent/homer-odyssey-850_20.ent exist
+homer-odyssey-850_23  txt/../pos/homer-odyssey-850_23.pos
+txt/../pos/homer-odyssey-850_23.pos exist
+homer-iliad-850_20  txt/../pos/homer-iliad-850_20.pos
+txt/../pos/homer-iliad-850_20.pos exist
+homer-odyssey-850_08  txt/../ent/homer-odyssey-850_08.ent
+txt/../ent/homer-odyssey-850_08.ent exist
+homer-iliad-850_08  txt/../pos/homer-iliad-850_08.pos
+txt/../pos/homer-iliad-850_08.pos exist
+homer-iliad-850_21  txt/../pos/homer-iliad-850_21.pos
+txt/../pos/homer-iliad-850_21.pos exist
+homer-iliad-850_22  txt/../ent/homer-iliad-850_22.ent
+txt/../ent/homer-iliad-850_22.ent exist
+homer-iliad-850_23  txt/../ent/homer-iliad-850_23.ent
+txt/../ent/homer-iliad-850_23.ent exist
+homer-odyssey-850_23  txt/../ent/homer-odyssey-850_23.ent
+txt/../ent/homer-odyssey-850_23.ent exist
+homer-iliad-850_09  txt/../pos/homer-iliad-850_09.pos
+txt/../pos/homer-iliad-850_09.pos exist
+homer-iliad-850_19  txt/../pos/homer-iliad-850_19.pos
+txt/../pos/homer-iliad-850_19.pos exist
+homer-iliad-850_20  txt/../ent/homer-iliad-850_20.ent
+txt/../ent/homer-iliad-850_20.ent exist
+homer-iliad-850_18  txt/../pos/homer-iliad-850_18.pos
+txt/../pos/homer-iliad-850_18.pos exist
+homer-iliad-850_08  txt/../ent/homer-iliad-850_08.ent
+txt/../ent/homer-iliad-850_08.ent exist
+homer-iliad-850_21  txt/../ent/homer-iliad-850_21.ent
+txt/../ent/homer-iliad-850_21.ent exist
+homer-iliad-850_16  txt/../pos/homer-iliad-850_16.pos
+txt/../pos/homer-iliad-850_16.pos exist
+homer-iliad-850_24  txt/../pos/homer-iliad-850_24.pos
+txt/../pos/homer-iliad-850_24.pos exist
+homer-iliad-850_09  txt/../ent/homer-iliad-850_09.ent
+txt/../ent/homer-iliad-850_09.ent exist
+homer-iliad-850_19  txt/../ent/homer-iliad-850_19.ent
+txt/../ent/homer-iliad-850_19.ent exist
+homer-iliad-850_18  txt/../ent/homer-iliad-850_18.ent
+txt/../ent/homer-iliad-850_18.ent exist
+homer-iliad-850_16  txt/../ent/homer-iliad-850_16.ent
+txt/../ent/homer-iliad-850_16.ent exist
+homer-iliad-850_02  txt/../pos/homer-iliad-850_02.pos
+txt/../pos/homer-iliad-850_02.pos exist
+homer-iliad-850_17  txt/../pos/homer-iliad-850_17.pos
+txt/../pos/homer-iliad-850_17.pos exist
+homer-iliad-850_24  txt/../ent/homer-iliad-850_24.ent
+txt/../ent/homer-iliad-850_24.ent exist
+homer-iliad-850_03  txt/../pos/homer-iliad-850_03.pos
+txt/../pos/homer-iliad-850_03.pos exist
+homer-iliad-850_01  txt/../pos/homer-iliad-850_01.pos
+txt/../pos/homer-iliad-850_01.pos exist
+homer-iliad-850_05  txt/../pos/homer-iliad-850_05.pos
+txt/../pos/homer-iliad-850_05.pos exist
+homer-iliad-850_02  txt/../ent/homer-iliad-850_02.ent
+txt/../ent/homer-iliad-850_02.ent exist
+homer-iliad-850_17  txt/../ent/homer-iliad-850_17.ent
+txt/../ent/homer-iliad-850_17.ent exist
+homer-iliad-850_11  txt/../pos/homer-iliad-850_11.pos
+txt/../pos/homer-iliad-850_11.pos exist
+homer-iliad-850_03  txt/../ent/homer-iliad-850_03.ent
+txt/../ent/homer-iliad-850_03.ent exist
+homer-iliad-850_01  txt/../ent/homer-iliad-850_01.ent
+txt/../ent/homer-iliad-850_01.ent exist
+homer-iliad-850_14  txt/../pos/homer-iliad-850_14.pos
+txt/../pos/homer-iliad-850_14.pos exist
+homer-iliad-850_05  txt/../ent/homer-iliad-850_05.ent
+txt/../ent/homer-iliad-850_05.ent exist
+homer-iliad-850_15  txt/../pos/homer-iliad-850_15.pos
+txt/../pos/homer-iliad-850_15.pos exist
+homer-iliad-850_11  txt/../ent/homer-iliad-850_11.ent
+txt/../ent/homer-iliad-850_11.ent exist
+homer-iliad-850_04  txt/../pos/homer-iliad-850_04.pos
+txt/../pos/homer-iliad-850_04.pos exist
+homer-iliad-850_14  txt/../ent/homer-iliad-850_14.ent
+txt/../ent/homer-iliad-850_14.ent exist
+homer-iliad-850_15  txt/../ent/homer-iliad-850_15.ent
+txt/../ent/homer-iliad-850_15.ent exist
+homer-iliad-850_04  txt/../ent/homer-iliad-850_04.ent
+txt/../ent/homer-iliad-850_04.ent exist
+homer-iliad-850_10  txt/../pos/homer-iliad-850_10.pos
+txt/../pos/homer-iliad-850_10.pos exist
+homer-iliad-850_10  txt/../ent/homer-iliad-850_10.ent
+txt/../ent/homer-iliad-850_10.ent exist
+homer-iliad-850_13  txt/../pos/homer-iliad-850_13.pos
+txt/../pos/homer-iliad-850_13.pos exist
+homer-iliad-850_13  txt/../ent/homer-iliad-850_13.ent
+txt/../ent/homer-iliad-850_13.ent exist
+homer-iliad-850_07  txt/../ent/homer-iliad-850_07.ent
+txt/../ent/homer-iliad-850_07.ent exist
+homer-iliad-850_06  txt/../ent/homer-iliad-850_06.ent
+txt/../ent/homer-iliad-850_06.ent exist
+homer-iliad-850_07  txt/../pos/homer-iliad-850_07.pos
+txt/../pos/homer-iliad-850_07.pos exist
+homer-iliad-850_12  txt/../ent/homer-iliad-850_12.ent
+txt/../ent/homer-iliad-850_12.ent exist
+homer-iliad-850_06  txt/../pos/homer-iliad-850_06.pos
+txt/../pos/homer-iliad-850_06.pos exist
+homer-iliad-850_12  txt/../pos/homer-iliad-850_12.pos
+txt/../pos/homer-iliad-850_12.pos exist
+homer-odyssey-850_06  txt/../pos/homer-odyssey-850_06.pos
+txt/../pos/homer-odyssey-850_06.pos exist
+homer-odyssey-850_06  txt/../ent/homer-odyssey-850_06.ent
+txt/../ent/homer-odyssey-850_06.ent exist
+homer-odyssey-850_12  txt/../ent/homer-odyssey-850_12.ent
+txt/../ent/homer-odyssey-850_12.ent exist
+homer-odyssey-850_12  txt/../pos/homer-odyssey-850_12.pos
+txt/../pos/homer-odyssey-850_12.pos exist
+homer-odyssey-850_13  txt/../ent/homer-odyssey-850_13.ent
+txt/../ent/homer-odyssey-850_13.ent exist
+homer-odyssey-850_13  txt/../pos/homer-odyssey-850_13.pos
+txt/../pos/homer-odyssey-850_13.pos exist
+homer-odyssey-850_07  txt/../ent/homer-odyssey-850_07.ent
+txt/../ent/homer-odyssey-850_07.ent exist
+homer-odyssey-850_07  txt/../pos/homer-odyssey-850_07.pos
+txt/../pos/homer-odyssey-850_07.pos exist
+homer-odyssey-850_11  txt/../pos/homer-odyssey-850_11.pos
+txt/../pos/homer-odyssey-850_11.pos exist
+homer-odyssey-850_11  txt/../ent/homer-odyssey-850_11.ent
+txt/../ent/homer-odyssey-850_11.ent exist
+homer-odyssey-850_05  txt/../ent/homer-odyssey-850_05.ent
+txt/../ent/homer-odyssey-850_05.ent exist
+homer-odyssey-850_10  txt/../ent/homer-odyssey-850_10.ent
+txt/../ent/homer-odyssey-850_10.ent exist
+homer-odyssey-850_04  txt/../ent/homer-odyssey-850_04.ent
+txt/../ent/homer-odyssey-850_04.ent exist
+homer-odyssey-850_14  txt/../ent/homer-odyssey-850_14.ent
+txt/../ent/homer-odyssey-850_14.ent exist
+homer-odyssey-850_01  txt/../ent/homer-odyssey-850_01.ent
+txt/../ent/homer-odyssey-850_01.ent exist
+homer-odyssey-850_05  txt/../pos/homer-odyssey-850_05.pos
+txt/../pos/homer-odyssey-850_05.pos exist
+homer-odyssey-850_15  txt/../ent/homer-odyssey-850_15.ent
+txt/../ent/homer-odyssey-850_15.ent exist
+homer-odyssey-850_10  txt/../pos/homer-odyssey-850_10.pos
+txt/../pos/homer-odyssey-850_10.pos exist
+homer-odyssey-850_03  txt/../ent/homer-odyssey-850_03.ent
+txt/../ent/homer-odyssey-850_03.ent exist
+homer-odyssey-850_02  txt/../ent/homer-odyssey-850_02.ent
+txt/../ent/homer-odyssey-850_02.ent exist
+homer-odyssey-850_17  txt/../ent/homer-odyssey-850_17.ent
+txt/../ent/homer-odyssey-850_17.ent exist
+homer-odyssey-850_14  txt/../pos/homer-odyssey-850_14.pos
+txt/../pos/homer-odyssey-850_14.pos exist
+homer-odyssey-850_04  txt/../pos/homer-odyssey-850_04.pos
+txt/../pos/homer-odyssey-850_04.pos exist
+homer-odyssey-850_16  txt/../ent/homer-odyssey-850_16.ent
+txt/../ent/homer-odyssey-850_16.ent exist
+homer-odyssey-850_01  txt/../pos/homer-odyssey-850_01.pos
+txt/../pos/homer-odyssey-850_01.pos exist
+homer-odyssey-850_15  txt/../pos/homer-odyssey-850_15.pos
+txt/../pos/homer-odyssey-850_15.pos exist
+homer-odyssey-850_03  txt/../pos/homer-odyssey-850_03.pos
+txt/../pos/homer-odyssey-850_03.pos exist
+homer-odyssey-850_02  txt/../pos/homer-odyssey-850_02.pos
+txt/../pos/homer-odyssey-850_02.pos exist
+homer-odyssey-850_16  txt/../pos/homer-odyssey-850_16.pos
+txt/../pos/homer-odyssey-850_16.pos exist
+homer-odyssey-850_17  txt/../pos/homer-odyssey-850_17.pos
+txt/../pos/homer-odyssey-850_17.pos exist
+Que is empty; done
+PROCESS_1dd0055f-d886-4284-a911-2e86ead7f195
+=== reduce.pl bib ===
+         id = homer-odyssey-850_24
+     author = 
+      title = homer-odyssey-850_24
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 5231
+  sentences = 196
+     flesch = 77
+    summary = THE GHOSTS OF THE SUITORS IN HADES--ULYSSES AND HIS MEN GO TO THE HOUSE OF LAERTES--THE PEOPLE OF ITHACA COME OUT TO ATTACK ULYSSES, BUT MINERVA CONCLUDES A PEACE. And the ghost of Amphimedon answered," Agamemnon, son of Atreus, king of men, I remember everything that you have said, and will tell you fully and accurately about the way in which our end was brought about. She set up a great tambour frame in her room and began to work on an enormous piece of fine needlework.' Sweethearts ,'said she,' Ulysses is indeed dead, still, do not press me to marry again immediately; wait-for I would not have my skill in needlework perish unrecorded-till I have completed a pall for the hero Laertes, against the time when death shall take him.
+      cache = ./cache/homer-odyssey-850_24.txt
+       txt  = ./txt/homer-odyssey-850_24.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_18
+     author = 
+      title = homer-odyssey-850_18
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 4183
+  sentences = 155
+     flesch = 77
+    summary = "Listen to me," said Antinous," there are some goats ' paunches down at the fire, which we have filled with blood and fat, and set aside for supper; he who is victorious and proves himself to be the better man shall have his pick of the lot; he shall be free of our table and we will not allow any other beggar about the house at all." Eurymachus then came up and said," Queen Penelope, daughter of Icarius, if all the Achaeans in Iasian Argos could see you at this moment, you would have still more suitors in your house by tomorrow morning, for you are the most admirable woman in the whole world both as regards personal beauty and strength of understanding." But Minerva would not let the suitors for one moment cease their insolence, for she wanted Ulysses to become even more bitter against them; she therefore set Eurymachus son of Polybus on to gibe at him, which made the others laugh." Listen to me," said he," you suitors of Queen Penelope, that I may speak even as I am minded.
+      cache = ./cache/homer-odyssey-850_18.txt
+       txt  = ./txt/homer-odyssey-850_18.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_19
+     author = 
+      title = homer-odyssey-850_19
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 6056
+  sentences = 181
+     flesch = 70
+    summary = Then Ulysses and his son made all haste to take the helmets, shields, and spears inside; and Minerva went before them with a gold lamp in her hand that shed a soft and brilliant radiance, whereon Telemachus said," Father, my eyes behold a great marvel: the walls, with the rafters, crossbeams, and the supports on which they rest are all aglow as with a flaming fire. As she spoke she looked towards Penelope, as though wanting to tell her that her dear husband was in the house, but Penelope was unable to look in that direction and observe what was going on, for Minerva had diverted her attention ;so Ulysses caught Euryclea by the throat with his right hand and with his left drew her close to him, and said," Nurse, do you wish to be the ruin of me, you who nursed me at your own breast, now that after twenty years of wandering I am at last come to my own home again?
+      cache = ./cache/homer-odyssey-850_19.txt
+       txt  = ./txt/homer-odyssey-850_19.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_09
+     author = 
+      title = homer-odyssey-850_09
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 5846
+  sentences = 176
+     flesch = 73
+    summary = I then said that we had better make off at once, but my men very foolishly would not obey me, so they staid there drinking much wine and killing great numbers of sheep and oxen on the sea shore. As for us, we wept and lifted up our hands to heaven on seeing such a horrid sight, for we did not know what else to do; but when the Cyclops had filled his huge paunch, and had washed down his meal of human flesh with a drink of neat milk, he stretched himself full length upon the ground among his sheep, and went to sleep. "'Look here, Cyclops,' said I, you have been eating a great deal of man 's flesh, so take this and drink some wine, that you may see what kind of liquor we had on board my ship.
+      cache = ./cache/homer-odyssey-850_09.txt
+       txt  = ./txt/homer-odyssey-850_09.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_21
+     author = 
+      title = homer-odyssey-850_21
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 4282
+  sentences = 141
+     flesch = 74
+    summary = "Listen to me you suitors, who persist in abusing the hospitality of this house because its owner has been long absent, and without other pretext than that you want to marry me; this, then, being the prize that you are contending for, I will bring out the mighty bow of Ulysses, and whomsoever of you shall string it most easily and send his arrow through each one of twelve axes, him will I follow and quit this house of my lawful husband, so goodly, and so abounding in wealth. This was what he said, but all the time he was expecting to be able to string the bow and shoot through the iron, whereas in fact he was to be the first that should taste of the arrows from the hands of Ulysses, whom he was dishonouring in his own house-egging the others on to do so also.
+      cache = ./cache/homer-odyssey-850_21.txt
+       txt  = ./txt/homer-odyssey-850_21.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_20
+     author = 
+      title = homer-odyssey-850_20
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 3866
+  sentences = 134
+     flesch = 74
+    summary = The others had ground their task and had gone to take their rest, but this one had not yet finished, for she was not so strong as they were, and when she heard the thunder she stopped grinding and gave the sign to her master." Father Jove," said she," you, who rule over heaven and earth, you have thundered from a clear sky without so much as a cloud in it, and this means something for somebody; grant the prayer, then, of me your poor servant who calls upon you, and let this be the very last day that the suitors dine in the house of Ulysses.
+      cache = ./cache/homer-odyssey-850_20.txt
+       txt  = ./txt/homer-odyssey-850_20.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_08
+     author = 
+      title = homer-odyssey-850_08
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 5639
+  sentences = 189
+     flesch = 72
+    summary = She went up to the citizens, man by man, and said," Aldermen and town councillors of the Phaeacians, come to the assembly all of you and listen to the stranger who has just come off a long voyage to the house of King Alcinous; he looks like an immortal god." Alcinous 's son Laodamas was the best boxer, and he it was who presently said, when they had all been diverted with the games ,"Let us ask the stranger whether he excels in any of these sports; he seems very powerfully built; his thighs, calves, hands, and neck are of prodigious strength, nor is he at all old, but he has suffered much lately, and there is nothing like the sea for making havoc with a man, no matter how strong he is."
+      cache = ./cache/homer-odyssey-850_08.txt
+       txt  = ./txt/homer-odyssey-850_08.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_23
+     author = 
+      title = homer-iliad-850_23
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 8987
+  sentences = 292
+     flesch = 74
+    summary = As soon as they reached Agamemnon 's tent they told the servingmen to set a large tripod over the fire in case they might persuade the son of Peleus to wash the clotted gore from this body, but he denied them sternly, and swore it with a solemn oath, saying," Nay, by King Jove, first and mightiest of all gods, it is not meet that water should touch my body, till I have laid Patroclus on the flames, have built him a barrow, and shaved my head-for so long as I live no such second sorrow shall ever draw nigh me. Thus did he speak and the others all of them applauded his saying, and were for doing as he had said, but Nestor 's son Antilochus stood up and claimed his rights from the son of Peleus." Achilles," said he," I shall take it much amiss if you do this thing; you would rob me of my prize, because you think Eumelus 's chariot and horses were thrown out, and himself too, good man that he is.
+      cache = ./cache/homer-iliad-850_23.txt
+       txt  = ./txt/homer-iliad-850_23.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_22
+     author = 
+      title = homer-iliad-850_22
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 5477
+  sentences = 164
+     flesch = 71
+    summary = Thereon Minerva went close up to the son of Peleus and said," Noble Achilles, favoured of heaven, we two shall surely take back to the ships a triumph for the Achaeans by slaying Hector, for all his lust of battle. Then Minerva said," Dear brother, my father and mother went down on their knees and implored me, as did all my comrades, to remain inside, so great a fear has fallen upon them all; but I was in an agony of grief when I beheld you; now, therefore, let us two make a stand and fight, and let there be no keeping our spears in reserve, that we may learn whether Achilles shall kill us and bear off our spoils to the ships, or whether he shall fall before you."
+      cache = ./cache/homer-iliad-850_22.txt
+       txt  = ./txt/homer-iliad-850_22.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_22
+     author = 
+      title = homer-odyssey-850_22
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 4592
+  sentences = 167
+     flesch = 78
+    summary = {166} The suitors were in an uproar when they saw that a man had been hit; they sprang in dismay one and all of them from their seats and looked everywhere towards the walls, but there was neither shield nor spear, and they rebuked Ulysses very angrily." Stranger," said they," you shall pay for shooting people in this way: you shall see no other contest; you are a doomed man; he whom you have slain was the foremost youth in Ithaca, and the vultures shall devour you for having killed him." Meanwhile Ulysses, as long as his arrows lasted, had been shooting the suitors one by one, and they fell thick on one another: when his arrows gave out, he set the bow to stand against the end wall of the house by the door post, and hung a shield four hides thick about his shoulders; on his comely head he set his helmet, well wrought with a crest of horsehair that nodded menacingly above it,{ 168} and he grasped two redoubtable bronzeshod spears.
+      cache = ./cache/homer-odyssey-850_22.txt
+       txt  = ./txt/homer-odyssey-850_22.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_23
+     author = 
+      title = homer-odyssey-850_23
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 3721
+  sentences = 137
+     flesch = 77
+    summary = Then Penelope sprang up from her couch, threw her arms round Euryclea, and wept for joy." But my dear nurse," said she," explain this to me; if he has really come home as you say, how did he manage to overcome the wicked suitors single handed, seeing what a number of them there always were?" "I will say what I think will be best," answered Ulysses." First wash and put your shirts on; tell the maids also to go to their own room and dress; Phemius shall then strike up a dance tune on his lyre, so that if people outside hear, or any of the neighbours, or some one going along the street happens to notice it, they may think there is a wedding in the house, and no rumours about the death of the suitors will get about in the town, before we can escape to the woods upon my own land.
+      cache = ./cache/homer-odyssey-850_23.txt
+       txt  = ./txt/homer-odyssey-850_23.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_20
+     author = 
+      title = homer-iliad-850_20
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 5039
+  sentences = 170
+     flesch = 73
+    summary = His spear has already put me to flight from Ida, when he attacked our cattle and sacked Lyrnessus and Pedasus; Jove indeed saved me in that he vouchsafed me strength to fly, else had I fallen by the hands of Achilles and Minerva, who went before him to protect him and urged him to fall upon the Lelegae and Trojans. She called the gods about her, and said," Look to it, you two, Neptune and Minerva, and consider how this shall be; Phoebus Apollo has been sending Aeneas clad in full armour to fight Achilles. Meanwhile Hector called upon the Trojans and declared that he would fight Achilles." Be not afraid, proud Trojans," said he," to face the son of Peleus; I could fight gods myself if the battle were one of words only, but they would be more than a match for me, if we had to use our spears.
+      cache = ./cache/homer-iliad-850_20.txt
+       txt  = ./txt/homer-iliad-850_20.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_08
+     author = 
+      title = homer-iliad-850_08
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 5346
+  sentences = 184
+     flesch = 73
+    summary = Jove forbids the gods to interfere further--There is an even fight till midday, but then Jove inclines the scales of victory in favour of the Trojans, who eventually chase the Achaeans within their wall--Juno and Minerva set out to help the Trojans: Jove sends Iris to turn them back, but later on he promises Juno that she shall have her way in the end--Hector's triumph is stayed by nightfall--The Trojans bivouac on the plain. Hector was greatly grieved at the loss of his charioteer, but let him lie for all his sorrow, while he went in quest of another driver; nor did his steeds have to go long without one, for he presently found brave Archeptolemus the son of Iphitus, and made him get up behind the horses, giving the reins into his hand.
+      cache = ./cache/homer-iliad-850_08.txt
+       txt  = ./txt/homer-iliad-850_08.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_21
+     author = 
+      title = homer-iliad-850_21
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 6221
+  sentences = 212
+     flesch = 75
+    summary = The dark waters of the river stood upright and would have overwhelmed the son of Peleus, but Juno, trembling lest Achilles should be swept away in the mighty torrent, lifted her voice on high and called out to Vulcan her son." Crookfoot," she cried," my child, be up and doing, for I deem it is with you that Xanthus is fain to fight; help us at once, kindle a fierce fire; I will then bring up the west and the white south wind in a mighty hurricane from the sea, that shall bear the flames against the heads and armour of the Trojans and consume them, while you go along the banks of Xanthus burning his trees and wrapping him round with fire.
+      cache = ./cache/homer-iliad-850_21.txt
+       txt  = ./txt/homer-iliad-850_21.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_09
+     author = 
+      title = homer-iliad-850_09
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 6877
+  sentences = 236
+     flesch = 75
+    summary = Menservants poured water over the hands of the guests, while pages filled the mixingbowls with wine and water, and handed it round after giving every man his drinkoffering; then, when they had made their offerings, and had drunk each as much as he was minded, the envoys set out from the tent of Agamemnon son of Atreus; and Nestor, looking first to one and then to another, but most especially at Ulysses, was instant with them that they should prevail with the noble son of Peleus. They all held their peace, dismayed at the sternness with which he had denied them, till presently the old knight Phoenix in his great fear for the ships of the Achaeans, burst into tears and said," Noble Achilles, if you are now minded to return, and in the fierceness of your anger will do nothing to save the ships from burning, how, my son, can I remain here without you?
+      cache = ./cache/homer-iliad-850_09.txt
+       txt  = ./txt/homer-iliad-850_09.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_19
+     author = 
+      title = homer-iliad-850_19
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 4033
+  sentences = 131
+     flesch = 74
+    summary = When the Achaeans were got together Achilles rose and said," Son of Atreus, surely it would have been better alike for both you and me, when we two were in such high anger about Briseis, surely it would have been better, had Diana 's arrow slain her at the ships on the day when I took her after having sacked Lyrnessus. Then Ulysses said," Achilles, godlike and brave, send not the Achaeans thus against Ilius to fight the Trojans fasting, for the battle will be no brief one, when it is once begun, and heaven has filled both sides with fury; bid them first take food both bread and wine by the ships, for in this there is strength and stay.
+      cache = ./cache/homer-iliad-850_19.txt
+       txt  = ./txt/homer-iliad-850_19.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_18
+     author = 
+      title = homer-iliad-850_18
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 6047
+  sentences = 201
+     flesch = 74
+    summary = As the smoke that goes up into heaven from some city that is being beleaguered on an island far out at sea-all day long do men sally from the city and fight their hardest, and at the going down of the sun the line of beaconfires blazes forth, flaring high for those that dwell near them to behold, if so be that they may come with their ships and succour them-even so did the light flare from the head of Achilles, as he stood by the trench, going beyond the wall-but he did not join the Achaeans for he heeded the charge which his mother laid upon him.
+      cache = ./cache/homer-iliad-850_18.txt
+       txt  = ./txt/homer-iliad-850_18.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_24
+     author = 
+      title = homer-iliad-850_24
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 8365
+  sentences = 273
+     flesch = 75
+    summary = A man may lose one far dearer than Achilles has lost-a son, it may be, or a brother born from his own mother 's womb; yet when he has mourned him and wept over him he will let him bide, for it takes much sorrow to kill a man; whereas Achilles, now that he has slain noble Hector, drags him behind his chariot round the tomb of his comrade. When he heard this the old man 's heart failed him, and he was in great fear; he stayed where he was as one dazed, and the hair stood on end over his whole body; but the bringer of good luck came up to him and took him by the hand, saying," Whither, father, are you thus driving your mules and horses in the dead of night when other men are asleep?
+      cache = ./cache/homer-iliad-850_24.txt
+       txt  = ./txt/homer-iliad-850_24.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_16
+     author = 
+      title = homer-iliad-850_16
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 8943
+  sentences = 274
+     flesch = 70
+    summary = Fire being now thrown on the ship of Protesilaus, Patroclus fights in the armour of Achilles--He drives the Trojans back, but is in the end killed by Euphorbus and Hector. Still, let bygones be bygones: no man may keep his anger for ever; I said I would not relent till battle and the cry of war had reached my own ships; nevertheless, now gird my armour about your shoulders, and lead the Myrmidons to battle, for the dark cloud of Trojans has burst furiously over our fleet; the Argives are driven back on to the beach, cooped within a narrow space, and the whole people of Troy has taken heart to sally out against them, because they see not the visor of my helmet gleaming near them.
+      cache = ./cache/homer-iliad-850_16.txt
+       txt  = ./txt/homer-iliad-850_16.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_02
+     author = 
+      title = homer-iliad-850_02
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 7966
+  sentences = 309
+     flesch = 76
+    summary = Jove sends a lying dream to Agamemnon, who thereon calls the chiefs in assembly, and proposes to sound the mind of his army--In the end they march to fight--Catalogue of the Achaean and Trojan forces. But Juno said to Minerva," Alas, daughter of aegisbearing Jove, unweariable, shall the Argives fly home to their own land over the broad sea, and leave Priam and the Trojans the glory of still keeping Helen, for whose sake so many of the Achaeans have died at Troy, far from their homes? Those who held the strong city of Mycenae, rich Corinth and Cleonae; Orneae, Araethyrea, and Licyon, where Adrastus reigned of old; Hyperesia, high Gonoessa, and Pellene; Aegium and all the coastland round about Helice; these sent a hundred ships under the command of King Agamemnon, son of Atreus.
+      cache = ./cache/homer-iliad-850_02.txt
+       txt  = ./txt/homer-iliad-850_02.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_17
+     author = 
+      title = homer-iliad-850_17
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 7293
+  sentences = 214
+     flesch = 70
+    summary = But Ajax came up with his shield like wall before him, on which Hector withdrew under shelter of his men, and sprang on to his chariot, giving the armour over to the Trojans to take to the city, as a great trophy for himself; Ajax, therefore, covered the body of Patroclus with his broad shield and bestrode him; as a lion stands over his whelps if hunters have come upon him in a forest when he is with his little ones-in the pride and fierceness of his strength he draws his knit brows down till they cover his eyes-even so did Ajax bestride the body of Patroclus, and by his side stood Menelaus son of Atreus, nursing great sorrow in his heart.
+      cache = ./cache/homer-iliad-850_17.txt
+       txt  = ./txt/homer-iliad-850_17.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_03
+     author = 
+      title = homer-iliad-850_03
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 4055
+  sentences = 154
+     flesch = 77
+    summary = He bids the Trojans and Achaeans lay their armour upon the ground, while he and Menelaus fight in the midst of you for Helen and all her wealth. He went up to Priam and said," Son of Laomedon, the princes of the Trojans and Achaeans bid you come down on to the plain and swear to a solemn covenant. Then Priam, descendant of Dardanus, spoke, saying," Hear me, Trojans and Achaeans, I will now go back to the windbeaten city of Ilius: I dare not with my own eyes witness this fight between my son and Menelaus, for Jove and the other immortals alone know which shall fall." Menelaus next took aim, praying to Father Jove as he did so." King Jove," he said," grant me revenge on Alexandrus who has wronged me; subdue him under my hand that in ages yet to come a man may shrink from doing ill deeds in the house of his host."
+      cache = ./cache/homer-iliad-850_03.txt
+       txt  = ./txt/homer-iliad-850_03.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_01
+     author = 
+      title = homer-iliad-850_01
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 5850
+  sentences = 232
+     flesch = 79
+    summary = On this the rest of the Achaeans with one voice were for respecting the priest and taking the ransom that he offered; but not so Agamemnon, who spoke fiercely to him and sent him roughly away." Old man," said he," let me not find you tarrying about our ships, nor yet coming hereafter. And Achilles answered," Fear not, but speak as it is borne in upon you from heaven, for by Apollo, Calchas, to whom you pray, and whose oracles you reveal to us, not a Danaan at our ships shall lay his hand upon you, while I yet live to look upon the face of the earth-no, not though you name Agamemnon himself, who is by far the foremost of the Achaeans."
+      cache = ./cache/homer-iliad-850_01.txt
+       txt  = ./txt/homer-iliad-850_01.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_15
+     author = 
+      title = homer-iliad-850_15
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 7424
+  sentences = 242
+     flesch = 73
+    summary = Juno trembled as he spoke, and said," May heaven above and earth below be my witnesses, with the waters of the river Styx-and this is the most solemn oath that a blessed god can take-nay ,I swear also by your own almighty head and by our bridal bed-things over which I could never possibly perjure myself-that Neptune is not punishing Hector and the Trojans and helping the Achaeans through any doing of mine; it is all of his own mere motion because he was sorry to see the Achaeans hard pressed at their ships: if I were advising him, I should tell him to do as you bid him." If, then, you are speaking the truth and mean what you say, go among the rank and file of the gods, and tell Iris and Apollo lord of the bow, that I want them-Iris, that she may go to the Achaean host and tell Neptune to leave off fighting and go home, and Apollo, that he may send Hector again into battle and give him fresh strength ;he will thus forget his present sufferings, and drive the Achaeans back in confusion till they fall among the ships of Achilles son of Peleus.
+      cache = ./cache/homer-iliad-850_15.txt
+       txt  = ./txt/homer-iliad-850_15.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_14
+     author = 
+      title = homer-iliad-850_14
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 5256
+  sentences = 168
+     flesch = 72
+    summary = The Trojans are fighting stubbornly and without ceasing at the ships; look where you may you can not see from what quarter the rout of the Achaeans is coming; they are being killed in a confused mass and the battlecry ascends to heaven; let us think, if counsel can be of any use, what we had better do; but I do not advise our going into battle ourselves, for a man can not fight when he is wounded." And King Agamemnon answered," Nestor, if the Trojans are indeed fighting at the rear of our ships, and neither the wall nor the trench has served us-over which the Danaans toiled so hard, and which they deemed would be an impregnable bulwark both for us and our fleet-I see it must be the will of Jove that the Achaeans should perish ingloriously here, far from Argos.
+      cache = ./cache/homer-iliad-850_14.txt
+       txt  = ./txt/homer-iliad-850_14.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_04
+     author = 
+      title = homer-iliad-850_04
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 5094
+  sentences = 174
+     flesch = 74
+    summary = A quarrel in Olympus--Minerva goes down and persuades Fandarus to violate the oaths by wounding Menelaus with an arrow--Agamemnon makes a speech and sends for Machaon--He then goes about among his captains and upbraids Ulysses and Sthenelus, who each of them retort fiercely--Diomed checks Sthenelus, and the two hosts then engage, with great slaughter on either side. Presently he found standing amid the brave warriors who had followed him from Tricca; thereon he went up to him and said," Son of Aesculapius, King Agamemnon says you are to come and see Menelaus immediately. He gave his orders to the knights first, bidding them hold their horses well in hand, so as to avoid confusion." Let no man," he said," relying on his strength or horsemanship, get before the others and engage singly with the Trojans, nor yet let him lag behind or you will weaken your attack; but let each when he meets an enemy 's chariot throw his spear from his own; this be much the best; this is how the men of old took towns and strongholds; in this wise were they minded."
+      cache = ./cache/homer-iliad-850_04.txt
+       txt  = ./txt/homer-iliad-850_04.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_10
+     author = 
+      title = homer-iliad-850_10
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 5541
+  sentences = 207
+     flesch = 78
+    summary = The two Ajaxes, servants of Mars, Meriones, and the son of Nestor all wanted to go, so did Menelaus son of Atreus; Ulysses also wished to go among the host of the Trojans, for he was ever full of daring, and thereon Agamemnon king of men spoke thus:" Diomed," said he," son of Tydeus, man after my own heart, choose your comrade for yourself-take the best man of those that have offered, for many would now go with you. Diomed looked sternly at him and answered," Think not, Dolon, for all the good information you have given us, that you shall escape now you are in our hands, for if we ransom you or let you go, you will come some second time to the ships of the Achaeans either as a spy or as an open enemy, but if I kill you and an end of you, you will give no more trouble."
+      cache = ./cache/homer-iliad-850_10.txt
+       txt  = ./txt/homer-iliad-850_10.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_11
+     author = 
+      title = homer-iliad-850_11
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 8571
+  sentences = 250
+     flesch = 69
+    summary = But when he was just about to reach the high wall and the city, the father of gods and men came down from heaven and took his seat, thunderbolt in hand, upon the crest of manyfountained Ida. He then told Iris of the golden wings to carry a message for him." Go," said he," fleet Iris, and speak thus to Hector-say that so long as he sees Agamemnon heading his men and making havoc of the Trojan ranks, he is to keep aloof and bid the others bear the brunt of the battle, but when Agamemnon is wounded either by spear or arrow, and takes to his chariot, then will I vouchsafe him strength to slay till he reach the ships and night falls at the going down of the sun."
+      cache = ./cache/homer-iliad-850_11.txt
+       txt  = ./txt/homer-iliad-850_11.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_05
+     author = 
+      title = homer-iliad-850_05
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 8656
+  sentences = 303
+     flesch = 74
+    summary = Idaeus did not dare to bestride his brother 's body, but sprang from the chariot and took to flight, or he would have shared his brother 's fate; whereon Vulcan saved him by wrapping him in a cloud of darkness, that his old father might not be utterly overwhelmed with grief; but the son of Tydeus drove off with the horses, and bade his followers take them to the ships. Venus screamed aloud, and let her son fall, but Phoebus Apollo caught him in his arms, and hid him in a cloud of darkness, lest some Danaan should drive a spear into his breast and kill him; and Diomed shouted out as he left her," Daughter of Jove, leave war and battle alone, can you not be contented with beguiling silly women?
+      cache = ./cache/homer-iliad-850_05.txt
+       txt  = ./txt/homer-iliad-850_05.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_13
+     author = 
+      title = homer-iliad-850_13
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 8410
+  sentences = 241
+     flesch = 68
+    summary = The Trojans advanced in a dense body, with Hector at their head pressing right on as a rock that comes thundering down the side of some mountain from whose brow the winter torrents have torn it; the foundations of the dull thing have been loosened by floods of rain, and as it bounds headlong on its way it sets the whole forest in an uproar; it swerves neither to right nor left till it reaches level ground, but then for all its fury it can go no further-even so easily did Hector for a while seem as though he would career through the tents and ships of the Achaeans till he had reached the sea in his murderous course; but the closely serried battalions stayed him when he reached them, for the sons of the Achaeans thrust at him with swords and spears pointed at both ends, and drove him from them so that he staggered and gave ground; thereon he shouted to the Trojans," Trojans, Lycians, and Dardanians, fighters in close combat, stand firm: the Achaeans have set themselves as a wall against me, but they will not check me for long; they will give ground before me if the mightiest of the gods, the thundering spouse of Juno, has indeed inspired my onset."
+      cache = ./cache/homer-iliad-850_13.txt
+       txt  = ./txt/homer-iliad-850_13.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_07
+     author = 
+      title = homer-iliad-850_07
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 4434
+  sentences = 153
+     flesch = 74
+    summary = Hector and Ajax fight--Hector is getting worsted when night comes on and parts them--They exchange presents--The burial of the dead, and the building of a wall round their ships by the Achaeans--The Achaeans buy their wine of Agamemnon and Menelaus. Apollo, son of Jove, replied," Let us incite great Hector to challenge some one of the Danaans in single combat; on this the Achaeans will be shamed into finding a man who will fight him." He found the Danaans, servants of Mars, in council at the stern of Agamemnon 's ship, and took his place in the midst of them." Son of Atreus," he said," and princes of the Achaean host, Priam and the other noble Trojans have sent me to tell you the saying of Alexandrus through whom this quarrel has come about, if so be that you may find it acceptable.
+      cache = ./cache/homer-iliad-850_07.txt
+       txt  = ./txt/homer-iliad-850_07.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_06
+     author = 
+      title = homer-iliad-850_06
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 4997
+  sentences = 171
+     flesch = 73
+    summary = Tell her to bid the matrons gather at the temple of Minerva in the acropolis; let her then take her key and open the doors of the sacred building; there, upon the knees of Minerva, let her lay the largest, fairest robe she has in her house-the one she sets most store by; let her, moreover, promise to sacrifice twelve yearling heifers that have never yet felt the goad, in the temple of the goddess, if she will take pity on the town, with the wives and little ones of the Trojans, and keep the son of Tydeus from falling on the goodly city of Ilius; for he fights with fury and fills men 's souls with panic.
+      cache = ./cache/homer-iliad-850_06.txt
+       txt  = ./txt/homer-iliad-850_06.txt
+=== reduce.pl bib ===
+         id = homer-iliad-850_12
+     author = 
+      title = homer-iliad-850_12
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 4765
+  sentences = 129
+     flesch = 67
+    summary = The Trojans led by him and by Iamenus, Orestes, Adamas the son of Asius, Thoon and Oenomaus, raised a loud cry of battle and made straight for the wall, holding their shields of dry oxhide above their heads; for a while the two defenders remained inside and cheered the Achaeans on to stand firm in the defence of their ships; when, however, they saw that the Trojans were attacking the wall, while the Danaans were crying out for help and being routed, they rushed outside and fought in front of the gates like two wild boars upon the mountains that abide the attack of men and dogs, and charging on either side break down the wood all round them tearing it up by the roots, and one can hear the clattering of their tusks, till some one hits them and makes an end of them-even so did the gleaming bronze rattle about their breasts, as the weapons fell upon them; for they fought with great fury, trusting to their own prowess and to those who were on the wall above them.
+      cache = ./cache/homer-iliad-850_12.txt
+       txt  = ./txt/homer-iliad-850_12.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_06
+     author = 
+      title = homer-odyssey-850_06
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 3461
+  sentences = 116
+     flesch = 74
+    summary = So here Ulysses slept, overcome by sleep and toil; but Minerva went off to the country and city of the Phaeacians-a people who used to live in the fair town of Hypereia, near the lawless Cyclopes. Minerva took the form of the famous sea captain Dymas 's daughter, who was a bosom friend of Nausicaa and just her own age; then, coming up to the girl 's bedside like a breath of wind, she hovered over her head and said: "Stranger," said she," rise and let us be going back to the town; I will introduce you at the house of my excellent father, where I can tell you that you will meet all the best people among the Phaeacians.
+      cache = ./cache/homer-odyssey-850_06.txt
+       txt  = ./txt/homer-odyssey-850_06.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_12
+     author = 
+      title = homer-odyssey-850_12
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 4633
+  sentences = 132
+     flesch = 71
+    summary = I then went on board and told my men to loose the ship from her moorings; so they at once got into her, took their places, and began to smite the grey sea with their oars. "Meanwhile Lampetie went straight off to the sun and told him we had been killing his cows, whereon he flew into a great rage, and said to the immortals,' Father Jove, and all you other gods who live in everlasting bliss, I must have vengeance on the crew of Ulysses ' ship: they have had the insolence to kill my cows, which were the one thing I loved to look upon, whether I was going up heaven or down again. The men all fell into the sea; they were carried about in the water round the ship, looking like so many seagulls, but the god presently deprived them of all chance of getting home again.
+      cache = ./cache/homer-odyssey-850_12.txt
+       txt  = ./txt/homer-odyssey-850_12.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_13
+     author = 
+      title = homer-odyssey-850_13
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 4237
+  sentences = 142
+     flesch = 73
+    summary = As one who has been all day ploughing a fallow field with a couple of oxen keeps thinking about his supper and is glad when night comes that he may go and get it, for it is all his legs can do to carry him, even so did Ulysses rejoice when the sun went down, and he at once said to the Phaeacians, addressing himself more particularly to King Alcinous: But Neptune did not forget the threats with which he had already threatened Ulysses, so he took counsel with Jove." Father Jove," said he," I shall no longer be held in any sort of respect among you gods, if mortals like the Phaeacians, who are my own flesh and blood, show such small regard for me. "My good friend," answered Jove," I should recommend you at the very moment when the people from the city are watching the ship on her way, to turn it into a rock near the land and looking like a ship.
+      cache = ./cache/homer-odyssey-850_13.txt
+       txt  = ./txt/homer-odyssey-850_13.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_07
+     author = 
+      title = homer-odyssey-850_07
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 3377
+  sentences = 107
+     flesch = 70
+    summary = "Alcinous," said he," it is not creditable to you that a stranger should be seen sitting among the ashes of your hearth; every one is waiting to hear what you are about to say; tell him, then, to rise and take a seat on a stool inlaid with silver, and bid your servants mix some wine and water that we may make a drink offering to Jove the lord of thunder, who takes all well disposed suppliants under his protection; and let the housekeeper give him some supper, of whatever there may be in the house." Then when they had made their drink offerings, and had drunk each as much as he was minded they went home to bed every man in his own abode, leaving Ulysses in the cloister with Arete and Alcinous while the servants were taking the things away after supper.
+      cache = ./cache/homer-odyssey-850_07.txt
+       txt  = ./txt/homer-odyssey-850_07.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_11
+     author = 
+      title = homer-odyssey-850_11
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 6071
+  sentences = 190
+     flesch = 72
+    summary = When I saw them coming I told the men to be quick and flay the carcasses of the two dead sheep and make burnt offerings of them, and at the same time to repeat prayers to Hades and to Proserpine; but I sat where I was with my sword drawn and would not let the poor feckless ghosts come near the blood till Teiresias should have answered my questions. He knew me and said,' Ulysses, noble son of Laertes, why, poor man, have you left the light of day and come down to visit the dead in this sad place? "'This,' I answered,' must be as it may please heaven, but tell me and tell me and tell me true, I see my poor mother 's ghost close by us; she is sitting by the blood without saying a word, and though I am her own son she does not remember me and speak to me; tell me, Sir, how I can make her know me.'
+      cache = ./cache/homer-odyssey-850_11.txt
+       txt  = ./txt/homer-odyssey-850_11.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_05
+     author = 
+      title = homer-odyssey-850_05
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 4714
+  sentences = 154
+     flesch = 74
+    summary = He flew and flew over many a weary wave, but when at last he got to the island which was his journey 's end, he left the sea and went on by land till he came to the cave where the nymph Calypso lived. He could see him sailing upon the sea, and it made him very angry, so he wagged his head and muttered to himself, saying," Good heavens, so the gods have been changing their minds about Ulysses while I was away in Ethiopia, and now he is close to the land of the Phaeacians, where it is decreed that he shall escape from the calamities that have befallen him. Ulysses ' heart now began to fail him, and he said despairingly to himself," Alas, Jove has let me see land after swimming so far that I had given up all hope, but I can find no landing place, for the coast is rocky and surfbeaten, the rocks are smooth and rise sheer from the sea, with deep water close under them so that I can not climb out for want of foot hold.
+      cache = ./cache/homer-odyssey-850_05.txt
+       txt  = ./txt/homer-odyssey-850_05.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_10
+     author = 
+      title = homer-odyssey-850_10
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 5723
+  sentences = 178
+     flesch = 74
+    summary = As I threw him down in front of the ship, I called the men and spoke cheeringly man by man to each of them.' Look here my friends ,'said I,' we are not going to die so much before our time after all, and at any rate we will not starve so long as we have got something to eat and drink on board.' On this they uncovered their heads upon the sea shore and admired the stag, for he was indeed a splendid fellow. They knew me at once, seized me each of them by the hand, and wept for joy till the whole house was filled with the sound of their halloaballooing, and Circe herself was so sorry for them that she came up to me and said,' Ulysses, noble son of Laertes, go back at once to the sea where you have left your ship, and first draw it on to the land.
+      cache = ./cache/homer-odyssey-850_10.txt
+       txt  = ./txt/homer-odyssey-850_10.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_04
+     author = 
+      title = homer-odyssey-850_04
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 8128
+  sentences = 284
+     flesch = 76
+    summary = On this he handed them{ 39} a piece of fat roast loin, which had been set near him as being a prime part, and they laid their hands on the good things that were before them; as soon as they had had enough to eat and drink, Telemachus said to the son of Nestor, with his head so close that no one might hear," Look, Pisistratus, man after my own heart, see the gleam of bronze and gold-of amber,{ 40} ivory, and silver. Presently, when I had had my fill of weeping and writhing upon the ground, the old man of the sea said,' Son of Atreus, do not waste any more time in crying so bitterly; it can do no manner of good; find your way home as fast as ever you can, for Aegisthus may be still alive, and even though Orestes has been beforehand with you in killing him, you may yet come in for his funeral.'
+      cache = ./cache/homer-odyssey-850_04.txt
+       txt  = ./txt/homer-odyssey-850_04.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_14
+     author = 
+      title = homer-odyssey-850_14
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 5414
+  sentences = 161
+     flesch = 72
+    summary = Even the fierce freebooters who go raiding on other people 's land, and Jove gives them their spoil-even they, when they have filled their ships and got home again live consciencestricken, and look fearfully for judgement; but some god seems to have told these people that Ulysses is dead and gone; they will not, therefore, go back to their own homes and make their offers of marriage in the usual way, but waste his estate by force, without fear or stint. When he had eaten enough and was satisfied, the swineherd took the bowl from which he usually drank, filled it with wine, and gave it to Ulysses, who was pleased, and said as he took it in his hands," My friend, who was this master of yours that bought you and paid for you, so rich and so powerful as you tell me? To this you answered, O swineherd Eumaeus," Old man, you will neither get paid for bringing good news, nor will Ulysses ever come home; drink your wine in peace, and let us talk about something else.
+      cache = ./cache/homer-odyssey-850_14.txt
+       txt  = ./txt/homer-odyssey-850_14.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_01
+     author = 
+      title = homer-odyssey-850_01
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 4160
+  sentences = 140
+     flesch = 73
+    summary = And Minerva said," Father, son of Saturn, King of kings, if, then, the gods now mean that Ulysses should get home, we should first send Mercury to the Ogygian island to tell Calypso that we have made up our minds and that he is to return. In the meantime I will go to Ithaca, to put heart into Ulysses ' son Telemachus; I will embolden him to call the Achaeans in assembly, and speak out to the suitors of his mother Penelope, who persist in eating up any number of his sheep and oxen; I will also conduct him to Sparta and to Pylos, to see if he can hear anything about the return of his dear father-for this will make people speak well of him."
+      cache = ./cache/homer-odyssey-850_01.txt
+       txt  = ./txt/homer-odyssey-850_01.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_15
+     author = 
+      title = homer-odyssey-850_15
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 5446
+  sentences = 197
+     flesch = 77
+    summary = She found him and Pisistratus sleeping in the forecourt of Menelaus 's house; Pisistratus was fast asleep, but Telemachus could get no rest all night for thinking of his unhappy father, so Minerva went close up to him and said: When Telemachus saw him he put on his shirt as fast as he could, threw a great cloak over his shoulders, and went out to meet him." Menelaus," said he," let me go back now to my own country, for I want to get home." "Menelaus," replied Telemachus," I want to go home at once, for when I came away I left my property without protection, and fear that while looking for my father I shall come to ruin myself, or find that something valuable has been stolen during my absence." Then they laid their hands upon the good things that were before them, but as soon as they had had enough to eat and drink Telemachus and Pisistratus yoked the horses, and took their places in the chariot.
+      cache = ./cache/homer-odyssey-850_15.txt
+       txt  = ./txt/homer-odyssey-850_15.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_03
+     author = 
+      title = homer-odyssey-850_03
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 4749
+  sentences = 173
+     flesch = 76
+    summary = Presently she said," Telemachus, you must not be in the least shy or nervous; you have taken this voyage to try and find out where your father is buried and how he came by his end; so go straight up to Nestor that we may see what he has got to tell us. "When, however, we had sacked the city of Priam, and were setting sail in our ships as heaven had dispersed us, then Jove saw fit to vex the Argives on their homeward voyage; for they had not all been either wise or understanding, and hence many came to a bad end through the displeasure of Jove 's daughter Minerva, who brought about a quarrel between the two sons of Atreus.
+      cache = ./cache/homer-odyssey-850_03.txt
+       txt  = ./txt/homer-odyssey-850_03.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_17
+     author = 
+      title = homer-odyssey-850_17
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 5890
+  sentences = 216
+     flesch = 78
+    summary = TELEMACHUS AND HIS MOTHER MEET--ULYSSES AND EUMAEUS COME DOWN TO THE TOWN, AND ULYSSES IS INSULTED BY MELANTHIUS--HE IS RECOGNISED BY THE DOG ARGOS--HE IS INSULTED AND PRESENTLY STRUCK BY ANTINOUS WITH A STOOL--PENELOPE DESIRES THAT HE SHALL BE SENT TO HER. He said he could see Ulysses on an island sorrowing bitterly in the house of the nymph Calypso, who was keeping him prisoner, and he could not reach his home, for he had no ships nor sailors to take him over the sea.' This was what Menelaus told me, and when I had heard his story I came away; the gods then gave me a fair wind and soon brought me safe home again." Telemachus took a whole loaf from the breadbasket, with as much meat as he could hold in his two hands, and said to Eumaeus," Take this to the stranger, and tell him to go the round of the suitors, and beg from them; a beggar must not be shamefaced."
+      cache = ./cache/homer-odyssey-850_17.txt
+       txt  = ./txt/homer-odyssey-850_17.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_16
+     author = 
+      title = homer-odyssey-850_16
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 4567
+  sentences = 176
+     flesch = 79
+    summary = Then they laid their hands on the good things that were before them, and as soon as they had had enough to eat and drink Telemachus said to Eumaeus," Old friend, where does this stranger come from? Or if you like you can keep him here at the station, and I will send him clothes and food that he may be no burden on you and on your men; but I will not have him go near the suitors, for they are very insolent, and are sure to ill treat him in a way that would greatly grieve me; no matter how valiant a man may be he can do nothing against numbers, for they will be too strong for him." There is also another matter; if you are indeed my son and my blood runs in your veins, let no one know that Ulysses is within the house-neither Laertes, nor yet the swineherd, nor any of the servants, nor even Penelope herself.
+      cache = ./cache/homer-odyssey-850_16.txt
+       txt  = ./txt/homer-odyssey-850_16.txt
+=== reduce.pl bib ===
+         id = homer-odyssey-850_02
+     author = 
+      title = homer-odyssey-850_02
+       date = 
+      pages = 
+  extension = .txt
+       mime = text/plain
+      words = 4252
+  sentences = 141
+     flesch = 74
+    summary = She set up a great tambour frame in her room, and began to work on an enormous piece of fine needlework.' Sweet hearts,' said she,' Ulysses is indeed dead, still do not press me to marry again immediately, wait-for I would not have skill in needlework perish unrecorded-till I have completed a pall for the hero Laertes, to be in readiness against the time when death shall take him. The suitors, therefore, make you this answer, that both you and the Achaeans may understand-'Send your mother away, and bid her marry the man of her own and of her father 's choice'; for I do not know what will happen if she goes on plaguing us much longer with the airs she gives herself on the score of the accomplishments Minerva has taught her, and because she is so clever.
+      cache = ./cache/homer-odyssey-850_02.txt
+       txt  = ./txt/homer-odyssey-850_02.txt
+Building ./etc/reader.txt
+                number of items: 48
+                   sum of words: 271,885
+          average size in words: 5,664
+      average readability score: 73
+
+                          nouns: son; man; men; ulysses; house; ships; gods; spear; father; hand; people; hands; way; horses; sea; ship; city; one; ground; armour; day; suitors; body; heart; battle; head; time; others; mother; sons; side; god; chariot; death; fight; daughter; end; eyes; shield; wine; fire; nothing; wife; land; place; water; women; night; wall; blood
+                          verbs: was; had; is; have; were; are; be; said; did; do; has; went; go; come; let; been; came; take; made; took; see; tell; am; set; answered; give; make; saw; spoke; fell; left; put; got; know; killed; say; brought; gave; fight; get; saying; heard; sent; struck; laid; stood; lay; going; bring; find
+                     adjectives: own; great; other; good; many; old; full; such; much; dead; noble; brave; fair; strong; mighty; best; young; high; more; whole; angry; first; long; dear; better; alive; right; little; golden; rich; close; thick; poor; same; plain; true; immortal; last; dark; glad; ready; sure; valiant; hard; loud; bad; fierce; fine; excellent; afraid
+                        adverbs: not; then; so; now; up; even; out; down; thus; back; here; still; therefore; on; as; again; off; also; away; yet; once; there; never; home; ever; too; very; well; far; soon; more; first; long; much; all; however; in; most; only; no; indeed; over; just; round; forward; meanwhile; presently; moreover; together; longer
+                       pronouns: he; his; you; i; him; it; they; them; me; my; their; your; her; she; we; us; our; himself; its; myself; yourself; themselves; herself; itself; one; ourselves; mine; you--; yours; ours; hers; thy; thee; house--; therefore--; time--; well-; ye; yourselves; battle--; hare--; her--; him--; mankind--; prize--; see--; stout-; theirs; them--; things--
+                   proper nouns: achaeans; trojans; jove; hector; achilles; heaven; minerva; agamemnon; telemachus; menelaus; priam; ulysses; patroclus; apollo; atreus; troy; ajax; peleus; argives; king; mars; juno; nestor; neptune; danaans; penelope; ithaca; olympus; tydeus; diomed; ilius; aeneas; saturn; idomeneus; eumaeus; hades; trojan; helen; antilochus; vulcan; phaeacians; pylos; argos; sarpedon; thetis; mercury; alexandrus; father; ida; laertes
+                       keywords: trojans; ulyss; achaeans; hector; jove; achilles; telemachus; man; menelaus; son; agamemnon; ulysses; alcinous; minerva; patroclus; penelope; phaeacians; aeneas; aeolus; antilochus; atreus; bellerophon; bow; calypso; circe; cyclops; diomed; eumaeus; father; ghost; hades; idomeneus; irus; mars; nausicaa; nestor; pisistratus; priam; scylla; ship; tydeus
+
+       one topic; one dimension: son
+                        file(s): ./cache/homer-odyssey-850_24.txt
+                      titles(s): homer-odyssey-850_24
+
+    three topics; one dimension: son; ulysses; son
+                        file(s): ./cache/homer-iliad-850_16.txt, ./cache/homer-odyssey-850_19.txt, ./cache/homer-iliad-850_01.txt
+                      titles(s): homer-iliad-850_16 | homer-odyssey-850_19 | homer-iliad-850_01
+
+  five topics; three dimensions: son trojans achaeans; ulysses said house; ulysses said house; men ship said; horses son achilles
+                        file(s): ./cache/homer-iliad-850_16.txt, ./cache/homer-odyssey-850_19.txt, ./cache/homer-odyssey-850_17.txt, ./cache/homer-odyssey-850_09.txt, ./cache/homer-iliad-850_23.txt
+                      titles(s): homer-iliad-850_16 | homer-odyssey-850_19 | homer-odyssey-850_17 | homer-odyssey-850_09 | homer-iliad-850_23
+
+==== make-pages.sh htm files
+==== make-pages.sh complex files
+==== make-pages.sh named enities
+==== making bibliographics
+         id: homer-iliad-850_01
+     author: 
+      title: homer-iliad-850_01
+       date: 
+      words: 5850
+  sentences: 232
+      pages: 
+     flesch: 79
+      cache: ./cache/homer-iliad-850_01.txt
+        txt: ./txt/homer-iliad-850_01.txt
+    summary: On this the rest of the Achaeans with one voice were for respecting the priest and taking the ransom that he offered; but not so Agamemnon, who spoke fiercely to him and sent him roughly away." Old man," said he," let me not find you tarrying about our ships, nor yet coming hereafter. And Achilles answered," Fear not, but speak as it is borne in upon you from heaven, for by Apollo, Calchas, to whom you pray, and whose oracles you reveal to us, not a Danaan at our ships shall lay his hand upon you, while I yet live to look upon the face of the earth-no, not though you name Agamemnon himself, who is by far the foremost of the Achaeans."
+
+         id: homer-iliad-850_02
+     author: 
+      title: homer-iliad-850_02
+       date: 
+      words: 7966
+  sentences: 309
+      pages: 
+     flesch: 76
+      cache: ./cache/homer-iliad-850_02.txt
+        txt: ./txt/homer-iliad-850_02.txt
+    summary: Jove sends a lying dream to Agamemnon, who thereon calls the chiefs in assembly, and proposes to sound the mind of his army--In the end they march to fight--Catalogue of the Achaean and Trojan forces. But Juno said to Minerva," Alas, daughter of aegisbearing Jove, unweariable, shall the Argives fly home to their own land over the broad sea, and leave Priam and the Trojans the glory of still keeping Helen, for whose sake so many of the Achaeans have died at Troy, far from their homes? Those who held the strong city of Mycenae, rich Corinth and Cleonae; Orneae, Araethyrea, and Licyon, where Adrastus reigned of old; Hyperesia, high Gonoessa, and Pellene; Aegium and all the coastland round about Helice; these sent a hundred ships under the command of King Agamemnon, son of Atreus.
+
+         id: homer-iliad-850_03
+     author: 
+      title: homer-iliad-850_03
+       date: 
+      words: 4055
+  sentences: 154
+      pages: 
+     flesch: 77
+      cache: ./cache/homer-iliad-850_03.txt
+        txt: ./txt/homer-iliad-850_03.txt
+    summary: He bids the Trojans and Achaeans lay their armour upon the ground, while he and Menelaus fight in the midst of you for Helen and all her wealth. He went up to Priam and said," Son of Laomedon, the princes of the Trojans and Achaeans bid you come down on to the plain and swear to a solemn covenant. Then Priam, descendant of Dardanus, spoke, saying," Hear me, Trojans and Achaeans, I will now go back to the windbeaten city of Ilius: I dare not with my own eyes witness this fight between my son and Menelaus, for Jove and the other immortals alone know which shall fall." Menelaus next took aim, praying to Father Jove as he did so." King Jove," he said," grant me revenge on Alexandrus who has wronged me; subdue him under my hand that in ages yet to come a man may shrink from doing ill deeds in the house of his host."
+
+         id: homer-iliad-850_04
+     author: 
+      title: homer-iliad-850_04
+       date: 
+      words: 5094
+  sentences: 174
+      pages: 
+     flesch: 74
+      cache: ./cache/homer-iliad-850_04.txt
+        txt: ./txt/homer-iliad-850_04.txt
+    summary: A quarrel in Olympus--Minerva goes down and persuades Fandarus to violate the oaths by wounding Menelaus with an arrow--Agamemnon makes a speech and sends for Machaon--He then goes about among his captains and upbraids Ulysses and Sthenelus, who each of them retort fiercely--Diomed checks Sthenelus, and the two hosts then engage, with great slaughter on either side. Presently he found standing amid the brave warriors who had followed him from Tricca; thereon he went up to him and said," Son of Aesculapius, King Agamemnon says you are to come and see Menelaus immediately. He gave his orders to the knights first, bidding them hold their horses well in hand, so as to avoid confusion." Let no man," he said," relying on his strength or horsemanship, get before the others and engage singly with the Trojans, nor yet let him lag behind or you will weaken your attack; but let each when he meets an enemy ''s chariot throw his spear from his own; this be much the best; this is how the men of old took towns and strongholds; in this wise were they minded."
+
+         id: homer-iliad-850_05
+     author: 
+      title: homer-iliad-850_05
+       date: 
+      words: 8656
+  sentences: 303
+      pages: 
+     flesch: 74
+      cache: ./cache/homer-iliad-850_05.txt
+        txt: ./txt/homer-iliad-850_05.txt
+    summary: Idaeus did not dare to bestride his brother ''s body, but sprang from the chariot and took to flight, or he would have shared his brother ''s fate; whereon Vulcan saved him by wrapping him in a cloud of darkness, that his old father might not be utterly overwhelmed with grief; but the son of Tydeus drove off with the horses, and bade his followers take them to the ships. Venus screamed aloud, and let her son fall, but Phoebus Apollo caught him in his arms, and hid him in a cloud of darkness, lest some Danaan should drive a spear into his breast and kill him; and Diomed shouted out as he left her," Daughter of Jove, leave war and battle alone, can you not be contented with beguiling silly women?
+
+         id: homer-iliad-850_06
+     author: 
+      title: homer-iliad-850_06
+       date: 
+      words: 4997
+  sentences: 171
+      pages: 
+     flesch: 73
+      cache: ./cache/homer-iliad-850_06.txt
+        txt: ./txt/homer-iliad-850_06.txt
+    summary: Tell her to bid the matrons gather at the temple of Minerva in the acropolis; let her then take her key and open the doors of the sacred building; there, upon the knees of Minerva, let her lay the largest, fairest robe she has in her house-the one she sets most store by; let her, moreover, promise to sacrifice twelve yearling heifers that have never yet felt the goad, in the temple of the goddess, if she will take pity on the town, with the wives and little ones of the Trojans, and keep the son of Tydeus from falling on the goodly city of Ilius; for he fights with fury and fills men ''s souls with panic.
+
+         id: homer-iliad-850_07
+     author: 
+      title: homer-iliad-850_07
+       date: 
+      words: 4434
+  sentences: 153
+      pages: 
+     flesch: 74
+      cache: ./cache/homer-iliad-850_07.txt
+        txt: ./txt/homer-iliad-850_07.txt
+    summary: Hector and Ajax fight--Hector is getting worsted when night comes on and parts them--They exchange presents--The burial of the dead, and the building of a wall round their ships by the Achaeans--The Achaeans buy their wine of Agamemnon and Menelaus. Apollo, son of Jove, replied," Let us incite great Hector to challenge some one of the Danaans in single combat; on this the Achaeans will be shamed into finding a man who will fight him." He found the Danaans, servants of Mars, in council at the stern of Agamemnon ''s ship, and took his place in the midst of them." Son of Atreus," he said," and princes of the Achaean host, Priam and the other noble Trojans have sent me to tell you the saying of Alexandrus through whom this quarrel has come about, if so be that you may find it acceptable.
+
+         id: homer-iliad-850_08
+     author: 
+      title: homer-iliad-850_08
+       date: 
+      words: 5346
+  sentences: 184
+      pages: 
+     flesch: 73
+      cache: ./cache/homer-iliad-850_08.txt
+        txt: ./txt/homer-iliad-850_08.txt
+    summary: Jove forbids the gods to interfere further--There is an even fight till midday, but then Jove inclines the scales of victory in favour of the Trojans, who eventually chase the Achaeans within their wall--Juno and Minerva set out to help the Trojans: Jove sends Iris to turn them back, but later on he promises Juno that she shall have her way in the end--Hector''s triumph is stayed by nightfall--The Trojans bivouac on the plain. Hector was greatly grieved at the loss of his charioteer, but let him lie for all his sorrow, while he went in quest of another driver; nor did his steeds have to go long without one, for he presently found brave Archeptolemus the son of Iphitus, and made him get up behind the horses, giving the reins into his hand.
+
+         id: homer-iliad-850_09
+     author: 
+      title: homer-iliad-850_09
+       date: 
+      words: 6877
+  sentences: 236
+      pages: 
+     flesch: 75
+      cache: ./cache/homer-iliad-850_09.txt
+        txt: ./txt/homer-iliad-850_09.txt
+    summary: Menservants poured water over the hands of the guests, while pages filled the mixingbowls with wine and water, and handed it round after giving every man his drinkoffering; then, when they had made their offerings, and had drunk each as much as he was minded, the envoys set out from the tent of Agamemnon son of Atreus; and Nestor, looking first to one and then to another, but most especially at Ulysses, was instant with them that they should prevail with the noble son of Peleus. They all held their peace, dismayed at the sternness with which he had denied them, till presently the old knight Phoenix in his great fear for the ships of the Achaeans, burst into tears and said," Noble Achilles, if you are now minded to return, and in the fierceness of your anger will do nothing to save the ships from burning, how, my son, can I remain here without you?
+
+         id: homer-iliad-850_10
+     author: 
+      title: homer-iliad-850_10
+       date: 
+      words: 5541
+  sentences: 207
+      pages: 
+     flesch: 78
+      cache: ./cache/homer-iliad-850_10.txt
+        txt: ./txt/homer-iliad-850_10.txt
+    summary: The two Ajaxes, servants of Mars, Meriones, and the son of Nestor all wanted to go, so did Menelaus son of Atreus; Ulysses also wished to go among the host of the Trojans, for he was ever full of daring, and thereon Agamemnon king of men spoke thus:" Diomed," said he," son of Tydeus, man after my own heart, choose your comrade for yourself-take the best man of those that have offered, for many would now go with you. Diomed looked sternly at him and answered," Think not, Dolon, for all the good information you have given us, that you shall escape now you are in our hands, for if we ransom you or let you go, you will come some second time to the ships of the Achaeans either as a spy or as an open enemy, but if I kill you and an end of you, you will give no more trouble."
+
+         id: homer-iliad-850_11
+     author: 
+      title: homer-iliad-850_11
+       date: 
+      words: 8571
+  sentences: 250
+      pages: 
+     flesch: 69
+      cache: ./cache/homer-iliad-850_11.txt
+        txt: ./txt/homer-iliad-850_11.txt
+    summary: But when he was just about to reach the high wall and the city, the father of gods and men came down from heaven and took his seat, thunderbolt in hand, upon the crest of manyfountained Ida. He then told Iris of the golden wings to carry a message for him." Go," said he," fleet Iris, and speak thus to Hector-say that so long as he sees Agamemnon heading his men and making havoc of the Trojan ranks, he is to keep aloof and bid the others bear the brunt of the battle, but when Agamemnon is wounded either by spear or arrow, and takes to his chariot, then will I vouchsafe him strength to slay till he reach the ships and night falls at the going down of the sun."
+
+         id: homer-iliad-850_12
+     author: 
+      title: homer-iliad-850_12
+       date: 
+      words: 4765
+  sentences: 129
+      pages: 
+     flesch: 67
+      cache: ./cache/homer-iliad-850_12.txt
+        txt: ./txt/homer-iliad-850_12.txt
+    summary: The Trojans led by him and by Iamenus, Orestes, Adamas the son of Asius, Thoon and Oenomaus, raised a loud cry of battle and made straight for the wall, holding their shields of dry oxhide above their heads; for a while the two defenders remained inside and cheered the Achaeans on to stand firm in the defence of their ships; when, however, they saw that the Trojans were attacking the wall, while the Danaans were crying out for help and being routed, they rushed outside and fought in front of the gates like two wild boars upon the mountains that abide the attack of men and dogs, and charging on either side break down the wood all round them tearing it up by the roots, and one can hear the clattering of their tusks, till some one hits them and makes an end of them-even so did the gleaming bronze rattle about their breasts, as the weapons fell upon them; for they fought with great fury, trusting to their own prowess and to those who were on the wall above them.
+
+         id: homer-iliad-850_13
+     author: 
+      title: homer-iliad-850_13
+       date: 
+      words: 8410
+  sentences: 241
+      pages: 
+     flesch: 68
+      cache: ./cache/homer-iliad-850_13.txt
+        txt: ./txt/homer-iliad-850_13.txt
+    summary: The Trojans advanced in a dense body, with Hector at their head pressing right on as a rock that comes thundering down the side of some mountain from whose brow the winter torrents have torn it; the foundations of the dull thing have been loosened by floods of rain, and as it bounds headlong on its way it sets the whole forest in an uproar; it swerves neither to right nor left till it reaches level ground, but then for all its fury it can go no further-even so easily did Hector for a while seem as though he would career through the tents and ships of the Achaeans till he had reached the sea in his murderous course; but the closely serried battalions stayed him when he reached them, for the sons of the Achaeans thrust at him with swords and spears pointed at both ends, and drove him from them so that he staggered and gave ground; thereon he shouted to the Trojans," Trojans, Lycians, and Dardanians, fighters in close combat, stand firm: the Achaeans have set themselves as a wall against me, but they will not check me for long; they will give ground before me if the mightiest of the gods, the thundering spouse of Juno, has indeed inspired my onset."
+
+         id: homer-iliad-850_14
+     author: 
+      title: homer-iliad-850_14
+       date: 
+      words: 5256
+  sentences: 168
+      pages: 
+     flesch: 72
+      cache: ./cache/homer-iliad-850_14.txt
+        txt: ./txt/homer-iliad-850_14.txt
+    summary: The Trojans are fighting stubbornly and without ceasing at the ships; look where you may you can not see from what quarter the rout of the Achaeans is coming; they are being killed in a confused mass and the battlecry ascends to heaven; let us think, if counsel can be of any use, what we had better do; but I do not advise our going into battle ourselves, for a man can not fight when he is wounded." And King Agamemnon answered," Nestor, if the Trojans are indeed fighting at the rear of our ships, and neither the wall nor the trench has served us-over which the Danaans toiled so hard, and which they deemed would be an impregnable bulwark both for us and our fleet-I see it must be the will of Jove that the Achaeans should perish ingloriously here, far from Argos.
+
+         id: homer-iliad-850_15
+     author: 
+      title: homer-iliad-850_15
+       date: 
+      words: 7424
+  sentences: 242
+      pages: 
+     flesch: 73
+      cache: ./cache/homer-iliad-850_15.txt
+        txt: ./txt/homer-iliad-850_15.txt
+    summary: Juno trembled as he spoke, and said," May heaven above and earth below be my witnesses, with the waters of the river Styx-and this is the most solemn oath that a blessed god can take-nay ,I swear also by your own almighty head and by our bridal bed-things over which I could never possibly perjure myself-that Neptune is not punishing Hector and the Trojans and helping the Achaeans through any doing of mine; it is all of his own mere motion because he was sorry to see the Achaeans hard pressed at their ships: if I were advising him, I should tell him to do as you bid him." If, then, you are speaking the truth and mean what you say, go among the rank and file of the gods, and tell Iris and Apollo lord of the bow, that I want them-Iris, that she may go to the Achaean host and tell Neptune to leave off fighting and go home, and Apollo, that he may send Hector again into battle and give him fresh strength ;he will thus forget his present sufferings, and drive the Achaeans back in confusion till they fall among the ships of Achilles son of Peleus.
+
+         id: homer-iliad-850_16
+     author: 
+      title: homer-iliad-850_16
+       date: 
+      words: 8943
+  sentences: 274
+      pages: 
+     flesch: 70
+      cache: ./cache/homer-iliad-850_16.txt
+        txt: ./txt/homer-iliad-850_16.txt
+    summary: Fire being now thrown on the ship of Protesilaus, Patroclus fights in the armour of Achilles--He drives the Trojans back, but is in the end killed by Euphorbus and Hector. Still, let bygones be bygones: no man may keep his anger for ever; I said I would not relent till battle and the cry of war had reached my own ships; nevertheless, now gird my armour about your shoulders, and lead the Myrmidons to battle, for the dark cloud of Trojans has burst furiously over our fleet; the Argives are driven back on to the beach, cooped within a narrow space, and the whole people of Troy has taken heart to sally out against them, because they see not the visor of my helmet gleaming near them.
+
+         id: homer-iliad-850_17
+     author: 
+      title: homer-iliad-850_17
+       date: 
+      words: 7293
+  sentences: 214
+      pages: 
+     flesch: 70
+      cache: ./cache/homer-iliad-850_17.txt
+        txt: ./txt/homer-iliad-850_17.txt
+    summary: But Ajax came up with his shield like wall before him, on which Hector withdrew under shelter of his men, and sprang on to his chariot, giving the armour over to the Trojans to take to the city, as a great trophy for himself; Ajax, therefore, covered the body of Patroclus with his broad shield and bestrode him; as a lion stands over his whelps if hunters have come upon him in a forest when he is with his little ones-in the pride and fierceness of his strength he draws his knit brows down till they cover his eyes-even so did Ajax bestride the body of Patroclus, and by his side stood Menelaus son of Atreus, nursing great sorrow in his heart.
+
+         id: homer-iliad-850_18
+     author: 
+      title: homer-iliad-850_18
+       date: 
+      words: 6047
+  sentences: 201
+      pages: 
+     flesch: 74
+      cache: ./cache/homer-iliad-850_18.txt
+        txt: ./txt/homer-iliad-850_18.txt
+    summary: As the smoke that goes up into heaven from some city that is being beleaguered on an island far out at sea-all day long do men sally from the city and fight their hardest, and at the going down of the sun the line of beaconfires blazes forth, flaring high for those that dwell near them to behold, if so be that they may come with their ships and succour them-even so did the light flare from the head of Achilles, as he stood by the trench, going beyond the wall-but he did not join the Achaeans for he heeded the charge which his mother laid upon him.
+
+         id: homer-iliad-850_19
+     author: 
+      title: homer-iliad-850_19
+       date: 
+      words: 4033
+  sentences: 131
+      pages: 
+     flesch: 74
+      cache: ./cache/homer-iliad-850_19.txt
+        txt: ./txt/homer-iliad-850_19.txt
+    summary: When the Achaeans were got together Achilles rose and said," Son of Atreus, surely it would have been better alike for both you and me, when we two were in such high anger about Briseis, surely it would have been better, had Diana ''s arrow slain her at the ships on the day when I took her after having sacked Lyrnessus. Then Ulysses said," Achilles, godlike and brave, send not the Achaeans thus against Ilius to fight the Trojans fasting, for the battle will be no brief one, when it is once begun, and heaven has filled both sides with fury; bid them first take food both bread and wine by the ships, for in this there is strength and stay.
+
+         id: homer-iliad-850_20
+     author: 
+      title: homer-iliad-850_20
+       date: 
+      words: 5039
+  sentences: 170
+      pages: 
+     flesch: 73
+      cache: ./cache/homer-iliad-850_20.txt
+        txt: ./txt/homer-iliad-850_20.txt
+    summary: His spear has already put me to flight from Ida, when he attacked our cattle and sacked Lyrnessus and Pedasus; Jove indeed saved me in that he vouchsafed me strength to fly, else had I fallen by the hands of Achilles and Minerva, who went before him to protect him and urged him to fall upon the Lelegae and Trojans. She called the gods about her, and said," Look to it, you two, Neptune and Minerva, and consider how this shall be; Phoebus Apollo has been sending Aeneas clad in full armour to fight Achilles. Meanwhile Hector called upon the Trojans and declared that he would fight Achilles." Be not afraid, proud Trojans," said he," to face the son of Peleus; I could fight gods myself if the battle were one of words only, but they would be more than a match for me, if we had to use our spears.
+
+         id: homer-iliad-850_21
+     author: 
+      title: homer-iliad-850_21
+       date: 
+      words: 6221
+  sentences: 212
+      pages: 
+     flesch: 75
+      cache: ./cache/homer-iliad-850_21.txt
+        txt: ./txt/homer-iliad-850_21.txt
+    summary: The dark waters of the river stood upright and would have overwhelmed the son of Peleus, but Juno, trembling lest Achilles should be swept away in the mighty torrent, lifted her voice on high and called out to Vulcan her son." Crookfoot," she cried," my child, be up and doing, for I deem it is with you that Xanthus is fain to fight; help us at once, kindle a fierce fire; I will then bring up the west and the white south wind in a mighty hurricane from the sea, that shall bear the flames against the heads and armour of the Trojans and consume them, while you go along the banks of Xanthus burning his trees and wrapping him round with fire.
+
+         id: homer-iliad-850_22
+     author: 
+      title: homer-iliad-850_22
+       date: 
+      words: 5477
+  sentences: 164
+      pages: 
+     flesch: 71
+      cache: ./cache/homer-iliad-850_22.txt
+        txt: ./txt/homer-iliad-850_22.txt
+    summary: Thereon Minerva went close up to the son of Peleus and said," Noble Achilles, favoured of heaven, we two shall surely take back to the ships a triumph for the Achaeans by slaying Hector, for all his lust of battle. Then Minerva said," Dear brother, my father and mother went down on their knees and implored me, as did all my comrades, to remain inside, so great a fear has fallen upon them all; but I was in an agony of grief when I beheld you; now, therefore, let us two make a stand and fight, and let there be no keeping our spears in reserve, that we may learn whether Achilles shall kill us and bear off our spoils to the ships, or whether he shall fall before you."
+
+         id: homer-iliad-850_23
+     author: 
+      title: homer-iliad-850_23
+       date: 
+      words: 8987
+  sentences: 292
+      pages: 
+     flesch: 74
+      cache: ./cache/homer-iliad-850_23.txt
+        txt: ./txt/homer-iliad-850_23.txt
+    summary: As soon as they reached Agamemnon ''s tent they told the servingmen to set a large tripod over the fire in case they might persuade the son of Peleus to wash the clotted gore from this body, but he denied them sternly, and swore it with a solemn oath, saying," Nay, by King Jove, first and mightiest of all gods, it is not meet that water should touch my body, till I have laid Patroclus on the flames, have built him a barrow, and shaved my head-for so long as I live no such second sorrow shall ever draw nigh me. Thus did he speak and the others all of them applauded his saying, and were for doing as he had said, but Nestor ''s son Antilochus stood up and claimed his rights from the son of Peleus." Achilles," said he," I shall take it much amiss if you do this thing; you would rob me of my prize, because you think Eumelus ''s chariot and horses were thrown out, and himself too, good man that he is.
+
+         id: homer-iliad-850_24
+     author: 
+      title: homer-iliad-850_24
+       date: 
+      words: 8365
+  sentences: 273
+      pages: 
+     flesch: 75
+      cache: ./cache/homer-iliad-850_24.txt
+        txt: ./txt/homer-iliad-850_24.txt
+    summary: A man may lose one far dearer than Achilles has lost-a son, it may be, or a brother born from his own mother ''s womb; yet when he has mourned him and wept over him he will let him bide, for it takes much sorrow to kill a man; whereas Achilles, now that he has slain noble Hector, drags him behind his chariot round the tomb of his comrade. When he heard this the old man ''s heart failed him, and he was in great fear; he stayed where he was as one dazed, and the hair stood on end over his whole body; but the bringer of good luck came up to him and took him by the hand, saying," Whither, father, are you thus driving your mules and horses in the dead of night when other men are asleep?
+
+         id: homer-odyssey-850_01
+     author: 
+      title: homer-odyssey-850_01
+       date: 
+      words: 4160
+  sentences: 140
+      pages: 
+     flesch: 73
+      cache: ./cache/homer-odyssey-850_01.txt
+        txt: ./txt/homer-odyssey-850_01.txt
+    summary: And Minerva said," Father, son of Saturn, King of kings, if, then, the gods now mean that Ulysses should get home, we should first send Mercury to the Ogygian island to tell Calypso that we have made up our minds and that he is to return. In the meantime I will go to Ithaca, to put heart into Ulysses '' son Telemachus; I will embolden him to call the Achaeans in assembly, and speak out to the suitors of his mother Penelope, who persist in eating up any number of his sheep and oxen; I will also conduct him to Sparta and to Pylos, to see if he can hear anything about the return of his dear father-for this will make people speak well of him."
+
+         id: homer-odyssey-850_02
+     author: 
+      title: homer-odyssey-850_02
+       date: 
+      words: 4252
+  sentences: 141
+      pages: 
+     flesch: 74
+      cache: ./cache/homer-odyssey-850_02.txt
+        txt: ./txt/homer-odyssey-850_02.txt
+    summary: She set up a great tambour frame in her room, and began to work on an enormous piece of fine needlework.'' Sweet hearts,'' said she,'' Ulysses is indeed dead, still do not press me to marry again immediately, wait-for I would not have skill in needlework perish unrecorded-till I have completed a pall for the hero Laertes, to be in readiness against the time when death shall take him. The suitors, therefore, make you this answer, that both you and the Achaeans may understand-''Send your mother away, and bid her marry the man of her own and of her father ''s choice''; for I do not know what will happen if she goes on plaguing us much longer with the airs she gives herself on the score of the accomplishments Minerva has taught her, and because she is so clever.
+
+         id: homer-odyssey-850_03
+     author: 
+      title: homer-odyssey-850_03
+       date: 
+      words: 4749
+  sentences: 173
+      pages: 
+     flesch: 76
+      cache: ./cache/homer-odyssey-850_03.txt
+        txt: ./txt/homer-odyssey-850_03.txt
+    summary: Presently she said," Telemachus, you must not be in the least shy or nervous; you have taken this voyage to try and find out where your father is buried and how he came by his end; so go straight up to Nestor that we may see what he has got to tell us. "When, however, we had sacked the city of Priam, and were setting sail in our ships as heaven had dispersed us, then Jove saw fit to vex the Argives on their homeward voyage; for they had not all been either wise or understanding, and hence many came to a bad end through the displeasure of Jove ''s daughter Minerva, who brought about a quarrel between the two sons of Atreus.
+
+         id: homer-odyssey-850_04
+     author: 
+      title: homer-odyssey-850_04
+       date: 
+      words: 8128
+  sentences: 284
+      pages: 
+     flesch: 76
+      cache: ./cache/homer-odyssey-850_04.txt
+        txt: ./txt/homer-odyssey-850_04.txt
+    summary: On this he handed them{ 39} a piece of fat roast loin, which had been set near him as being a prime part, and they laid their hands on the good things that were before them; as soon as they had had enough to eat and drink, Telemachus said to the son of Nestor, with his head so close that no one might hear," Look, Pisistratus, man after my own heart, see the gleam of bronze and gold-of amber,{ 40} ivory, and silver. Presently, when I had had my fill of weeping and writhing upon the ground, the old man of the sea said,'' Son of Atreus, do not waste any more time in crying so bitterly; it can do no manner of good; find your way home as fast as ever you can, for Aegisthus may be still alive, and even though Orestes has been beforehand with you in killing him, you may yet come in for his funeral.''
+
+         id: homer-odyssey-850_05
+     author: 
+      title: homer-odyssey-850_05
+       date: 
+      words: 4714
+  sentences: 154
+      pages: 
+     flesch: 74
+      cache: ./cache/homer-odyssey-850_05.txt
+        txt: ./txt/homer-odyssey-850_05.txt
+    summary: He flew and flew over many a weary wave, but when at last he got to the island which was his journey ''s end, he left the sea and went on by land till he came to the cave where the nymph Calypso lived. He could see him sailing upon the sea, and it made him very angry, so he wagged his head and muttered to himself, saying," Good heavens, so the gods have been changing their minds about Ulysses while I was away in Ethiopia, and now he is close to the land of the Phaeacians, where it is decreed that he shall escape from the calamities that have befallen him. Ulysses '' heart now began to fail him, and he said despairingly to himself," Alas, Jove has let me see land after swimming so far that I had given up all hope, but I can find no landing place, for the coast is rocky and surfbeaten, the rocks are smooth and rise sheer from the sea, with deep water close under them so that I can not climb out for want of foot hold.
+
+         id: homer-odyssey-850_06
+     author: 
+      title: homer-odyssey-850_06
+       date: 
+      words: 3461
+  sentences: 116
+      pages: 
+     flesch: 74
+      cache: ./cache/homer-odyssey-850_06.txt
+        txt: ./txt/homer-odyssey-850_06.txt
+    summary: So here Ulysses slept, overcome by sleep and toil; but Minerva went off to the country and city of the Phaeacians-a people who used to live in the fair town of Hypereia, near the lawless Cyclopes. Minerva took the form of the famous sea captain Dymas ''s daughter, who was a bosom friend of Nausicaa and just her own age; then, coming up to the girl ''s bedside like a breath of wind, she hovered over her head and said: "Stranger," said she," rise and let us be going back to the town; I will introduce you at the house of my excellent father, where I can tell you that you will meet all the best people among the Phaeacians.
+
+         id: homer-odyssey-850_07
+     author: 
+      title: homer-odyssey-850_07
+       date: 
+      words: 3377
+  sentences: 107
+      pages: 
+     flesch: 70
+      cache: ./cache/homer-odyssey-850_07.txt
+        txt: ./txt/homer-odyssey-850_07.txt
+    summary: "Alcinous," said he," it is not creditable to you that a stranger should be seen sitting among the ashes of your hearth; every one is waiting to hear what you are about to say; tell him, then, to rise and take a seat on a stool inlaid with silver, and bid your servants mix some wine and water that we may make a drink offering to Jove the lord of thunder, who takes all well disposed suppliants under his protection; and let the housekeeper give him some supper, of whatever there may be in the house." Then when they had made their drink offerings, and had drunk each as much as he was minded they went home to bed every man in his own abode, leaving Ulysses in the cloister with Arete and Alcinous while the servants were taking the things away after supper.
+
+         id: homer-odyssey-850_08
+     author: 
+      title: homer-odyssey-850_08
+       date: 
+      words: 5639
+  sentences: 189
+      pages: 
+     flesch: 72
+      cache: ./cache/homer-odyssey-850_08.txt
+        txt: ./txt/homer-odyssey-850_08.txt
+    summary: She went up to the citizens, man by man, and said," Aldermen and town councillors of the Phaeacians, come to the assembly all of you and listen to the stranger who has just come off a long voyage to the house of King Alcinous; he looks like an immortal god." Alcinous ''s son Laodamas was the best boxer, and he it was who presently said, when they had all been diverted with the games ,"Let us ask the stranger whether he excels in any of these sports; he seems very powerfully built; his thighs, calves, hands, and neck are of prodigious strength, nor is he at all old, but he has suffered much lately, and there is nothing like the sea for making havoc with a man, no matter how strong he is."
+
+         id: homer-odyssey-850_09
+     author: 
+      title: homer-odyssey-850_09
+       date: 
+      words: 5846
+  sentences: 176
+      pages: 
+     flesch: 73
+      cache: ./cache/homer-odyssey-850_09.txt
+        txt: ./txt/homer-odyssey-850_09.txt
+    summary: I then said that we had better make off at once, but my men very foolishly would not obey me, so they staid there drinking much wine and killing great numbers of sheep and oxen on the sea shore. As for us, we wept and lifted up our hands to heaven on seeing such a horrid sight, for we did not know what else to do; but when the Cyclops had filled his huge paunch, and had washed down his meal of human flesh with a drink of neat milk, he stretched himself full length upon the ground among his sheep, and went to sleep. "''Look here, Cyclops,'' said I, you have been eating a great deal of man ''s flesh, so take this and drink some wine, that you may see what kind of liquor we had on board my ship.
+
+         id: homer-odyssey-850_10
+     author: 
+      title: homer-odyssey-850_10
+       date: 
+      words: 5723
+  sentences: 178
+      pages: 
+     flesch: 74
+      cache: ./cache/homer-odyssey-850_10.txt
+        txt: ./txt/homer-odyssey-850_10.txt
+    summary: As I threw him down in front of the ship, I called the men and spoke cheeringly man by man to each of them.'' Look here my friends ,''said I,'' we are not going to die so much before our time after all, and at any rate we will not starve so long as we have got something to eat and drink on board.'' On this they uncovered their heads upon the sea shore and admired the stag, for he was indeed a splendid fellow. They knew me at once, seized me each of them by the hand, and wept for joy till the whole house was filled with the sound of their halloaballooing, and Circe herself was so sorry for them that she came up to me and said,'' Ulysses, noble son of Laertes, go back at once to the sea where you have left your ship, and first draw it on to the land.
+
+         id: homer-odyssey-850_11
+     author: 
+      title: homer-odyssey-850_11
+       date: 
+      words: 6071
+  sentences: 190
+      pages: 
+     flesch: 72
+      cache: ./cache/homer-odyssey-850_11.txt
+        txt: ./txt/homer-odyssey-850_11.txt
+    summary: When I saw them coming I told the men to be quick and flay the carcasses of the two dead sheep and make burnt offerings of them, and at the same time to repeat prayers to Hades and to Proserpine; but I sat where I was with my sword drawn and would not let the poor feckless ghosts come near the blood till Teiresias should have answered my questions. He knew me and said,'' Ulysses, noble son of Laertes, why, poor man, have you left the light of day and come down to visit the dead in this sad place? "''This,'' I answered,'' must be as it may please heaven, but tell me and tell me and tell me true, I see my poor mother ''s ghost close by us; she is sitting by the blood without saying a word, and though I am her own son she does not remember me and speak to me; tell me, Sir, how I can make her know me.''
+
+         id: homer-odyssey-850_12
+     author: 
+      title: homer-odyssey-850_12
+       date: 
+      words: 4633
+  sentences: 132
+      pages: 
+     flesch: 71
+      cache: ./cache/homer-odyssey-850_12.txt
+        txt: ./txt/homer-odyssey-850_12.txt
+    summary: I then went on board and told my men to loose the ship from her moorings; so they at once got into her, took their places, and began to smite the grey sea with their oars. "Meanwhile Lampetie went straight off to the sun and told him we had been killing his cows, whereon he flew into a great rage, and said to the immortals,'' Father Jove, and all you other gods who live in everlasting bliss, I must have vengeance on the crew of Ulysses '' ship: they have had the insolence to kill my cows, which were the one thing I loved to look upon, whether I was going up heaven or down again. The men all fell into the sea; they were carried about in the water round the ship, looking like so many seagulls, but the god presently deprived them of all chance of getting home again.
+
+         id: homer-odyssey-850_13
+     author: 
+      title: homer-odyssey-850_13
+       date: 
+      words: 4237
+  sentences: 142
+      pages: 
+     flesch: 73
+      cache: ./cache/homer-odyssey-850_13.txt
+        txt: ./txt/homer-odyssey-850_13.txt
+    summary: As one who has been all day ploughing a fallow field with a couple of oxen keeps thinking about his supper and is glad when night comes that he may go and get it, for it is all his legs can do to carry him, even so did Ulysses rejoice when the sun went down, and he at once said to the Phaeacians, addressing himself more particularly to King Alcinous: But Neptune did not forget the threats with which he had already threatened Ulysses, so he took counsel with Jove." Father Jove," said he," I shall no longer be held in any sort of respect among you gods, if mortals like the Phaeacians, who are my own flesh and blood, show such small regard for me. "My good friend," answered Jove," I should recommend you at the very moment when the people from the city are watching the ship on her way, to turn it into a rock near the land and looking like a ship.
+
+         id: homer-odyssey-850_14
+     author: 
+      title: homer-odyssey-850_14
+       date: 
+      words: 5414
+  sentences: 161
+      pages: 
+     flesch: 72
+      cache: ./cache/homer-odyssey-850_14.txt
+        txt: ./txt/homer-odyssey-850_14.txt
+    summary: Even the fierce freebooters who go raiding on other people ''s land, and Jove gives them their spoil-even they, when they have filled their ships and got home again live consciencestricken, and look fearfully for judgement; but some god seems to have told these people that Ulysses is dead and gone; they will not, therefore, go back to their own homes and make their offers of marriage in the usual way, but waste his estate by force, without fear or stint. When he had eaten enough and was satisfied, the swineherd took the bowl from which he usually drank, filled it with wine, and gave it to Ulysses, who was pleased, and said as he took it in his hands," My friend, who was this master of yours that bought you and paid for you, so rich and so powerful as you tell me? To this you answered, O swineherd Eumaeus," Old man, you will neither get paid for bringing good news, nor will Ulysses ever come home; drink your wine in peace, and let us talk about something else.
+
+         id: homer-odyssey-850_15
+     author: 
+      title: homer-odyssey-850_15
+       date: 
+      words: 5446
+  sentences: 197
+      pages: 
+     flesch: 77
+      cache: ./cache/homer-odyssey-850_15.txt
+        txt: ./txt/homer-odyssey-850_15.txt
+    summary: She found him and Pisistratus sleeping in the forecourt of Menelaus ''s house; Pisistratus was fast asleep, but Telemachus could get no rest all night for thinking of his unhappy father, so Minerva went close up to him and said: When Telemachus saw him he put on his shirt as fast as he could, threw a great cloak over his shoulders, and went out to meet him." Menelaus," said he," let me go back now to my own country, for I want to get home." "Menelaus," replied Telemachus," I want to go home at once, for when I came away I left my property without protection, and fear that while looking for my father I shall come to ruin myself, or find that something valuable has been stolen during my absence." Then they laid their hands upon the good things that were before them, but as soon as they had had enough to eat and drink Telemachus and Pisistratus yoked the horses, and took their places in the chariot.
+
+         id: homer-odyssey-850_16
+     author: 
+      title: homer-odyssey-850_16
+       date: 
+      words: 4567
+  sentences: 176
+      pages: 
+     flesch: 79
+      cache: ./cache/homer-odyssey-850_16.txt
+        txt: ./txt/homer-odyssey-850_16.txt
+    summary: Then they laid their hands on the good things that were before them, and as soon as they had had enough to eat and drink Telemachus said to Eumaeus," Old friend, where does this stranger come from? Or if you like you can keep him here at the station, and I will send him clothes and food that he may be no burden on you and on your men; but I will not have him go near the suitors, for they are very insolent, and are sure to ill treat him in a way that would greatly grieve me; no matter how valiant a man may be he can do nothing against numbers, for they will be too strong for him." There is also another matter; if you are indeed my son and my blood runs in your veins, let no one know that Ulysses is within the house-neither Laertes, nor yet the swineherd, nor any of the servants, nor even Penelope herself.
+
+         id: homer-odyssey-850_17
+     author: 
+      title: homer-odyssey-850_17
+       date: 
+      words: 5890
+  sentences: 216
+      pages: 
+     flesch: 78
+      cache: ./cache/homer-odyssey-850_17.txt
+        txt: ./txt/homer-odyssey-850_17.txt
+    summary: TELEMACHUS AND HIS MOTHER MEET--ULYSSES AND EUMAEUS COME DOWN TO THE TOWN, AND ULYSSES IS INSULTED BY MELANTHIUS--HE IS RECOGNISED BY THE DOG ARGOS--HE IS INSULTED AND PRESENTLY STRUCK BY ANTINOUS WITH A STOOL--PENELOPE DESIRES THAT HE SHALL BE SENT TO HER. He said he could see Ulysses on an island sorrowing bitterly in the house of the nymph Calypso, who was keeping him prisoner, and he could not reach his home, for he had no ships nor sailors to take him over the sea.'' This was what Menelaus told me, and when I had heard his story I came away; the gods then gave me a fair wind and soon brought me safe home again." Telemachus took a whole loaf from the breadbasket, with as much meat as he could hold in his two hands, and said to Eumaeus," Take this to the stranger, and tell him to go the round of the suitors, and beg from them; a beggar must not be shamefaced."
+
+         id: homer-odyssey-850_18
+     author: 
+      title: homer-odyssey-850_18
+       date: 
+      words: 4183
+  sentences: 155
+      pages: 
+     flesch: 77
+      cache: ./cache/homer-odyssey-850_18.txt
+        txt: ./txt/homer-odyssey-850_18.txt
+    summary: "Listen to me," said Antinous," there are some goats '' paunches down at the fire, which we have filled with blood and fat, and set aside for supper; he who is victorious and proves himself to be the better man shall have his pick of the lot; he shall be free of our table and we will not allow any other beggar about the house at all." Eurymachus then came up and said," Queen Penelope, daughter of Icarius, if all the Achaeans in Iasian Argos could see you at this moment, you would have still more suitors in your house by tomorrow morning, for you are the most admirable woman in the whole world both as regards personal beauty and strength of understanding." But Minerva would not let the suitors for one moment cease their insolence, for she wanted Ulysses to become even more bitter against them; she therefore set Eurymachus son of Polybus on to gibe at him, which made the others laugh." Listen to me," said he," you suitors of Queen Penelope, that I may speak even as I am minded.
+
+         id: homer-odyssey-850_19
+     author: 
+      title: homer-odyssey-850_19
+       date: 
+      words: 6056
+  sentences: 181
+      pages: 
+     flesch: 70
+      cache: ./cache/homer-odyssey-850_19.txt
+        txt: ./txt/homer-odyssey-850_19.txt
+    summary: Then Ulysses and his son made all haste to take the helmets, shields, and spears inside; and Minerva went before them with a gold lamp in her hand that shed a soft and brilliant radiance, whereon Telemachus said," Father, my eyes behold a great marvel: the walls, with the rafters, crossbeams, and the supports on which they rest are all aglow as with a flaming fire. As she spoke she looked towards Penelope, as though wanting to tell her that her dear husband was in the house, but Penelope was unable to look in that direction and observe what was going on, for Minerva had diverted her attention ;so Ulysses caught Euryclea by the throat with his right hand and with his left drew her close to him, and said," Nurse, do you wish to be the ruin of me, you who nursed me at your own breast, now that after twenty years of wandering I am at last come to my own home again?
+
+         id: homer-odyssey-850_20
+     author: 
+      title: homer-odyssey-850_20
+       date: 
+      words: 3866
+  sentences: 134
+      pages: 
+     flesch: 74
+      cache: ./cache/homer-odyssey-850_20.txt
+        txt: ./txt/homer-odyssey-850_20.txt
+    summary: The others had ground their task and had gone to take their rest, but this one had not yet finished, for she was not so strong as they were, and when she heard the thunder she stopped grinding and gave the sign to her master." Father Jove," said she," you, who rule over heaven and earth, you have thundered from a clear sky without so much as a cloud in it, and this means something for somebody; grant the prayer, then, of me your poor servant who calls upon you, and let this be the very last day that the suitors dine in the house of Ulysses.
+
+         id: homer-odyssey-850_21
+     author: 
+      title: homer-odyssey-850_21
+       date: 
+      words: 4282
+  sentences: 141
+      pages: 
+     flesch: 74
+      cache: ./cache/homer-odyssey-850_21.txt
+        txt: ./txt/homer-odyssey-850_21.txt
+    summary: "Listen to me you suitors, who persist in abusing the hospitality of this house because its owner has been long absent, and without other pretext than that you want to marry me; this, then, being the prize that you are contending for, I will bring out the mighty bow of Ulysses, and whomsoever of you shall string it most easily and send his arrow through each one of twelve axes, him will I follow and quit this house of my lawful husband, so goodly, and so abounding in wealth. This was what he said, but all the time he was expecting to be able to string the bow and shoot through the iron, whereas in fact he was to be the first that should taste of the arrows from the hands of Ulysses, whom he was dishonouring in his own house-egging the others on to do so also.
+
+         id: homer-odyssey-850_22
+     author: 
+      title: homer-odyssey-850_22
+       date: 
+      words: 4592
+  sentences: 167
+      pages: 
+     flesch: 78
+      cache: ./cache/homer-odyssey-850_22.txt
+        txt: ./txt/homer-odyssey-850_22.txt
+    summary: {166} The suitors were in an uproar when they saw that a man had been hit; they sprang in dismay one and all of them from their seats and looked everywhere towards the walls, but there was neither shield nor spear, and they rebuked Ulysses very angrily." Stranger," said they," you shall pay for shooting people in this way: you shall see no other contest; you are a doomed man; he whom you have slain was the foremost youth in Ithaca, and the vultures shall devour you for having killed him." Meanwhile Ulysses, as long as his arrows lasted, had been shooting the suitors one by one, and they fell thick on one another: when his arrows gave out, he set the bow to stand against the end wall of the house by the door post, and hung a shield four hides thick about his shoulders; on his comely head he set his helmet, well wrought with a crest of horsehair that nodded menacingly above it,{ 168} and he grasped two redoubtable bronzeshod spears.
+
+         id: homer-odyssey-850_23
+     author: 
+      title: homer-odyssey-850_23
+       date: 
+      words: 3721
+  sentences: 137
+      pages: 
+     flesch: 77
+      cache: ./cache/homer-odyssey-850_23.txt
+        txt: ./txt/homer-odyssey-850_23.txt
+    summary: Then Penelope sprang up from her couch, threw her arms round Euryclea, and wept for joy." But my dear nurse," said she," explain this to me; if he has really come home as you say, how did he manage to overcome the wicked suitors single handed, seeing what a number of them there always were?" "I will say what I think will be best," answered Ulysses." First wash and put your shirts on; tell the maids also to go to their own room and dress; Phemius shall then strike up a dance tune on his lyre, so that if people outside hear, or any of the neighbours, or some one going along the street happens to notice it, they may think there is a wedding in the house, and no rumours about the death of the suitors will get about in the town, before we can escape to the woods upon my own land.
+
+         id: homer-odyssey-850_24
+     author: 
+      title: homer-odyssey-850_24
+       date: 
+      words: 5231
+  sentences: 196
+      pages: 
+     flesch: 77
+      cache: ./cache/homer-odyssey-850_24.txt
+        txt: ./txt/homer-odyssey-850_24.txt
+    summary: THE GHOSTS OF THE SUITORS IN HADES--ULYSSES AND HIS MEN GO TO THE HOUSE OF LAERTES--THE PEOPLE OF ITHACA COME OUT TO ATTACK ULYSSES, BUT MINERVA CONCLUDES A PEACE. And the ghost of Amphimedon answered," Agamemnon, son of Atreus, king of men, I remember everything that you have said, and will tell you fully and accurately about the way in which our end was brought about. She set up a great tambour frame in her room and began to work on an enormous piece of fine needlework.'' Sweethearts ,''said she,'' Ulysses is indeed dead, still, do not press me to marry again immediately; wait-for I would not have my skill in needlework perish unrecorded-till I have completed a pall for the hero Laertes, against the time when death shall take him.
+
+==== make-pages.sh questions
+==== make-pages.sh search
+==== make-pages.sh topic modeling corpus
+
+Zipping study carrel

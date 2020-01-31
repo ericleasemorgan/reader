@@ -1,0 +1,1378 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Distant Reader</title>
+
+	<!-- Bootstrap CSS files-->
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+
+	<!-- jQuery Javascript Library -->
+	<script src="../js/jquery.min.js"></script>
+	
+	<!-- Bootstrap Library -->
+	<script src="../js/bootstrap.min.js"></script>
+
+	<!-- Local Javascript add on -->
+	<script src="../js/main.js" type="text/javascript"></script>
+
+	<!-- Font Awesome Web Icons -->
+	<link rel="stylesheet" href="../css/font-awesome.min.css">
+
+	<!-- custom local css file -->
+	<link rel="stylesheet" href="../css/main.css">
+
+	<!-- data tables -->
+	<link   rel="stylesheet"       type="text/css"       href="../css/jquery.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="../js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" class="init">
+		$(document).ready(function() { $('#tsv').DataTable( {
+        "order": [[ 2, "desc" ]],
+        "pageLength": 10
+    } ); } );
+	</script>
+</head>
+<body>
+	<nav class="navbar yamm navbar-inverse navbar-fixed-top">
+		 <div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
+								 class="icon-bar"></span><span class="icon-bar"></span></button>
+					 <h1><a class="navbar-brand" href="https://distantreader.org/">Distant Reader</a></h1>
+				</div> <!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					 <ul class="nav navbar-nav navbar-right">
+
+							<li class="dropdown" id="grams-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ngrams <span class="caret"></span></a>
+								 <ul class="dropdown-menu">
+										<li><a href="unigrams.htm">Unigrams</a></li>
+										<li><a href="bigrams.htm">Bigrams</a></li>
+										<li><a href="trigrams.htm">Trigrams</a></li>
+										<li><a href="quadgrams.htm">Quadgrams</a></li>
+								 </ul>
+							</li>
+							<li class="dropdown" id="pos-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">POS <span class="caret"></span></a>
+								 <ul class="dropdown-menu">
+										<li><a href="nouns.htm">Nouns</a></li>
+										<li><a href="verbs.htm">Verbs</a></li>
+										<li><a href="adjectives.htm">Adjectives</a></li>
+										<li><a href="adverbs.htm">Adverbs</a></li>
+										<li><a href="pronouns.htm">Pronouns</a></li>
+										<li><a href="proper-nouns.htm">Proper nouns</a></li>
+								 </ul>
+							</li>
+							<li class="dropdown" id="grammar-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grammars <span class="caret"></span></a>
+								 <ul class="dropdown-menu">
+										<li><a href="noun-verb.htm">Noun – Verb</a></li>
+										<li><a href="adjective-noun.htm">Adjective – Noun</a></li>
+										<li><a href="questions.htm">Questions</a></li>
+								 </ul>
+							</li>
+							<li class="dropdown" id="miscellaneous-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Other <span class="caret"></span></a>
+								 <ul class="dropdown-menu">
+										<li><a href="bibliographics.htm">Bibliographics</a></li>
+										<li><a href="keywords.htm">Keywords</a></li>
+										<li><a href="entities.htm">Named entities</a></li>
+										<li><a href="search.htm">Search (experimental)</a></li>
+										<li><a href="topic-model.htm">Topic model (experimental)</a></li>
+								 </ul>
+							</li>
+					 </ul>
+				</div><!-- /.navbar-collapse -->
+		 </div>
+	</nav>
+
+	<div class="container subpage">
+
+		<nav aria-label="breadcrumb">
+		<ol class="breadcrumb ">
+			<li class="breadcrumb-item">
+				<a href="../index.htm">Home</a>
+			</li>
+			<li class="breadcrumb-item active" aria-current="page">Named entities</li>
+		</ol>
+	</nav>
+
+
+<h1>Named entities</h1>
+<p>This is a table of named entities, their types, and their frequencies from sentences in your study carrel. Use it to search &amp; browse the list to learn more about your study carrel. Please keep in mind that named-entity extraction is not as accurate as more generic parts-of-speech extraction. Unusual results will appear here.</p>
+
+<table id="tsv" class="display">
+        <thead>
+            <tr>
+                <th>entity</th>
+                <th>type</th>
+                <th>frequency</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr><td>achaeans</td><td>ORG</td><td>466</td></tr>
+<tr><td>jove</td><td>PERSON</td><td>458</td></tr>
+<tr><td>achilles</td><td>PERSON</td><td>434</td></tr>
+<tr><td>hector</td><td>ORG</td><td>287</td></tr>
+<tr><td>minerva</td><td>PERSON</td><td>277</td></tr>
+<tr><td>telemachus</td><td>PERSON</td><td>251</td></tr>
+<tr><td>agamemnon</td><td>GPE</td><td>232</td></tr>
+<tr><td>priam</td><td>PERSON</td><td>189</td></tr>
+<tr><td>argives</td><td>ORG</td><td>156</td></tr>
+<tr><td>troy</td><td>PERSON</td><td>141</td></tr>
+<tr><td>patroclus</td><td>ORG</td><td>129</td></tr>
+<tr><td>mars</td><td>LOC</td><td>127</td></tr>
+<tr><td>atreus</td><td>PERSON</td><td>127</td></tr>
+<tr><td>juno</td><td>PERSON</td><td>125</td></tr>
+<tr><td>apollo</td><td>ORG</td><td>121</td></tr>
+<tr><td>neptune</td><td>LOC</td><td>113</td></tr>
+<tr><td>peleus</td><td>PERSON</td><td>112</td></tr>
+<tr><td>nestor</td><td>ORG</td><td>104</td></tr>
+<tr><td>olympus</td><td>PERSON</td><td>99</td></tr>
+<tr><td>ilius</td><td>GPE</td><td>92</td></tr>
+<tr><td>ithaca</td><td>PERSON</td><td>88</td></tr>
+<tr><td>danaans</td><td>PERSON</td><td>81</td></tr>
+<tr><td>penelope</td><td>PERSON</td><td>79</td></tr>
+<tr><td>tydeus</td><td>GPE</td><td>78</td></tr>
+<tr><td>hades</td><td>ORG</td><td>74</td></tr>
+<tr><td>menelaus</td><td>ORG</td><td>68</td></tr>
+<tr><td>eumaeus</td><td>PERSON</td><td>62</td></tr>
+<tr><td>idomeneus</td><td>PERSON</td><td>62</td></tr>
+<tr><td>helen</td><td>PERSON</td><td>61</td></tr>
+<tr><td>ajax</td><td>PERSON</td><td>57</td></tr>
+<tr><td>vulcan</td><td>GPE</td><td>57</td></tr>
+<tr><td>diomed</td><td>PERSON</td><td>49</td></tr>
+<tr><td>pylos</td><td>PERSON</td><td>47</td></tr>
+<tr><td>thetis</td><td>PERSON</td><td>46</td></tr>
+<tr><td>telamon</td><td>ORG</td><td>46</td></tr>
+<tr><td>saturn</td><td>GPE</td><td>46</td></tr>
+<tr><td>sarpedon</td><td>PERSON</td><td>46</td></tr>
+<tr><td>mercury</td><td>ORG</td><td>46</td></tr>
+<tr><td>laertes</td><td>PERSON</td><td>46</td></tr>
+<tr><td>argos</td><td>GPE</td><td>45</td></tr>
+<tr><td>trojans</td><td>ORG</td><td>45</td></tr>
+<tr><td>trojan</td><td>GPE</td><td>44</td></tr>
+<tr><td>aeneas</td><td>GPE</td><td>42</td></tr>
+<tr><td>ida</td><td>PERSON</td><td>38</td></tr>
+<tr><td>iris</td><td>PERSON</td><td>38</td></tr>
+<tr><td>venus</td><td>LOC</td><td>35</td></tr>
+<tr><td>oceanus</td><td>ORG</td><td>34</td></tr>
+<tr><td>phoebus apollo</td><td>ORG</td><td>33</td></tr>
+<tr><td>menoetius</td><td>PERSON</td><td>32</td></tr>
+<tr><td>euryclea</td><td>PERSON</td><td>32</td></tr>
+<tr><td>polydamas</td><td>ORG</td><td>31</td></tr>
+<tr><td>myrmidons</td><td>PERSON</td><td>30</td></tr>
+<tr><td>neleus</td><td>LOC</td><td>29</td></tr>
+<tr><td>dawn</td><td>PERSON</td><td>28</td></tr>
+<tr><td>diana</td><td>PERSON</td><td>27</td></tr>
+<tr><td>calypso</td><td>PERSON</td><td>25</td></tr>
+<tr><td>deiphobus</td><td>GPE</td><td>25</td></tr>
+<tr><td>antenor</td><td>ORG</td><td>24</td></tr>
+<tr><td>eurymachus</td><td>PERSON</td><td>24</td></tr>
+<tr><td>pisistratus</td><td>GPE</td><td>23</td></tr>
+<tr><td>hercules</td><td>GPE</td><td>23</td></tr>
+<tr><td>earth</td><td>LOC</td><td>22</td></tr>
+<tr><td>paris</td><td>GPE</td><td>22</td></tr>
+<tr><td>pallas minerva</td><td>PERSON</td><td>22</td></tr>
+<tr><td>glaucus</td><td>GPE</td><td>21</td></tr>
+<tr><td>lycia</td><td>GPE</td><td>20</td></tr>
+<tr><td>mentor</td><td>ORG</td><td>20</td></tr>
+<tr><td>aeacus</td><td>GPE</td><td>19</td></tr>
+<tr><td>automedon</td><td>PERSON</td><td>19</td></tr>
+<tr><td>lycaon</td><td>PERSON</td><td>19</td></tr>
+<tr><td>melanthius</td><td>GPE</td><td>19</td></tr>
+<tr><td>xanthus</td><td>PERSON</td><td>18</td></tr>
+<tr><td>cyclops</td><td>ORG</td><td>17</td></tr>
+<tr><td>medon</td><td>ORG</td><td>16</td></tr>
+<tr><td>thebes</td><td>PERSON</td><td>16</td></tr>
+<tr><td>aegisthus</td><td>PERSON</td><td>16</td></tr>
+<tr><td>asius</td><td>PERSON</td><td>16</td></tr>
+<tr><td>alexandrus</td><td>PERSON</td><td>16</td></tr>
+<tr><td>demodocus</td><td>PERSON</td><td>15</td></tr>
+<tr><td>teiresias</td><td>PERSON</td><td>15</td></tr>
+<tr><td>phthia</td><td>GPE</td><td>15</td></tr>
+<tr><td>gerene</td><td>ORG</td><td>15</td></tr>
+<tr><td>ulysses</td><td>ORG</td><td>15</td></tr>
+<tr><td>dardanus</td><td>PERSON</td><td>15</td></tr>
+<tr><td>crete</td><td>ORG</td><td>15</td></tr>
+<tr><td>circe</td><td>GPE</td><td>15</td></tr>
+<tr><td>autolycus</td><td>GPE</td><td>15</td></tr>
+<tr><td>lacedaemon</td><td>GPE</td><td>14</td></tr>
+<tr><td>machaon</td><td>ORG</td><td>14</td></tr>
+<tr><td>mt.</td><td>LOC</td><td>14</td></tr>
+<tr><td>phoenix</td><td>GPE</td><td>14</td></tr>
+<tr><td>scylla</td><td>PERSON</td><td>14</td></tr>
+<tr><td>thoas</td><td>PERSON</td><td>14</td></tr>
+<tr><td>argus</td><td>ORG</td><td>13</td></tr>
+<tr><td>bellerophon</td><td>ORG</td><td>13</td></tr>
+<tr><td>eurylochus</td><td>PERSON</td><td>13</td></tr>
+<tr><td>helenus</td><td>PERSON</td><td>12</td></tr>
+<tr><td>nausicaa</td><td>PERSON</td><td>12</td></tr>
+<tr><td>leto</td><td>PERSON</td><td>12</td></tr>
+<tr><td>cebriones</td><td>GPE</td><td>12</td></tr>
+<tr><td>dolon</td><td>PERSON</td><td>12</td></tr>
+<tr><td>west</td><td>LOC</td><td>11</td></tr>
+<tr><td>laomedon</td><td>GPE</td><td>11</td></tr>
+<tr><td>me--</td><td>ORG</td><td>11</td></tr>
+<tr><td>polybus</td><td>GPE</td><td>11</td></tr>
+<tr><td>north</td><td>PERSON</td><td>11</td></tr>
+<tr><td>philoetius</td><td>PERSON</td><td>11</td></tr>
+<tr><td>hellespont</td><td>GPE</td><td>11</td></tr>
+<tr><td>elis</td><td>GPE</td><td>11</td></tr>
+<tr><td>egypt</td><td>GPE</td><td>11</td></tr>
+<tr><td>danaan</td><td>PERSON</td><td>11</td></tr>
+<tr><td>briseis</td><td>PERSON</td><td>11</td></tr>
+<tr><td>ajaxes</td><td>ORG</td><td>10</td></tr>
+<tr><td>asteropaeus</td><td>ORG</td><td>10</td></tr>
+<tr><td>icarius</td><td>GPE</td><td>10</td></tr>
+<tr><td>pandarus</td><td>PERSON</td><td>10</td></tr>
+<tr><td>sparta</td><td>GPE</td><td>10</td></tr>
+<tr><td>theoclymenus</td><td>PERSON</td><td>10</td></tr>
+<tr><td>thrasymedes</td><td>PERSON</td><td>9</td></tr>
+<tr><td>eurypylus</td><td>ORG</td><td>9</td></tr>
+<tr><td>sirens</td><td>PERSON</td><td>9</td></tr>
+<tr><td>meges</td><td>ORG</td><td>9</td></tr>
+<tr><td>dolius</td><td>ORG</td><td>9</td></tr>
+<tr><td>amphinomus</td><td>ORG</td><td>9</td></tr>
+<tr><td>agelaus</td><td>ORG</td><td>9</td></tr>
+<tr><td>agenor</td><td>ORG</td><td>9</td></tr>
+<tr><td>oeneus</td><td>PERSON</td><td>8</td></tr>
+<tr><td>it--</td><td>ORG</td><td>8</td></tr>
+<tr><td>tlepolemus</td><td>GPE</td><td>8</td></tr>
+<tr><td>thrice</td><td>PERSON</td><td>8</td></tr>
+<tr><td>teucer</td><td>PERSON</td><td>8</td></tr>
+<tr><td>talthybius</td><td>ORG</td><td>8</td></tr>
+<tr><td>protesilaus</td><td>PERSON</td><td>8</td></tr>
+<tr><td>phemius</td><td>PERSON</td><td>8</td></tr>
+<tr><td>peneleos</td><td>ORG</td><td>8</td></tr>
+<tr><td>melanippus</td><td>PERSON</td><td>8</td></tr>
+<tr><td>king apollo</td><td>ORG</td><td>8</td></tr>
+<tr><td>iphitus</td><td>ORG</td><td>8</td></tr>
+<tr><td>hellas</td><td>GPE</td><td>8</td></tr>
+<tr><td>hecuba</td><td>GPE</td><td>8</td></tr>
+<tr><td>euphorbus</td><td>ORG</td><td>8</td></tr>
+<tr><td>cicons</td><td>PERSON</td><td>8</td></tr>
+<tr><td>argive</td><td>ORG</td><td>8</td></tr>
+<tr><td>antinous</td><td>PERSON</td><td>8</td></tr>
+<tr><td>polyphemus</td><td>PERSON</td><td>7</td></tr>
+<tr><td>noman</td><td>PERSON</td><td>7</td></tr>
+<tr><td>pisander</td><td>GPE</td><td>7</td></tr>
+<tr><td>hyrtacus</td><td>GPE</td><td>7</td></tr>
+<tr><td>queen penelope</td><td>PERSON</td><td>7</td></tr>
+<tr><td>simois</td><td>GPE</td><td>7</td></tr>
+<tr><td>lycian</td><td>GPE</td><td>7</td></tr>
+<tr><td>mecisteus</td><td>ORG</td><td>7</td></tr>
+<tr><td>acamas</td><td>PERSON</td><td>7</td></tr>
+<tr><td>laodamas</td><td>ORG</td><td>7</td></tr>
+<tr><td>andromache</td><td>ORG</td><td>7</td></tr>
+<tr><td>adrestus</td><td>PERSON</td><td>7</td></tr>
+<tr><td>king neptune</td><td>ORG</td><td>7</td></tr>
+<tr><td>arete</td><td>PERSON</td><td>7</td></tr>
+<tr><td>chromius</td><td>ORG</td><td>7</td></tr>
+<tr><td>zacynthus</td><td>PERSON</td><td>6</td></tr>
+<tr><td>stranger</td><td>PERSON</td><td>6</td></tr>
+<tr><td>euaemon</td><td>ORG</td><td>6</td></tr>
+<tr><td>rout</td><td>PERSON</td><td>6</td></tr>
+<tr><td>phylace</td><td>PERSON</td><td>6</td></tr>
+<tr><td>pergamus</td><td>ORG</td><td>6</td></tr>
+<tr><td>orsilochus</td><td>ORG</td><td>6</td></tr>
+<tr><td>orestes</td><td>PERSON</td><td>6</td></tr>
+<tr><td>mycene</td><td>PERSON</td><td>6</td></tr>
+<tr><td>minos</td><td>ORG</td><td>6</td></tr>
+<tr><td>south</td><td>LOC</td><td>6</td></tr>
+<tr><td>lemnos</td><td>ORG</td><td>6</td></tr>
+<tr><td>erinyes</td><td>ORG</td><td>6</td></tr>
+<tr><td>calchas</td><td>GPE</td><td>6</td></tr>
+<tr><td>aesculapius</td><td>ORG</td><td>6</td></tr>
+<tr><td>erebus</td><td>ORG</td><td>6</td></tr>
+<tr><td>amphimachus</td><td>ORG</td><td>6</td></tr>
+<tr><td>athens</td><td>GPE</td><td>6</td></tr>
+<tr><td>alcimedon</td><td>GPE</td><td>6</td></tr>
+<tr><td>capaneus</td><td>ORG</td><td>6</td></tr>
+<tr><td>dardanian</td><td>PERSON</td><td>6</td></tr>
+<tr><td>east</td><td>LOC</td><td>6</td></tr>
+<tr><td>eetion</td><td>ORG</td><td>6</td></tr>
+<tr><td>parnassus</td><td>ORG</td><td>5</td></tr>
+<tr><td>lesbos</td><td>GPE</td><td>5</td></tr>
+<tr><td>locrians</td><td>ORG</td><td>5</td></tr>
+<tr><td>lycomedes</td><td>PERSON</td><td>5</td></tr>
+<tr><td>megapenthes</td><td>ORG</td><td>5</td></tr>
+<tr><td>noemon</td><td>PERSON</td><td>5</td></tr>
+<tr><td>oileus</td><td>GPE</td><td>5</td></tr>
+<tr><td>olympian jove</td><td>PERSON</td><td>5</td></tr>
+<tr><td>jason</td><td>ORG</td><td>5</td></tr>
+<tr><td>phoebus</td><td>ORG</td><td>5</td></tr>
+<tr><td>phrygia</td><td>PERSON</td><td>5</td></tr>
+<tr><td>polydorus</td><td>PERSON</td><td>5</td></tr>
+<tr><td>queen juno</td><td>PERSON</td><td>5</td></tr>
+<tr><td>sleep</td><td>ORG</td><td>5</td></tr>
+<tr><td>telemachus</td><td>ORG</td><td>5</td></tr>
+<tr><td>tenedos</td><td>PERSON</td><td>5</td></tr>
+<tr><td>leitus</td><td>ORG</td><td>5</td></tr>
+<tr><td>theban</td><td>PERSON</td><td>5</td></tr>
+<tr><td>hippasus</td><td>PERSON</td><td>5</td></tr>
+<tr><td>calydon</td><td>PERSON</td><td>5</td></tr>
+<tr><td>halitherses</td><td>GPE</td><td>5</td></tr>
+<tr><td>alcmena</td><td>ORG</td><td>5</td></tr>
+<tr><td>andraemon</td><td>ORG</td><td>5</td></tr>
+<tr><td>antilochus</td><td>PERSON</td><td>5</td></tr>
+<tr><td>antimachus</td><td>ORG</td><td>5</td></tr>
+<tr><td>aretus</td><td>ORG</td><td>5</td></tr>
+<tr><td>ascalaphus</td><td>ORG</td><td>5</td></tr>
+<tr><td>amphimedon</td><td>PERSON</td><td>5</td></tr>
+<tr><td>ceres</td><td>PERSON</td><td>5</td></tr>
+<tr><td>chryseis</td><td>PERSON</td><td>5</td></tr>
+<tr><td>clytius</td><td>PERSON</td><td>5</td></tr>
+<tr><td>dodona</td><td>ORG</td><td>5</td></tr>
+<tr><td>dulichium</td><td>GPE</td><td>5</td></tr>
+<tr><td>eurytus</td><td>ORG</td><td>5</td></tr>
+<tr><td>chryse</td><td>PERSON</td><td>5</td></tr>
+<tr><td>niobe</td><td>ORG</td><td>4</td></tr>
+<tr><td>phylacus</td><td>GPE</td><td>4</td></tr>
+<tr><td>philoctetes</td><td>ORG</td><td>4</td></tr>
+<tr><td>peteos</td><td>GPE</td><td>4</td></tr>
+<tr><td>orion</td><td>PERSON</td><td>4</td></tr>
+<tr><td>orchomenus</td><td>GPE</td><td>4</td></tr>
+<tr><td>mycenae</td><td>LOC</td><td>4</td></tr>
+<tr><td>neritum</td><td>ORG</td><td>4</td></tr>
+<tr><td>nausithous</td><td>ORG</td><td>4</td></tr>
+<tr><td>mulius</td><td>GPE</td><td>4</td></tr>
+<tr><td>lycurgus</td><td>ORG</td><td>4</td></tr>
+<tr><td>polyctor</td><td>ORG</td><td>4</td></tr>
+<tr><td>pleuron</td><td>PERSON</td><td>4</td></tr>
+<tr><td>stand</td><td>GPE</td><td>4</td></tr>
+<tr><td>proteus</td><td>ORG</td><td>4</td></tr>
+<tr><td>pytho</td><td>GPE</td><td>4</td></tr>
+<tr><td>samos</td><td>PERSON</td><td>4</td></tr>
+<tr><td>scheria</td><td>GPE</td><td>4</td></tr>
+<tr><td>selleis</td><td>PERSON</td><td>4</td></tr>
+<tr><td>simoeisius</td><td>PERSON</td><td>4</td></tr>
+<tr><td>socus</td><td>PERSON</td><td>4</td></tr>
+<tr><td>leonteus</td><td>PERSON</td><td>4</td></tr>
+<tr><td>strife</td><td>ORG</td><td>4</td></tr>
+<tr><td>sun</td><td>PERSON</td><td>4</td></tr>
+<tr><td>thoon</td><td>PERSON</td><td>4</td></tr>
+<tr><td>thracians</td><td>LOC</td><td>4</td></tr>
+<tr><td>lotus-</td><td>ORG</td><td>4</td></tr>
+<tr><td>ormenus</td><td>GPE</td><td>4</td></tr>
+<tr><td>laodice</td><td>ORG</td><td>4</td></tr>
+<tr><td>clytemnestra</td><td>ORG</td><td>4</td></tr>
+<tr><td>lampus</td><td>PERSON</td><td>4</td></tr>
+<tr><td>achaean argos</td><td>PERSON</td><td>4</td></tr>
+<tr><td>admetus</td><td>ORG</td><td>4</td></tr>
+<tr><td>aeolus</td><td>GPE</td><td>4</td></tr>
+<tr><td>aesopus</td><td>PERSON</td><td>4</td></tr>
+<tr><td>alcinous</td><td>ORG</td><td>4</td></tr>
+<tr><td>amphitrite</td><td>ORG</td><td>4</td></tr>
+<tr><td>arceisius</td><td>PERSON</td><td>4</td></tr>
+<tr><td>arisbe</td><td>PERSON</td><td>4</td></tr>
+<tr><td>axius</td><td>PERSON</td><td>4</td></tr>
+<tr><td>bacchus</td><td>GPE</td><td>4</td></tr>
+<tr><td>buprasium</td><td>GPE</td><td>4</td></tr>
+<tr><td>chiron</td><td>ORG</td><td>4</td></tr>
+<tr><td>antiphus</td><td>PERSON</td><td>4</td></tr>
+<tr><td>ctesippus</td><td>PERSON</td><td>4</td></tr>
+<tr><td>eurystheus</td><td>ORG</td><td>4</td></tr>
+<tr><td>imbrius</td><td>ORG</td><td>4</td></tr>
+<tr><td>ithaca</td><td>PERSON</td><td>4</td></tr>
+<tr><td>diocles</td><td>PERSON</td><td>4</td></tr>
+<tr><td>hush</td><td>PERSON</td><td>4</td></tr>
+<tr><td>graces</td><td>PERSON</td><td>4</td></tr>
+<tr><td>hiketaon</td><td>ORG</td><td>4</td></tr>
+<tr><td>eurymedon</td><td>ORG</td><td>4</td></tr>
+<tr><td>eurybates</td><td>ORG</td><td>4</td></tr>
+<tr><td>eupeithes</td><td>PERSON</td><td>4</td></tr>
+<tr><td>diores</td><td>PERSON</td><td>4</td></tr>
+<tr><td>periphas</td><td>GPE</td><td>3</td></tr>
+<tr><td>otrynteus</td><td>GPE</td><td>3</td></tr>
+<tr><td>pelias</td><td>ORG</td><td>3</td></tr>
+<tr><td>pelegon</td><td>GPE</td><td>3</td></tr>
+<tr><td>phaestus</td><td>ORG</td><td>3</td></tr>
+<tr><td>pelasgi</td><td>GPE</td><td>3</td></tr>
+<tr><td>panic</td><td>ORG</td><td>3</td></tr>
+<tr><td>otus</td><td>ORG</td><td>3</td></tr>
+<tr><td>meonia</td><td>PERSON</td><td>3</td></tr>
+<tr><td>ortilochus</td><td>PERSON</td><td>3</td></tr>
+<tr><td>neoptolemus</td><td>ORG</td><td>3</td></tr>
+<tr><td>muses</td><td>ORG</td><td>3</td></tr>
+<tr><td>minerva</td><td>PERSON</td><td>3</td></tr>
+<tr><td>lycon</td><td>GPE</td><td>3</td></tr>
+<tr><td>pheidon</td><td>PERSON</td><td>3</td></tr>
+<tr><td>libya</td><td>GPE</td><td>3</td></tr>
+<tr><td>phegeus</td><td>PERSON</td><td>3</td></tr>
+<tr><td>zephyrus</td><td>ORG</td><td>3</td></tr>
+<tr><td>pheres</td><td>PERSON</td><td>3</td></tr>
+<tr><td>sidon</td><td>PERSON</td><td>3</td></tr>
+<tr><td>isus</td><td>PERSON</td><td>3</td></tr>
+<tr><td>vineyards</td><td>GPE</td><td>3</td></tr>
+<tr><td>so--</td><td>ORG</td><td>3</td></tr>
+<tr><td>men--</td><td>PERSON</td><td>3</td></tr>
+<tr><td>him--</td><td>PERSON</td><td>3</td></tr>
+<tr><td>thersites</td><td>ORG</td><td>3</td></tr>
+<tr><td>solymi</td><td>ORG</td><td>3</td></tr>
+<tr><td>sicel</td><td>ORG</td><td>3</td></tr>
+<tr><td>phoenicia</td><td>PERSON</td><td>3</td></tr>
+<tr><td>scamander</td><td>ORG</td><td>3</td></tr>
+<tr><td>satnioeis</td><td>PERSON</td><td>3</td></tr>
+<tr><td>suitors</td><td>PERSON</td><td>3</td></tr>
+<tr><td>rhadamanthus</td><td>ORG</td><td>3</td></tr>
+<tr><td>pylus</td><td>GPE</td><td>3</td></tr>
+<tr><td>polyidus</td><td>ORG</td><td>3</td></tr>
+<tr><td>podarces</td><td>ORG</td><td>3</td></tr>
+<tr><td>king priam</td><td>PERSON</td><td>3</td></tr>
+<tr><td>minerva--</td><td>ORG</td><td>3</td></tr>
+<tr><td>ino</td><td>ORG</td><td>3</td></tr>
+<tr><td>anchialus</td><td>PERSON</td><td>3</td></tr>
+<tr><td>cnossus</td><td>PERSON</td><td>3</td></tr>
+<tr><td>castor</td><td>PERSON</td><td>3</td></tr>
+<tr><td>cassandra</td><td>ORG</td><td>3</td></tr>
+<tr><td>boreas</td><td>ORG</td><td>3</td></tr>
+<tr><td>bias</td><td>PERSON</td><td>3</td></tr>
+<tr><td>augeas</td><td>GPE</td><td>3</td></tr>
+<tr><td>atlas</td><td>PERSON</td><td>3</td></tr>
+<tr><td>amphitryon</td><td>PERSON</td><td>3</td></tr>
+<tr><td>curetes</td><td>LOC</td><td>3</td></tr>
+<tr><td>aethe</td><td>ORG</td><td>3</td></tr>
+<tr><td>aegae</td><td>GPE</td><td>3</td></tr>
+<tr><td>achilles--</td><td>ORG</td><td>3</td></tr>
+<tr><td>abydos</td><td>GPE</td><td>3</td></tr>
+<tr><td>abantes</td><td>PERSON</td><td>3</td></tr>
+<tr><td>aeneas</td><td>ORG</td><td>3</td></tr>
+<tr><td>imbrus</td><td>GPE</td><td>3</td></tr>
+<tr><td>cos</td><td>ORG</td><td>3</td></tr>
+<tr><td>astyanax</td><td>PERSON</td><td>3</td></tr>
+<tr><td>cyclopes</td><td>GPE</td><td>3</td></tr>
+<tr><td>ereuthalion</td><td>PERSON</td><td>3</td></tr>
+<tr><td>cyllene</td><td>GPE</td><td>3</td></tr>
+<tr><td>iasus</td><td>ORG</td><td>3</td></tr>
+<tr><td>hypereia</td><td>ORG</td><td>3</td></tr>
+<tr><td>haemon</td><td>GPE</td><td>3</td></tr>
+<tr><td>gorgon</td><td>PERSON</td><td>3</td></tr>
+<tr><td>folly</td><td>PERSON</td><td>3</td></tr>
+<tr><td>euboea</td><td>PERSON</td><td>3</td></tr>
+<tr><td>eurynome</td><td>PERSON</td><td>3</td></tr>
+<tr><td>enops</td><td>ORG</td><td>3</td></tr>
+<tr><td>echius</td><td>ORG</td><td>3</td></tr>
+<tr><td>echetus</td><td>ORG</td><td>3</td></tr>
+<tr><td>echeclus</td><td>ORG</td><td>3</td></tr>
+<tr><td>earth</td><td>LOC</td><td>3</td></tr>
+<tr><td>dardanians</td><td>PERSON</td><td>3</td></tr>
+<tr><td>cythera</td><td>GPE</td><td>3</td></tr>
+<tr><td>melantho</td><td>GPE</td><td>2</td></tr>
+<tr><td>naubolus</td><td>GPE</td><td>2</td></tr>
+<tr><td>meleager</td><td>ORG</td><td>2</td></tr>
+<tr><td>menestheus</td><td>GPE</td><td>2</td></tr>
+<tr><td>merops of percote</td><td>ORG</td><td>2</td></tr>
+<tr><td>morys</td><td>ORG</td><td>2</td></tr>
+<tr><td>mount ida</td><td>LOC</td><td>2</td></tr>
+<tr><td>mydon</td><td>PERSON</td><td>2</td></tr>
+<tr><td>ortygia</td><td>GPE</td><td>2</td></tr>
+<tr><td>nereus</td><td>GPE</td><td>2</td></tr>
+<tr><td>nestor of gerene</td><td>ORG</td><td>2</td></tr>
+<tr><td>nisus</td><td>PERSON</td><td>2</td></tr>
+<tr><td>odius</td><td>PERSON</td><td>2</td></tr>
+<tr><td>oechalia</td><td>GPE</td><td>2</td></tr>
+<tr><td>oenops</td><td>ORG</td><td>2</td></tr>
+<tr><td>opheltius</td><td>ORG</td><td>2</td></tr>
+<tr><td>paeon</td><td>ORG</td><td>2</td></tr>
+<tr><td>malea</td><td>PERSON</td><td>2</td></tr>
+<tr><td>marpessa</td><td>PERSON</td><td>2</td></tr>
+<tr><td>idiot</td><td>PERSON</td><td>2</td></tr>
+<tr><td>maeon</td><td>ORG</td><td>2</td></tr>
+<tr><td>lampetie</td><td>ORG</td><td>2</td></tr>
+<tr><td>iamenus</td><td>ORG</td><td>2</td></tr>
+<tr><td>iardanus</td><td>ORG</td><td>2</td></tr>
+<tr><td>peirithous</td><td>PERSON</td><td>2</td></tr>
+<tr><td>ilithuia</td><td>ORG</td><td>2</td></tr>
+<tr><td>iphianassa</td><td>ORG</td><td>2</td></tr>
+<tr><td>iphiclus</td><td>GPE</td><td>2</td></tr>
+<tr><td>ismarus</td><td>ORG</td><td>2</td></tr>
+<tr><td>king agamemnon</td><td>ORG</td><td>2</td></tr>
+<tr><td>laodocus</td><td>GPE</td><td>2</td></tr>
+<tr><td>madman</td><td>GPE</td><td>2</td></tr>
+<tr><td>lapithae</td><td>PERSON</td><td>2</td></tr>
+<tr><td>leiocritus</td><td>ORG</td><td>2</td></tr>
+<tr><td>leiodes</td><td>ORG</td><td>2</td></tr>
+<tr><td>lelegae</td><td>PERSON</td><td>2</td></tr>
+<tr><td>leucus</td><td>GPE</td><td>2</td></tr>
+<tr><td>lycian apollo</td><td>PERSON</td><td>2</td></tr>
+<tr><td>lyctus</td><td>ORG</td><td>2</td></tr>
+<tr><td>lyrnessus</td><td>ORG</td><td>2</td></tr>
+<tr><td>panopeus</td><td>ORG</td><td>2</td></tr>
+<tr><td>sisyphus</td><td>PERSON</td><td>2</td></tr>
+<tr><td>pelops</td><td>GPE</td><td>2</td></tr>
+<tr><td>titaresius</td><td>GPE</td><td>2</td></tr>
+<tr><td>talaus</td><td>ORG</td><td>2</td></tr>
+<tr><td>taphian</td><td>ORG</td><td>2</td></tr>
+<tr><td>tecton</td><td>GPE</td><td>2</td></tr>
+<tr><td>tethys</td><td>PERSON</td><td>2</td></tr>
+<tr><td>thebe</td><td>GPE</td><td>2</td></tr>
+<tr><td>theseus</td><td>PERSON</td><td>2</td></tr>
+<tr><td>thootes</td><td>ORG</td><td>2</td></tr>
+<tr><td>thyestes</td><td>GPE</td><td>2</td></tr>
+<tr><td>tithonus</td><td>GPE</td><td>2</td></tr>
+<tr><td>peneus</td><td>ORG</td><td>2</td></tr>
+<tr><td>tityus</td><td>ORG</td><td>2</td></tr>
+<tr><td>tricca</td><td>GPE</td><td>2</td></tr>
+<tr><td>tydeus, ulysses</td><td>ORG</td><td>2</td></tr>
+<tr><td>tyro</td><td>ORG</td><td>2</td></tr>
+<tr><td>zelea</td><td>GPE</td><td>2</td></tr>
+<tr><td>zethus</td><td>PERSON</td><td>2</td></tr>
+<tr><td>go--</td><td>ORG</td><td>2</td></tr>
+<tr><td>hypsenor</td><td>GPE</td><td>2</td></tr>
+<tr><td>styx</td><td>PERSON</td><td>2</td></tr>
+<tr><td>stratius</td><td>PERSON</td><td>2</td></tr>
+<tr><td>stockman</td><td>ORG</td><td>2</td></tr>
+<tr><td>sthenelus</td><td>PERSON</td><td>2</td></tr>
+<tr><td>periboea</td><td>PERSON</td><td>2</td></tr>
+<tr><td>phorbas</td><td>GPE</td><td>2</td></tr>
+<tr><td>phorcys</td><td>PERSON</td><td>2</td></tr>
+<tr><td>phronius</td><td>PERSON</td><td>2</td></tr>
+<tr><td>phylas</td><td>PERSON</td><td>2</td></tr>
+<tr><td>pieria</td><td>GPE</td><td>2</td></tr>
+<tr><td>piraeus</td><td>ORG</td><td>2</td></tr>
+<tr><td>podalirius</td><td>ORG</td><td>2</td></tr>
+<tr><td>pollux</td><td>PERSON</td><td>2</td></tr>
+<tr><td>polynices</td><td>ORG</td><td>2</td></tr>
+<tr><td>pteleum</td><td>PERSON</td><td>2</td></tr>
+<tr><td>pyrasus</td><td>ORG</td><td>2</td></tr>
+<tr><td>rhexenor</td><td>GPE</td><td>2</td></tr>
+<tr><td>salamis</td><td>GPE</td><td>2</td></tr>
+<tr><td>sangarius</td><td>PERSON</td><td>2</td></tr>
+<tr><td>semele</td><td>PERSON</td><td>2</td></tr>
+<tr><td>spercheius</td><td>ORG</td><td>2</td></tr>
+<tr><td>ialmenus</td><td>GPE</td><td>2</td></tr>
+<tr><td>iolcus</td><td>GPE</td><td>2</td></tr>
+<tr><td>hyperion</td><td>GPE</td><td>2</td></tr>
+<tr><td>automedon and alcimus</td><td>ORG</td><td>2</td></tr>
+<tr><td>argive helen</td><td>PERSON</td><td>2</td></tr>
+<tr><td>ariadne</td><td>PERSON</td><td>2</td></tr>
+<tr><td>arne</td><td>PERSON</td><td>2</td></tr>
+<tr><td>ascania</td><td>GPE</td><td>2</td></tr>
+<tr><td>ascanius</td><td>ORG</td><td>2</td></tr>
+<tr><td>assaracus</td><td>ORG</td><td>2</td></tr>
+<tr><td>atymnius</td><td>ORG</td><td>2</td></tr>
+<tr><td>aulis</td><td>PERSON</td><td>2</td></tr>
+<tr><td>bathycles</td><td>LOC</td><td>2</td></tr>
+<tr><td>areilycus</td><td>GPE</td><td>2</td></tr>
+<tr><td>bear</td><td>ORG</td><td>2</td></tr>
+<tr><td>cadmus</td><td>ORG</td><td>2</td></tr>
+<tr><td>cardamyle</td><td>ORG</td><td>2</td></tr>
+<tr><td>cephissus</td><td>PERSON</td><td>2</td></tr>
+<tr><td>chalcodon</td><td>GPE</td><td>2</td></tr>
+<tr><td>charybdis</td><td>ORG</td><td>2</td></tr>
+<tr><td>chimaera</td><td>ORG</td><td>2</td></tr>
+<tr><td>chrysothemis</td><td>ORG</td><td>2</td></tr>
+<tr><td>arene</td><td>PERSON</td><td>2</td></tr>
+<tr><td>apisaon</td><td>ORG</td><td>2</td></tr>
+<tr><td>cleitus</td><td>ORG</td><td>2</td></tr>
+<tr><td>agastrophus</td><td>PERSON</td><td>2</td></tr>
+<tr><td>hyperesia</td><td>GPE</td><td>2</td></tr>
+<tr><td>adrastus</td><td>PERSON</td><td>2</td></tr>
+<tr><td>aeaean circe</td><td>ORG</td><td>2</td></tr>
+<tr><td>aegyptius</td><td>ORG</td><td>2</td></tr>
+<tr><td>aegyptus</td><td>ORG</td><td>2</td></tr>
+<tr><td>aepea</td><td>PERSON</td><td>2</td></tr>
+<tr><td>aesyetes</td><td>GPE</td><td>2</td></tr>
+<tr><td>aetolia</td><td>PERSON</td><td>2</td></tr>
+<tr><td>alalcomene</td><td>PERSON</td><td>2</td></tr>
+<tr><td>antiphates</td><td>ORG</td><td>2</td></tr>
+<tr><td>alcmaon</td><td>GPE</td><td>2</td></tr>
+<tr><td>amphialus</td><td>ORG</td><td>2</td></tr>
+<tr><td>amphion</td><td>PERSON</td><td>2</td></tr>
+<tr><td>amphius</td><td>GPE</td><td>2</td></tr>
+<tr><td>amydon</td><td>PERSON</td><td>2</td></tr>
+<tr><td>anchises</td><td>PERSON</td><td>2</td></tr>
+<tr><td>anthea</td><td>PERSON</td><td>2</td></tr>
+<tr><td>anthemion</td><td>PERSON</td><td>2</td></tr>
+<tr><td>cilla</td><td>PERSON</td><td>2</td></tr>
+<tr><td>aretias</td><td>ORG</td><td>2</td></tr>
+<tr><td>cleopatra</td><td>PERSON</td><td>2</td></tr>
+<tr><td>halius</td><td>ORG</td><td>2</td></tr>
+<tr><td>enyo</td><td>PERSON</td><td>2</td></tr>
+<tr><td>epicles</td><td>ORG</td><td>2</td></tr>
+<tr><td>erechtheus</td><td>PERSON</td><td>2</td></tr>
+<tr><td>eriopis</td><td>PERSON</td><td>2</td></tr>
+<tr><td>erymas</td><td>ORG</td><td>2</td></tr>
+<tr><td>eumelus</td><td>PERSON</td><td>2</td></tr>
+<tr><td>gargarus</td><td>ORG</td><td>2</td></tr>
+<tr><td>gyrae</td><td>PERSON</td><td>2</td></tr>
+<tr><td>helice</td><td>PERSON</td><td>2</td></tr>
+<tr><td>eleon</td><td>GPE</td><td>2</td></tr>
+<tr><td>hellenes</td><td>GPE</td><td>2</td></tr>
+<tr><td>helos</td><td>PERSON</td><td>2</td></tr>
+<tr><td>hermione</td><td>GPE</td><td>2</td></tr>
+<tr><td>hippotion</td><td>ORG</td><td>2</td></tr>
+<tr><td>hound</td><td>ORG</td><td>2</td></tr>
+<tr><td>hypeirochus</td><td>PERSON</td><td>2</td></tr>
+<tr><td>clonius</td><td>ORG</td><td>2</td></tr>
+<tr><td>hyle</td><td>GPE</td><td>2</td></tr>
+<tr><td>enope</td><td>PERSON</td><td>2</td></tr>
+<tr><td>ganymede</td><td>PERSON</td><td>2</td></tr>
+<tr><td>echepolus</td><td>ORG</td><td>2</td></tr>
+<tr><td>ctimene</td><td>PERSON</td><td>2</td></tr>
+<tr><td>clymene</td><td>GPE</td><td>2</td></tr>
+<tr><td>clytoneus</td><td>PERSON</td><td>2</td></tr>
+<tr><td>coon</td><td>PERSON</td><td>2</td></tr>
+<tr><td>corinth</td><td>ORG</td><td>2</td></tr>
+<tr><td>cretan</td><td>GPE</td><td>2</td></tr>
+<tr><td>cretheus</td><td>ORG</td><td>2</td></tr>
+<tr><td>cruel jove</td><td>PERSON</td><td>2</td></tr>
+<tr><td>cteatus</td><td>PERSON</td><td>2</td></tr>
+<tr><td>coiranus</td><td>PERSON</td><td>2</td></tr>
+<tr><td>cyprus</td><td>GPE</td><td>2</td></tr>
+<tr><td>dione</td><td>PERSON</td><td>2</td></tr>
+<tr><td>dares</td><td>PERSON</td><td>2</td></tr>
+<tr><td>dymas</td><td>GPE</td><td>2</td></tr>
+<tr><td>discord</td><td>ORG</td><td>2</td></tr>
+<tr><td>echeneus</td><td>PERSON</td><td>2</td></tr>
+<tr><td>deucalion</td><td>ORG</td><td>2</td></tr>
+<tr><td>demoptolemus</td><td>PERSON</td><td>2</td></tr>
+<tr><td>oicleus</td><td>ORG</td><td>1</td></tr>
+<tr><td>onchestus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>oileus by rhene</td><td>ORG</td><td>1</td></tr>
+<tr><td>olenus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>olizon</td><td>GPE</td><td>1</td></tr>
+<tr><td>oloosson</td><td>PERSON</td><td>1</td></tr>
+<tr><td>oenomaus</td><td>GPE</td><td>1</td></tr>
+<tr><td>olympian</td><td>GPE</td><td>1</td></tr>
+<tr><td>oicleus of amphiaraus</td><td>ORG</td><td>1</td></tr>
+<tr><td>opous</td><td>GPE</td><td>1</td></tr>
+<tr><td>ophelestes</td><td>GPE</td><td>1</td></tr>
+<tr><td>opoeis</td><td>PERSON</td><td>1</td></tr>
+<tr><td>oresbius</td><td>PERSON</td><td>1</td></tr>
+<tr><td>ormenius</td><td>ORG</td><td>1</td></tr>
+<tr><td>orneae</td><td>PERSON</td><td>1</td></tr>
+<tr><td>orthaeus</td><td>ORG</td><td>1</td></tr>
+<tr><td>otreus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>ossa</td><td>ORG</td><td>1</td></tr>
+<tr><td>oechalian eurytus</td><td>ORG</td><td>1</td></tr>
+<tr><td>oechalian--</td><td>ORG</td><td>1</td></tr>
+<tr><td>nemertes</td><td>LOC</td><td>1</td></tr>
+<tr><td>ocyalus</td><td>GPE</td><td>1</td></tr>
+<tr><td>ochesius</td><td>GPE</td><td>1</td></tr>
+<tr><td>penelope eventually recognises</td><td>PERSON</td><td>1</td></tr>
+<tr><td>neaera</td><td>ORG</td><td>1</td></tr>
+<tr><td>nectar</td><td>GPE</td><td>1</td></tr>
+<tr><td>nereids</td><td>PERSON</td><td>1</td></tr>
+<tr><td>nericum</td><td>GPE</td><td>1</td></tr>
+<tr><td>neritus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>nevermore</td><td>ORG</td><td>1</td></tr>
+<tr><td>nevertheless scamander</td><td>ORG</td><td>1</td></tr>
+<tr><td>nisa</td><td>PERSON</td><td>1</td></tr>
+<tr><td>nisyrus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>noble antilochus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>nomion</td><td>ORG</td><td>1</td></tr>
+<tr><td>nurse euryclea</td><td>PERSON</td><td>1</td></tr>
+<tr><td>nysa</td><td>GPE</td><td>1</td></tr>
+<tr><td>o xanthus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>on landing</td><td>ORG</td><td>1</td></tr>
+<tr><td>out</td><td>ORG</td><td>1</td></tr>
+<tr><td>ocalea</td><td>GPE</td><td>1</td></tr>
+<tr><td>ocean</td><td>LOC</td><td>1</td></tr>
+<tr><td>penelope</td><td>PERSON</td><td>1</td></tr>
+<tr><td>pheia</td><td>GPE</td><td>1</td></tr>
+<tr><td>penelope''s prayer to diana</td><td>ORG</td><td>1</td></tr>
+<tr><td>paeonia</td><td>GPE</td><td>1</td></tr>
+<tr><td>peneleos the boeotian</td><td>ORG</td><td>1</td></tr>
+<tr><td>peraebi</td><td>PERSON</td><td>1</td></tr>
+<tr><td>perea--</td><td>ORG</td><td>1</td></tr>
+<tr><td>pergasus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>perimus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>periphetes</td><td>ORG</td><td>1</td></tr>
+<tr><td>pero</td><td>ORG</td><td>1</td></tr>
+<tr><td>perse</td><td>PERSON</td><td>1</td></tr>
+<tr><td>peteon</td><td>ORG</td><td>1</td></tr>
+<tr><td>phaeacian</td><td>ORG</td><td>1</td></tr>
+<tr><td>phaedra</td><td>ORG</td><td>1</td></tr>
+<tr><td>phaethusa</td><td>PERSON</td><td>1</td></tr>
+<tr><td>phalces</td><td>ORG</td><td>1</td></tr>
+<tr><td>pharis</td><td>GPE</td><td>1</td></tr>
+<tr><td>phausius</td><td>ORG</td><td>1</td></tr>
+<tr><td>pheae</td><td>ORG</td><td>1</td></tr>
+<tr><td>naiad</td><td>GPE</td><td>1</td></tr>
+<tr><td>pheidas</td><td>PERSON</td><td>1</td></tr>
+<tr><td>pheneus</td><td>GPE</td><td>1</td></tr>
+<tr><td>pellene</td><td>ORG</td><td>1</td></tr>
+<tr><td>peleus son</td><td>PERSON</td><td>1</td></tr>
+<tr><td>peleus before andromache</td><td>ORG</td><td>1</td></tr>
+<tr><td>parrhasia</td><td>GPE</td><td>1</td></tr>
+<tr><td>paesus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>palmys</td><td>GPE</td><td>1</td></tr>
+<tr><td>pammon</td><td>PERSON</td><td>1</td></tr>
+<tr><td>pandareus</td><td>ORG</td><td>1</td></tr>
+<tr><td>pandocus</td><td>GPE</td><td>1</td></tr>
+<tr><td>panope</td><td>PERSON</td><td>1</td></tr>
+<tr><td>panopeus on</td><td>ORG</td><td>1</td></tr>
+<tr><td>paphos</td><td>GPE</td><td>1</td></tr>
+<tr><td>parthenius</td><td>ORG</td><td>1</td></tr>
+<tr><td>pelasgic argos</td><td>PERSON</td><td>1</td></tr>
+<tr><td>pasithea</td><td>PERSON</td><td>1</td></tr>
+<tr><td>pedaeum</td><td>GPE</td><td>1</td></tr>
+<tr><td>pedaeus</td><td>GPE</td><td>1</td></tr>
+<tr><td>pedasus</td><td>LOC</td><td>1</td></tr>
+<tr><td>peiraeus</td><td>GPE</td><td>1</td></tr>
+<tr><td>peires</td><td>PERSON</td><td>1</td></tr>
+<tr><td>pelagon</td><td>ORG</td><td>1</td></tr>
+<tr><td>pelagon, alastor</td><td>ORG</td><td>1</td></tr>
+<tr><td>nastes and amphimachus</td><td>ORG</td><td>1</td></tr>
+<tr><td>makar</td><td>PERSON</td><td>1</td></tr>
+<tr><td>nestor</td><td>ORG</td><td>1</td></tr>
+<tr><td>leocritus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>lethus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>leucas</td><td>GPE</td><td>1</td></tr>
+<tr><td>leucothea</td><td>PERSON</td><td>1</td></tr>
+<tr><td>licymnius</td><td>PERSON</td><td>1</td></tr>
+<tr><td>licyon</td><td>PERSON</td><td>1</td></tr>
+<tr><td>lie</td><td>PERSON</td><td>1</td></tr>
+<tr><td>limnorea</td><td>GPE</td><td>1</td></tr>
+<tr><td>lindus, ielysus</td><td>ORG</td><td>1</td></tr>
+<tr><td>linos-</td><td>ORG</td><td>1</td></tr>
+<tr><td>lovely nausicaa</td><td>PERSON</td><td>1</td></tr>
+<tr><td>lycastus</td><td>ORG</td><td>1</td></tr>
+<tr><td>lycophontes</td><td>GPE</td><td>1</td></tr>
+<tr><td>lycophron</td><td>ORG</td><td>1</td></tr>
+<tr><td>lyrnessus and thebe</td><td>ORG</td><td>1</td></tr>
+<tr><td>lysandrus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>melanthius</td><td>PERSON</td><td>1</td></tr>
+<tr><td>men go</td><td>ORG</td><td>1</td></tr>
+<tr><td>mentor</td><td>ORG</td><td>1</td></tr>
+<tr><td>minerva summons telemachus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>leonteus of the</td><td>ORG</td><td>1</td></tr>
+<tr><td>lectum</td><td>GPE</td><td>1</td></tr>
+<tr><td>maemalus</td><td>ORG</td><td>1</td></tr>
+<tr><td>lay</td><td>PERSON</td><td>1</td></tr>
+<tr><td>king alcinous</td><td>PERSON</td><td>1</td></tr>
+<tr><td>king creon</td><td>ORG</td><td>1</td></tr>
+<tr><td>king euphetes</td><td>ORG</td><td>1</td></tr>
+<tr><td>king eurystheus</td><td>ORG</td><td>1</td></tr>
+<tr><td>king menelaus</td><td>ORG</td><td>1</td></tr>
+<tr><td>king pylaemenes</td><td>ORG</td><td>1</td></tr>
+<tr><td>king thessalus</td><td>ORG</td><td>1</td></tr>
+<tr><td>knights trojans</td><td>ORG</td><td>1</td></tr>
+<tr><td>lotophagi</td><td>PERSON</td><td>1</td></tr>
+<tr><td>laas</td><td>PERSON</td><td>1</td></tr>
+<tr><td>lacedaemon-- iphitus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>laertes and ulysses</td><td>ORG</td><td>1</td></tr>
+<tr><td>lampus, clytius</td><td>ORG</td><td>1</td></tr>
+<tr><td>lamus-- telepylus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>laogonus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>laothoe</td><td>PERSON</td><td>1</td></tr>
+<tr><td>larissa</td><td>PERSON</td><td>1</td></tr>
+<tr><td>larissa-- hippothous</td><td>ORG</td><td>1</td></tr>
+<tr><td>latona</td><td>PERSON</td><td>1</td></tr>
+<tr><td>maeander</td><td>GPE</td><td>1</td></tr>
+<tr><td>maera</td><td>GPE</td><td>1</td></tr>
+<tr><td>myrsinus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>mesaulius</td><td>PERSON</td><td>1</td></tr>
+<tr><td>messeis</td><td>PERSON</td><td>1</td></tr>
+<tr><td>messene</td><td>GPE</td><td>1</td></tr>
+<tr><td>messenger mercury</td><td>PERSON</td><td>1</td></tr>
+<tr><td>miletus</td><td>ORG</td><td>1</td></tr>
+<tr><td>mimas</td><td>ORG</td><td>1</td></tr>
+<tr><td>minyan orchomenus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>minyas</td><td>GPE</td><td>1</td></tr>
+<tr><td>minyeius</td><td>PERSON</td><td>1</td></tr>
+<tr><td>moderation</td><td>ORG</td><td>1</td></tr>
+<tr><td>moly</td><td>PERSON</td><td>1</td></tr>
+<tr><td>mount ossa</td><td>LOC</td><td>1</td></tr>
+<tr><td>mourn</td><td>PERSON</td><td>1</td></tr>
+<tr><td>muse</td><td>ORG</td><td>1</td></tr>
+<tr><td>mycale</td><td>GPE</td><td>1</td></tr>
+<tr><td>mycalessus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>mygdon</td><td>PERSON</td><td>1</td></tr>
+<tr><td>mynes</td><td>ORG</td><td>1</td></tr>
+<tr><td>myrine</td><td>PERSON</td><td>1</td></tr>
+<tr><td>myrmidon</td><td>PERSON</td><td>1</td></tr>
+<tr><td>messe</td><td>GPE</td><td>1</td></tr>
+<tr><td>mermerus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>maera and clymene</td><td>ORG</td><td>1</td></tr>
+<tr><td>mercury--</td><td>GPE</td><td>1</td></tr>
+<tr><td>magnetes</td><td>LOC</td><td>1</td></tr>
+<tr><td>maia</td><td>PERSON</td><td>1</td></tr>
+<tr><td>pheras</td><td>GPE</td><td>1</td></tr>
+<tr><td>mantinea</td><td>GPE</td><td>1</td></tr>
+<tr><td>maris</td><td>PERSON</td><td>1</td></tr>
+<tr><td>maron</td><td>PERSON</td><td>1</td></tr>
+<tr><td>may jove</td><td>PERSON</td><td>1</td></tr>
+<tr><td>medeon</td><td>ORG</td><td>1</td></tr>
+<tr><td>medesicaste</td><td>ORG</td><td>1</td></tr>
+<tr><td>megara</td><td>PERSON</td><td>1</td></tr>
+<tr><td>megas, epistor</td><td>ORG</td><td>1</td></tr>
+<tr><td>melaneus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>melas</td><td>PERSON</td><td>1</td></tr>
+<tr><td>meliboea</td><td>GPE</td><td>1</td></tr>
+<tr><td>memnon</td><td>PERSON</td><td>1</td></tr>
+<tr><td>menelaus and ulysses</td><td>ORG</td><td>1</td></tr>
+<tr><td>menesthes</td><td>ORG</td><td>1</td></tr>
+<tr><td>menesthius</td><td>PERSON</td><td>1</td></tr>
+<tr><td>mentes</td><td>PERSON</td><td>1</td></tr>
+<tr><td>pherae</td><td>GPE</td><td>1</td></tr>
+<tr><td>raft</td><td>GPE</td><td>1</td></tr>
+<tr><td>philetor</td><td>GPE</td><td>1</td></tr>
+<tr><td>thebaeus</td><td>GPE</td><td>1</td></tr>
+<tr><td>thereon</td><td>ORG</td><td>1</td></tr>
+<tr><td>thereon circe</td><td>ORG</td><td>1</td></tr>
+<tr><td>thereon hades</td><td>ORG</td><td>1</td></tr>
+<tr><td>thereon meriones</td><td>ORG</td><td>1</td></tr>
+<tr><td>thereon neptune</td><td>ORG</td><td>1</td></tr>
+<tr><td>thereon paris</td><td>ORG</td><td>1</td></tr>
+<tr><td>thersilochus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>theseus son of aegeus</td><td>ORG</td><td>1</td></tr>
+<tr><td>thick</td><td>ORG</td><td>1</td></tr>
+<tr><td>thisbe</td><td>PERSON</td><td>1</td></tr>
+<tr><td>thon</td><td>ORG</td><td>1</td></tr>
+<tr><td>thrasydemus</td><td>ORG</td><td>1</td></tr>
+<tr><td>thronium</td><td>ORG</td><td>1</td></tr>
+<tr><td>thryoessa</td><td>GPE</td><td>1</td></tr>
+<tr><td>thryum</td><td>PERSON</td><td>1</td></tr>
+<tr><td>thymoetes</td><td>GPE</td><td>1</td></tr>
+<tr><td>time</td><td>ORG</td><td>1</td></tr>
+<tr><td>tiryns</td><td>GPE</td><td>1</td></tr>
+<tr><td>titanus</td><td>GPE</td><td>1</td></tr>
+<tr><td>theban teiresias</td><td>PERSON</td><td>1</td></tr>
+<tr><td>theano</td><td>ORG</td><td>1</td></tr>
+<tr><td>phorcys, chromius and ennomus</td><td>ORG</td><td>1</td></tr>
+<tr><td>thaumacia</td><td>PERSON</td><td>1</td></tr>
+<tr><td>town</td><td>ORG</td><td>1</td></tr>
+<tr><td>taphians</td><td>PERSON</td><td>1</td></tr>
+<tr><td>tegea</td><td>PERSON</td><td>1</td></tr>
+<tr><td>telea</td><td>GPE</td><td>1</td></tr>
+<tr><td>telemachus amphimedon</td><td>PERSON</td><td>1</td></tr>
+<tr><td>telemachus euryades</td><td>PERSON</td><td>1</td></tr>
+<tr><td>telemus</td><td>GPE</td><td>1</td></tr>
+<tr><td>telephus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>telepylos</td><td>LOC</td><td>1</td></tr>
+<tr><td>tell penelope</td><td>ORG</td><td>1</td></tr>
+<tr><td>temesa</td><td>ORG</td><td>1</td></tr>
+<tr><td>tenthredon</td><td>PERSON</td><td>1</td></tr>
+<tr><td>tereia--</td><td>ORG</td><td>1</td></tr>
+<tr><td>teuthranus</td><td>GPE</td><td>1</td></tr>
+<tr><td>teuthras</td><td>GPE</td><td>1</td></tr>
+<tr><td>thalia</td><td>GPE</td><td>1</td></tr>
+<tr><td>thalpius--</td><td>GPE</td><td>1</td></tr>
+<tr><td>thalysius</td><td>GPE</td><td>1</td></tr>
+<tr><td>thamyris</td><td>PERSON</td><td>1</td></tr>
+<tr><td>trachis</td><td>ORG</td><td>1</td></tr>
+<tr><td>troezenus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>tychius</td><td>ORG</td><td>1</td></tr>
+<tr><td>tyndareus</td><td>ORG</td><td>1</td></tr>
+<tr><td>on--</td><td>ORG</td><td>1</td></tr>
+<tr><td>on-- mesthles</td><td>ORG</td><td>1</td></tr>
+<tr><td>saying:--</td><td>ORG</td><td>1</td></tr>
+<tr><td>ships"--</td><td>GPE</td><td>1</td></tr>
+<tr><td>the black eagle</td><td>ORG</td><td>1</td></tr>
+<tr><td>the centaur eurytion</td><td>ORG</td><td>1</td></tr>
+<tr><td>the gygaean lake</td><td>LOC</td><td>1</td></tr>
+<tr><td>the halizoni</td><td>PERSON</td><td>1</td></tr>
+<tr><td>the icarian sea</td><td>LOC</td><td>1</td></tr>
+<tr><td>the island of lemnos</td><td>LOC</td><td>1</td></tr>
+<tr><td>the laestrygonian antiphates</td><td>GPE</td><td>1</td></tr>
+<tr><td>the morning star</td><td>ORG</td><td>1</td></tr>
+<tr><td>the olympian thunderer</td><td>ORG</td><td>1</td></tr>
+<tr><td>the pelasgian lethus</td><td>ORG</td><td>1</td></tr>
+<tr><td>the trojans quarter</td><td>ORG</td><td>1</td></tr>
+<tr><td>the house of ulysses</td><td>ORG</td><td>1</td></tr>
+<tr><td>the sun hyperion</td><td>ORG</td><td>1</td></tr>
+<tr><td>them:--</td><td>ORG</td><td>1</td></tr>
+<tr><td>king acastus</td><td>ORG</td><td>1</td></tr>
+<tr><td>it-- for so jove</td><td>ORG</td><td>1</td></tr>
+<tr><td>in-- ulysses</td><td>ORG</td><td>1</td></tr>
+<tr><td>himself--</td><td>PERSON</td><td>1</td></tr>
+<tr><td>wain</td><td>PERSON</td><td>1</td></tr>
+<tr><td>tyndarus</td><td>ORG</td><td>1</td></tr>
+<tr><td>ulysses reaches scheria on</td><td>ORG</td><td>1</td></tr>
+<tr><td>ucalegon</td><td>ORG</td><td>1</td></tr>
+<tr><td>understand</td><td>ORG</td><td>1</td></tr>
+<tr><td>varne</td><td>GPE</td><td>1</td></tr>
+<tr><td>vilest</td><td>PERSON</td><td>1</td></tr>
+<tr><td>vixen</td><td>PERSON</td><td>1</td></tr>
+<tr><td>who</td><td>ORG</td><td>1</td></tr>
+<tr><td>whereon</td><td>ORG</td><td>1</td></tr>
+<tr><td>be-- nestor</td><td>ORG</td><td>1</td></tr>
+<tr><td>whither</td><td>PERSON</td><td>1</td></tr>
+<tr><td>wildfire rumour</td><td>PERSON</td><td>1</td></tr>
+<tr><td>woe</td><td>ORG</td><td>1</td></tr>
+<tr><td>wounded eurypylus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>wretch</td><td>PERSON</td><td>1</td></tr>
+<tr><td>young</td><td>PERSON</td><td>1</td></tr>
+<tr><td>youths</td><td>ORG</td><td>1</td></tr>
+<tr><td>zeus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>the people of ithaca</td><td>ORG</td><td>1</td></tr>
+<tr><td>the cattle of the sun</td><td>ORG</td><td>1</td></tr>
+<tr><td>syra</td><td>LOC</td><td>1</td></tr>
+<tr><td>rhesus</td><td>LOC</td><td>1</td></tr>
+<tr><td>practius</td><td>ORG</td><td>1</td></tr>
+<tr><td>procris</td><td>PERSON</td><td>1</td></tr>
+<tr><td>proetus</td><td>ORG</td><td>1</td></tr>
+<tr><td>prothous</td><td>GPE</td><td>1</td></tr>
+<tr><td>protiaon</td><td>GPE</td><td>1</td></tr>
+<tr><td>proto</td><td>ORG</td><td>1</td></tr>
+<tr><td>proud diomed</td><td>PERSON</td><td>1</td></tr>
+<tr><td>pry</td><td>GPE</td><td>1</td></tr>
+<tr><td>pylaeus of the</td><td>ORG</td><td>1</td></tr>
+<tr><td>pylartes</td><td>ORG</td><td>1</td></tr>
+<tr><td>pylene, chalcis</td><td>ORG</td><td>1</td></tr>
+<tr><td>pylians--</td><td>PERSON</td><td>1</td></tr>
+<tr><td>pylon</td><td>PERSON</td><td>1</td></tr>
+<tr><td>pyraechmes</td><td>ORG</td><td>1</td></tr>
+<tr><td>pyriphlegethon</td><td>PERSON</td><td>1</td></tr>
+<tr><td>pyris</td><td>GPE</td><td>1</td></tr>
+<tr><td>queen arete</td><td>PERSON</td><td>1</td></tr>
+<tr><td>raven</td><td>PERSON</td><td>1</td></tr>
+<tr><td>rhea</td><td>PERSON</td><td>1</td></tr>
+<tr><td>portheus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>ponteus, proreus</td><td>ORG</td><td>1</td></tr>
+<tr><td>polyxenus</td><td>GPE</td><td>1</td></tr>
+<tr><td>pityeia</td><td>ORG</td><td>1</td></tr>
+<tr><td>phradmon</td><td>GPE</td><td>1</td></tr>
+<tr><td>phthires</td><td>PERSON</td><td>1</td></tr>
+<tr><td>phyleus, amphion</td><td>ORG</td><td>1</td></tr>
+<tr><td>phyleus, thoas</td><td>ORG</td><td>1</td></tr>
+<tr><td>phylo</td><td>GPE</td><td>1</td></tr>
+<tr><td>phylomedusa</td><td>ORG</td><td>1</td></tr>
+<tr><td>pick</td><td>ORG</td><td>1</td></tr>
+<tr><td>pittheus</td><td>ORG</td><td>1</td></tr>
+<tr><td>podargus</td><td>ORG</td><td>1</td></tr>
+<tr><td>polytherses</td><td>PERSON</td><td>1</td></tr>
+<tr><td>podes son of eetion</td><td>ORG</td><td>1</td></tr>
+<tr><td>poias</td><td>PERSON</td><td>1</td></tr>
+<tr><td>polites</td><td>PERSON</td><td>1</td></tr>
+<tr><td>polites echius</td><td>PERSON</td><td>1</td></tr>
+<tr><td>polyaemon</td><td>PERSON</td><td>1</td></tr>
+<tr><td>polydamna</td><td>GPE</td><td>1</td></tr>
+<tr><td>polypemon</td><td>GPE</td><td>1</td></tr>
+<tr><td>polyphetes</td><td>GPE</td><td>1</td></tr>
+<tr><td>rheithron</td><td>ORG</td><td>1</td></tr>
+<tr><td>rhipae</td><td>ORG</td><td>1</td></tr>
+<tr><td>swineherd</td><td>PERSON</td><td>1</td></tr>
+<tr><td>rhodius</td><td>ORG</td><td>1</td></tr>
+<tr><td>sicels</td><td>ORG</td><td>1</td></tr>
+<tr><td>sicyon</td><td>PERSON</td><td>1</td></tr>
+<tr><td>sidonia</td><td>GPE</td><td>1</td></tr>
+<tr><td>sirrah</td><td>PERSON</td><td>1</td></tr>
+<tr><td>south east</td><td>LOC</td><td>1</td></tr>
+<tr><td>south west</td><td>LOC</td><td>1</td></tr>
+<tr><td>stentor</td><td>ORG</td><td>1</td></tr>
+<tr><td>stichius</td><td>PERSON</td><td>1</td></tr>
+<tr><td>stichius and arcesilaus</td><td>ORG</td><td>1</td></tr>
+<tr><td>stichius and menestheus</td><td>ORG</td><td>1</td></tr>
+<tr><td>strait</td><td>LOC</td><td>1</td></tr>
+<tr><td>straits</td><td>LOC</td><td>1</td></tr>
+<tr><td>strangers</td><td>PERSON</td><td>1</td></tr>
+<tr><td>stratie</td><td>GPE</td><td>1</td></tr>
+<tr><td>strength</td><td>PERSON</td><td>1</td></tr>
+<tr><td>strophius</td><td>ORG</td><td>1</td></tr>
+<tr><td>styra</td><td>PERSON</td><td>1</td></tr>
+<tr><td>sunium</td><td>GPE</td><td>1</td></tr>
+<tr><td>surely priam</td><td>PERSON</td><td>1</td></tr>
+<tr><td>sicania</td><td>GPE</td><td>1</td></tr>
+<tr><td>shield</td><td>PERSON</td><td>1</td></tr>
+<tr><td>shall</td><td>ORG</td><td>1</td></tr>
+<tr><td>saturn-- jove</td><td>PERSON</td><td>1</td></tr>
+<tr><td>rhytium</td><td>ORG</td><td>1</td></tr>
+<tr><td>riot</td><td>PERSON</td><td>1</td></tr>
+<tr><td>rise thetis</td><td>PERSON</td><td>1</td></tr>
+<tr><td>speeches</td><td>ORG</td><td>1</td></tr>
+<tr><td>salmoneus</td><td>ORG</td><td>1</td></tr>
+<tr><td>samos imbrus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>samothrace</td><td>ORG</td><td>1</td></tr>
+<tr><td>satnius</td><td>PERSON</td><td>1</td></tr>
+<tr><td>scandea</td><td>PERSON</td><td>1</td></tr>
+<tr><td>sestos</td><td>PERSON</td><td>1</td></tr>
+<tr><td>scarphe</td><td>GPE</td><td>1</td></tr>
+<tr><td>scene</td><td>GPE</td><td>1</td></tr>
+<tr><td>schedius</td><td>PERSON</td><td>1</td></tr>
+<tr><td>schoenus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>scolus</td><td>GPE</td><td>1</td></tr>
+<tr><td>scyros</td><td>GPE</td><td>1</td></tr>
+<tr><td>selepus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>selli</td><td>PERSON</td><td>1</td></tr>
+<tr><td>king agasthenes</td><td>PERSON</td><td>1</td></tr>
+<tr><td>asterius</td><td>PERSON</td><td>1</td></tr>
+<tr><td>jupiter</td><td>LOC</td><td>1</td></tr>
+<tr><td>autophonus--</td><td>PERSON</td><td>1</td></tr>
+<tr><td>axylus</td><td>GPE</td><td>1</td></tr>
+<tr><td>brings</td><td>PERSON</td><td>1</td></tr>
+<tr><td>baby</td><td>ORG</td><td>1</td></tr>
+<tr><td>balius</td><td>ORG</td><td>1</td></tr>
+<tr><td>batieia</td><td>ORG</td><td>1</td></tr>
+<tr><td>begin</td><td>ORG</td><td>1</td></tr>
+<tr><td>bessa</td><td>PERSON</td><td>1</td></tr>
+<tr><td>bienor</td><td>ORG</td><td>1</td></tr>
+<tr><td>boagrius</td><td>ORG</td><td>1</td></tr>
+<tr><td>boebe</td><td>GPE</td><td>1</td></tr>
+<tr><td>boethous</td><td>GPE</td><td>1</td></tr>
+<tr><td>bootes</td><td>PERSON</td><td>1</td></tr>
+<tr><td>boreas and zephyrus</td><td>ORG</td><td>1</td></tr>
+<tr><td>borus</td><td>ORG</td><td>1</td></tr>
+<tr><td>borus the meonian</td><td>ORG</td><td>1</td></tr>
+<tr><td>boucolos</td><td>LOC</td><td>1</td></tr>
+<tr><td>briareus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>bryseae</td><td>PERSON</td><td>1</td></tr>
+<tr><td>budeum</td><td>ORG</td><td>1</td></tr>
+<tr><td>autumn</td><td>ORG</td><td>1</td></tr>
+<tr><td>autonoe</td><td>PERSON</td><td>1</td></tr>
+<tr><td>crataiis</td><td>PERSON</td><td>1</td></tr>
+<tr><td>automedon--</td><td>ORG</td><td>1</td></tr>
+<tr><td>aretaon</td><td>ORG</td><td>1</td></tr>
+<tr><td>argissa</td><td>PERSON</td><td>1</td></tr>
+<tr><td>argive danaans</td><td>PERSON</td><td>1</td></tr>
+<tr><td>arisbas</td><td>PERSON</td><td>1</td></tr>
+<tr><td>arisbe--</td><td>GPE</td><td>1</td></tr>
+<tr><td>arnaeus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>arsinous</td><td>PERSON</td><td>1</td></tr>
+<tr><td>artacia</td><td>ORG</td><td>1</td></tr>
+<tr><td>asius-- asius</td><td>PERSON</td><td>1</td></tr>
+<tr><td>asopus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>aspledon</td><td>LOC</td><td>1</td></tr>
+<tr><td>asteris</td><td>GPE</td><td>1</td></tr>
+<tr><td>astynous</td><td>PERSON</td><td>1</td></tr>
+<tr><td>astyochea</td><td>GPE</td><td>1</td></tr>
+<tr><td>astypylus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>atreus king agamemnon</td><td>PERSON</td><td>1</td></tr>
+<tr><td>atreus and ulysses</td><td>ORG</td><td>1</td></tr>
+<tr><td>atreus; ulysses</td><td>ORG</td><td>1</td></tr>
+<tr><td>autolycus--</td><td>PERSON</td><td>1</td></tr>
+<tr><td>calypso</td><td>PERSON</td><td>1</td></tr>
+<tr><td>cleanse</td><td>PERSON</td><td>1</td></tr>
+<tr><td>council</td><td>ORG</td><td>1</td></tr>
+<tr><td>caeneus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>chalcon</td><td>GPE</td><td>1</td></tr>
+<tr><td>charis</td><td>GPE</td><td>1</td></tr>
+<tr><td>chios</td><td>ORG</td><td>1</td></tr>
+<tr><td>chloris</td><td>PERSON</td><td>1</td></tr>
+<tr><td>cinyras</td><td>GPE</td><td>1</td></tr>
+<tr><td>cisses</td><td>ORG</td><td>1</td></tr>
+<tr><td>cisseus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>cleobulus</td><td>GPE</td><td>1</td></tr>
+<tr><td>cleonae</td><td>GPE</td><td>1</td></tr>
+<tr><td>clymenus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>cocytus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>coeranus, alastor</td><td>ORG</td><td>1</td></tr>
+<tr><td>copae</td><td>GPE</td><td>1</td></tr>
+<tr><td>copreus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>coronea</td><td>GPE</td><td>1</td></tr>
+<tr><td>coronus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>counsel</td><td>ORG</td><td>1</td></tr>
+<tr><td>cover</td><td>ORG</td><td>1</td></tr>
+<tr><td>cranae</td><td>PERSON</td><td>1</td></tr>
+<tr><td>chalcis, eretria</td><td>ORG</td><td>1</td></tr>
+<tr><td>ceteians</td><td>ORG</td><td>1</td></tr>
+<tr><td>cerinthus</td><td>ORG</td><td>1</td></tr>
+<tr><td>cape malea</td><td>PERSON</td><td>1</td></tr>
+<tr><td>calesius</td><td>PERSON</td><td>1</td></tr>
+<tr><td>caletor</td><td>PERSON</td><td>1</td></tr>
+<tr><td>callianassa</td><td>PERSON</td><td>1</td></tr>
+<tr><td>callianeira</td><td>PERSON</td><td>1</td></tr>
+<tr><td>calliarus</td><td>GPE</td><td>1</td></tr>
+<tr><td>callicolone</td><td>ORG</td><td>1</td></tr>
+<tr><td>calydon--</td><td>PERSON</td><td>1</td></tr>
+<tr><td>cameirus</td><td>GPE</td><td>1</td></tr>
+<tr><td>capys</td><td>ORG</td><td>1</td></tr>
+<tr><td>ceos</td><td>ORG</td><td>1</td></tr>
+<tr><td>capys to anchises</td><td>ORG</td><td>1</td></tr>
+<tr><td>caresus</td><td>ORG</td><td>1</td></tr>
+<tr><td>caria</td><td>GPE</td><td>1</td></tr>
+<tr><td>carystus</td><td>ORG</td><td>1</td></tr>
+<tr><td>castianeira</td><td>ORG</td><td>1</td></tr>
+<tr><td>casus</td><td>ORG</td><td>1</td></tr>
+<tr><td>cattle</td><td>GPE</td><td>1</td></tr>
+<tr><td>celadon</td><td>GPE</td><td>1</td></tr>
+<tr><td>archilochus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>archeptolemus</td><td>ORG</td><td>1</td></tr>
+<tr><td>archelochus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>alcimus</td><td>GPE</td><td>1</td></tr>
+<tr><td>aegisthus--</td><td>PERSON</td><td>1</td></tr>
+<tr><td>aegium</td><td>ORG</td><td>1</td></tr>
+<tr><td>aenus</td><td>GPE</td><td>1</td></tr>
+<tr><td>aepytus</td><td>GPE</td><td>1</td></tr>
+<tr><td>aeson</td><td>PERSON</td><td>1</td></tr>
+<tr><td>aesyme</td><td>ORG</td><td>1</td></tr>
+<tr><td>aesymnus</td><td>ORG</td><td>1</td></tr>
+<tr><td>aetes</td><td>ORG</td><td>1</td></tr>
+<tr><td>aethon</td><td>ORG</td><td>1</td></tr>
+<tr><td>aethrae</td><td>ORG</td><td>1</td></tr>
+<tr><td>agacles</td><td>GPE</td><td>1</td></tr>
+<tr><td>agathon</td><td>ORG</td><td>1</td></tr>
+<tr><td>agave</td><td>PERSON</td><td>1</td></tr>
+<tr><td>agrius</td><td>ORG</td><td>1</td></tr>
+<tr><td>aipy</td><td>PERSON</td><td>1</td></tr>
+<tr><td>aithices</td><td>ORG</td><td>1</td></tr>
+<tr><td>alastor</td><td>ORG</td><td>1</td></tr>
+<tr><td>alastor--</td><td>GPE</td><td>1</td></tr>
+<tr><td>alcandra</td><td>GPE</td><td>1</td></tr>
+<tr><td>aegina and mases</td><td>ORG</td><td>1</td></tr>
+<tr><td>aegilips</td><td>PERSON</td><td>1</td></tr>
+<tr><td>aegialeia</td><td>ORG</td><td>1</td></tr>
+<tr><td>acheron</td><td>ORG</td><td>1</td></tr>
+<tr><td>aeolus</td><td>ORG</td><td>1</td></tr>
+<tr><td>armour</td><td>ORG</td><td>1</td></tr>
+<tr><td>axes</td><td>GPE</td><td>1</td></tr>
+<tr><td>abas</td><td>GPE</td><td>1</td></tr>
+<tr><td>ablerus</td><td>ORG</td><td>1</td></tr>
+<tr><td>acessamenus</td><td>GPE</td><td>1</td></tr>
+<tr><td>achaea</td><td>GPE</td><td>1</td></tr>
+<tr><td>achaean</td><td>LOC</td><td>1</td></tr>
+<tr><td>achilles and aeneas</td><td>ORG</td><td>1</td></tr>
+<tr><td>aegaeon</td><td>ORG</td><td>1</td></tr>
+<tr><td>achilles and ulysses</td><td>ORG</td><td>1</td></tr>
+<tr><td>achilles over patroclus</td><td>ORG</td><td>1</td></tr>
+<tr><td>achilles son of peleus</td><td>ORG</td><td>1</td></tr>
+<tr><td>achilles to troy</td><td>PERSON</td><td>1</td></tr>
+<tr><td>acrisius</td><td>PERSON</td><td>1</td></tr>
+<tr><td>acroneos</td><td>PERSON</td><td>1</td></tr>
+<tr><td>actor</td><td>ORG</td><td>1</td></tr>
+<tr><td>aeaean goddess circe</td><td>ORG</td><td>1</td></tr>
+<tr><td>alcandrus</td><td>ORG</td><td>1</td></tr>
+<tr><td>alcippe</td><td>ORG</td><td>1</td></tr>
+<tr><td>arcadia</td><td>GPE</td><td>1</td></tr>
+<tr><td>alcmaeon</td><td>ORG</td><td>1</td></tr>
+<tr><td>amphithea</td><td>PERSON</td><td>1</td></tr>
+<tr><td>amphoterus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>amyclae</td><td>PERSON</td><td>1</td></tr>
+<tr><td>amyntor</td><td>PERSON</td><td>1</td></tr>
+<tr><td>amythaon</td><td>ORG</td><td>1</td></tr>
+<tr><td>anabesineus</td><td>GPE</td><td>1</td></tr>
+<tr><td>anemorea</td><td>GPE</td><td>1</td></tr>
+<tr><td>antea</td><td>PERSON</td><td>1</td></tr>
+<tr><td>anthedon</td><td>PERSON</td><td>1</td></tr>
+<tr><td>anticlea</td><td>PERSON</td><td>1</td></tr>
+<tr><td>antiope</td><td>PERSON</td><td>1</td></tr>
+<tr><td>antiphonus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>antrum</td><td>PERSON</td><td>1</td></tr>
+<tr><td>apaesus</td><td>GPE</td><td>1</td></tr>
+<tr><td>apeira</td><td>ORG</td><td>1</td></tr>
+<tr><td>apheidas</td><td>PERSON</td><td>1</td></tr>
+<tr><td>apollo--</td><td>ORG</td><td>1</td></tr>
+<tr><td>apseudes</td><td>PERSON</td><td>1</td></tr>
+<tr><td>araethyrea</td><td>GPE</td><td>1</td></tr>
+<tr><td>amphinomus of dulichium</td><td>GPE</td><td>1</td></tr>
+<tr><td>amphigenea</td><td>GPE</td><td>1</td></tr>
+<tr><td>amphidamas--</td><td>PERSON</td><td>1</td></tr>
+<tr><td>alos</td><td>PERSON</td><td>1</td></tr>
+<tr><td>alcyone</td><td>PERSON</td><td>1</td></tr>
+<tr><td>aldermen</td><td>GPE</td><td>1</td></tr>
+<tr><td>alector</td><td>ORG</td><td>1</td></tr>
+<tr><td>alectryon</td><td>PERSON</td><td>1</td></tr>
+<tr><td>alegenor</td><td>GPE</td><td>1</td></tr>
+<tr><td>alexandria</td><td>GPE</td><td>1</td></tr>
+<tr><td>aloeus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>alope</td><td>PERSON</td><td>1</td></tr>
+<tr><td>altes</td><td>GPE</td><td>1</td></tr>
+<tr><td>amphidamas of cythera</td><td>ORG</td><td>1</td></tr>
+<tr><td>althaea</td><td>ORG</td><td>1</td></tr>
+<tr><td>alybas</td><td>PERSON</td><td>1</td></tr>
+<tr><td>amarynceus</td><td>ORG</td><td>1</td></tr>
+<tr><td>ambrosia</td><td>GPE</td><td>1</td></tr>
+<tr><td>amnisus</td><td>GPE</td><td>1</td></tr>
+<tr><td>amopaon</td><td>GPE</td><td>1</td></tr>
+<tr><td>amphiaraus</td><td>ORG</td><td>1</td></tr>
+<tr><td>amphidamas</td><td>ORG</td><td>1</td></tr>
+<tr><td>crapathus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>creontes</td><td>GPE</td><td>1</td></tr>
+<tr><td>jove--</td><td>GPE</td><td>1</td></tr>
+<tr><td>greeks</td><td>PERSON</td><td>1</td></tr>
+<tr><td>guneus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>gyrtius</td><td>PERSON</td><td>1</td></tr>
+<tr><td>gyrtone</td><td>PERSON</td><td>1</td></tr>
+<tr><td>house</td><td>ORG</td><td>1</td></tr>
+<tr><td>husband</td><td>PERSON</td><td>1</td></tr>
+<tr><td>hail</td><td>PERSON</td><td>1</td></tr>
+<tr><td>haliartus</td><td>ORG</td><td>1</td></tr>
+<tr><td>halizoni</td><td>PERSON</td><td>1</td></tr>
+<tr><td>halosydne</td><td>GPE</td><td>1</td></tr>
+<tr><td>harma, eilesium</td><td>ORG</td><td>1</td></tr>
+<tr><td>harpalion</td><td>ORG</td><td>1</td></tr>
+<tr><td>hecamede</td><td>ORG</td><td>1</td></tr>
+<tr><td>helicaon</td><td>GPE</td><td>1</td></tr>
+<tr><td>helmet</td><td>ORG</td><td>1</td></tr>
+<tr><td>heptaporus</td><td>GPE</td><td>1</td></tr>
+<tr><td>hereon</td><td>ORG</td><td>1</td></tr>
+<tr><td>hermon</td><td>GPE</td><td>1</td></tr>
+<tr><td>hermus</td><td>ORG</td><td>1</td></tr>
+<tr><td>hero eurypylus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>grenicus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>gortys</td><td>ORG</td><td>1</td></tr>
+<tr><td>crethon</td><td>ORG</td><td>1</td></tr>
+<tr><td>gortyn</td><td>PERSON</td><td>1</td></tr>
+<tr><td>exadius</td><td>PERSON</td><td>1</td></tr>
+<tr><td>fair hecamede</td><td>PERSON</td><td>1</td></tr>
+<tr><td>fair polydora</td><td>PERSON</td><td>1</td></tr>
+<tr><td>fandarus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>first asaeus, autonous</td><td>ORG</td><td>1</td></tr>
+<tr><td>first king agamemnon</td><td>ORG</td><td>1</td></tr>
+<tr><td>fleet iris</td><td>PERSON</td><td>1</td></tr>
+<tr><td>forthwith ajax</td><td>PERSON</td><td>1</td></tr>
+<tr><td>fortune</td><td>ORG</td><td>1</td></tr>
+<tr><td>galatea</td><td>GPE</td><td>1</td></tr>
+<tr><td>geraestus</td><td>ORG</td><td>1</td></tr>
+<tr><td>gladden</td><td>GPE</td><td>1</td></tr>
+<tr><td>glaphyrae</td><td>GPE</td><td>1</td></tr>
+<tr><td>glauce</td><td>GPE</td><td>1</td></tr>
+<tr><td>glisas</td><td>GPE</td><td>1</td></tr>
+<tr><td>goddess iris</td><td>PERSON</td><td>1</td></tr>
+<tr><td>gonoessa</td><td>LOC</td><td>1</td></tr>
+<tr><td>gorgo</td><td>ORG</td><td>1</td></tr>
+<tr><td>gorgythion</td><td>PERSON</td><td>1</td></tr>
+<tr><td>hippocoon</td><td>PERSON</td><td>1</td></tr>
+<tr><td>hippodameia</td><td>ORG</td><td>1</td></tr>
+<tr><td>hippodamia</td><td>PERSON</td><td>1</td></tr>
+<tr><td>hippolochus</td><td>GPE</td><td>1</td></tr>
+<tr><td>ides</td><td>PERSON</td><td>1</td></tr>
+<tr><td>idomeneus and meriones</td><td>ORG</td><td>1</td></tr>
+<tr><td>idomeneus killed phaesus</td><td>ORG</td><td>1</td></tr>
+<tr><td>idomeneus son of deucalion</td><td>ORG</td><td>1</td></tr>
+<tr><td>idothea</td><td>GPE</td><td>1</td></tr>
+<tr><td>ilius--</td><td>GPE</td><td>1</td></tr>
+<tr><td>ilus</td><td>ORG</td><td>1</td></tr>
+<tr><td>imbrasus</td><td>ORG</td><td>1</td></tr>
+<tr><td>immortal jove</td><td>PERSON</td><td>1</td></tr>
+<tr><td>ipheus, euippus</td><td>ORG</td><td>1</td></tr>
+<tr><td>ithacus</td><td>GPE</td><td>1</td></tr>
+<tr><td>ithome</td><td>ORG</td><td>1</td></tr>
+<tr><td>iton</td><td>ORG</td><td>1</td></tr>
+<tr><td>ixion</td><td>ORG</td><td>1</td></tr>
+<tr><td>jove ''s</td><td>ORG</td><td>1</td></tr>
+<tr><td>jove and leto</td><td>ORG</td><td>1</td></tr>
+<tr><td>jove of mt.</td><td>ORG</td><td>1</td></tr>
+<tr><td>jove, agelaus</td><td>ORG</td><td>1</td></tr>
+<tr><td>jove, mercury</td><td>ORG</td><td>1</td></tr>
+<tr><td>idaeus</td><td>ORG</td><td>1</td></tr>
+<tr><td>icmalius</td><td>GPE</td><td>1</td></tr>
+<tr><td>iapetus</td><td>ORG</td><td>1</td></tr>
+<tr><td>hylax</td><td>PERSON</td><td>1</td></tr>
+<tr><td>hippothous</td><td>GPE</td><td>1</td></tr>
+<tr><td>histiaea</td><td>ORG</td><td>1</td></tr>
+<tr><td>holy minerva</td><td>PERSON</td><td>1</td></tr>
+<tr><td>honour</td><td>ORG</td><td>1</td></tr>
+<tr><td>house</td><td>ORG</td><td>1</td></tr>
+<tr><td>husband</td><td>GPE</td><td>1</td></tr>
+<tr><td>hyampolis</td><td>PERSON</td><td>1</td></tr>
+<tr><td>hyde</td><td>PERSON</td><td>1</td></tr>
+<tr><td>hyllus</td><td>ORG</td><td>1</td></tr>
+<tr><td>ianeira</td><td>GPE</td><td>1</td></tr>
+<tr><td>hymen</td><td>GPE</td><td>1</td></tr>
+<tr><td>hypeiron</td><td>ORG</td><td>1</td></tr>
+<tr><td>hypsipyle</td><td>PERSON</td><td>1</td></tr>
+<tr><td>hyria</td><td>PERSON</td><td>1</td></tr>
+<tr><td>hyrmine</td><td>GPE</td><td>1</td></tr>
+<tr><td>interviews penelope</td><td>PERSON</td><td>1</td></tr>
+<tr><td>iaera</td><td>PERSON</td><td>1</td></tr>
+<tr><td>ianassa</td><td>GPE</td><td>1</td></tr>
+<tr><td>evenor</td><td>PERSON</td><td>1</td></tr>
+<tr><td>eussorus</td><td>GPE</td><td>1</td></tr>
+<tr><td>eurynomus</td><td>ORG</td><td>1</td></tr>
+<tr><td>euryclea</td><td>PERSON</td><td>1</td></tr>
+<tr><td>democoon</td><td>PERSON</td><td>1</td></tr>
+<tr><td>demoleon</td><td>ORG</td><td>1</td></tr>
+<tr><td>dexamene</td><td>PERSON</td><td>1</td></tr>
+<tr><td>dexius</td><td>GPE</td><td>1</td></tr>
+<tr><td>dia</td><td>PERSON</td><td>1</td></tr>
+<tr><td>diomed and ulysses</td><td>ORG</td><td>1</td></tr>
+<tr><td>diomede</td><td>GPE</td><td>1</td></tr>
+<tr><td>dium</td><td>GPE</td><td>1</td></tr>
+<tr><td>dius</td><td>PERSON</td><td>1</td></tr>
+<tr><td>dolopion</td><td>PERSON</td><td>1</td></tr>
+<tr><td>dolops</td><td>PERSON</td><td>1</td></tr>
+<tr><td>doris</td><td>GPE</td><td>1</td></tr>
+<tr><td>dorium</td><td>ORG</td><td>1</td></tr>
+<tr><td>doto</td><td>PERSON</td><td>1</td></tr>
+<tr><td>dracius</td><td>GPE</td><td>1</td></tr>
+<tr><td>dread achilles</td><td>PERSON</td><td>1</td></tr>
+<tr><td>dresus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>dryas</td><td>LOC</td><td>1</td></tr>
+<tr><td>dynamene</td><td>PERSON</td><td>1</td></tr>
+<tr><td>deipyrus</td><td>GPE</td><td>1</td></tr>
+<tr><td>deiopites</td><td>ORG</td><td>1</td></tr>
+<tr><td>deicoon</td><td>PERSON</td><td>1</td></tr>
+<tr><td>cymodoce, nesaia, speo, thoe</td><td>ORG</td><td>1</td></tr>
+<tr><td>crisa, daulis, and panopeus</td><td>ORG</td><td>1</td></tr>
+<tr><td>crocylea</td><td>GPE</td><td>1</td></tr>
+<tr><td>croesmus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>cromna</td><td>ORG</td><td>1</td></tr>
+<tr><td>crouni</td><td>ORG</td><td>1</td></tr>
+<tr><td>cruel</td><td>ORG</td><td>1</td></tr>
+<tr><td>ctesius</td><td>ORG</td><td>1</td></tr>
+<tr><td>cymindis</td><td>ORG</td><td>1</td></tr>
+<tr><td>cyparisseis</td><td>PERSON</td><td>1</td></tr>
+<tr><td>dardania</td><td>GPE</td><td>1</td></tr>
+<tr><td>cyparissus</td><td>ORG</td><td>1</td></tr>
+<tr><td>cyprian</td><td>ORG</td><td>1</td></tr>
+<tr><td>cytorus</td><td>ORG</td><td>1</td></tr>
+<tr><td>dead</td><td>ORG</td><td>1</td></tr>
+<tr><td>damastor</td><td>ORG</td><td>1</td></tr>
+<tr><td>damastor, eurynomus</td><td>ORG</td><td>1</td></tr>
+<tr><td>damasus</td><td>ORG</td><td>1</td></tr>
+<tr><td>danae</td><td>GPE</td><td>1</td></tr>
+<tr><td>eumaeus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>earthquake</td><td>ORG</td><td>1</td></tr>
+<tr><td>eurymus</td><td>ORG</td><td>1</td></tr>
+<tr><td>echephron</td><td>PERSON</td><td>1</td></tr>
+<tr><td>eretmeus</td><td>ORG</td><td>1</td></tr>
+<tr><td>erichthonius</td><td>PERSON</td><td>1</td></tr>
+<tr><td>erithini</td><td>PERSON</td><td>1</td></tr>
+<tr><td>erylaus</td><td>ORG</td><td>1</td></tr>
+<tr><td>erymanthus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>erythrae</td><td>GPE</td><td>1</td></tr>
+<tr><td>eteonus</td><td>GPE</td><td>1</td></tr>
+<tr><td>ethiopia</td><td>GPE</td><td>1</td></tr>
+<tr><td>euanthes</td><td>PERSON</td><td>1</td></tr>
+<tr><td>eudorus</td><td>ORG</td><td>1</td></tr>
+<tr><td>euenus</td><td>GPE</td><td>1</td></tr>
+<tr><td>eumaeus elatus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>eumaeus polybus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>eumedes</td><td>PERSON</td><td>1</td></tr>
+<tr><td>euphemus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>euphorbus of</td><td>PERSON</td><td>1</td></tr>
+<tr><td>eurydamas</td><td>ORG</td><td>1</td></tr>
+<tr><td>eurydice</td><td>PERSON</td><td>1</td></tr>
+<tr><td>eurymedusa of apeira</td><td>ORG</td><td>1</td></tr>
+<tr><td>epytus</td><td>ORG</td><td>1</td></tr>
+<tr><td>ephyri</td><td>ORG</td><td>1</td></tr>
+<tr><td>ephyra</td><td>GPE</td><td>1</td></tr>
+<tr><td>elone</td><td>PERSON</td><td>1</td></tr>
+<tr><td>eeriboea</td><td>ORG</td><td>1</td></tr>
+<tr><td>egyptian thebes</td><td>PERSON</td><td>1</td></tr>
+<tr><td>eilithuiae</td><td>PERSON</td><td>1</td></tr>
+<tr><td>eionae</td><td>GPE</td><td>1</td></tr>
+<tr><td>eioneus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>elasus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>elatreus, nauteus, prymneus</td><td>ORG</td><td>1</td></tr>
+<tr><td>elatus</td><td>ORG</td><td>1</td></tr>
+<tr><td>elysium</td><td>GPE</td><td>1</td></tr>
+<tr><td>epeus</td><td>ORG</td><td>1</td></tr>
+<tr><td>emathia</td><td>PERSON</td><td>1</td></tr>
+<tr><td>embassy</td><td>ORG</td><td>1</td></tr>
+<tr><td>enetae</td><td>ORG</td><td>1</td></tr>
+<tr><td>enipeus</td><td>GPE</td><td>1</td></tr>
+<tr><td>enispe</td><td>PERSON</td><td>1</td></tr>
+<tr><td>ennomus</td><td>ORG</td><td>1</td></tr>
+<tr><td>enyeus</td><td>PERSON</td><td>1</td></tr>
+<tr><td>eperitus</td><td>ORG</td><td>1</td></tr>
+<tr><td>to--</td><td>PERSON</td><td>1</td></tr>
+
+        </tbody>
+    </table>
+	</div>
+	<footer class="footer">
+ 		<div class="container">
+ 			 <hr>
+ 			 <div class="row">
+
+ 					<div class="col-sm-4">
+ 						 <p class="text-muted text-center">&copy; 2019 Eric Lease Morgan</p>
+ 					</div>
+ 					<div class="col-sm-4">
+ 						 <p class="text-center"><a href="mailto:emorgan@nd.edu">Contact Webmaster</a></p>
+ 					</div>
+ 					<div class="col-sm-4">
+ 						 <p class="text-center">
+ 								<a href="https://distantreader.org/">About Distant Reader</a>
+ 						 </p>
+ 					</div>
+
+ 			 </div>
+
+
+ 		</div>
+  </footer>
+</body>
+</html>
