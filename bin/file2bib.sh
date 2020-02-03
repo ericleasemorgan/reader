@@ -31,8 +31,13 @@ LEAF=$( basename "$FILE" )
 LEAF="${LEAF%.*}"
 OUTPUT="$BIB/$LEAF.bib"
 
-# echo and do the work
-$FILE2BIB "$FILE" > "$OUTPUT"
+# do the work
+if [ -f "$OUTPUT" ]; then
+	echo "$OUTPUT exist" >&2
+else
+	$FILE2BIB "$FILE" > "$OUTPUT"
+fi
+
 
 
 
