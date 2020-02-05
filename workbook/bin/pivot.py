@@ -2,6 +2,10 @@
 
 # mallet-visualize-pivot.py - given a (MALLET) CSV file and quite a few parameters, visualize topics based on a pivot table
 
+# Eric Lease Morgan <emorgan@nd.edu>
+# Summer 2019 - first cut
+
+
 # require
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -23,8 +27,7 @@ df = df.drop(['docId', 'id'], axis=1)
 
 # get the column names, normalize them, and update the headers accordingly
 topics = list( df.columns )
-for i in range( 1, len( topics ) ) :
-	topics[ i ] = topics[ i ].replace( ' ', '-' )
+for i in range( 1, len( topics ) ) : topics[ i ] = topics[ i ].replace( ' ', '-' )
 df.columns = topics
 
 # pivot, plot, and done
