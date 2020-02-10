@@ -34,7 +34,7 @@ The suite of software making up the Distant Reader takes one of five different t
    4. A compressed (zip) file made up of many other files
    5. A compressed file with an additional metadata file
    
-Given one or another of the possible inputs, the Distant Reader first caches the original content. It then transforms the content into a set of plain text files. Third, the Reader does text mining and natural language processing against the text files for the purpose of feature extraction: n-grams, parts-of-speech, named-entities, etc. The results of this process is a set of tab-delimited text files. The whole of the tab-delimited text files is then distilled into a relational database. A set of tabular and narrative reports is then generated against the database. The cache, transformed plain text files, tab-delimited files, relational database, and reports are then compressed ito a single (zip) file, and returned to the... reader. The returned file is affectionately called a "study carrel".  The student, researcher, or scholar is intended to peruse the study carrel for the purpose of supplementing the more traditional reading process.
+Given one or another of the possible inputs, the Distant Reader first caches the original content. It then transforms the content into a set of plain text files. Third, the Reader does text mining and natural language processing against the text files for the purpose of feature extraction: n-grams, parts-of-speech, named-entities, etc. The results of this process is a set of tab-delimited text files. The whole of the tab-delimited text files is then distilled into a relational database. A set of tabular and narrative reports is then generated against the database. The cache, transformed plain text files, tab-delimited files, relational database, and reports are then compressed ito a single (zip) file, and returned to the... reader. [1] The returned file is affectionately called a "study carrel".  The student, researcher, or scholar is intended to peruse the study carrel for the purpose of supplementing the more traditional reading process.
 
 For more detail, links of possible interest include:
 
@@ -48,6 +48,8 @@ If you have any questions, then please don't hesitate to ask.
 
 "Happy reading!"
 
+[1] Just like GNU, the Distant Reader's defintion is rather recursive
+
 --- 
 Eric Lease Morgan &lt;emorgan@nd.edu&gt;   
 Navari Family Center for Digital Scholarship   
@@ -58,4 +60,3 @@ University of Notre Dame
 
 
 
-[1] Just like GNU, the Distant Reader's defintion is rather recursive
