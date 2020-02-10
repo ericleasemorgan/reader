@@ -1,6 +1,6 @@
 # Distant Reader
 
-The Distant Reader is a high performance computing (HPC) system which takes an almost arbitrary amount of unstdructured data (text) as input and outputs a set of structured data for analysis -- "reading".
+The Distant Reader is a high performance computing (HPC) system which takes an almost arbitrary amount of unstructured data (text) as input and outputs a set of structured data for analysis -- "reading".
 
 As an HPC, the Distant Reader is not a single computer program but instead a suite of softare comprised of many individual scripts and applications. Personally, I see the scripts and applications akin to collection of poems used to make the output of human expression more cogent. Really. Seroiusly.
 
