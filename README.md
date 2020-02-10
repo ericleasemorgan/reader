@@ -49,10 +49,10 @@ If you have any questions, then please don't hesitate to ask.
 "Happy reading!"
 
 --- 
-Eric Lease Morgan &lt;emorgan@nd.edu&gt;
-Navari Family Center for Digital Scholarship
-Hesburgh Libraries
-University of Notre Dame
+Eric Lease Morgan &lt;emorgan@nd.edu&gt;   
+Navari Family Center for Digital Scholarship   
+Hesburgh Libraries   
+University of Notre Dame   
 
 574/631-8604
 
