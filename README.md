@@ -26,15 +26,22 @@ As a collection of scripts and applications, the Distant Reader has only been bu
    
    * Airivata - a Web-based suite of software used to monitor computing jobs on a cluster
 
-The suite of software making up the Distant Reader takes one of five different types of input:
+The Distant Reader takes one of five different types of input:
 
-   1. A URL
-   2. A file which is comprised of a list of URLs
-   3. A file
-   4. A compressed (zip) file made up of many other files
-   5. A compressed file with an additional metadata file
+   1. a URL - good for blogs, single journal articles, or long reports
+   2. a list of URLs - the most scalable, but creating the list can be problematic
+   3. a file - good for that long PDF document on your computer
+   4. a zip file - the zip file can contain just about any number of files from your computer
+   5. a zip file plus a metadata file - with the metadata file, the reader’s analysis is more complete
    
-Given one or another of the possible inputs, the Distant Reader first caches the original content. It then transforms the content into a set of plain text files. Third, the Reader does text mining and natural language processing against the text files for the purpose of feature extraction: n-grams, parts-of-speech, named-entities, etc. The results of this process is a set of tab-delimited text files. The whole of the tab-delimited text files is then distilled into a relational database. A set of tabular and narrative reports is then generated against the database. The cache, transformed plain text files, tab-delimited files, relational database, and reports are then compressed ito a single (zip) file, and returned to the... reader. [1] The returned file is affectionately called a "study carrel".  The student, researcher, or scholar is intended to peruse the study carrel for the purpose of supplementing the more traditional reading process.
+Given one or another of the possible inputs, the Distant Reader first caches the original content. It then transforms the content into a set of plain text files. Third, the Reader does text mining and natural language processing against the text files for the purpose of feature extraction: n-grams, parts-of-speech, named-entities, etc. The results of this process is a set of tab-delimited text files. The whole of the tab-delimited text files is then distilled into a relational database. A set of tabular and narrative reports is then generated against the database. The cache, transformed plain text files, tab-delimited files, relational database, and reports are then compressed ito a single (zip) file, and returned to the... reader. [1]
+
+The returned file is affectionately called a "study carrel".  The student, researcher, or scholar is intended to peruse the study carrel for the purpose of supplementing the more traditional reading process. Use cases include:
+
+   * the undergraduate student who needs to read everything for Sociology 101
+   * the Ph.D. student who needs to understand the totality of their dissertation's bibliography
+   * the scientist who is doing a literature review
+   * the humanist who is studying all the works of a given genre
 
 For more detail, links of possible interest include:
 
