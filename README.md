@@ -62,8 +62,10 @@ Eric Lease Morgan &lt;emorgan@nd.edu&gt;
 Navari Family Center for Digital Scholarship   
 Hesburgh Libraries   
 University of Notre Dame   
-
 574/631-8604
+
+February 9, 2020
+
 
 
 
