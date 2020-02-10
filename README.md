@@ -7,23 +7,14 @@ As an HPC, the Distant Reader is not a single computer program but instead a sui
 As a collection of scripts and applications, the Distant Reader has only been built by "standing on the shoulders of giants". Listed in no particular order nor necessarily complete, they include:
 
    * the Perl-based LWP modules - this software is a significant part of harvesting process
-   
    * Wget - an absolutely wonderful Internt spidering application
-   
    * Tika - a Java-based library which transforms just about any file into plain text
-   
    * Spacy - a Python module which simplifies natural language processing operations
-   
    * Gensim - another Python module for natural language processing
-   
    * Textacy - a Python module building on the good work of Spacey
-
    * SQLite - a cross-platform, SQL-compliant relational database library/application
-   
    * OpenStack - a tool for building virtual machines
-   
    * Slurm - a tool for instantiating a cluster of computer nodes and what runs on them
-   
    * Airivata - a Web-based suite of software used to monitor computing jobs on a cluster
 
 The Distant Reader takes one of five different types of input:
