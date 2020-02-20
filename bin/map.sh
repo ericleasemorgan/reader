@@ -32,7 +32,8 @@ find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2urls.
 wait
 
 # extract bibliographics
-find "$CACHE" -type f | $PARALLEL -j 7 --will-cite /export/reader/bin/file2bib.sh {} &
+#find "$CACHE" -type f | $PARALLEL -j 7 --will-cite /export/reader/bin/file2bib.sh {} &
+find "$CACHE" -type f | $PARALLEL --will-cite /export/reader/bin/file2bib.sh {} &
 wait
 
 # set up multi-threading environment
@@ -57,7 +58,8 @@ export OMP_NUM_THREADS
 export OPENBLAS_NUM_THREADS
 export MKL_NUM_THREADS
 
-find "$INPUT" -name '*.txt' | $PARALLEL -j 3 --will-cite /export/reader/bin/txt2keywords.sh {} &
+#find "$INPUT" -name '*.txt' | $PARALLEL -j 3 --will-cite /export/reader/bin/txt2keywords.sh {} &
+find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2keywords.sh {} &
 wait
 
 # done
