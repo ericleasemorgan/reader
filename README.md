@@ -22,7 +22,7 @@ The system will then:
    6. copy the zipped file and a Slurm script to the Reader's file system
    7. done
    
-The next step would be to submit the Slurm script so processing can be done.
+The next step would be to submit the Slurm script so Reader can do its good work. When the Reader is done, then each article will have much more metadata -- features -- associated with it, and this will facilitate more nuanced analysis of the corpus -- reading. 
 
 ---  
 Eric Lease Morgan &lt;emorgan@nd.edu&gt;  
