@@ -1,4 +1,4 @@
-# cord-19
+# covid-19
 
 This suite of software will prepare a dataset called "[CORD-19](https://pages.semanticscholar.org/coronavirus-research)" for processing with the [Distant Reader](https://distantreader.org).
 
