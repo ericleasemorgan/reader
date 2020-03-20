@@ -1,6 +1,6 @@
-# covid-19
+# cord-19
 
-This suite of software will prepare a dataset called "[COVID-19](https://pages.semanticscholar.org/coronavirus-research)" for processing with the [Distant Reader](https://distantreader.org).
+This suite of software will prepare a dataset called "[CORD-19](https://pages.semanticscholar.org/coronavirus-research)" for processing with the [Distant Reader](https://distantreader.org).
 
 CORD-19 is a set of more than 13,000 full text scholarly journal articles surrounding the topic of the COVID-19 pandemic. Each "article" is really a JSON file containing (very) rudimentary bibliographic information, a set of paragraphs, and bibliographic citations. This suite processes the JSON files to extract their identifier, author, title, full text, much of their citations. The whole lot is then zipped up -- along with a metadata file -- and submitted to the Distant Reader for analysis.
 
