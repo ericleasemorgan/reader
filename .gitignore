@@ -1,1 +1,9 @@
 .DS_Store
+.parallel
+etc/covid.db
+etc/metadata.csv
+json
+sql
+tmp
+txt
+zips

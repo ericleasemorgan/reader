@@ -10,13 +10,22 @@
 
 # configure, a lot
 TXT='./txt'
-HEADER="author,title,file"
+HEADER="date,title,file"
 METADATA="$TXT/metadata.csv"
-SQL=".mode csv\nSELECT author, title, id||'.txt' FROM articles;"
+SQL=".mode csv\nSELECT date, title, sha||'.txt' FROM articles;"
 DB='./etc/covid.db'
-CARREL='/export/reader/carrels/covid'
+CARRELS='/export/reader/carrels'
 SLURM='./etc/covid.slurm'
 ZIP='input.zip'
+
+# sanity check
+if [[ -z $1 ]]; then
+	echo "Usage: $0 <name>" >&2
+	exit
+fi
+
+# get input
+NAME=$1
 
 # initialize metadata, and the fill it up
 echo $HEADER                >  $METADATA
@@ -24,6 +33,7 @@ printf "$SQL" | sqlite3 $DB >> $METADATA
 
 # zip it up, copy things to the reader, and done
 zip $ZIP $TXT/*
-cp $ZIP $CARREL
-cp $SLURM $CARREL
+mkdir -p $CARRELS/$NAME
+cp $ZIP $CARRELS/$NAME
+cp $SLURM $CARRELS/$NAME
 exit
