@@ -8,6 +8,7 @@
 # June     26, 2018 - first cut
 # June     24, 2018 - lemmatized output
 # December 23, 2019 - started using Textacy
+# March    18, 2020 - eliminated words less than three characters long; ought to explore stop words
 
 
 # configure
@@ -47,5 +48,9 @@ doc     = model( text )
 print( "id\tkeyword" )
 
 # process and output each keyword and done; can't get much simpler
-for keyword, score in ( yake( doc, ngrams=NGRAMS, topn=TOPN ) ) : print( "\t".join( [ id, keyword ] ) )
+for keyword, score in ( yake( doc, ngrams=NGRAMS, topn=TOPN ) ) :
+
+	if ( len( keyword ) < 3 ) : continue
+	print( "\t".join( [ id, keyword ] ) )
+	
 exit()

@@ -32,6 +32,7 @@ unzip input.zip -d ./tmp/input -x '*MACOSX*' 1>&2
 
 # copy known file types to the cache; normalize file names here
 find tmp/input -name "*.pdf"  | $PARALLEL --will-cite mv {} cache
+find tmp/input -name "*.PDF"  | $PARALLEL --will-cite mv {} cache
 find tmp/input -name "*.xml"  | $PARALLEL --will-cite mv {} cache
 find tmp/input -name "*.htm"  | $PARALLEL --will-cite mv {} cache
 find tmp/input -name "*.html" | $PARALLEL --will-cite mv {} cache
