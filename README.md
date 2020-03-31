@@ -16,6 +16,10 @@ As a collection of scripts and applications, the Distant Reader has only been bu
    * OpenStack - a tool for building virtual machines
    * Slurm - a tool for instantiating a cluster of computer nodes and what runs on them
    * Airivata - a Web-based suite of software used to monitor computing jobs on a cluster
+   * Python Libraries - sqlalchemy, pandas, itertools, wordcloud, scipy, matplotlib, sklearn, tika, gensim, textacy, networkx, textatistic, nltk, spacy, mpl_toolkits, cgitb, cgi
+   * Perl Modules - DBI, JSON, Archive::Zip, WebService::Solr, XML::XPath, CGI, File::Basename, File::Copy, HTML::Entities, HTML::Escape
+   * Javascript Libraries - bootstap, jquery 
+   * Other Programs - csvstack
 
 The Distant Reader takes one of five different types of input:
 
