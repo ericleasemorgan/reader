@@ -27,19 +27,26 @@ LEAF=$( basename "$FILE" .txt )
 mkdir -p "$ORIGINAL/../$URLS"
 OUTPUT="$ORIGINAL/../$URLS/$LEAF.url"
 
-# get the data
-RECORDS=$(cat "$FILE" | egrep -o 'https?://[^ ]+' | sed -e 's/https/http/g' |  sed -e 's/\W+$//g' |  sed -e 's/\,$//g'|  sed -e 's/\;$//g' |  sed -e 's/\.$//g' |  sed -e 's/)$//g' )
+# optionally, do the work
+if [ -f "$OUTPUT" ]; then
+	echo "$OUTPUT exist" >&2
 
-# if content found, then extract domain and output
-SIZE=${#RECORDS} 
-if [[ $SIZE > 0 ]]; then
+else
+	# get the data
+	RECORDS=$(cat "$FILE" | egrep -o 'https?://[^ ]+' | sed -e 's/https/http/g' |  sed -e 's/\W+$//g' |  sed -e 's/\,$//g'|  sed -e 's/\;$//g' |  sed -e 's/\.$//g' |  sed -e 's/)$//g' )
 
-	# proces each item in the data
-	printf "id\tdomain\turl\n" >  "$OUTPUT"
-	while read -r RECORD; do
-		DOMAIN=$(echo $RECORD | sed -e 's/http:\/\///g' | sed -e 's/\/.*$//g')
-		echo -e "$LEAF\t$DOMAIN\t$RECORD" >> "$OUTPUT"
-	done <<< "$RECORDS"
+	# if content found, then extract domain and output
+	SIZE=${#RECORDS} 
+	if [[ $SIZE > 0 ]]; then
+
+		# proces each item in the data
+		printf "id\tdomain\turl\n" >  "$OUTPUT"
+		while read -r RECORD; do
+			DOMAIN=$(echo $RECORD | sed -e 's/http:\/\///g' | sed -e 's/\/.*$//g')
+			echo -e "$LEAF\t$DOMAIN\t$RECORD" >> "$OUTPUT"
+		done <<< "$RECORDS"
+
+	fi
 
 fi
 

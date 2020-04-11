@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# cord2carrel.sh - given the CORD data set, create "study carrel plus"
+# cord2carrel-map.sh - given the CORD data set, create "study carrel plus", but just map (no reduce)
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
 
-# April 3, 2020 - first investigations
+# April 4, 2020 - first investigations
 
 
 # enhance environment
@@ -57,9 +57,6 @@ echo "Building study carrel named $NAME" >&2
 # extract parts-of-speech, named entities, etc
 $MAP $NAME
 
-# build the database
-$REDUCE $NAME
-
 # build ./etc/reader.txt; a plain text version of the whole thing
 echo "Building ./etc/reader.txt" >&2
 rm -rf $CORPUS >&2
@@ -68,9 +65,6 @@ tr '[:upper:]' '[:lower:]' < "$CORPUS" > ./tmp/corpus.001
 tr '[:digit:]' ' ' < ./tmp/corpus.001 > ./tmp/corpus.002
 tr '\n' ' ' < ./tmp/corpus.002 > ./tmp/corpus.003
 tr -s ' ' < ./tmp/corpus.003 > "$CORPUS"
-
-# output a report against the database
-$DB2REPORT $NAME > "$CARRELS/$NAME/$REPORT"
 
 # done
 exit
