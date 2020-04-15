@@ -4,7 +4,7 @@ The Distant Reader is a high performance computing (HPC) system which takes an a
 
 As an HPC, the Distant Reader is not a single computer program but instead a suite of software comprised of many individual scripts and applications. Personally, I see the scripts and applications akin to collection of poems used to make the output of human expression more cogent. Really. Seroiusly.
 
-As a collection of scripts and applications, the Distant Reader has only been built by "standing on the shoulders of giants". Listed in no particular order nor necessarily complete, they include:
+As a collection of scripts and applications, the Distant Reader has only been built by "standing on the shoulders of giants". Cited [here](https://distantreader.org/software-reference/) in no particular order nor necessarily complete, they include these below and more:
 
    * the Perl-based LWP modules - this software is a significant part of harvesting process
    * Wget - an absolutely wonderful Internt spidering application
