@@ -24,7 +24,7 @@ For more detail, links of possible interest include:
   * home page - https://distantreader.org
   * "study carrels" - http://carrels.distantreader.org
   * blog postings - http://sites.nd.edu/emorgan/category/distant-reader/
-  * Slack channel - http://bit.ly/distantreader-slack
+  * Slack channel - http://bit.ly/distantreader-on-slack
   * Twitter feed - http://twitter.com/readerdistant
 
 As an HPC, the Distant Reader is not a single computer program but instead a suite of software comprised of many individual scripts and applications. Personally, I see the scripts and applications akin to collection of poems used to make the output of human expression more cogent. Really. Seroiusly.
@@ -59,7 +59,8 @@ Hesburgh Libraries
 University of Notre Dame   
 574/631-8604
 
-February 9, 2020
+Edited: April 16, 2020   
+Created: 2020
 
 
 
