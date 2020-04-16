@@ -59,9 +59,8 @@ Hesburgh Libraries
 University of Notre Dame   
 574/631-8604
 
-Edited: April 16, 2020   
-Created: 2020
-
+Created: June 28, 2018   
+Updated: April 16, 2020
 
 
 
