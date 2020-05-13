@@ -9,11 +9,11 @@
 
 
 # configure URLs; these will change
-COMMUSE='https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-03-13/comm_use_subset.tar.gz';
-NONCOMMUSE='https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-03-13/noncomm_use_subset.tar.gz'
-PMC='https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-03-13/pmc_custom_license.tar.gz'
-BIORXIVMEDRXIV='https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-03-13/biorxiv_medrxiv.tar.gz'
-METADATA='https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-03-13/all_sources_metadata_2020-03-13.csv'
+COMMUSE='https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/latest/comm_use_subset.tar.gz';
+NONCOMMUSE='https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/latest/noncomm_use_subset.tar.gz'
+#PMC='https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-03-20/custom_license.tar.gz'
+BIORXIVMEDRXIV='https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/latest/biorxiv_medrxiv.tar.gz'
+METADATA='https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/latest/metadata.csv'
 
 # configure file system
 ZIPS='./zips'
@@ -33,7 +33,7 @@ cd $ZIPS
 rm ./*.gz
 wget $COMMUSE
 wget $NONCOMMUSE
-wget $PMC
+#wget $PMC
 wget $BIORXIVMEDRXIV
 
 # ...copy it...

@@ -23,6 +23,7 @@ fi
 
 # get input
 FILE=$1
+echo $FILE >&2
 
 # make more sane
 mkdir -p $TXT
