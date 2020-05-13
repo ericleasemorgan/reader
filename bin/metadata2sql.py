@@ -20,7 +20,6 @@ import re
 import sys
 import os 
 
-
 # process each row in the metadata file
 metadata = pd.read_csv( METADATA )
 for index, row in metadata.iterrows() :
