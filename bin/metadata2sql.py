@@ -11,7 +11,7 @@
 
 # configure
 METADATA = './etc/metadata.csv'
-TEMPLATE = "INSERT INTO documents ( 'authors', 'title', 'date', 'year', 'journal', 'source', 'abstract', 'license', 'pdf_json', 'pmc_json', 'sha', 'url', 'doi', 'arxiv_id', 'cord_uid', 'mag_id', 'pmc_id', 'pubmed_id', 'who_id' ) VALUES ( '##AUTHHORS##', '##TITLE##', '##DATE##', '##YEAR##', '##JOURNAL##', '##SOURCE##', '##ABSTRACT##', '##LICENSE##', '##PDFJSON##', '##PMCJSON##', '##SHA##', '##URL##', '##DOI##', '##ARXIVID##', '##CORDUID##', '##MAGID##', '##PMCID##', '##PUBMEDID##', '##WHOID##' );"
+TEMPLATE = "INSERT INTO documents ( 'authors', 'title', 'date', 'year', 'journal', 'source', 'abstract', 'license', 'pdf_json', 'pmc_json', 'sha', 'url', 'doi', 'arxiv_id', 'cord_uid', 'mag_id', 'pmc_id', 'pubmed_id', 'who_id' ) VALUES ( '##AUTHORS##', '##TITLE##', '##DATE##', '##YEAR##', '##JOURNAL##', '##SOURCE##', '##ABSTRACT##', '##LICENSE##', '##PDFJSON##', '##PMCJSON##', '##SHA##', '##URL##', '##DOI##', '##ARXIVID##', '##CORDUID##', '##MAGID##', '##PMCID##', '##PUBMEDID##', '##WHOID##' );"
 INSERTS='./sql'
 
 # require
