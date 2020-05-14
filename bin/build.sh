@@ -7,12 +7,12 @@
 
 # March 16, 2020 - first cut
 # March 20, 2020 - added caching
+# May   14, 2020 - added summary report, and removed conversation to plain text
 
 
 # on my mark, get set,... go
 ./bin/cache.sh
-./bin/db-initialize.sh
 ./bin/metadata2sql.py
+./bin/db-initialize.sh
 ./bin/sql2db.sh
-find json -name "*.json" | parallel ./bin/json2txt.sh 
-./bin/db2reader.sh
+./bin/summarize.sh > ./report.txt

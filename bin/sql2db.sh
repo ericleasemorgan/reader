@@ -8,7 +8,7 @@
 # March 16, 2020 - first cut
 
 # configure
-DB='./etc/covid.db'
+DB='./etc/cord.db'
 SQL='./sql'
 TMP='./tmp'
 

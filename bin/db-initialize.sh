@@ -9,7 +9,7 @@
 
 
 # configure
-DB='./etc/covid.db'
+DB='./etc/cord.db'
 SCHEMA='./etc/schema.sql'
 
 # make sane
