@@ -5,7 +5,8 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
 
-# April 3, 2020 - first investigations
+# April  3, 2020 - first investigations
+# May   15, 2020 - added JSON to txt functionality 
 
 
 # enhance environment
@@ -27,19 +28,21 @@ INITIALIZECARREL='/export/reader/bin/initialize-carrel.sh'
 MAP='/export/reader/bin/map.sh'
 METADATA2SQL='/export/reader/bin/metadata2sql.py'
 REDUCE='/export/reader/bin/reduce.sh'
+JSON2TXTPDF='/export/reader/bin/json2txt-pdf.sh'
+CARREL2ZIP='/export/reader/bin/carrel2zip.pl'
+MAKEPAGES='/export/reader/bin/make-pages.sh'
 
 # get the name of newly created directory
 NAME=$( pwd )
 NAME=$( basename $NAME )
 echo "Carrel name: $NAME" >&2
 
-
-echo "Here, make sure txt directory and metadata file exit" >&2
-
-
 # create a study carrel
 echo "Creating study carrel named $NAME" >&2
 $INITIALIZECARREL $NAME
+
+# convert raw input (JSON files) to plain text
+find cache -name "*.json" | parallel $JSON2TXTPDF
 
 # unzip the zip file and put the result in the cache
 echo "Reading metadata file and updating bibliogrpahics" >&2
@@ -71,6 +74,19 @@ tr -s ' ' < ./tmp/corpus.003 > "$CORPUS"
 
 # output a report against the database
 $DB2REPORT $NAME > "$CARRELS/$NAME/$REPORT"
+
+# create about file
+$MAKEPAGES $NAME
+
+# zip it up
+echo "Zipping study carrel" >&2
+rm -rf ./tmp
+#cp "$LOG/$NAME.log" "$NAME/log" 
+$CARREL2ZIP $NAME
+echo "" >&2
+
+# make zip file accessible
+cp "./etc/reader.zip" "./study-carrel.zip"
 
 # done
 exit
