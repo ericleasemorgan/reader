@@ -8,9 +8,12 @@
 # May 14, 2020 - first investigations
 
 
+# pre-configure
+SELECT='SELECT document_id, cord_uid, authors, title, date FROM documents WHERE journal IS "Virus Genes";'
+
 # configure
 CACHE='cache'
-CARRELS='/home/emorgan/sandbox/carrels'
+CARRELS='/export/reader/carrels'
 CSV='metadata.csv'
 DB='./etc/cord.db'
 HEADER='author\ttitle\tdate\tfile'
@@ -20,14 +23,14 @@ TEMPLATE='.mode tabs\n##SELECT##;\n'
 TSV='metadata.tsv'
 
 # sanity check
-if [[ -z $1 || -z $2 ]]; then
-	echo "Usage: $0 <name> <SELECT>" >&2
+if [[ -z $1 ]]; then
+	echo "Usage: $0 <name>" >&2
 	exit
 fi
 
 # get input
 NAME=$1
-SELECT=$2
+SELECT=$SELECT
 
 # create output directory
 CACHE="$CARRELS/$NAME/$CACHE"
@@ -44,12 +47,15 @@ SELECT=$( echo "$TEMPLATE" | sed "s/##SELECT##/$SELECT/" )
 IFS=$'\t'
 printf "$SELECT" | sqlite3 $DB | while read DOCID CORDID AUTHORS TITLE DATE; do
 
-	# for right now, we only want a single author
-	AUTHOR=$( echo $AUTHORS | cut -d';' -f1 )
-	
 	# get the pdf_json file name
 	SQL=$( echo $SUBSELECT | sed "s/##DOCID##/$DOCID/" )
 	PDFJSON=$( echo $SQL | sqlite3 $DB )
+	
+	# we only want to continue, if we have a file
+	if [[ $PDFJSON == 'nan' || -z  $PDFJSON ]]; then continue; fi
+	
+	# for right now, we only want a single author
+	AUTHOR=$( echo $AUTHORS | cut -d';' -f1 )
 	
 	# build a file name; a bit obtuse
 	ITEM=$(printf "%05d" $DOCID)
@@ -73,7 +79,7 @@ printf "$SELECT" | sqlite3 $DB | while read DOCID CORDID AUTHORS TITLE DATE; do
 	
 done
 
-# convert tsv to csv; cool ("kewl") hack
+# convert tsv to csv; kewl hack
 perl -lpe 's/"/""/g; s/^|$/"/g; s/\t/","/g' < $METADATA > "$CARRELS/$NAME/$CSV"
 rm $METADATA
 
