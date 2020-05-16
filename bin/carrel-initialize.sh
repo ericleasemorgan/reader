@@ -6,10 +6,11 @@
 # (c) University of Notre Dame; distributed under a GNU Public License
 
 # May 14, 2020 - first investigations
+# May 16, 2020 - required WHERE clause as input
 
 
 # pre-configure
-SELECT='SELECT document_id, cord_uid, authors, title, date FROM documents WHERE journal IS "Virus Genes";'
+TEMPLATE='.mode tabs\nSELECT document_id, cord_uid, authors, title, date FROM documents WHERE ##WHERE##;'
 
 # configure
 CACHE='cache'
@@ -19,18 +20,17 @@ DB='./etc/cord.db'
 HEADER='author\ttitle\tdate\tfile'
 JSON='./json'
 SUBSELECT="SELECT pdf_json FROM documents WHERE document_id = '##DOCID##';"
-TEMPLATE='.mode tabs\n##SELECT##;\n'
 TSV='metadata.tsv'
 
 # sanity check
-if [[ -z $1 ]]; then
-	echo "Usage: $0 <name>" >&2
+if [[ -z $1 || -z $2  ]]; then
+	echo "Usage: $0 <name> <where clause>" >&2
 	exit
 fi
 
 # get input
 NAME=$1
-SELECT=$SELECT
+WHERE=$2
 
 # create output directory
 CACHE="$CARRELS/$NAME/$CACHE"
@@ -41,7 +41,7 @@ METADATA="$CARRELS/$NAME/$TSV"
 printf "$HEADER\n" > $METADATA
 
 # initialize select statement
-SELECT=$( echo "$TEMPLATE" | sed "s/##SELECT##/$SELECT/" )
+SELECT=$( echo "$TEMPLATE" | sed "s/##WHERE##/$WHERE/" )
 
 # submit select and process each result
 IFS=$'\t'
@@ -70,7 +70,7 @@ printf "$SELECT" | sqlite3 $DB | while read DOCID CORDID AUTHORS TITLE DATE; do
 	echo "         JSON: $PDFJSON" >&2
 	echo "    file name: $FILE"    >&2
 	echo                           >&2
-	
+		
 	# update the metadata file
 	printf "$AUTHOR\t$TITLE\t$DATE\t$FILE\n" >> $METADATA
 	

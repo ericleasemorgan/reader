@@ -11,5 +11,5 @@
 
 #SBATCH --mail-type=ALL
 
-cd /home/emorgan/sandbox/carrels/##NAME##
+cd /export/reader/carrels/##NAME##
 /export/reader/bin/cord2carrel.sh
