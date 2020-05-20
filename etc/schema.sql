@@ -39,3 +39,10 @@ CREATE TABLE authors (
 
 );
 
+CREATE TABLE wrd (
+
+	document_id  INTEGER,
+	keyword      TEXT
+
+);
+
