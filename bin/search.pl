@@ -11,6 +11,7 @@
 
 # configure
 use constant FACETFIELD => ( 'facet_journal', 'year' );
+use constant FIELDS     => 'id,title,doi,url,date,journal';
 use constant SOLR       => 'http://localhost:8984/solr/covid19';
 use constant ROWS       => 999;
 
@@ -30,7 +31,7 @@ binmode( STDOUT, ':utf8' );
 # build the search options
 my %search_options = ();
 $search_options{ 'facet.field' } = [ FACETFIELD ];
-$search_options{ 'fl' }          = 'id,title,doi,url,date,journal';
+$search_options{ 'fl' }          = FIELDS;
 $search_options{ 'facet' }       = 'true';
 $search_options{ 'rows' }        = ROWS;
 
@@ -67,7 +68,7 @@ if ( $type eq 'list' ) {
 		my $document_id = $doc->value_for( 'id' );
 		my $title       = $doc->value_for( 'title' );
 		my $date        = $doc->value_for( 'date' );
-		my $abstract    = $doc->value_for( 'abstract' );
+		#my $abstract    = $doc->value_for( 'abstract' );
 		my $journal     = $doc->value_for( 'journal' );
 		my $url         = $doc->value_for( 'url' );
 		my $doi         = $doc->value_for( 'doi' );
