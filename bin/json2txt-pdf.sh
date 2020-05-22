@@ -45,7 +45,7 @@ printf $QUERY | sqlite3 $DB | while read -a RESULTS; do
 	CORDID=${RESULTS[7]}
 
 	# build a file name; a bit obtuse
-	ITEM=$( printf "%05d" $DOCID )
+	ITEM=$( printf "%06d" $DOCID )
 	KEY="cord-$ITEM-$CORDID"
 
 	# extract the body; jq++

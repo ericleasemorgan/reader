@@ -1,12 +1,13 @@
 .DS_Store
 .parallel
-etc/cord.db
 etc/CHANGELOG.txt
+etc/cord.db
 etc/FAQ.html
 etc/metadata.csv
 json
 report.txt
 sql
+sql-wrd/
 tmp
 txt
 wrd

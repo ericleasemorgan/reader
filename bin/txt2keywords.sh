@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # txt2keywords.sh - given a file, execute txt2keywords.py
-# usage: find ./txt -name '*.txt' | parallel ./bin/txt2keywords.sh
+# usage: find ./txt -name '*.txt' | sort | parallel ./bin/txt2keywords.sh
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
@@ -26,6 +26,9 @@ FILE=$1
 # compute output
 BASENAME=$( basename $FILE .txt )
 OUTPUT="$WRD/$BASENAME.wrd"
+
+# debug 
+echo $BASENAME >&2
 
 # optionally, do the work
 if [ ! -f $OUTPUT ]; then $TXT2KEYWORDS $FILE > $OUTPUT; fi

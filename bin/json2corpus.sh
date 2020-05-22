@@ -32,7 +32,7 @@ IFS=$'\t'
 printf $QUERY | sqlite3 $DB | while read DOCID CORDID; do
 
 	# build a file name (yet another key); a bit obtuse
-	ITEM=$( printf "%05d" $DOCID )
+	ITEM=$( printf "%06d" $DOCID )
 	FILE="cord-$ITEM-$CORDID.txt"
 
 	# don't do the work, if it has already been done
