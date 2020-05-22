@@ -1,6 +1,8 @@
 .DS_Store
 .parallel
 etc/cord.db
+etc/CHANGELOG.txt
+etc/FAQ.html
 etc/metadata.csv
 json
 report.txt

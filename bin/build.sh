@@ -11,8 +11,21 @@
 
 
 # on my mark, get set,... go
+
+echo "Caching" >&2
 ./bin/cache.sh
+
+echo "Extracting metadata" >&2
 ./bin/metadata2sql.py
+
+echo "Initializing database" >&2
 ./bin/db-initialize.sh
+
+echo "Filling database" >&2
 ./bin/sql2db.sh
+
+echo "Summarizing" >&2
 ./bin/summarize.sh > ./report.txt
+
+echo "Done" >&2
+exit
