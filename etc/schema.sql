@@ -39,6 +39,27 @@ CREATE TABLE authors (
 
 );
 
+CREATE TABLE sources (
+
+	document_id  INTEGER,
+	source       TEXT
+
+);
+
+CREATE TABLE shas (
+
+	document_id  INTEGER,
+	sha          TEXT
+
+);
+
+CREATE TABLE urls (
+
+	document_id  INTEGER,
+	url          TEXT
+
+);
+
 CREATE TABLE wrd (
 
 	document_id  INTEGER,

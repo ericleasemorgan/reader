@@ -21,8 +21,20 @@ echo "Extracting metadata" >&2
 echo "Initializing database" >&2
 ./bin/db-initialize.sh
 
-echo "Filling database" >&2
+echo "Filling documents table" >&2
 ./bin/sql2db.sh
+
+echo "Filling authors table" >&2
+cat ./etc/authors2author.sql | sqlite3 ./etc/cord.db
+
+echo "Filling sources table" >&2
+cat ./etc/sources2source.sql | sqlite3 ./etc/cord.db
+
+echo "Filling urls table" >&2
+cat ./etc/urls2url.sql | sqlite3 ./etc/cord.db
+
+echo "Filling shas table" >&2
+cat ./etc/shas2sha.sql | sqlite3 ./etc/cord.db
 
 echo "Summarizing" >&2
 ./bin/summarize.sh > ./report.txt

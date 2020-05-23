@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # json2corpus.sh - given a pile o' JSON files, create a corpus of more human-readable plain text files
-# usage: mkdir -p ./txt; find json -type f -not -name "P*" | parallel ./bin/json2corpus.sh
+# usage: mkdir -p ./txt; find json -type f -not -name "P*" | sort | parallel ./bin/json2corpus.sh
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame; distributed under a GNU Public License
