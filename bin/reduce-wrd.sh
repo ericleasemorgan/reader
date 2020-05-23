@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# reduce-wrd.sh - find all *.wrd files, transform them into SQL INSERT statements, and update the database
+# reduce-wrd.sh - build a transaction from previously created SQL statements and fill a database table
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
@@ -12,13 +12,8 @@
 DB='./etc/cord.db'
 SQLWRD='./sql-wrd'
 TMP='./tmp'
-WRD='./wrd'
-WRD2SQL='./bin/wrd2sql.sh'
 DELETE='DELETE FROM wrd;'
 INSERTS='inserts-wrd.sql'
-
-# create buckets o' SQL
-find $WRD -name "*.wrd" | sort | parallel $WRD2SQL
 
 # make sane
 mkdir -p $TMP
@@ -40,6 +35,6 @@ cat $SQLWRD/cord-9*.sql     >> "$TMP/$INSERTS"
 echo "END TRANSACTION;"     >> "$TMP/$INSERTS"
 
 # do the work and done
-echo "Updating database" >&2
+echo "Updating wrd table" >&2
 cat "$TMP/$INSERTS" | sqlite3 $DB
 exit

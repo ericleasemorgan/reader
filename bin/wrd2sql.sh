@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # wrd2sql.sh - given a TSV file of keywords, output a set of SQL INSERT statements
+# usage: mkdir ./sql-wrd; find ./wrd -name "*.wrd" | sort | parallel wrd2sql.sh
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
@@ -24,6 +25,9 @@ IFS=$'\t'
 
 # debug
 echo "$BASENAME" >&2
+
+# if the desired output already exists, then don't do it again
+if [[ -f "$SQLWRD/$BASENAME.sql" ]]; then exit; fi
 
 # extract document_id; I wish they had given me a key
 DOCUMENTID=$( echo $BASENAME | cut -d'-' -f2 | sed 's/^0*//' )

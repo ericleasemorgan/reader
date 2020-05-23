@@ -5,6 +5,7 @@ etc/cord.db
 etc/FAQ.html
 etc/metadata.csv
 json
+log
 report.txt
 sql
 sql-wrd/

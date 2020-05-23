@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # txt2keywords.sh - given a file, execute txt2keywords.py
-# usage: find ./txt -name '*.txt' | sort | parallel ./bin/txt2keywords.sh
+# usage: mkdir -p ./wrd; find ./txt -name '*.txt' | sort | parallel ./bin/txt2keywords.sh
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
