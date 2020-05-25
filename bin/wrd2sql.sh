@@ -37,6 +37,7 @@ cat $TSV | tail -n +2 | ( while read ID KEYWORD; do
 
 		# escape
 		KEYWORD=$( echo $KEYWORD | sed "s/'/''/g" )
+		KEYWORD=$( echo $KEYWORD | sed "s/%/'%/g" )
 		
 		# create an INSERT statement and then update the SQL
 		INSERT=$( echo $TEMPLATE | sed "s/##DOCUMENTID##/$DOCUMENTID/" | sed "s|##KEYWORD##|$KEYWORD|" )
