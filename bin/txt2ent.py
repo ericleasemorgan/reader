@@ -12,6 +12,7 @@
 from nltk import *
 import os
 import re
+import scispacy
 import spacy
 import sys
 
@@ -22,7 +23,7 @@ if len( sys.argv ) != 2 :
 
 # initialize
 file = sys.argv[ 1 ]
-nlp  = spacy.load( 'en', disable=['tagger'] )
+nlp  = spacy.load( 'en_core_sci_sm', disable=['tagger'] )
 
 # limit ourselves to a few processors only
 #os.system( "taskset -pc 0-1 %d > /dev/null" % os.getpid() )
