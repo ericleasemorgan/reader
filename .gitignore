@@ -1,5 +1,6 @@
 .DS_Store
 .parallel
+ent
 etc/CHANGELOG.txt
 etc/cord.db
 etc/FAQ.html

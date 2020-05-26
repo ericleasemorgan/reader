@@ -4,6 +4,7 @@
 -- (c) University of Notre Dame; distributed under a GNU Public License
 
 -- May 14, 2020 - first documentation
+-- May 26, 2020 - added quite a number of tables
 
 
 CREATE TABLE documents (
@@ -31,6 +32,17 @@ CREATE TABLE documents (
     
 );
 
+
+-- name entitites
+CREATE TABLE ent (
+
+    document_id  TEXT,
+    sid          INT,
+    eid          INT,
+    entity       TEXT,
+    type         TEXT
+    
+);
 
 CREATE TABLE authors (
 

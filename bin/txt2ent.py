@@ -6,7 +6,11 @@
 # (c) University of Notre Dame and distributed under a GNU Public License
 
 # July 1, 2018 - first cut, or there abouts
+# May 26, 202 by Jiali Cheng <cheng.jial@husky.neu.edu> - migrating to Project CORD
 
+
+# configure
+MODEL = 'en_ner_bionlp13cg_md'
 
 # require
 from nltk import *
@@ -23,7 +27,7 @@ if len( sys.argv ) != 2 :
 
 # initialize
 file = sys.argv[ 1 ]
-nlp  = spacy.load( 'en_core_sci_sm', disable=['tagger'] )
+nlp  = spacy.load( MODEL, disable=['tagger'] )
 
 # limit ourselves to a few processors only
 #os.system( "taskset -pc 0-1 %d > /dev/null" % os.getpid() )
