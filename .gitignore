@@ -4,6 +4,7 @@ etc/CHANGELOG.txt
 etc/cord.db
 etc/FAQ.html
 etc/metadata.csv
+etc/table.tsv
 json
 log
 report.txt

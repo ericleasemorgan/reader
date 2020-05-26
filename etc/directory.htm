@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Distant Reader Study Carrels</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" class="init">
+		$(document).ready(function() { $('#directory').DataTable( {
+        "order": [[ 1, "desc" ]],
+        "pageLength": 50
+    } ); } );
+	</script>
+	<style>
+		.right { text-align:right }
+	</style>
+</head>
+<body style='margin: 3%' >
+<h1>Distant Reader Study carrels</h1>
+
+<p>The result of the <a href="https://distantreader.org/">Distant Reader</a> process is the creation of a "study carrel", and below is a directory some such things.</p>
+
+</p>If you would like to have a study carrel created for your content, then drop me a line, or <a href="https://distantreader.org/auth/create-account">create a Distant Reader account</a>. Don't worry, your study carrel will not be "published" unless you specifically tell me to do so. --Eric Lease Morgan &lt;<a href="mailto:emorgan@nd.edu">emorgan@nd.edu</a>&gt;</p>
+
+<table id="directory" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>name / title</th>
+                <th>date last modified</th>
+                <th>keywords</th>
+                <th>number of items</th>
+                <th>size in words</th>
+                <th>readability score</th>
+                <th>download size in bytes</th>
+            </tr>
+        </thead>
+        <tbody>
+        ##ROWS##
+        </tbody>
+    </table>
+</body>
+</html>
