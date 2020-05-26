@@ -10,7 +10,8 @@ json
 log
 report.txt
 sql
-sql-wrd/
+sql-ent
+sql-wrd
 tmp
 txt
 wrd
