@@ -6,12 +6,13 @@
 # (c) University of Notre Dame; distributed under a GNU Public License
 
 # May 24, 2020 - migrating for Project CORD
+# May 26, 2020 - added additional facets
 
 
 # configure
-use constant FACETFIELD => ( 'facet_journal', 'year' );
+use constant FACETFIELD => ( 'facet_journal', 'year', 'facet_authors', 'facet_keywords' );
 use constant FIELDS     => 'id,title,doi,url,date,journal,abstract';
-use constant SOLR       => 'http://10.0.0.8:8984/solr/covid19';
+use constant SOLR       => 'http://10.0.0.8:8983/solr/cord';
 use constant ROWS       => 49;
 
 # require
@@ -62,7 +63,7 @@ else {
 	foreach my $facet ( sort { $$journal_facets{ $b } <=> $$journal_facets{ $a } } keys %$journal_facets ) {
 	
 		my $encoded = uri_encode( $facet );
-		my $link = qq(<a href='./admin.cgi?query=$sanitized AND facet_journal:"$encoded"'>$facet</a>);
+		my $link = qq(<a href='./?query=$sanitized AND facet_journal:"$encoded"'>$facet</a>);
 		push @facet_journal, $link . ' (' . $$journal_facets{ $facet } . ')';
 		
 	}
@@ -73,8 +74,30 @@ else {
 	foreach my $facet ( sort { $$year_facets{ $b } <=> $$year_facets{ $a } } keys %$year_facets ) {
 	
 		my $encoded = uri_encode( $facet );
-		my $link = qq(<a href='./admin.cgi?query=$sanitized AND year:"$encoded"'>$facet</a>);
+		my $link = qq(<a href='./?query=$sanitized AND year:"$encoded"'>$facet</a>);
 		push @facet_year, $link . ' (' . $$year_facets{ $facet } . ')';
+		
+	}
+
+	# authors
+	my @facet_author = ();
+	my $author_facets = &get_facets( $response->facet_counts->{ facet_fields }->{ facet_authors } );
+	foreach my $facet ( sort { $$author_facets{ $b } <=> $$author_facets{ $a } } keys %$author_facets ) {
+	
+		my $encoded = uri_encode( $facet );
+		my $link = qq(<a href='./?query=$sanitized AND authors:"$encoded"'>$facet</a>);
+		push @facet_author, $link . ' (' . $$author_facets{ $facet } . ')';
+		
+	}
+
+	# keywords
+	my @facet_keywords = ();
+	my $keyword_facets = &get_facets( $response->facet_counts->{ facet_fields }->{ facet_keywords } );
+	foreach my $facet ( sort { $$keyword_facets{ $b } <=> $$keyword_facets{ $a } } keys %$keyword_facets ) {
+	
+		my $encoded = uri_encode( $facet );
+		my $link = qq(<a href='./?query=$sanitized AND keywords:"$encoded"'>$facet</a>);
+		push @facet_keywords, $link . ' (' . $$keyword_facets{ $facet } . ')';
 		
 	}
 
@@ -118,8 +141,10 @@ else {
 	$html =~ s/##TOTAL##/$total/e;
 	$html =~ s/##HITS##/scalar( @hits )/e;
 	$html =~ s/##ITEMS##/$items/e;
+	$html =~ s/##FACETSAUTHOR##/join( '; ', @facet_author )/e;
 	$html =~ s/##FACETSJOURNAL##/join( '; ', @facet_journal )/e;
 	$html =~ s/##FACETSYEAR##/join( '; ', @facet_year )/e;
+	$html =~ s/##FACETSKEYWORD##/join( '; ', @facet_keywords )/e;
 
 }
 
@@ -204,7 +229,7 @@ sub template {
 
 <div class="col-3 col-m-3 menu">
   <ul>
-		<li><a href="./admin.cgi">Home</a></li>
+		<li><a href="./">Home</a></li>
  </ul>
 </div>
 
@@ -212,7 +237,7 @@ sub template {
 
 	<p>This is the beginnings of an admin' interface to Project CORD carrel creation. Enter a query.</p>
 	<p>
-	<form method='GET' action='./admin.cgi'>
+	<form method='GET' action='./'>
 	Query: <input type='text' name='query' value='##QUERY##' size='50' autofocus="autofocus"/>
 	<input type='submit' value='Search' />
 	</form>
@@ -255,13 +280,13 @@ sub results_template {
 
 <div class="col-3 col-m-3 menu">
   <ul>
-		<li><a href="./admin.cgi">Home</a></li>
+		<li><a href="./">Home</a></li>
  </ul>
 </div>
 
 	<div class="col-6 col-m-6">
 		<p>
-		<form method='GET' action='./admin.cgi'>
+		<form method='GET' action='./'>
 		Query: <input type='text' name='query' value='##QUERY##' size='50' autofocus="autofocus"/>
 		<input type='submit' value='Search' />
 		</form>
@@ -272,6 +297,8 @@ sub results_template {
 	
 	<div class="col-3 col-m-3">
 	<h3>Year facets</h3><p>##FACETSYEAR##</p>
+	<h3>Keyword facets</h3><p>##FACETSKEYWORD##</p>
+	<h3>Author facets</h3><p>##FACETSAUTHOR##</p>
 	<h3>Journal facets</h3><p>##FACETSJOURNAL##</p>
 	</div>
 

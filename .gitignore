@@ -8,6 +8,7 @@ etc/metadata.csv
 etc/table.tsv
 json
 log
+queue
 report.txt
 sql
 sql-ent

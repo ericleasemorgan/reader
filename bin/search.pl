@@ -12,7 +12,7 @@
 # configure
 use constant FACETFIELD => ( 'facet_journal', 'year' );
 use constant FIELDS     => 'id,title,doi,url,date,journal';
-use constant SOLR       => 'http://localhost:8984/solr/cord';
+use constant SOLR       => 'http://10.0.0.8:8983/solr/cord';
 use constant ROWS       => 999;
 
 # require
