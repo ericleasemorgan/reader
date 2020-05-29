@@ -12,6 +12,7 @@
 from nltk import *
 import os
 import re
+import scispacy
 import spacy
 import sys
 
