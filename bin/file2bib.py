@@ -114,7 +114,7 @@ summary    = re.sub( '\s+', ' ', summary )
 
 # initialize model
 maximum = len( text ) + 1
-model   = spacy.load( 'en', max_length=maximum )
+model   = spacy.load( 'en_core_web_sm', max_length=maximum )
 
 # model the data; this needs to be improved
 doc = model( text )
