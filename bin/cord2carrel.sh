@@ -7,6 +7,7 @@
 
 # April  3, 2020 - first investigations
 # May   15, 2020 - added JSON to txt functionality 
+# May   31, 2020 - sent report to STDOUT, thus making the simple report visible 
 
 
 # enhance environment
@@ -74,6 +75,7 @@ tr -s ' ' < ./tmp/corpus.003 > "$CORPUS"
 
 # output a report against the database
 $DB2REPORT $NAME > "$CARRELS/$NAME/$REPORT"
+cat "$CARRELS/$NAME/$REPORT"
 
 # create about file
 $MAKEPAGES $NAME
