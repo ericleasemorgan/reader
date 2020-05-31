@@ -1,33 +1,18 @@
-# Distant Reader
+# Distant Reader CORD
 
-The Distant Reader is a high performance computing (HPC) system which takes an almost arbitrary amount of unstructured data (text) as input and outputs a set of structured data for analysis -- "reading".
+The Distant Reader CORD is a high performance computing (HPC) system which: 1) takes an almost arbitrary amount of unstructured data (text) as input and outputs a set of structured data for analysis, and 2) does this work against a specific data set called [CORD-19](https://www.semanticscholar.org/cord19). 
 
-The Distant Reader takes one of five different types of input:
+To do this work, the Distant Reader CORD first caches the data set. It then transforms the content into a set of plain text files. Third, the Reader does text mining and natural language processing against the text files for the purpose of feature extraction: n-grams, parts-of-speech, named-entities, etc. The results of this process is a set of tab-delimited text files. The whole of the tab-delimited text files is then distilled into a relational database. A set of tabular and narrative reports is then generated against the database. The cache, transformed plain text files, tab-delimited files, relational database, and reports are then compressed ito a single (zip) file, and returned to the... reader. [1]
 
-   1. a URL - good for blogs, single journal articles, or long reports
-   2. a list of URLs - the most scalable, but creating the list can be problematic
-   3. a file - good for that long PDF document on your computer
-   4. a zip file - the zip file can contain just about any number of files from your computer
-   5. a zip file plus a metadata file - with the metadata file, the reader’s analysis is more complete
-   
-Given one or another of the possible inputs, the Distant Reader first caches the original content. It then transforms the content into a set of plain text files. Third, the Reader does text mining and natural language processing against the text files for the purpose of feature extraction: n-grams, parts-of-speech, named-entities, etc. The results of this process is a set of tab-delimited text files. The whole of the tab-delimited text files is then distilled into a relational database. A set of tabular and narrative reports is then generated against the database. The cache, transformed plain text files, tab-delimited files, relational database, and reports are then compressed ito a single (zip) file, and returned to the... reader. [1]
+The returned file is affectionately called a "study carrel".  The student, researcher, or scholar is intended to peruse the study carrel for the purpose of supplementing the more traditional reading process. For more detail, links of possible interest include:
 
-The returned file is affectionately called a "study carrel".  The student, researcher, or scholar is intended to peruse the study carrel for the purpose of supplementing the more traditional reading process. Use cases include:
-
-   * the undergraduate student who needs to read everything for Sociology 101
-   * the Ph.D. student who needs to understand the totality of their dissertation's bibliography
-   * the scientist who is doing a literature review
-   * the humanist who is studying all the works of a given genre
-
-For more detail, links of possible interest include:
-
-  * home page - https://distantreader.org
-  * "study carrels" - http://carrels.distantreader.org
+  * home page - https://cord.distantreader.org
+  * fledgling study carrels - https://cord.distantreader.org/carrels/
   * blog postings - http://sites.nd.edu/emorgan/category/distant-reader/
   * Slack channel - http://bit.ly/distantreader-on-slack
   * Twitter feed - http://twitter.com/readerdistant
 
-As an HPC, the Distant Reader is not a single computer program but instead a suite of software comprised of many individual scripts and applications. Personally, I see the scripts and applications akin to collection of poems used to make the output of human expression more cogent. Really. Seroiusly.
+As an HPC, the Distant Reader CORD is not a single computer program but instead a suite of software comprised of many individual scripts and applications. Personally, I see the scripts and applications akin to collection of poems used to make the output of human expression more cogent. Really. Seroiusly.
 
 As a collection of scripts and applications, the Distant Reader has only been built by "standing on the shoulders of giants". Cited [here](https://distantreader.org/software-reference/) in no particular order nor necessarily complete, they include these below and more:
 
@@ -60,7 +45,7 @@ University of Notre Dame
 574/631-8604
 
 Created: June 28, 2018   
-Updated: April 16, 2020
+Updated: May 31, 2020
 
 
 
