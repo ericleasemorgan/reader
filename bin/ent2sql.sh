@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
 # ent2sql.sh - given a TSV file of name entities, output a set of SQL INSERT statements
-# usage: mkdir ./sql-ent; find ./ent -name "*.ent" | sort | parallel ent2sql.sh
+# usage: mkdir ./sql-ent; find ./ent -name "*.ent" | sort | parallel ./bin/ent2sql.sh
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
 
 # May 26, 2020 - first cut
+# May 31, 2020 - changed printf to echo and thus eliminated escaping bunches o' stuff; removed '|' entities (hmmm)
 
 
 # configure
@@ -37,16 +38,16 @@ cat $TSV | tail -n +2 | ( while read ID SID EID ENTITY TYPE; do
 
 		# escape
 		ENTITY=$( echo $ENTITY | sed "s/'/''/g" )
-		ENTITY=$( echo $ENTITY | sed "s/%/'%/g" )
-		
+		ENTITY=$( echo $ENTITY | sed "s/|/ /g" )
+				
 		# create an INSERT statement and then update the SQL
-		INSERT=$( echo $TEMPLATE | sed "s/##DOCUMENTID##/$DOCUMENTID/" | sed "s|##SID##|$SID|" | sed "s|##EID##|$EID|" | sed "s|##ENTITY##|$ENTITY|"| sed "s|##TYPE##|$TYPE|" )
+		INSERT=$( echo $TEMPLATE | sed "s/##DOCUMENTID##/$DOCUMENTID/" | sed "s/##SID#/$SID/" | sed "s/##EID##/$EID/" | sed "s|##ENTITY##|$ENTITY|" | sed "s/##TYPE##/$TYPE/" )
 		SQL="$SQL$INSERT\n"
 
 	done
 
 	# output 
-	printf "$SQL" > "$SQLENT/$BASENAME.sql"
+	echo -e "$SQL" > "$SQLENT/$BASENAME.sql"
 
 )
 

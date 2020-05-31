@@ -11,8 +11,8 @@
 
 
 # configure
-TXT2KEYWORDS='./bin/txt2ent.py'
-WRD='./ent'
+TXT2ENT='./bin/txt2ent.py'
+ENT='./ent'
 
 # sanity check
 if [[ -z $1 ]]; then
@@ -25,13 +25,13 @@ FILE=$1
 
 # compute output
 BASENAME=$( basename $FILE .txt )
-OUTPUT="$WRD/$BASENAME.ent"
+OUTPUT="$ENT/$BASENAME.ent"
 
 # debug 
 echo $BASENAME >&2
 
 # optionally, do the work
-if [ ! -f $OUTPUT ]; then $TXT2KEYWORDS $FILE > $OUTPUT; fi
+if [ ! -f $OUTPUT ]; then $TXT2ENT $FILE > $OUTPUT; fi
 
 
 
