@@ -7,10 +7,11 @@
 
 # May 24, 2020 - migrating for Project CORD
 # May 26, 2020 - added additional facets
+# June 1, 2020 - added additional facets
 
 
 # configure
-use constant FACETFIELD => ( 'facet_journal', 'year', 'facet_authors', 'facet_keywords' );
+use constant FACETFIELD => ( 'facet_journal', 'year', 'facet_authors', 'facet_keywords', 'facet_entity', 'facet_type' );
 use constant FIELDS     => 'id,title,doi,url,date,journal,abstract';
 use constant SOLR       => 'http://10.0.0.8:8983/solr/cord';
 use constant ROWS       => 49;
@@ -101,6 +102,28 @@ else {
 		
 	}
 
+	# entities
+	my @facet_entity = ();
+	my $entity_facets = &get_facets( $response->facet_counts->{ facet_fields }->{ facet_entity } );
+	foreach my $facet ( sort { $$entity_facets{ $b } <=> $$entity_facets{ $a } } keys %$entity_facets ) {
+	
+		my $encoded = uri_encode( $facet );
+		my $link = qq(<a href='./?query=$sanitized AND entity:"$encoded"'>$facet</a>);
+		push @facet_entity, $link . ' (' . $$entity_facets{ $facet } . ')';
+		
+	}
+	
+	# entity types
+	my @facet_type = ();
+	my $type_facets = &get_facets( $response->facet_counts->{ facet_fields }->{ facet_type } );
+	foreach my $facet ( sort { $$type_facets{ $b } <=> $$type_facets{ $a } } keys %$type_facets ) {
+	
+		my $encoded = uri_encode( $facet );
+		my $link = qq(<a href='./?query=$sanitized AND type:"$encoded"'>$facet</a>);
+		push @facet_type, $link . ' (' . $$type_facets{ $facet } . ')';
+		
+	}
+
 	# get the total number of hits
 	my $total = $response->content->{ 'response' }->{ 'numFound' };
 
@@ -145,6 +168,8 @@ else {
 	$html =~ s/##FACETSJOURNAL##/join( '; ', @facet_journal )/e;
 	$html =~ s/##FACETSYEAR##/join( '; ', @facet_year )/e;
 	$html =~ s/##FACETSKEYWORD##/join( '; ', @facet_keywords )/e;
+	$html =~ s/##FACETSENTITY##/join( '; ', @facet_entity )/e;
+	$html =~ s/##FACETSTYPE##/join( '; ', @facet_type )/e;
 
 }
 
@@ -207,6 +232,7 @@ sub item {
 	return $item;
 
 }
+
 
 
 # root template
@@ -297,6 +323,8 @@ sub results_template {
 	
 	<div class="col-3 col-m-3">
 	<h3>Year facets</h3><p>##FACETSYEAR##</p>
+	<h3>Entity facets</h3><p>##FACETSENTITY##</p>
+	<h3>Entity type facets</h3><p>##FACETSTYPE##</p>
 	<h3>Keyword facets</h3><p>##FACETSKEYWORD##</p>
 	<h3>Author facets</h3><p>##FACETSAUTHOR##</p>
 	<h3>Journal facets</h3><p>##FACETSJOURNAL##</p>
