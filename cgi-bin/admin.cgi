@@ -8,13 +8,15 @@
 # May 24, 2020 - migrating for Project CORD
 # May 26, 2020 - added additional facets
 # June 1, 2020 - added additional facets
+# June 2, 2020 - added queueing of a carrel
 
 
 # configure
-use constant FACETFIELD => ( 'facet_journal', 'year', 'facet_authors', 'facet_keywords', 'facet_entity', 'facet_type' );
-use constant FIELDS     => 'id,title,doi,url,date,journal,abstract';
-use constant SOLR       => 'http://10.0.0.8:8983/solr/cord';
-use constant ROWS       => 49;
+use constant FACETFIELD   => ( 'facet_journal', 'year', 'facet_authors', 'facet_keywords', 'facet_entity', 'facet_type' );
+use constant FIELDS       => 'id,title,doi,url,date,journal,abstract';
+use constant SOLR         => 'http://10.0.0.8:8983/solr/cord';
+use constant ROWS         => 49;
+use constant SEARCH2QUEUE => './search2queue.cgi?query=';
 
 # require
 use CGI;
@@ -47,6 +49,7 @@ else {
 	# re-initialize
 	my $items        = '';
 	my @document_ids = ();
+	my $search2queue = SEARCH2QUEUE;
 	
 	# build the search options
 	my %search_options = ();
@@ -160,9 +163,10 @@ else {
 	# build the html
 	$html =  &results_template;
 	$html =~ s/##RESULTS##/&results/e;
-	$html =~ s/##QUERY##/$sanitized/e;
+	$html =~ s/##QUERY##/$sanitized/eg;
 	$html =~ s/##TOTAL##/$total/e;
 	$html =~ s/##HITS##/scalar( @hits )/e;
+	$html =~ s/##SEARCH2QUEUE##/$search2queue/e;
 	$html =~ s/##ITEMS##/$items/e;
 	$html =~ s/##FACETSAUTHOR##/join( '; ', @facet_author )/e;
 	$html =~ s/##FACETSJOURNAL##/join( '; ', @facet_journal )/e;
@@ -204,8 +208,8 @@ sub get_facets {
 sub results {
 
 	return <<EOF
-	<p>Your search found ##TOTAL## item(s) and ##HITS## item(s) are displayed.</p>
-			
+	<p>Your search found ##TOTAL## item(s) and ##HITS## item(s) are displayed. If you are satisfied with the results, then you may want to <a href='##SEARCH2QUEUE####QUERY##'>queue the creation of a study carrel</a> with them.</p>
+	
 	<h3>Items</h3><ol>##ITEMS##</ol>
 EOF
 
@@ -256,12 +260,13 @@ sub template {
 <div class="col-3 col-m-3 menu">
   <ul>
 		<li><a href="./">Home</a></li>
+		<li><a href="./search2queue.cgi">Queue a carrel's creation</a></li>
  </ul>
 </div>
 
 <div class="col-9 col-m-9">
 
-	<p>This is the beginnings of an admin' interface to Project CORD carrel creation. Enter a query.</p>
+	<p>Use these pages to search the CORD data set and possibly queue the creation of study carrels. Enter a query.</p>
 	<p>
 	<form method='GET' action='./'>
 	Query: <input type='text' name='query' value='##QUERY##' size='50' autofocus="autofocus"/>
@@ -307,6 +312,7 @@ sub results_template {
 <div class="col-3 col-m-3 menu">
   <ul>
 		<li><a href="./">Home</a></li>
+		<li><a href="./search2queue.cgi">Queue a carrel's creation</a></li>
  </ul>
 </div>
 
@@ -316,7 +322,7 @@ sub results_template {
 		Query: <input type='text' name='query' value='##QUERY##' size='50' autofocus="autofocus"/>
 		<input type='submit' value='Search' />
 		</form>
-
+		
 		##RESULTS##
 		
 	</div>
