@@ -36,7 +36,7 @@ CREATE TABLE documents (
 -- name entitites
 CREATE TABLE ent (
 
-    document_id  TEXT,
+    document_id  INT,
     sid          INT,
     eid          INT,
     entity       TEXT,

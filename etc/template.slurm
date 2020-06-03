@@ -1,16 +1,18 @@
 #!/bin/bash
 
-# cord-small.slurm - a SLURM template
+# template.slurm - a SLURM template; a tautology 
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame; distributed under a GNU Public License
 
 # June 2, 2020 - first documentation
+# June 3, 2020 - added partition option
+
 
 # sbatch configurations
-#SBATCH -p cloud
+#SBATCH -p ##PARTITION##
 #SBATCH -N 1
-#SBATCH -n 10
+#SBATCH -n ##CORES##
 #SBATCH -t 48:0:00
 #SBATCH -J ##NAME##
 #SBATCH -o standard-output.txt

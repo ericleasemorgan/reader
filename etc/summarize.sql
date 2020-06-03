@@ -4,6 +4,7 @@
 -- (c) University of Notre Dame; distributed under a GNU Public License
 
 -- May 14, 2020 - first cut
+-- June 3, 2020 - added named entities and keywords
 
 
 -- configure
@@ -51,7 +52,7 @@ SELECT "'Librarian work is never done.'";
 SELECT "";
 SELECT "                                                              --";
 SELECT "                              Eric Lease Morgan <emorgan@nd.edu>";
-SELECT "                                                    May 14, 2020";
+SELECT "                                                    June 3, 2020";
 SELECT "";
 SELECT "";
 
@@ -99,6 +100,30 @@ SELECT "";
 SELECT "Count & tabulation of most frequent 50 journal titles";
 SELECT "======================================================";
 SELECT COUNT( journal ) AS c, journal FROM documents WHERE journal != 'nan' GROUP BY journal ORDER BY c DESC LIMIT 50;
+SELECT "";
+
+SELECT "Count & tabulation of most frequent 50 keywords";
+SELECT "===============================================";
+SELECT COUNT( w.keyword ) AS c, w.keyword
+FROM wrd AS w, documents AS d
+WHERE d.document_id = w.document_id 
+GROUP BY w.keyword ORDER BY c DESC LIMIT 50;
+SELECT "";
+
+SELECT "Count & tabulation of most frequent 50 named entities";
+SELECT "======================================================";
+SELECT COUNT( e.entity ) AS c, e.entity 
+FROM ent AS e, documents AS d 
+WHERE d.document_id = e.document_id 
+GROUP BY e.entity ORDER BY c DESC LIMIT 50;
+SELECT "";
+
+SELECT "Count & tabulation of most frequent 50 named entities types";
+SELECT "===========================================================";
+SELECT COUNT( e.type ) AS c, e.type 
+FROM ent AS e, documents AS d 
+WHERE d.document_id = e.document_id 
+GROUP BY e.type ORDER BY c DESC LIMIT 50;
 SELECT "";
 
 SELECT "Number of records sans source values";

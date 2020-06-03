@@ -1,8 +1,6 @@
 #!/bin/bash
 
-#SBATCH -p cloud
-#SBATCH -N 1
-#SBATCH -n 10
+#SBATCH -p big-cloud
 #SBATCH --mail-user=emorgan@nd.edu
 #SBATCH -t 48:0:00
 #SBATCH -J TXT2KEYWORDS

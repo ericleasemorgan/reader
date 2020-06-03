@@ -8,6 +8,7 @@
 # March 16, 2020 - first cut
 # March 20, 2020 - added caching
 # May   14, 2020 - added summary report, and removed conversation to plain text
+# June   3, 2020 - added with keyword and entities data, but they really won't work unless there was pre-processing
 
 
 # on my mark, get set,... go
@@ -35,6 +36,12 @@ cat ./etc/urls2url.sql | sqlite3 ./etc/cord.db
 
 echo "Filling shas table" >&2
 cat ./etc/shas2sha.sql | sqlite3 ./etc/cord.db
+
+echo "Filling keywords table" >&2
+./bin/reduce-wrd.sh
+
+echo "Filling named entities table" >&2
+./bin/reduce-ent.sh
 
 echo "Summarizing" >&2
 ./bin/summarize.sh > ./report.txt

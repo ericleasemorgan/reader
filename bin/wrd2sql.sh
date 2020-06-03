@@ -7,6 +7,7 @@
 # (c) University of Notre Dame and distributed under a GNU Public License
 
 # May  22, 2020 - first cut
+# June  2, 2020 - remove escaping of % and replaced printf with echo -e
 
 
 # configure
@@ -37,7 +38,6 @@ cat $TSV | tail -n +2 | ( while read ID KEYWORD; do
 
 		# escape
 		KEYWORD=$( echo $KEYWORD | sed "s/'/''/g" )
-		KEYWORD=$( echo $KEYWORD | sed "s/%/'%/g" )
 		
 		# create an INSERT statement and then update the SQL
 		INSERT=$( echo $TEMPLATE | sed "s/##DOCUMENTID##/$DOCUMENTID/" | sed "s|##KEYWORD##|$KEYWORD|" )
@@ -46,7 +46,7 @@ cat $TSV | tail -n +2 | ( while read ID KEYWORD; do
 	done
 
 	# output 
-	printf "$SQL" > "$SQLWRD/$BASENAME.sql"
+	echo -e "$SQL" > "$SQLWRD/$BASENAME.sql"
 
 )
 

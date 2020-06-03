@@ -7,12 +7,15 @@
 
 # May 28, 2020 - first cut; while Gus is literally on his last legs
 # June 2, 2020 - added provenance
+# June 3, 2020 - added partition
 
 
 # configure
 SEARCH2CARREL='./bin/search2carrel.sh'
 CARRELS='/export/reader/carrels'
 CARRELSUBMIT='./bin/carrel-submit.sh'
+PARTITION='big-cloud'
+
 # sanity check
 if [[ -z $1 ]]; then 
 	echo "Usage: $0 <file>" >&2
@@ -43,7 +46,7 @@ cat $FILE | while read SHORTNAME DATE TIME EMAIL QUERY; do
 	cp $FILE "$CARRELS/$SHORTNAME/provenance.tsv"
 	
 	# create a slurm script and submit it; do the work
-	$CARRELSUBMIT $SHORTNAME $EMAIL
+	$CARRELSUBMIT $SHORTNAME $PARTITION $EMAIL
 	
 # fini
 done
