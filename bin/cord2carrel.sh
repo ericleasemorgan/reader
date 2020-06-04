@@ -58,8 +58,14 @@ cat ./tmp/update-bibliographics.sql | sqlite3 $DB
 # build the carrel; the magic happens here
 echo "Building study carrel named $NAME" >&2
 
+# start tika
+java -jar /export/lib/tika/tika-server.jar &
+PID=$!
+sleep 10
+
 # extract parts-of-speech, named entities, etc
 $MAP $NAME
+kill $PID
 
 # build the database
 $REDUCE $NAME
@@ -82,7 +88,7 @@ $MAKEPAGES $NAME
 
 # zip it up
 echo "Zipping study carrel" >&2
-rm -rf ./tmp
+#rm -rf ./tmp
 #cp "$LOG/$NAME.log" "$NAME/log" 
 $CARREL2ZIP $NAME
 echo "" >&2
