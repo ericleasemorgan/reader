@@ -23,7 +23,7 @@ if len( sys.argv ) != 2 :
 
 # initialize
 file = sys.argv[ 1 ]
-nlp  = spacy.load( 'en_core_web_sm', disable=['tagger'] )
+
 
 # limit ourselves to a few processors only
 #os.system( "taskset -pc 0-1 %d > /dev/null" % os.getpid() )
@@ -41,19 +41,16 @@ print( "\t".join( [ 'id', 'sid', 'eid', 'entity', 'type' ] ) )
 
 # parse the text into sentences and process each one
 key = os.path.splitext( os.path.basename( file ) )[0]
-s  = 0
-for sentence in sent_tokenize( text ) :
 
-	# (re-)initialize and increment
-	s += 1
-	e = 0
-	sentence = nlp( sentence )
-	
-	# process each entity
-	for entity in sentence.ents : 
-	
-		e += 1
-		print( "\t".join( [ key, str( s ), str( e ), entity.text, entity.label_ ] ) )
+models = ['en_core_web_lg', 'en_ner_craft_md', 'en_ner_jnlpba_md', 'en_ner_bc5cdr_md']
 
-# done
+e = 0
+for model in models:
+	nlp  = spacy.load(model)
+	doc = nlp(text)
+	for s, sentence in enumerate(doc.sents, 1):
+		for entity in sentence.ents:
+			e+=1
+			print( "\t".join([key, str(s), str(e), entity.text, entity.label_ ]))
+
 quit()
