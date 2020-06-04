@@ -7,6 +7,8 @@
 
 # July 1, 2018 - first cut, or there abouts
 
+# Charlie Harper <crh92@case.edu>
+# June 6, 2020 - added language models for biomedical text
 
 # require
 from nltk import *
@@ -15,6 +17,9 @@ import re
 import scispacy
 import spacy
 import sys
+
+#list of models to use in NER
+MODELS = ['en_core_web_lg', 'en_ner_craft_md', 'en_ner_jnlpba_md', 'en_ner_bc5cdr_md']
 
 # sanity check
 if len( sys.argv ) != 2 :
@@ -42,10 +47,9 @@ print( "\t".join( [ 'id', 'sid', 'eid', 'entity', 'type' ] ) )
 # parse the text into sentences and process each one
 key = os.path.splitext( os.path.basename( file ) )[0]
 
-models = ['en_core_web_lg', 'en_ner_craft_md', 'en_ner_jnlpba_md', 'en_ner_bc5cdr_md']
 
 e = 0
-for model in models:
+for model in MODELS:
 	nlp  = spacy.load(model)
 	doc = nlp(text)
 	for s, sentence in enumerate(doc.sents, 1):
