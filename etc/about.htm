@@ -89,7 +89,8 @@
          <nav class="col-sm-3" id="myScrollspy">
             <ul class="nav nav-pills nav-stacked">
 
-               <li class="active"><a class="dr-smooth-scroll" href="#size-scope">Size &amp; Scope</a></li>
+               <li class="active"><a class="dr-smooth-scroll" href="#introduction">Introduction</a></li>
+               <li><a class="dr-smooth-scroll" href="#size-scope">Size &amp; Scope</a></li>
                <li><a class="dr-smooth-scroll" href="#readability">Readability</a></li>
                <li><a class="dr-smooth-scroll" href="#word-frequencies">Word Frequencies</a></li>
                <li><a class="dr-smooth-scroll" href="#keywords">Keywords</a></li>
@@ -98,23 +99,29 @@
                <li><a class="dr-smooth-scroll" href="#proper-nouns">Proper Nouns &amp; Pronouns</a></li>
                <li><a class="dr-smooth-scroll" href="#adjectives-adverbs">Adjectives &amp; Adverbs</a></li>
                <li><a class="dr-smooth-scroll" href="#next-steps">Next steps</a></li>
-
             </ul>
          </nav>
          <div class="col-sm-9">
             <div>
-               <h1 id="page-header">Basic Reports</h1>
+               <h1 id="page-header">Study carrel</h1>
                <!--##METADATA##-->
                <hr>
             </div>
+            <div class="dr-subsection" id="introduction">
+               <h2>Introduction</h2>
+			   <p>
+			   This is a Distant Reader "study carrel", a set of structured data intended to help the student, researcher, or scholar use &amp; understand a corpus.</p>
+			   
+			   <p>This study carrel was created from a curated subset of <a href="https://www.semanticscholar.org/cord19">CORD</a>, a collection of more than 100,000 scholarly journal articles surrounding the topic of COVID-19. This resulted in a set of <strong>##NUMBEROFITEMS## item(s)</strong>. The original versions of these items have been saved in a <a href='./cache'>cache</a>, and each of them have been transformed &amp; saved as a <a href='./txt'>set of plain text files</a>. All of the analysis -- "reading" -- has been done against these plain text files. For example, a <a href="./standard-output.txt">short narrative report</a> has been created. This website is a more verbose version of the narrative report.</p>
+			   <p>All study carrels are self-contained -- no Internet connection is necessary to use them. <a href="./study-carrel.zip">Download this carrel</a> for offline reading. The carrel is made up of many subdirectories and data files. The <a href="./MANIFEST.htm">manifest</a> describes each one in greater detail.
+			   </p>
+
+            </div>
+
             <div class="dr-subsection" id="size-scope">
                <h2>Size &amp; Scope</h2>
 			   <p>
-			   [ERIC WAS still HERE]. First, the simple things. Your study carrel was created through the submission of a [SINGLE URL|FILE OF URLS|FILE FROM YOUR COMPUTER|ZIP FILE]. This ultimately resulted in a collection of <strong>##NUMBEROFITEMS## item(s)</strong>. The original versions of these items have been saved in a <a href='./cache'>cache</a>, and each of them have been transformed &amp; saved as a <a href='./txt'>set of plain text files</a>. All of the following analysis has been done against these plain text files.
-			   </p>
-
-			   <p>
-			   Your study carrel is <strong>##SUMOFWORDS## words</strong> long. [0] Each item in your study carrel is, on average, <strong>##AVERAGESIZEINWORDS## words long</strong>. [1] If you dig deeper, then you might want to save yourself some time by reading a shorter item. On the other hand, if your desire is for more detail, then you might consider reading a longer item. The following illustrate the overall size of your study carrel.
+			   Your study carrel is <strong>##SUMOFWORDS## words</strong> long. Each item in your study carrel is, on average, <strong>##AVERAGESIZEINWORDS## words long</strong>. If you dig deeper, then you might want to save yourself some time by reading a shorter item. On the other hand, if your desire is for more detail, then you might consider reading a longer item. The following illustrate the overall size of your study carrel.
 			   </p>
 
                <div class="row image-row">
@@ -134,10 +141,11 @@
                <!-- .row -->
 
             </div>
+
             <div class="dr-subsection" id="readability">
                <h2>Readability</h2>
 			   <p>
-			   On a scale from 0 to 100, where 0 is very difficult and 100 is very easy, your documents have an <strong>average readability score of ##AVERAGEREADABILITSCORE##</strong>. [2] Consequently, if you want to read something more simplistic, then consider a document with a higher score. If you want something more specialized, then consider something with a lower score. The following illustrate the overall readability of your study carrel.
+			   On a scale from 0 to 100, where 0 is very difficult and 100 is very easy, your documents have an <strong>average readability score of ##AVERAGEREADABILITSCORE##</strong>. Consequently, if you want to read something more simplistic, then consider a document with a higher score. If you want something more specialized, then consider something with a lower score. The following illustrate the overall readability of your study carrel.
 			   </p>
 
                <div class="row image-row">
@@ -159,12 +167,12 @@
             </div>
             <div class="dr-subsection" id="word-frequencies">
                <h2>Word Frequencies</h2>
-			   <p>By merely counting &amp; tabulating the frequency of individual words or phrases, you can begin to get an understanding of your carrel's "aboutness". Excluding "stop words", some of the more frequent words include: [3]</p>
+			   <p>By merely counting &amp; tabulating the frequency of individual words or phrases, you can begin to get an understanding of your carrel's "aboutness". Excluding "stop words", some of the more frequent words include:</p>
 			   <p><blockquote>##FREQUENTUNIGRAMS##</blockquote></p>
-			   <p>Using the three most frequent words, the three files containing all of those words the most are <strong>##FREQUENTUNIGRAMLINK01##</strong>, <strong>##FREQUENTUNIGRAMLINK02##</strong>, and <strong>##FREQUENTUNIGRAMLINK03##</strong>.</p>
+			   <p>Using the three most frequent words, the three files containing all of those words the most are: 1) <strong>##FREQUENTUNIGRAMLINK01##</strong>, 2) <strong>##FREQUENTUNIGRAMLINK02##</strong>, and 3) <strong>##FREQUENTUNIGRAMLINK03##</strong>.</p>
 			   <p>The most frequent two-word phrases (bigrams) include:</p>
 			   <p><blockquote>##FREQUENTBIGRAMS##</blockquote></p>
-			   <p>And the three file that use all of the three most frequent phrases are <strong>##FREQUENTBIGRAMLINK01##</strong> <strong>##FREQUENTBIGRAMLINK02##</strong>, and <strong>##FREQUENTBIGRAMLINK03##</strong>.</p>
+			   <p>And the three file that use all of the three most frequent phrases are: 1) <strong>##FREQUENTBIGRAMLINK01##</strong>, 2) <strong>##FREQUENTBIGRAMLINK02##</strong>, and 3) <strong>##FREQUENTBIGRAMLINK03##</strong>.</p>
 
 			   <p>While often deemed superficial or sophomoric, rudimentary frequencies and their associated "word clouds" can be quite insightful:
 			   </p>
@@ -311,12 +319,11 @@
 
             <div class="dr-subsection" id="next-steps">
                <h2>Next steps</h2>
-			   <p>Here is a prioritized list of next steps to thus get more out of your study carrel:</p>
-			   <ol>
-			       <li>browse, sort, and search the content of the menu items named <strong>Ngrams</strong>, <strong>POS</strong>, <strong>Grammars</strong>, and <strong>Others</strong> found at the top of this page to acquire more detail about your carrel</li>
-			       <li>read <a href="./standard-output.txt">standard-output.txt</a>, as it will both summarize  and elaborate upon this narrative report</li>
-			       <li>read <a href="./MANIFEST.htm">MANIFEST.htm</a> to both inventory your study carrel as well as learn how to answer more specific questions of it</li>
-			   </ol>
+			   <p>There is much more to a study carrel than the things outlined above. Use this page's menubar to navigate and explore in more detail. There you will find additional features &amp; functions including: ngrams, parts-of-speech, grammars, named entities, topic modeling, a simple search interface, etc.</p>
+			   <p>Again, study carrels are self-contained. <a href="./study-carrel.zip">Download this carrel</a> for offline viewing and use.</p>
+			   <p>
+			   <em>Thank you for using the Distant Reader.</em>
+			   </p>
             </div>
 
          </div>
