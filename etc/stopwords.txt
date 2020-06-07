@@ -15,6 +15,7 @@ above
 after
 again
 against
+al
 all
 am
 an
@@ -53,6 +54,7 @@ down
 during
 e
 each
+et
 f
 few
 for
