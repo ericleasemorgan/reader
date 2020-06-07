@@ -7,13 +7,14 @@
 # May    2, 2019 - added classification and files (urls)
 # July   8, 2019 - added author, title, and date
 # May   21, 2019 - migrating to Reader CORD
+# June   7, 2020 - implement id output, for scalability
 
 
 # configure
 use constant FACETFIELD => ( 'facet_journal', 'year' );
 use constant FIELDS     => 'id,title,doi,url,date,journal';
 use constant SOLR       => 'http://10.0.0.8:8983/solr/cord';
-use constant ROWS       => 999;
+use constant ROWS       => 9999;
 
 # require
 use strict;
@@ -22,7 +23,7 @@ use WebService::Solr;
 # get input; sanity check
 my $type  = $ARGV[ 0 ];
 my $query = $ARGV[ 1 ];
-if ( ! $type || ! $query ) { die "Usage: $0 <list|SQL> <query>\n" }
+if ( ! $type || ! $query ) { die "Usage: $0 <list|SQL|ids> <query>\n" }
 
 # initialize
 my $solr   = WebService::Solr->new( SOLR );
@@ -107,7 +108,27 @@ elsif ( $type eq 'sql' ) {
 
 }
 
-else { die "Usage: $0 <list|SQL> <query>\n" }
+elsif ( $type eq 'ids' ) {
+
+	# initialize
+	my @document_ids = ();
+	
+	# loop through each document
+	for my $doc ( $response->docs ) {
+
+		# parse
+		my $document_id = $doc->value_for( 'id' );
+		push( @document_ids, $document_id . " " )
+		
+	}
+	
+	# sort and output
+	@document_ids = sort { $a <=> $b } @document_ids;
+	print @document_ids;
+
+}
+
+else { die "Usage: $0 <list|SQL|ids> <query>\n" }
 
 # done
 exit;

@@ -6,20 +6,21 @@
 # (c) University of Notre Dame; distributed under a GNU Public License
 
 # June 2, 2020 - first cut
+# June 7, 2020 - created in-process... processing
 
 
-# configure 
+# set up environment; overkill
 PERL_HOME='/export/perl/bin'
 JAVA_HOME='/export/java/bin'
 READER_HOME='/export/reader'
 WORD2VEC_HOME='/export/word2vec/bin'
 EXPORT_HOME='/export/bin'
-
 PATH=$EXPORT_HOME:$WORD2VEC_HOME:$PERL_HOME:$JAVA_HOME:$READER_HOME:$PATH
 
 # configure
 HOME='/export/cord'
 TODO='/export/cord/queue/todo'
+INPROCESS='/export/cord/queue/in-process'
 SUBMITTTED='/export/cord/queue/submitted.tsv'
 QUEUE2CARREL='./bin/queue2carrel.sh'
 
@@ -29,16 +30,20 @@ cd $HOME
 # process each to-do item
 find $TODO -name '*.tsv' | while read FILE; do
 
+	# move to-do item to in-process
+	cat $FILE >> $SUBMITTTED
+	BASENAME=$( basename $FILE .tsv )
+	mv $FILE $INPROCESS/$BASENAME.tsv
+	
 	# debug and do the work
 	echo "===================" >&2
 	echo ''                    >&2
 	cat $FILE                  >&2
 	echo ''                    >&2
-	$QUEUE2CARREL $FILE
+	$QUEUE2CARREL $INPROCESS/$BASENAME.tsv
 	
 	# clean up
-	cat $FILE >> $SUBMITTTED
-	rm -rf $FILE
+	rm -rf $INPROCESS/$BASENAME.tsv
 	
 # fini
 done
