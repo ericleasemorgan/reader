@@ -3,7 +3,7 @@
 
 1. WHO can contribute?
 1. HOW do they contribute? code? other?
-1. WHAT doe we need contributed?
+1. WHAT do we need contributed?
 1. WHAT communication? issues? calls? mailing lists?
 
 The distant reader is a suite of repositories. This is the main one which
