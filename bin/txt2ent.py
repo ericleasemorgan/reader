@@ -7,6 +7,7 @@
 
 # July 1, 2018 - first cut, or there abouts
 # June 6, 2020 - added language models for biomedical text; Charlie Harper <crh92@case.edu> 
+# June 8, 2020 - added maximum length to accommodate large files
 
 
 # configure
@@ -48,8 +49,10 @@ key = os.path.splitext( os.path.basename( file ) )[0]
 # loop through each model
 e = 0
 for model in MODELS :
+
+	maximum = len( text ) + 1
 	sys.stderr.write( 'model:' + model + "\n" )
-	nlp  = spacy.load( model )
+	nlp  = spacy.load( model, max_length=maximum )
 	doc = nlp(text)
 	for s, sentence in enumerate( doc.sents, 1 ):
 		for entity in sentence.ents:
