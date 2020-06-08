@@ -107,7 +107,6 @@ while [ 1 ]; do
 	if [[ $START -gt $TOTAL ]]; then break; fi
 
 done
-exit
 
 # convert tsv to csv; kewl hack
 perl -lpe 's/"/""/g; s/^|$/"/g; s/\t/","/g' < $METADATA > "$CARRELS/$NAME/$CSV"
