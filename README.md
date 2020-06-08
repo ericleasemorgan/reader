@@ -8,6 +8,7 @@ The returned file is affectionately called a "study carrel".  The student, resea
 
   * home page - https://cord.distantreader.org
   * fledgling study carrels - https://cord.distantreader.org/carrels/
+  * Guide to the code - [GUIDE.md](./GUIDE.md)
   * blog postings - http://sites.nd.edu/emorgan/category/distant-reader/
   * Slack channel - http://bit.ly/distantreader-on-slack
   * Twitter feed - http://twitter.com/readerdistant
