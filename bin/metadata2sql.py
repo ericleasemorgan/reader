@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import os
 # metadata2sql.py - given a few configurations, output sets of sql insert statements
 
 # Eric Lease Morgan <emorgan@nd.edu>
@@ -13,6 +13,8 @@
 METADATA = './etc/metadata.csv'
 TEMPLATE = "INSERT INTO documents ( 'authors', 'title', 'date', 'year', 'journal', 'source', 'abstract', 'license', 'pdf_json', 'pmc_json', 'sha', 'url', 'doi', 'arxiv_id', 'cord_uid', 'mag_id', 'pmc_id', 'pubmed_id', 'who_id' ) VALUES ( '##AUTHORS##', '##TITLE##', '##DATE##', '##YEAR##', '##JOURNAL##', '##SOURCE##', '##ABSTRACT##', '##LICENSE##', '##PDFJSON##', '##PMCJSON##', '##SHA##', '##URL##', '##DOI##', '##ARXIVID##', '##CORDUID##', '##MAGID##', '##PMCID##', '##PUBMEDID##', '##WHOID##' );"
 INSERTS='./sql'
+if not os.path.exists(INSERTS):
+    os.makedirs(INSERTS)
 
 # require
 import pandas as pd
@@ -114,13 +116,9 @@ for index, row in metadata.iterrows() :
 	sql = sql.replace( '##WHOID##', who_id )
 
 	# save; would rather use re-direction
-	file   = INSERTS + '/' + str( index ) + '.sql' 
-	handle = open( file , 'w' )
-	handle.write( sql + "\n" )
-	handle.close
-        
+	file   = INSERTS + '/' + str( index ) + '.sql'
+	with open(file, 'w+') as handle:
+		handle.write( sql + "\n" )
+
 # done
 exit
-
-   
-    

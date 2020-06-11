@@ -4,7 +4,7 @@ This suite of software will prepare a data set called "[CORD-19](https://pages.s
 
 CORD-19 is a set of more than 50,000 full text scholarly journal articles surrounding the topic of COVID-19. Each "article" is really a JSON file containing (very) rudimentary bibliographic information, a set of paragraphs, and bibliographic citations. As a pre-processing step for the Distant Reader, the suite processes the CORD-19 metadata and its associated JSON files.
 
-To get this software to work for you, configure `./bin/cache.sh`, and the run `./bin/build.sh`. The system will then:
+To get this software to work for you, `pip install -r requirements.txt`, configure `./bin/cache.sh`, and the run `./bin/build.sh`. The system will then:
 
    1. download a zip file and its associated metadata file
    2. uncompress the the zip file

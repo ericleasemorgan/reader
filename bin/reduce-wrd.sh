@@ -22,16 +22,7 @@ mkdir -p $TMP
 echo "Creating transaction" >&2
 echo "BEGIN TRANSACTION;"   >  "$TMP/$INSERTS"
 echo $DELETE                >> "$TMP/$INSERTS"
-cat $SQLWRD/cord-0*.sql    >> "$TMP/$INSERTS"
-cat $SQLWRD/cord-1*.sql    >> "$TMP/$INSERTS"
-cat $SQLWRD/cord-2*.sql    >> "$TMP/$INSERTS"
-cat $SQLWRD/cord-3*.sql    >> "$TMP/$INSERTS"
-cat $SQLWRD/cord-4*.sql    >> "$TMP/$INSERTS"
-cat $SQLWRD/cord-5*.sql    >> "$TMP/$INSERTS"
-cat $SQLWRD/cord-6*.sql    >> "$TMP/$INSERTS"
-cat $SQLWRD/cord-7*.sql    >> "$TMP/$INSERTS"
-cat $SQLWRD/cord-8*.sql    >> "$TMP/$INSERTS"
-cat $SQLWRD/cord-9*.sql    >> "$TMP/$INSERTS"
+find "$SQLWRD" -type f -name "cord-*.sql" -exec cat {} \+ >> "$TMP/$INSERTS"
 echo "END TRANSACTION;"    >> "$TMP/$INSERTS"
 
 # do the work and done

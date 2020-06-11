@@ -1,3 +1,4 @@
+.env
 .cache
 .DS_Store
 .parallel
@@ -18,3 +19,4 @@ tmp
 txt
 wrd
 zips
+.vscode
