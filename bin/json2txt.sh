@@ -34,7 +34,7 @@ if [[ "$SHA" == $PMC_FILE_ID ]]; then
 fi
 
 TEMPLATE=".mode tabs\nSELECT authors, title, date, journal, doi, abstract, \
-					document_id, cord_uid FROM documents WHERE ${ID_COLUMN} is '##SHA##';"
+document_id, cord_uid FROM documents WHERE ${ID_COLUMN} is '##SHA##';"
 
 # get more metadata
 QUERY=$( echo $TEMPLATE | sed "s/##SHA##/$SHA/" )
