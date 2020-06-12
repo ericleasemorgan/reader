@@ -1,18 +1,15 @@
 #!/usr/bin/env bash
 
-# json2txt-pdf.sh - give an JSON file of specific shape, output a pseudo-structured plain text file
+# json2txt.sh - give an JSON file of specific shape, output a pseudo-structured plain text file
 
 # Eric Lease Morgan <emorgan@nd.ed>
 # (c) University of Notre Dame; distributed under a GNU Public License
 
-# March 16, 2020 - first cut
-# March 20, 2020 - added additional data to the txt output
-# May   15, 2020 - for better or for worse, get all metadata from the database
+# June 11, 2020 - first cut
 
 
 # configure
 DB='./etc/cord.db'
-TEMPLATE=".mode tabs\nSELECT authors, title, date, journal, doi, abstract, document_id, cord_uid FROM documents WHERE sha is '##SHA##';"
 
 # sanity check
 if [[ -z $1 ]]; then
@@ -28,6 +25,16 @@ echo -e "         file: $FILE" >&2
 
 # get the (sort of) key, the sha
 SHA=$( cat $FILE | jq --raw-output '.paper_id' )
+
+# set query column based on json paper_id field
+ID_COLUMN="sha"
+PMC_FILE_ID="PMC*"
+if [[ "$SHA" == $PMC_FILE_ID ]]; then
+	ID_COLUMN="pmc_id"
+fi
+
+TEMPLATE=".mode tabs\nSELECT authors, title, date, journal, doi, abstract, \
+					document_id, cord_uid FROM documents WHERE ${ID_COLUMN} is '##SHA##';"
 
 # get more metadata
 QUERY=$( echo $TEMPLATE | sed "s/##SHA##/$SHA/" )
@@ -87,7 +94,3 @@ printf $QUERY | sqlite3 $DB | while read -a RESULTS; do
 
 done
 exit
-
-
-
-
