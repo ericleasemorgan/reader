@@ -6,7 +6,8 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame; distributed under a GNU Public License
 
-# May 25, 2020 - written elsewhere but put into place here for Project CORD
+# May  25, 2020 - written elsewhere but put into place here for Project CORD
+# June 13, 2020 - tweeked template
 
 
 # configure
@@ -44,7 +45,7 @@ $metadata    =~ s/##CREATIONDATE##/$metadata{ 'CREATIONDATE' }/e;
 # slurp up the HTML and do the necessary substitutions
 my $html =  CARRELS . "/$carrel/index.htm";
 $html    =  &slurp( $html );
-$html    =~ s/Basic Reports/$metadata{ 'LONGNAME' }/e;
+$html    =~ s/Study carrel/$metadata{ 'LONGNAME' }/e;
 $html    =~ s/<!--##METADATA##-->/$metadata/e;
 
 # output and done
