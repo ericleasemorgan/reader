@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Distant Reader Study Carrels for Project CORD</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" class="init">
+		$(document).ready(function() { $('#directory').DataTable( {
+        "order": [[ 1, "desc" ]],
+        "pageLength": 50
+    } ); } );
+	</script>
+	<style>
+		.right { text-align:right }
+	</style>
+</head>
+<body style='margin: 3%' >
+<h1>Distant Reader Study Carrels for Project CORD</h1>
+
+<p>The result of the <a href="https://distantreader.org/">Distant Reader</a> process is the creation of a "study carrel", and below is a directory some such things. More specifically, all of these study carrels were created from subsets of a larger data set -- <a href="https://www.semanticscholar.org/cord19">CORD-19</a>, a collection of scientific journal articles on the topic of COVID-19.</p>
+
+<p style='text-align: right'>Eric Lease Morgan &amp; Team Project CORD &lt;<a href="mailto:emorgan@nd.edu">emorgan@nd.edu</a>&gt;<br />
+May 26, 2020
+</p>
+
+<table id="directory" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>name / title</th>
+                <th>date last modified</th>
+                <th>keywords</th>
+                <th>number of items</th>
+                <th>size in words</th>
+                <th>readability score</th>
+                <th>download size in bytes</th>
+            </tr>
+        </thead>
+        <tbody>
+        ##ROWS##
+        </tbody>
+    </table>
+</body>
+</html>

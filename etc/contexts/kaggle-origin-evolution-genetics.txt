@@ -1,0 +1,5 @@
+LONGNAME	Origin, Evolution, or Genetics
+SCOPENOTE	This is a Distant Reader "study carrel" called <em>Origin, Evolution, or Genetics</em>, and it is an initial attempt at addressing a Kaggle question of the same name.
+CREATOR	Eric Lease Morgan
+EMAIL	emorgan@nd.edu
+CREATIONDATE	June 13, 2020

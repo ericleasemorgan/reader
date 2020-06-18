@@ -6,6 +6,7 @@
 # (c) University of Notre Dame and distributed under a GNU Public License
 
 # July 1, 2018 - first cut, or there abouts
+# May 26, 202 by Jiali Cheng <cheng.jial@husky.neu.edu> - migrating to Project CORD
 # June 6, 2020 - added language models for biomedical text; Charlie Harper <crh92@case.edu> 
 # June 8, 2020 - added maximum length to accommodate large files
 

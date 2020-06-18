@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 
-# txt2ent.sh - given a file name, run txt2ent.py
-# usage: find carrels/word2vec/txt -name '*.txt' -exec ./bin/txt2ent.sh {} \;
-# usage: find carrels/asist/txt -name '*.txt' -exec qsub -N TXT2ENT -o ./log/txt2ent ./bin/txt2ent.sh {} \;
+# txt2ent.sh - given a file, execute txt2ent.py
+# usage: mkdir -p ./ent; find ./txt -name '*.txt' | sort | parallel ./bin/txt2ent.sh
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
 
 # June 26, 2018 - first cut
+# May  26, 2020 - adapting for Distant Reader CORD
 
 
 # configure
-ID2ENT='/export/reader/bin/txt2ent.py'
-ENT='ent'
+TXT2ENT='./bin/txt2ent.py'
+ENT='./ent'
 
 # sanity check
-if [[ -z "$1" ]]; then
+if [[ -z $1 ]]; then
 	echo "Usage: $0 <file>" >&2
 	exit
 fi
@@ -24,18 +24,15 @@ fi
 FILE=$1
 
 # compute output
-ORIGINAL=$( dirname "${FILE}" )
-LEAF=$( basename "$FILE" .txt )
-mkdir -p "$ORIGINAL/../$ENT"
-OUTPUT="$ORIGINAL/../$ENT/$LEAF.ent"
+BASENAME=$( basename $FILE .txt )
+OUTPUT="$ENT/$BASENAME.ent"
 
-# echo; debug
-echo "$LEAF  $OUTPUT" >&2
+# debug 
+echo $BASENAME >&2
 
 # optionally, do the work
-if [ -f "$OUTPUT" ]; then
-	echo "$OUTPUT exist" >&2
-else
-	$ID2ENT "$FILE" 1> "$OUTPUT"
-fi
+if [ ! -f $OUTPUT ]; then $TXT2ENT $FILE > $OUTPUT; fi
+
+
+
 

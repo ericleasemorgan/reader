@@ -1,18 +1,16 @@
 #!/usr/bin/env bash
 
-# json2txt-pdf.sh - give an JSON file of specific shape, output a pseudo-structured plain text file
+# json2txt-pmc.sh - give an JSON file of specific shape, output a pseudo-structured plain text file
 
 # Eric Lease Morgan <emorgan@nd.ed>
 # (c) University of Notre Dame; distributed under a GNU Public License
 
-# March 16, 2020 - first cut
-# March 20, 2020 - added additional data to the txt output
-# May   15, 2020 - for better or for worse, get all metadata from the database
+# June 5, 2020 - first cut; based on json2txt-pdf.sh
 
 
 # configure
 DB='./etc/cord.db'
-TEMPLATE=".mode tabs\nSELECT authors, title, date, journal, doi, abstract, document_id, cord_uid FROM documents WHERE sha is '##SHA##';"
+TEMPLATE=".mode tabs\nSELECT authors, title, date, journal, doi, abstract, document_id, cord_uid FROM documents WHERE pmc_id is '##SHA##';"
 
 # sanity check
 if [[ -z $1 ]]; then

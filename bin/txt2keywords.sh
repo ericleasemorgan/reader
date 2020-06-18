@@ -1,20 +1,21 @@
 #!/usr/bin/env bash
 
 # txt2keywords.sh - given a file, execute txt2keywords.py
-# usage: find carrels/word2vec/txt -name '*.txt' -exec ./bin/txt2keywords.sh {} \;
+# usage: mkdir -p ./wrd; find ./txt -name '*.txt' | sort | parallel ./bin/txt2keywords.sh
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
 
 # June 26, 2018 - first cut
+# May  20, 2020 - adapting for Distant Reader CORD
 
 
 # configure
-TXT2KEYWORDS='/export/reader/bin/txt2keywords.py'
-WRD='wrd'
+TXT2KEYWORDS='./bin/txt2keywords.py'
+WRD='./wrd'
 
 # sanity check
-if [[ -z "$1" ]]; then
+if [[ -z $1 ]]; then
 	echo "Usage: $0 <file>" >&2
 	exit
 fi
@@ -23,20 +24,14 @@ fi
 FILE=$1
 
 # compute output
-ORIGINAL=$( dirname "${FILE}" )
-LEAF=$( basename "$FILE" .txt )
-mkdir -p "$ORIGINAL/../$WRD"
-OUTPUT="$ORIGINAL/../$WRD/$LEAF.wrd"
+BASENAME=$( basename $FILE .txt )
+OUTPUT="$WRD/$BASENAME.wrd"
 
-# echo; debug
-echo "$LEAF  $OUTPUT" >&2
+# debug 
+echo $BASENAME >&2
 
 # optionally, do the work
-if [ -f "$OUTPUT" ]; then
-	echo "$OUTPUT exist" >&2
-else
-	$TXT2KEYWORDS "$FILE" 1> "$OUTPUT"
-fi
+if [ ! -f $OUTPUT ]; then $TXT2KEYWORDS $FILE > $OUTPUT; fi
 
 
 

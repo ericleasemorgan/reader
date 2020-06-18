@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<schema name="carrels-reader" version="1.6">
+<schema name="covid" version="1.6">
   <uniqueKey>bid</uniqueKey>
 
   <!-- local field types -->
