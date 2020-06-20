@@ -1,5 +1,0 @@
-LONGNAME	Personal Protective Equipment or PPE
-SCOPENOTE	This carrel --  Personal Protective Equipment or PPE -- is a subset of the <a href="https://www.semanticscholar.org/cord19">CORD-19</a> data set. It was created by first applying the query 'ppe OR "personal protective equipment"' to a full text index of CORD-19 and analyzing the results. <a href="./study-carrel.zip">Download this study carrel</a> for off-line viewing, and <a href="./MANIFEST.htm">read the manifest</a> to learn more of the carrel contains.
-CREATOR	Eric Lease Morgan
-EMAIL	emorgan@nd.edu
-CREATIONDATE	May 21, 2020

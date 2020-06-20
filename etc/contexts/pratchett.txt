@@ -1,5 +1,0 @@
-LONGNAME	Terry Pratchett Books
-SCOPENOTE	This carrel was created from a collection of forty books written by Terry Pratchett. [Insert here more exactly from whence the collection originated.] By perusing the carrel and noting the frequent use of speech, it becomes obvious the collection is a series of stories. Since many of the nouns, proper nouns, and named entities do not seem real, the stories are probably imaginary. Moreover, since the readability scores tend to be higher rather than lower, the stories are accessible to a wide audience. This is the first study carrel I've ever created. <a href="./study-carrel.zip">Download this study carrel</a> for off-line viewing, and <a href="./MANIFEST.htm">read the manifest</a> to learn more of the carrel contains.
-CREATOR	Ralph Levan
-EMAIL	ralphlevan@GMAIL.COM
-CREATIONDATE	May 23, 2020
