@@ -1,0 +1,5 @@
+LONGNAME	Test Trump
+SCOPENOTE	This is a study carrel
+CREATOR	Eric Lease Morgan
+EMAIL	emorgan@nd.edu
+CREATIONDATE	June 13, 2020
