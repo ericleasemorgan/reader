@@ -11,8 +11,8 @@
 
 
 # configure
-TXT2KEYWORDS='./bin/txt2keywords.py'
-WRD='./wrd'
+TXT2KEYWORDS='./bin/txt2keywords-cord.py'
+WRD='./cord/wrd'
 
 # sanity check
 if [[ -z $1 ]]; then

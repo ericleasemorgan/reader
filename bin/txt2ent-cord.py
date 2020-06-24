@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# txt2ent.py - given a plain text file, output a tab-delimited file of named entitites
+# txt2ent-cord.py - given a plain text file, output a tab-delimited file of named entitites
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License

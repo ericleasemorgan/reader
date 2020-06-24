@@ -9,16 +9,17 @@
 
 # configure
 DB="./etc/cord.db"
-SQL="./sql"
+SQL="./cord/sql"
 TMP="./tmp"
+INSERTS='inserts-cord.sql'
 
 # make sane
 mkdir -p $TMP
 
-echo "BEGIN TRANSACTION;" >  "$TMP/inserts.sql"
-find "$SQL" -type f -name "*.sql" -exec cat {} \+ >> "$TMP/inserts.sql"
-echo "END TRANSACTION;" >>  "$TMP/inserts.sql"
+echo "BEGIN TRANSACTION;"                         >  "$TMP/$INSERTS"
+find "$SQL" -type f -name "*.sql" -exec cat {} \+ >> "$TMP/$INSERTS"
+echo "END TRANSACTION;"                           >> "$TMP/$INSERTS"
 
 # do the work and done
-cat "$TMP/inserts.sql" | sqlite3 $DB
+cat "$TMP/$INSERTS" | sqlite3 $DB
 exit

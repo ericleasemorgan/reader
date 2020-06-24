@@ -17,7 +17,7 @@ echo "Caching" >&2
 ./bin/cache.sh
 
 echo "Extracting metadata" >&2
-./bin/metadata2sql.py
+./bin/metadata2sql-cord.py
 
 echo "Initializing database" >&2
 ./bin/db-initialize.sh
@@ -37,14 +37,15 @@ cat ./etc/urls2url.sql | sqlite3 ./etc/cord.db
 echo "Filling shas table" >&2
 cat ./etc/shas2sha.sql | sqlite3 ./etc/cord.db
 
+echo "Done with Step #1. You now need to do some feature extraction. Call Eric." >&2
+exit
+
 echo "Filling keywords table" >&2
-./bin/reduce-wrd.sh
+./bin/reduce-wrd-cord.sh
 
 echo "Filling named entities table" >&2
-./bin/reduce-ent.sh
+./bin/reduce-ent-cord.sh
 
 echo "Summarizing" >&2
 ./bin/summarize.sh > ./report.txt
 
-echo "Done" >&2
-exit

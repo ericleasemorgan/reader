@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # txt2ent.sh - given a file, execute txt2ent.py
-# usage: mkdir -p ./ent; find ./txt -name '*.txt' | sort | parallel ./bin/txt2ent.sh
+# usage: mkdir -p ./cord-ent; find ./cord/txt -name '*.txt' | sort | parallel ./bin/txt2ent.sh
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
@@ -11,8 +11,8 @@
 
 
 # configure
-TXT2ENT='./bin/txt2ent.py'
-ENT='./ent'
+TXT2ENT='./bin/txt2ent-cord.py'
+ENT='./cord/ent'
 
 # sanity check
 if [[ -z $1 ]]; then

@@ -17,8 +17,8 @@ FAQ='https://discourse.cord-19.semanticscholar.org/t/faqs-about-cord-19-dataset/
 CHANGELOG='https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/latest/changelog'
 
 # configure file system
-ZIPS='./zips'
-JSON='./json'
+ZIPS='./cord/zips'
+JSON='./cord/json'
 TMP='./tmp'
 ETC='./etc'
 

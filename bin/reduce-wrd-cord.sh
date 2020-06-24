@@ -10,7 +10,7 @@
 
 # configure
 DB='./etc/cord.db'
-SQLWRD='./sql-wrd'
+SQLWRD='./cord/sql-wrd'
 TMP='./tmp'
 DELETE='DELETE FROM wrd;'
 INSERTS='inserts-wrd.sql'
@@ -20,10 +20,10 @@ mkdir -p $TMP
 
 # create a transaction
 echo "Creating transaction" >&2
-echo "BEGIN TRANSACTION;"   >  "$TMP/$INSERTS"
-echo $DELETE                >> "$TMP/$INSERTS"
+echo "BEGIN TRANSACTION;"                                 >  "$TMP/$INSERTS"
+echo $DELETE                                              >> "$TMP/$INSERTS"
 find "$SQLWRD" -type f -name "cord-*.sql" -exec cat {} \+ >> "$TMP/$INSERTS"
-echo "END TRANSACTION;"    >> "$TMP/$INSERTS"
+echo "END TRANSACTION;"                                   >> "$TMP/$INSERTS"
 
 # do the work and done
 echo "Updating wrd table" >&2

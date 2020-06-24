@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# txt2keywords.sh - given a file, output a tab-delimited list of keywords
+# txt2keywords-cord.sh - given a file, output a tab-delimited list of keywords
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License

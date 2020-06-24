@@ -95,7 +95,8 @@ while [ 1 ]; do
 		echo                           >&2
 		
 		# update the metadata file
-		printf "$AUTHOR\t$TITLE\t$DATE\t$FILE\n" >> $METADATA
+		#printf "$AUTHOR\t$TITLE\t$DATE\t$FILE\n" >> $METADATA
+		echo -e "$AUTHOR\t$TITLE\t$DATE\t$FILE" >> $METADATA
 	
 		# copy the local JSON file to the cache
 		cp "$JSON/$PDFJSON" "$CACHE/$FILE"

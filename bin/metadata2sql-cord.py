@@ -12,15 +12,16 @@ import os
 # configure
 METADATA = './etc/metadata.csv'
 TEMPLATE = "INSERT INTO documents ( 'authors', 'title', 'date', 'year', 'journal', 'source', 'abstract', 'license', 'pdf_json', 'pmc_json', 'sha', 'url', 'doi', 'arxiv_id', 'cord_uid', 'mag_id', 'pmc_id', 'pubmed_id', 'who_id' ) VALUES ( '##AUTHORS##', '##TITLE##', '##DATE##', '##YEAR##', '##JOURNAL##', '##SOURCE##', '##ABSTRACT##', '##LICENSE##', '##PDFJSON##', '##PMCJSON##', '##SHA##', '##URL##', '##DOI##', '##ARXIVID##', '##CORDUID##', '##MAGID##', '##PMCID##', '##PUBMEDID##', '##WHOID##' );"
-INSERTS='./sql'
-if not os.path.exists(INSERTS):
-    os.makedirs(INSERTS)
+INSERTS  = './cord/sql'
 
 # require
 import pandas as pd
 import re
 import sys
 import os 
+
+# sanity check
+if not os.path.exists( INSERTS ): os.makedirs( INSERTS )
 
 # process each row in the metadata file
 metadata = pd.read_csv( METADATA, low_memory=False )
@@ -116,9 +117,8 @@ for index, row in metadata.iterrows() :
 	sql = sql.replace( '##WHOID##', who_id )
 
 	# save; would rather use re-direction
-	file   = INSERTS + '/' + str( index ) + '.sql'
-	with open(file, 'w+') as handle:
-		handle.write( sql + "\n" )
+	file = INSERTS + '/' + str( index ) + '.sql'
+	with open(file, 'w+') as handle : handle.write( sql + "\n" )
 
 # done
 exit

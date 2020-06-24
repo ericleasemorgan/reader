@@ -46,6 +46,7 @@ rm -rf tsv                 &
 rm -rf txt                 &
 rm -rf urls                &
 rm -rf wrd                 &
+rm -rf tmp                 &
 wait
 
 # do the work

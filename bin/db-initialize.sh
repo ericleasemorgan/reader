@@ -10,7 +10,7 @@
 
 # configure
 DB='./etc/cord.db'
-SCHEMA='./etc/schema.sql'
+SCHEMA='./etc/schema-cord.sql'
 
 # make sane
 rm -rf $DB

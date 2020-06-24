@@ -10,10 +10,10 @@
 
 
 # configure
-TXT='./txt'
+TXT='./cord/txt'
 DB='./etc/cord.db'
 TEMPLATE=".mode tabs\nSELECT document_id, cord_uid FROM documents WHERE sha='##SHA##'";
-JSON2TXT='./bin/json2txt-pdf.sh'
+JSON2TXT='./bin/json2txt.sh'
 
 if [[ -z $1 ]]; then
 	echo "Usage: $0 <json>" >&2

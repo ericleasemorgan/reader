@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#SBATCH -p cloud
+#SBATCH -p big-cloud
 #SBATCH -N 1
-#SBATCH -n 10
+#SBATCH -n 24
 #SBATCH --mail-user=emorgan@nd.edu
 #SBATCH -t 48:0:00
 #SBATCH -J JSON2CORPUS
@@ -12,4 +12,4 @@
 #SBATCH --mail-type=ALL
 
 cd /export/cord
-mkdir -p ./txt; find json -type f -not -name "P*" | sort | parallel ./bin/json2corpus.sh
+mkdir -p ./cord/txt; find cord/json -type f -not -name "P*" | sort | parallel ./bin/json2corpus.sh
