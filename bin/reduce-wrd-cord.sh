@@ -13,7 +13,7 @@ DB='./etc/cord.db'
 SQLWRD='./cord/sql-wrd'
 TMP='./tmp'
 DELETE='DELETE FROM wrd;'
-INSERTS='inserts-wrd.sql'
+INSERTS='inserts-wrd-cord.sql'
 
 # make sane
 mkdir -p $TMP
