@@ -1,6 +1,8 @@
 #!/bin/bash
 
 #SBATCH -p big-cloud
+#SBATCH -N 1
+#SBATCH -n 24
 #SBATCH --mail-user=emorgan@nd.edu
 #SBATCH -t 48:0:00
 #SBATCH -J ENT2SQL
@@ -10,4 +12,4 @@
 #SBATCH --mail-type=ALL
 
 cd /export/cord
-mkdir -p ./sql-ent; find ./ent -name "*.ent" | sort | parallel ./bin/ent2sql.sh
+mkdir -p ./cord/sql-ent; find ./cord/ent -name "*.ent" | parallel --will-cite ./bin/ent2sql-cord.pl

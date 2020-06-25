@@ -12,4 +12,4 @@
 #SBATCH --mail-type=ALL
 
 cd /export/cord
-mkdir -p ./cord/ent; find ./cord/txt -name '*.txt' | sort | parallel ./bin/txt2ent-cord.sh
+mkdir -p ./cord/ent; find ./cord/txt -name '*.txt' | parallel --will-cite ./bin/txt2ent-cord.sh
