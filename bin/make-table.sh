@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
 # make-table.sh - loop through a directory of study carrels and output a TSV file
+# usage ./bin/make-table.sh > ./etc/table.tsv
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame; distributed under a GNU Public License
 
-# May 26, 2020 - migrating to Project CORD
+# May  26, 2020 - migrating to Project CORD
+# June 26, 2020 - tweaked flesch and number of keywords
 
 
 # configure
@@ -14,7 +16,7 @@ DB='etc/reader.db'
 ZIP='study-carrel.zip';
 
 # process each study carrel in the library
-find $CARRELS ! -path $CARRELS -maxdepth 1 -type d | while read CARREL; do
+find $CARRELS -maxdepth 1 ! -path $CARRELS  -type d | while read CARREL; do
 
 	echo "carrel: $CARREL" >&2
 	
@@ -22,8 +24,8 @@ find $CARRELS ! -path $CARRELS -maxdepth 1 -type d | while read CARREL; do
 	SHORTNAME=$( basename $CARREL )
 	ITEMS=$( echo "SELECT COUNT( id ) FROM bib;" | sqlite3 "$CARREL/$DB" )
 	WORDS=$( echo "SELECT SUM( words ) FROM bib;" | sqlite3 "$CARREL/$DB" )
-	FLESCH=$( echo "SELECT RTRIM( ROUND( AVG( flesch ) ), '.0' ) FROM bib;" | sqlite3 "$CARREL/$DB" )
-	KEYWORDS=$( echo "SELECT keyword FROM wrd GROUP BY keyword ORDER BY COUNT( keyword ) DESC LIMIT 3;" | sqlite3 "$CARREL/$DB" )
+	FLESCH=$( echo "SELECT ROUND( AVG( flesch ) ) FROM bib;" | sqlite3 "$CARREL/$DB" )
+	KEYWORDS=$( echo "SELECT keyword FROM wrd GROUP BY keyword ORDER BY COUNT( keyword ) DESC LIMIT 5;" | sqlite3 "$CARREL/$DB" )
 	SIZE=$( du "$CARREL/$ZIP" | cut -f1 )
 	DATE=$( stat --printf='%z' $CARREL | cut -d ' ' -f1 )
 

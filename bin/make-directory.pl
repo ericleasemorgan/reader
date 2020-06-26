@@ -1,6 +1,7 @@
 #!/usr/bin/env perl
 
 # make-directory.pl - given a few pre-configurations, output a HTML directory of study carrels
+# usage: ./bin/make-directory.pl > /export/reader/carrels/INDEX.HTM
 
 # Eric Lease Morgan <emorgan@nd.edu.
 # May 26, 2020 - first move to Project CORD
