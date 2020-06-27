@@ -12,13 +12,15 @@
 
 <h1>Topic model</h1>
 
+<p>The input for this page is the summary data ("abstracts") of each item in the study carrel. Use this page to first enumerate sets of latent themes ("topics"). Then use the other functions of the page to visualize the results, refine the themes, and download files for offline analysis. This page's functionality is wholly derived from David Mimno's Javascript library called "<a href="https://github.com/mimno/jsLDA">jsLDA</a>".</p>
+
 <div id="tooltip"></div>
 
 	<div id="main">
 		<div id="form" class="top">
 			<button id="sweep">Run 50 iterations</button>
 			Iterations: <span id="iters">0</span>
-			<span id="num_topics_control">Train with <input id="num-topics-input" type="range" name="topics" value="10" min="3" max="100" oninput="updateTopicCount(this)" onchange="onTopicsChange(this)"/> <span id="num_topics_display">10</span> topics</span>
+			<span id="num_topics_control">Train with <input id="num-topics-input" type="range" name="topics" value="20" min="5" max="100" oninput="updateTopicCount(this)" onchange="onTopicsChange(this)"/> <span id="num_topics_display">20</span> topics</span>
 		</div>
 
 		<div class="sidebar">

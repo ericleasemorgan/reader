@@ -30,12 +30,39 @@
 
         <!-- data tables -->
         <link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.min.css">
-        <script type="text/javascript" language="javascript" src="../js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" language="javascript" src="../js/jquery.dataTables.min.js"></script> 
         <script type="text/javascript" class="init">
-                $(document).ready(function() { $('#tsv').DataTable( {
-        "order": [[ 1, "desc" ]],
-        "pageLength": 10
-    } ); } );
+                $(document).ready(function(){
+                        $('div.tableclass').hide();
+                        $('select.tabledrop').change(function(){
+                        var selectedOption = $(this).children("option:selected").val();
+                        console.log(document.getElementById("tabledrop").value);
+                        if(selectedOption =='tableopt'){
+                                $('div.tableclass').show();
+                                 $(document).ready(function(){
+                                    $('#tsv').DataTable( {
+                                        "order": [[ 1, "asc" ]],
+                                        "pageLength": 10
+
+                                    });
+                                    $('div.item').hide();
+                                    $('div.searchbarclass').hide();
+                                });
+				
+                        }else{
+                                $(document).ready(function(){
+					$('div.tableclass').hide();
+                                        var table = $('#tsv').DataTable();
+                                        table.destroy();
+					//$('div.tableclass').hide();
+                                        $('div.item').show();
+                                         $('div.searchbarclass').show();
+
+                                });
+                        };
+                        });
+                });
+
         </script>
 
 	<script type="text/javascript" src="../js/elasticlunr.js"></script>
@@ -105,12 +132,35 @@
 
 <h1>Search Interface</h1>
 <p>This displays appearances of words in the text. Use it to search &amp; browse the list to learn more about your study carrel.</p>
-
-
-
+<div id="searchbardiv" class="searchbarclass">
 <input id='query' type='text' onkeydown='keyfunc(event)' >
-<input id="search()" type='button' value='search' onClick='search()' >
-
+<input id="search()" type='button' value='search' class='btn-primary' onClick='search()' >
+</div>
+<br>
+<label>
+        Display results as:
+        <select id='tabledrop' name='tableoption' class='tabledrop'>
+                <option value="listopt">List</option>
+                <option value="tableopt">Table</option>
+        </select>
+</label> <br>
+<div id="tableDiv" class="tableclass">
+   <table id="tsv" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Summary</th>
+                <th>Author</th>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Words</th>
+                <th>Readability</th>
+            </tr>
+        </thead>
+	<tbody>
+	##ROWS##
+	</tbody>
+</table>
+</div>
 <div id="newDiv">
 <ol id= "mylist"></ol>
 </div>
@@ -136,6 +186,11 @@
 			this.setRef('id');
 			this.addField('title');
 			this.addField('summary');
+			this.addField('flesch');
+			this.addField('date');
+			this.addField('words');
+			this.addField('author');
+			
 		});
 
 		// loop through each item in the data
@@ -146,6 +201,10 @@
 				'id'      : data[item].id,
 				'title'   : data[item].title,
 				'summary' : data[item].summary,
+				'flesch' : data[item].flesch,
+				'date' : data[item].date,
+				'words' : data[item].words,
+				'author' : data[item].author
 			}
 		
 			// update the index
@@ -158,15 +217,27 @@
 		var list = '<ol>'
 		for ( var item in results ) {
 			myli = document.createElement("myli");
-			var linktxt = document.createTextNode(results[item].doc.title);		
-			var ititle = results[item].doc.id + '.txt';
-			myli.innerHTML = "<li>"  + "<a href= ../txt/" + ititle +" >" + results[item].doc.title + "<\a>"+ "</li>";
-			myli.innerHTML = myli.innerHTML+ results[item].doc.title + "<br>" + "</li>";
-			myli.innerHTML = myli.innerHTML + results[item].doc.summary;
-			if (results[item].doc.summary ) {document.getElementById("mylist").appendChild(myli)}
-			myli.innerHTML = myli.innerHTML + results[item].score + "<br>";
-			document.getElementById("mylist").appendChild(myli);			
+                        var linktxt = document.createTextNode(results[item].doc.title);
+                        var ititle = results[item].doc.id + '.txt';
+                        myli.innerHTML = "<a href= ../txt/" + ititle +" >" + results[item].doc.title + "<\a>";
+                        myli.innerHTML =  myli.innerHTML + "<li>" + "<b>" + "Text ID: " +"</b>"+ results[item].doc.id + "</li>" + "<br>";
+                        myli.innerHTML = myli.innerHTML + "<li>" + "<b>" + "Summary: " +"</b>"+ results[item].doc.summary + "</li>" + "<br>";
+                        var summarytext = document.createTextNode(results[item].doc.summary);
+                        var scoretext = document.createTextNode(results[item].doc.score);
+                        myli.innerHTML = myli.innerHTML + "<li>" + "<b>" + "Score: " +"</b>" + results[item].score +" <br>" + "</li>";
+			myli.innerHTML = myli.innerHTML + "<li>" + "<b>" + "Readability: " +"</b>" + results[item].doc.flesch +" <br>" + "</li>";
+			myli.innerHTML = myli.innerHTML + "<li>" + "<b>" + "Length(words): " +"</b>" + results[item].doc.words +" <br>" + "</li>";
+			myli.innerHTML = myli.innerHTML + "<li>" + "<b>" + "Author: " +"</b>" + results[item].doc.author +" <br>" + "</li>";
+                        myli.innerHTML = "<br>"+ "<li>"+ "<ul>" + myli.innerHTML + "</ul>" + "</li>" + "<br>";
+                        document.getElementById("mylist").appendChild(myli);
+			
 		}
+		if(results == 0){
+                        myli = document.createElement("myli");
+                        myli.innerHTML = "<br>"+"No Results Found for Entered Text.";
+                        document.getElementById("mylist").appendChild(myli);
+                }
+
 		
 	}
 </script>
