@@ -11,6 +11,7 @@
 # September  1, 2019 - began linking to cached files
 # September 14, 2019 - fixed unigrams & bigrams; Yoda says, "Really ugly, they are."
 # June       4, 2020 - added additional entity types
+# June      26, 2020 - removed lower-casing of proper nouns, but the values themselves seem bogus
 
 
 # configure
@@ -259,7 +260,7 @@ if ( not os.path.exists( './figures/pronouns.png' ) ) :
 pronouns = pronouns[ 'pronoun' ].iloc[ : COUNT ].tolist()
 
 # proper nouns
-properNouns = pd.read_sql_query( "select lower(token) as 'proper', count(lower(token)) as frequency from pos where pos like 'NNP%%' group by lower(token) order by frequency desc", engine )
+properNouns = pd.read_sql_query( "select token as 'proper', count(token) as frequency from pos where pos like 'NNP%%' group by token order by frequency desc", engine )
 if ( not os.path.exists( './tsv/proper-nouns.tsv' ) ) : properNouns.to_csv( './tsv/proper-nouns.tsv', sep='\t', columns=[ 'proper', 'frequency' ], index=False )
 if ( not os.path.exists( './figures/proper-nouns.png' ) ) :
 	data = properNouns[ 0:CLOUDCOUNT ]

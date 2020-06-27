@@ -1,10 +1,18 @@
 #!/usr/bin/env perl
 
+# carrel2search.pl - query a database, transform the results into a JSON stream, and output an HTML page
+
+# Eric Lease Morgan <emorgan@nd.edu> and Maria Carroll <mcarro10@nd.edu>
+# (c) University of Notre Dame; distributed under a GNU Public License
+
+# June 23, 2020 - first documentation but based on prior work
+
+
 # configure
 use constant CARRELS  => '/export/reader/carrels';
 use constant DATABASE => 'etc/reader.db';
 use constant DRIVER   => 'SQLite';
-use constant QUERY    => 'SELECT id, title, summary FROM bib;';
+use constant QUERY    => 'SELECT id, title, summary, flesch, date, words, author FROM bib;';
 use constant TEMPLATE => '/export/reader/etc/template-search.htm';
 
 # require
@@ -33,9 +41,13 @@ while( my $bibliographics = $handle->fetchrow_hashref ) {
 	my $id       = $$bibliographics{ 'id' };
 	my $title    = $$bibliographics{ 'title' };
 	my $summary  = $$bibliographics{ 'summary' };
+	my $flesch   = $$bibliographics{ 'flesch' };
+	my $date     = $$bibliographics{ 'date' };
+	my $words    = $$bibliographics{ 'words' };
+	my $author   = $$bibliographics{ 'author' };
 
 	# update
-	push( @data, { 'id' => $id, 'title' => $title, 'summary' => $summary } );
+	push( @data, { 'id' => $id, 'title' => $title, 'summary' => $summary, 'flesch' => $flesch, 'date' => $date, 'words' => $words, 'author' => $author } );
 
 }
 
@@ -48,6 +60,7 @@ $html    =~ s/##JSON##/$json/e;
 print $html;
 exit;
 
+
 sub slurp {
 	my $f = shift;
 	open ( F, $f ) or die "Can't open $f: $!\n";
@@ -55,3 +68,4 @@ sub slurp {
 	close F;
 	return $r;
 }
+
