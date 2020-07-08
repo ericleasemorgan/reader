@@ -1,4 +1,8 @@
-#! /bin/bash
+#!/bin/bash
 echo Hi Ralph!
-ln -sfn /export/solr/solr-cloud-branch/reader/bin/linkReaderCloneToSolrCloudFiles.sh /export/coredir/
-ln -sfn /export/solr/solr-cloud-branch/reader/bin/solrCloudHostlist.txt /export/coredir/
+list="createNewCollections.sh deploySolrCloud.sh deploySolrNode.sh linkReaderCloneToSolrCloudFiles.sh startSolrCloud.sh startSolrNode.sh solrfields.sh stopSolrCloud.sh stopSolrNode.sh testSolrCloud.sh" 
+for name in $list; do
+    echo $name
+    ln -sfn /export/solr/solr-cloud-branch/reader/bin/$name /export/coredir/
+done
+chmod 777 *.sh
