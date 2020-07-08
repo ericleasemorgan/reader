@@ -5,7 +5,7 @@ set -x
 hostname=`hostname`
 echo $hostname
 hostnumber=${hostname:5:2}
-hostlist="solr-master:2181,solr-worker:2181"
+hostlist="solr-01:2181,solr-worker:2181"
 echo hostnumber=$hostnumber
 export JAVA_HOME=/export/java
 

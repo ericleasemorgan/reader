@@ -4,7 +4,7 @@ set -x
 hostname=`hostname`
 echo $hostname
 hostnumber=${hostname:5:2}
-hostlist="solr-master:2181,solr-worker:2181"
+hostlist="solr-01:2181,solr-worker:2181"
 echo hostnumber=$hostnumber
 
 #only do this on one server.  The zookeepers will pass it around
@@ -36,4 +36,5 @@ if [ $hostnumber -eq 1 ]; then
 #    done
 
 fi
+
 
