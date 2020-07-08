@@ -1,0 +1,4 @@
+solr-01
+solr-02
+solr-03
+solr-04
