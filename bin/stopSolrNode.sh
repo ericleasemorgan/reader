@@ -5,7 +5,7 @@ cd /home/ralphlevan/
 
 solrDirectory=`find . -maxdepth 1 -type d -name "solr*"`
 echo solrDirectory=$solrDirectory
-export JAVA_HOME=/export/java
+export JAVA_HOME=/export/java_x64/jdk-14.0.1
 cd $solrDirectory
 bin/solr stop -all
 

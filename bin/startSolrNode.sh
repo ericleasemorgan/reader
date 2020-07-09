@@ -7,7 +7,7 @@ echo $hostname
 hostnumber=${hostname:5:2}
 zklist="solr-01:2181,solr-02:2181,solr-03:2181"
 echo hostnumber=$hostnumber
-export JAVA_HOME=/export/java
+export JAVA_HOME=/export/java_x64/jdk-14.0.1
 
 if [ $hostnumber -lt 4 ]; then
     echo "Hello, Zookeeper!"
