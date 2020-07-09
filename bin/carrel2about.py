@@ -26,6 +26,7 @@ PLOTFLESCH = '/export/reader/bin/plot-flesch.sh'
 PLOTSIZES  = '/export/reader/bin/plot-sizes.sh'
 TOPICMODEL = '/export/reader/bin/topic-model.py'
 TEMPLATE   = '/export/reader/etc/about.htm'
+STOPWORDS  = '/export/reader/etc/stopwords.txt'
 
 # require
 from sqlalchemy import create_engine
@@ -34,6 +35,11 @@ import subprocess
 import sys
 import os
 import re
+
+# slurp up stopwords
+handle    = open( STOPWORDS, 'r' )
+stopwords = handle.read().split( '\n' )
+handle.close()
 
 # define
 def id2bibliographics( id, engine ) :
@@ -214,6 +220,7 @@ if( not os.path.exists( './figures/flesch-boxplot.png' ) )   : subprocess.run( [
 
 # nouns
 nouns = pd.read_sql_query( "select lower(token) as 'noun', count(lower(token)) as frequency from pos where pos is 'NN' or pos is 'NNS' group by lower(token) order by frequency desc", engine )
+nouns = nouns[ ~nouns[ 'noun' ].isin( stopwords ) ]
 if ( not os.path.exists( './tsv/nouns.tsv' ) ) : nouns.to_csv( './tsv/nouns.tsv', sep='\t', columns=[ 'noun', 'frequency' ], index=False )
 if ( not os.path.exists( './figures/nouns.png' ) ) :
 	data = nouns[ 0:CLOUDCOUNT ]
@@ -222,7 +229,8 @@ if ( not os.path.exists( './figures/nouns.png' ) ) :
 nouns = nouns[ 'noun' ].iloc[ : COUNT ].tolist()
 
 # verbs
-verbs = pd.read_sql_query( "select lower(token) as 'verb', count(lower(token)) as frequency from pos where pos like 'VB%%' group by lower(token) order by frequency desc", engine )
+verbs = pd.read_sql_query( "select lower(token) as 'verb', count(lower(lemma)) as frequency from pos where pos like 'VB%%' group by lower(lemma) order by frequency desc", engine )
+verbs = verbs[ ~verbs[ 'verb' ].isin( stopwords ) ]
 if ( not os.path.exists( './tsv/verbs.tsv' ) ) : verbs.to_csv( './tsv/verbs.tsv', sep='\t', columns=[ 'verb', 'frequency' ], index=False )
 if ( not os.path.exists( './figures/verbs.png' ) ) :
 	data = verbs[ 0:CLOUDCOUNT ]
@@ -230,9 +238,9 @@ if ( not os.path.exists( './figures/verbs.png' ) ) :
 	subprocess.run( [ CLOUD, './tmp/verbs.tsv', 'white', './figures/verbs.png' ] )
 verbs = verbs[ 'verb' ].iloc[ : COUNT ].tolist()
 
-
 # adjectives
 adjectives = pd.read_sql_query( "select lower(token) as 'adjective', count(lower(token)) as frequency from pos where pos like 'J%%' group by lower(token) order by frequency desc", engine )
+adjectives = adjectives[ ~adjectives[ 'adjective' ].isin( stopwords ) ]
 if ( not os.path.exists( './tsv/adjectives.tsv' ) ) : adjectives.to_csv( './tsv/adjectives.tsv', sep='\t', columns=[ 'adjective', 'frequency' ], index=False )
 if ( not os.path.exists( './figures/adjectives.png' ) ) :
 	data = adjectives[ 0:CLOUDCOUNT ]
@@ -243,6 +251,7 @@ adjectives = adjectives[ 'adjective' ].iloc[ : COUNT ].tolist()
 
 # adverbs
 adverbs = pd.read_sql_query( "select lower(token) as 'adverb', count(lower(token)) as frequency from pos where pos like 'R%%' group by lower(token) order by frequency desc", engine )
+adverbs = adverbs[ ~adverbs[ 'adverb' ].isin( stopwords ) ]
 if ( not os.path.exists( './tsv/adverbs.tsv' ) ) : adverbs.to_csv( './tsv/adverbs.tsv', sep='\t', columns=[ 'adverb', 'frequency' ], index=False )
 if ( not os.path.exists( './figures/adverbs.png' ) ) :
 	data = adverbs[ 0:CLOUDCOUNT ]
@@ -252,6 +261,7 @@ adverbs = adverbs[ 'adverb' ].iloc[ : COUNT ].tolist()
 
 # pronouns
 pronouns = pd.read_sql_query( "select lower(token) as 'pronoun', count(lower(token)) as frequency from pos where pos like 'PR%%' group by lower(token) order by frequency desc", engine )
+propepronounsrNouns = pronouns[ ~pronouns[ 'pronoun' ].isin( stopwords ) ]
 if ( not os.path.exists( './tsv/pronouns.tsv' ) ) : pronouns.to_csv( './tsv/pronouns.tsv', sep='\t', columns=[ 'pronoun', 'frequency' ], index=False )
 if ( not os.path.exists( './figures/pronouns.png' ) ) :
 	data = pronouns[ 0:CLOUDCOUNT ]
@@ -261,6 +271,7 @@ pronouns = pronouns[ 'pronoun' ].iloc[ : COUNT ].tolist()
 
 # proper nouns
 properNouns = pd.read_sql_query( "select token as 'proper', count(token) as frequency from pos where pos like 'NNP%%' group by token order by frequency desc", engine )
+properNouns = properNouns[ ~properNouns[ 'proper' ].isin( stopwords ) ]
 if ( not os.path.exists( './tsv/proper-nouns.tsv' ) ) : properNouns.to_csv( './tsv/proper-nouns.tsv', sep='\t', columns=[ 'proper', 'frequency' ], index=False )
 if ( not os.path.exists( './figures/proper-nouns.png' ) ) :
 	data = properNouns[ 0:CLOUDCOUNT ]
@@ -270,8 +281,9 @@ properNouns = properNouns[ 'proper' ].iloc[ : COUNT ].tolist()
 
 # keywords
 keywords = pd.read_sql_query( "select lower( keyword ) as 'keyword', count( keyword ) as frequency from wrd group by lower( keyword ) order by frequency desc", engine )
+keywords = keywords[ ~keywords[ 'keyword' ].isin( stopwords ) ]
 if ( not os.path.exists( './tsv/keywords.tsv' ) ) : keywords.to_csv( './tsv/keywords.tsv', sep='\t', columns=[ 'keyword', 'frequency' ], index=False )
-if ( not os.path.exists( './figures/kekeywordsywords.png' ) ) :
+if ( not os.path.exists( './figures/keywords.png' ) ) :
 	data = keywords[ 0:CLOUDCOUNT ]
 	data.to_csv( './tmp/keywords.tsv', columns=[ 'keyword', 'frequency' ], header=False, sep='\t', index=False )
 	subprocess.run( [ CLOUD, './tmp/keywords.tsv', 'white', './figures/keywords.png' ] )

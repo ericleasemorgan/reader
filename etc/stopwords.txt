@@ -1,4 +1,6 @@
 0
+%
+-
 1
 2
 3
@@ -14,6 +16,9 @@ about
 above
 after
 again
+fig
+.
+figure
 against
 al
 all
@@ -139,6 +144,7 @@ she
 she'd
 she'll
 she's
+e.g.
 should
 shouldn't
 so
