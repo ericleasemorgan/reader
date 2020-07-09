@@ -12,7 +12,7 @@ bin/solr stop -all
 hostname=`hostname`
 echo $hostname
 hostnumber=${hostname:5:2}
-hostlist="solr-01:2181,solr-worker:2181"
+zklist="solr-01:2181,solr-02:2181,solr-03:2181"
 echo hostnumber=$hostnumber
 
 if [ $hostnumber -lt 4 ]; then

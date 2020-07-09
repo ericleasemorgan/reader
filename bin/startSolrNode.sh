@@ -5,7 +5,7 @@ set -x
 hostname=`hostname`
 echo $hostname
 hostnumber=${hostname:5:2}
-hostlist="solr-01:2181,solr-worker:2181"
+zklist="solr-01:2181,solr-02:2181,solr-03:2181"
 echo hostnumber=$hostnumber
 export JAVA_HOME=/export/java
 
@@ -22,9 +22,9 @@ echo "Hello, Solr!"
 cd /home/ralphlevan/
 solrDirectory=`find . -maxdepth 1 -type d -name "solr*"`
 echo solrDirectory=$solrDirectory
-#$solrDirectory/bin/solr -c -z $hostlist -s /prod/data/solr
+#$solrDirectory/bin/solr -c -z $zklist -s /prod/data/solr
 cd $solrDirectory
-#bin/solr start -c -z $hostlist -s /prod/viafsolrcloud/prod/solrcloud/$solrDirectory/server/solr
+#bin/solr start -c -z $zklist -s /prod/viafsolrcloud/prod/solrcloud/$solrDirectory/server/solr
 #cp /prod/viafsolrcloud/prod/solrcloud/$solrDirectory/server/solr/solr.xml /data
-bin/solr start -c -z $hostlist -s /export/solr/node$hostnumber/data -DzkClientTimeout=600000
+bin/solr start -c -z $zklist -s /export/solr/node$hostnumber/data -DzkClientTimeout=600000
 
