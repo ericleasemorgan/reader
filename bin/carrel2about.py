@@ -12,6 +12,7 @@
 # September 14, 2019 - fixed unigrams & bigrams; Yoda says, "Really ugly, they are."
 # June       4, 2020 - added additional entity types
 # June      26, 2020 - removed lower-casing of proper nouns, but the values themselves seem bogus
+# July       9, 2020 - removed (some) stopword from the output
 
 
 # configure
@@ -27,6 +28,7 @@ PLOTSIZES  = '/export/reader/bin/plot-sizes.sh'
 TOPICMODEL = '/export/reader/bin/topic-model.py'
 TEMPLATE   = '/export/reader/etc/about.htm'
 STOPWORDS  = '/export/reader/etc/stopwords.txt'
+PROVENANCE = './provenance.tsv'
 
 # require
 from sqlalchemy import create_engine
@@ -35,11 +37,6 @@ import subprocess
 import sys
 import os
 import re
-
-# slurp up stopwords
-handle    = open( STOPWORDS, 'r' )
-stopwords = handle.read().split( '\n' )
-handle.close()
 
 # define
 def id2bibliographics( id, engine ) :
@@ -195,6 +192,22 @@ def readModel( directory, engine, t, d, f ) :
 	
 # initialize
 engine = create_engine( 'sqlite:///' + DATABASE )
+
+# initialize stopwords
+handle    = open( STOPWORDS, 'r' )
+stopwords = handle.read().split( '\n' )
+handle.close()
+
+# read/parse provenance
+handle     = open( PROVENANCE, 'r' )
+provenance = handle.read()
+handle.close()
+provenance           = provenance.split( '\t' )
+nameOfCarrel         = provenance[ 0 ]
+dateOfCreation       = provenance[ 1 ]
+timeOfCreation       = provenance[ 2 ]
+emailOfCreator       = provenance[ 3 ]
+queryAgainstDatabase = provenance[ 4 ]
 
 # number of items
 numberOfItems = pd.read_sql_query( 'SELECT COUNT( id ) FROM bib', engine )
@@ -415,6 +428,11 @@ sys.stderr.write( '\n' )
 
 # open the template and do the substitutions
 with open( TEMPLATE, 'r' ) as handle : html = handle.read()
+html = html.replace( '##NAMEOFCARREL##',          str( nameOfCarrel ) )
+html = html.replace( '##DATEOFCREATION##',          str( dateOfCreation ) )
+html = html.replace( '##TIMEOFCREATION##',          str( timeOfCreation ) )
+html = html.replace( '##EMAILOFCREATOR##',          str( emailOfCreator ) )
+html = html.replace( '##QUERYAGAINSTDATABASE##',          str( queryAgainstDatabase ) )
 html = html.replace( '##NUMBEROFITEMS##',          str( numberOfItems ) )
 html = html.replace( '##SUMOFWORDS##',             str( sumOfWords ) )
 html = html.replace( '##AVERAGESIZEINWORDS##',     str( averageSizeInWords)  )
