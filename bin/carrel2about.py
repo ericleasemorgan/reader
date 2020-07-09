@@ -12,7 +12,7 @@
 # September 14, 2019 - fixed unigrams & bigrams; Yoda says, "Really ugly, they are."
 # June       4, 2020 - added additional entity types
 # June      26, 2020 - removed lower-casing of proper nouns, but the values themselves seem bogus
-# July       9, 2020 - removed (some) stopword from the output
+# July       9, 2020 - removed (some) stopword from the output; enhanced output with some provenance; linked to txt (not cache)
 
 
 # configure
@@ -119,7 +119,7 @@ def addBibliographics( df, engine ) :
 			
 			id.replace( "'", "''" )
 
-			query = 'SELECT author, title, date, cache FROM bib where id is "{}"'.format( id )
+			query = 'SELECT author, title, date, txt FROM bib where id is "{}"'.format( id )
 
 			# search, and conditionally update
 			result = pd.read_sql_query( query, engine )

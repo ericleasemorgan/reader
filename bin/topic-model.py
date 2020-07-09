@@ -5,7 +5,11 @@
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # June 8, 2019 - re-wrote to use LDA; output pie chart
+# July 9, 2020 - added customized stop word list
 
+
+# configure
+STOPWORDS = '/export/reader/etc/stopwords.txt'
 
 # require
 from sklearn.decomposition import LatentDirichletAllocation
@@ -26,10 +30,16 @@ directory  = sys.argv[ 1 ]
 topics     = int( sys.argv[ 2 ] )
 dimensions = int( sys.argv[ 3 ] )
 
+# slurp up stopwords
+handle    = open( STOPWORDS, 'r' )
+stopwords = handle.read().split( '\n' )
+handle.close()
+
 # initialize
 filenames  = [ os.path.join( directory, filename ) for filename in os.listdir( directory ) ]
-vectorizer = CountVectorizer( input = 'filename', stop_words='english' )
+vectorizer = CountVectorizer( input = 'filename', stop_words=stopwords )
 model      = LatentDirichletAllocation( n_components=topics, learning_method='batch', random_state = 1 )
+
 
 # count & tabulate all words in all files, and then create the model
 vectors = vectorizer.fit_transform( filenames )
