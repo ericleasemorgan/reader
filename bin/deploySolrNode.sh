@@ -5,15 +5,15 @@ echo "Hello, World!"
 hostname=`hostname`
 echo $hostname
 hostnumber=${hostname:5:2}
-hostlist="solr-01:2181,solr-worker:2181"
 echo hostnumber=$hostnumber
+rm -fr solr*
 wget http://apache.mirrors.hoobly.com/lucene/solr/8.5.2/solr-8.5.2.tgz -O solr-8.5.2.tgz
 tar --overwrite -zxf solr*tgz
 solrDirectory=`find . -maxdepth 1 -type d -name "solr*"`
 echo solrDirectory=$solrDirectory
 cd $solrDirectory
 #sed -i.bak 's|<dataDir>${solr.data.dir:}</dataDir>|<dataDir>/data</dataDir>|' $solrDirectory/server/solr/configsets/_default/conf/solrconfig.xml
-sed -i.bak 's|#SOLR_JAVA_MEM="-Xms512m -Xmx512m"|SOLR_JAVA_MEM="-Xms3g -Xmx3g"|' bin/solr.in.sh
+sed -i.bak 's|#SOLR_JAVA_MEM="-Xms512m -Xmx512m"|SOLR_JAVA_MEM="-Xms8g -Xmx8g"|' bin/solr.in.sh
 
     mkdir -p /export/solr/node$hostnumber/configsets/cord/conf
     cp server/solr/configsets/_default/conf/solrconfig.xml /export/solr/node$hostnumber/configsets/cord/conf/
@@ -33,6 +33,7 @@ cd ..
 
 #only the first three hosts get zookeepers
 if [ $hostnumber -lt 4 ]; then
+	rm -fr apache-zookeeper*
 	wget http://apache.mirrors.hoobly.com/zookeeper/zookeeper-3.6.1/apache-zookeeper-3.6.1-bin.tar.gz -O apache-zookeeper-3.6.1-bin.tar.gz
     tar --overwrite -zxf apache-zookeeper*tar.gz
     zookeeperDirectory=`find . -maxdepth 1 -type d -name "apache-zookeeper*"`
@@ -42,6 +43,6 @@ if [ $hostnumber -lt 4 ]; then
     fi
     echo $hostnumber>$zookeeperDirectory/data/myid
     mv $zookeeperDirectory/conf/zoo_sample.cfg $zookeeperDirectory/conf/zoo.cfg
-    sed -i.bak "s|dataDir=/tmp/zookeeper|dataDir=/home/ralphlevan/$zookeeperDirectory/data\nserver.1=solr-01:2888:3888\nserver.2=solr-worker:2888:3888|" $zookeeperDirectory/conf/zoo.cfg
+    sed -i.bak "s|dataDir=/tmp/zookeeper|dataDir=/home/ralphlevan/$zookeeperDirectory/data\nserver.1=solr-01:2888:3888\nserver.2=solr-02:2888:3888\nserver.3=solr-03:2888:3888|" $zookeeperDirectory/conf/zoo.cfg
 fi
 
