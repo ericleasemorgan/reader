@@ -75,7 +75,8 @@ $TSV2QUESTIONS ./tsv/questions.tsv  > ./htm/questions.htm
 
 # create search page
 echo "==== make-pages.sh search" >&2
-$CARREL2SEARCH $CARREL > ./htm/search.htm
+$CARREL2SEARCH $CARREL > /export/reader/tmp/search.htm
+/export/reader/bin/tsv2htm-search.py ./tsv/bibliographics.tsv > ./htm/search.htm
 
 # create data and page for topic modeling
 echo "==== make-pages.sh topic modeling corpus" >&2

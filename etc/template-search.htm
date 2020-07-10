@@ -31,36 +31,44 @@
         <!-- data tables -->
         <link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.min.css">
         <script type="text/javascript" language="javascript" src="../js/jquery.dataTables.min.js"></script> 
-        <script type="text/javascript" class="init">
-                $(document).ready(function(){
-                        $('div.tableclass').hide();
-                        $('select.tabledrop').change(function(){
+	 <script type="text/javascript" class="init">
+               $(document).ready(function(){
+                    $('div.tableclass').hide();
+                    $('select.tabledrop').change(function(){
                         var selectedOption = $(this).children("option:selected").val();
-                        console.log(document.getElementById("tabledrop").value);
                         if(selectedOption =='tableopt'){
-                                $('div.tableclass').show();
-                                 $(document).ready(function(){
-                                    $('#tsv').DataTable( {
-                                        "order": [[ 1, "asc" ]],
-                                        "pageLength": 10
-
-                                    });
+                                $(document).ready(function(){
+                                if($('#query').val()){
+ 					$('#tsv').DataTable().columns(0).search($('#query').val(), true, false).draw();
+                                         $('div.tableclass').show();
+                                }else{  
+                                        $(document).ready(function(){
+                                                document.getElementById('searchBTN').addEventListener('click', function(){
+                                                         if($('select.tabledrop').children("option:selected").val() == 'tableopt'){
+                                                                $('div.tableclass').show();
+                                                        }
+                                                });
+                                        });
+                                }
+				$('#tsv').dataTable().fnDraw();       
+                                $('#searchBTN').click(function(){
+                                	var table = $('#tsv').DataTable();
+                                        var val = $.fn.dataTable.util.escapeRegex($('#query').val());
+                                        var myregex = ("\\b" + val + "\\b");
+                                        table.columns(0).search(myregex, true, false).draw();
+                                 });          
                                     $('div.item').hide();
-                                    $('div.searchbarclass').hide();
-                                });
-				
+                        	});
                         }else{
                                 $(document).ready(function(){
-					$('div.tableclass').hide();
-                                        var table = $('#tsv').DataTable();
-                                        table.destroy();
-					//$('div.tableclass').hide();
+                                        $('div.tableclass').hide();
+                                        var newtable = $('#tsv').DataTable();
+                                        newtable.destroy();
                                         $('div.item').show();
-                                         $('div.searchbarclass').show();
-
+                                        $('div.searchbarclass').show();
                                 });
                         };
-                        });
+                    });
                 });
 
         </script>
@@ -145,7 +153,7 @@
         </select>
 </label> <br>
 <div id="tableDiv" class="tableclass">
-   <table id="tsv" class="table table-striped table-bordered" cellspacing="0" width="100%">
+   <table id="tsv" class="display">
         <thead>
             <tr>
                 <th>Summary</th>
