@@ -20,7 +20,7 @@ sed -i.bak 's|#SOLR_JAVA_MEM="-Xms512m -Xmx512m"|SOLR_JAVA_MEM="-Xms8g -Xmx8g"|'
 	cp /export/coredir/conf/DIHconfigfile.xml /export/solr/node$hostnumber/configsets/cord/conf/
 	sed -i.bak "s|<dataDir>/data</dataDir>|<dataDir>/export/solr/node$hostnumber/data</dataDir>|" /export/solr/node$hostnumber/configsets/cord/conf/solrconfig.xml
 	sed -i.bak "s|  <!-- SearchHandler|  <lib dir=\"\${solr.install.dir:/home/ralphlevan/solr-8.5.2}/dist/\" regex=\"solr-dataimporthandler-.*\.jar\"/>\n  <requestHandler class=\"solr.DataImportHandler\" name=\"/dataimport\">\n    <lst name=\"defaults\">\n    <str name=\"config\">DIHconfigfile.xml</str>\n  </lst>\n</requestHandler>\n  <!-- SearchHandler|" /export/solr/node$hostnumber/configsets/cord/conf/solrconfig.xml
-	cp /export/conf/cord-managed-schema /export/solr/node$hostnumber/configsets/cord/conf/managed-schema
+	cp /export/coredir/conf/cord-managed-schema /export/solr/node$hostnumber/configsets/cord/conf/managed-schema
 	cp -rp server/solr/configsets/_default/conf/lang/ /export/solr/node$hostnumber/configsets/cord/conf/
 	cp  server/solr/configsets/_default/conf/*.txt /export/solr/node$hostnumber/configsets/cord/conf/
     mkdir -p /export/solr/node$hostnumber/data
