@@ -7,7 +7,7 @@ for name in $list; do
 done
 chmod 777 *.sh
 
-list="DIHconfigfile.xml solrconfig.xml"
+list="cord-managed-schema DIHconfigfile.xml solrconfig.xml"
 for name in $list; do
     echo $name
     ln -sfn /export/solr/solr-cloud-branch/reader/etc/$name /export/coredir/conf
