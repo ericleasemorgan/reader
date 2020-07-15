@@ -9,7 +9,7 @@ echo hostnumber=$hostnumber
 
 #only do this on one server.  The zookeepers will pass it around
 if [ $hostnumber -eq 1 ]; then
-    export JAVA_HOME=/export/java_x64/jdk-14.0.1
+    export JAVA_HOME=/export/java
     echo "Creating Collections!"
 	cd /home/ralphlevan/
     solrDirectory=`find . -maxdepth 1 -type d -name "solr*"`
