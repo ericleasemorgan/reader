@@ -5,7 +5,8 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame; distributed under a GNPU Public License
 
-# June 2, 2020 - first investigations
+# June  2, 2020 - first investigations
+# July 10, 2020 - added current date and time to provenance
 
 
 # configure
@@ -49,8 +50,9 @@ elsif ( $confirm ) {
 elsif ( $queue ) {
 
 	# initialize some more
-	my $date = '2020-05-28';
-	my $time = '12:00';
+	my ( $sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst ) = localtime();
+	my $date = sprintf ( "%02d-%02d-%02d", $year+1900, $mon+1, $mday );
+	my $time = sprintf ( "%02d:%02d", $hour, $min );
     my $todo = TODO . "/$shortname.tsv";
     
 	# update the queue
