@@ -19,7 +19,7 @@ CARRELS='/export/reader/carrels'
 CSV='metadata.csv'
 DB='./etc/cord.db'
 HEADER='author\ttitle\tdate\tfile'
-JSON='./json'
+JSON='./cord/json'
 SUBSELECT="SELECT pdf_json FROM documents WHERE document_id = '##DOCID##';"
 TSV='metadata.tsv'
 COUNT=999

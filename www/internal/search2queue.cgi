@@ -10,7 +10,7 @@
 
 
 # configure
-use constant TODO => '/export/cord/queue/todo';
+use constant TODO => '/export/reader/queue/todo';
 
 # require
 use CGI;

@@ -18,10 +18,10 @@ EXPORT_HOME='/export/bin'
 PATH=$EXPORT_HOME:$WORD2VEC_HOME:$PERL_HOME:$JAVA_HOME:$READER_HOME:$PATH
 
 # configure
-HOME='/export/cord'
-TODO='/export/cord/queue/todo'
-INPROCESS='/export/cord/queue/in-process'
-SUBMITTTED='/export/cord/queue/submitted.tsv'
+HOME='/export/reader'
+TODO='/export/reader/queue/todo'
+INPROCESS='/export/reader/queue/in-process'
+SUBMITTTED='/export/reader/queue/submitted.tsv'
 QUEUE2CARREL='./bin/queue2carrel.sh'
 
 # make sane
@@ -31,7 +31,7 @@ cd $HOME
 find $TODO -name '*.tsv' | while read FILE; do
 
 	# move to-do item to in-process
-	cat $FILE >> $SUBMITTTED
+	cat $FILE >> $SUBMITTTED	
 	BASENAME=$( basename $FILE .tsv )
 	mv $FILE $INPROCESS/$BASENAME.tsv
 	
