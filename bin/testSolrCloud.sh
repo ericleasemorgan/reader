@@ -8,4 +8,4 @@ while read host; do
 			echo failure
 		echo response: $result
 	fi
-done </export/coredir/solrCloudHostlist.txt
+done </export/solr/bin/solrCloudHostlist.txt

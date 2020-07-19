@@ -12,22 +12,20 @@ tar --overwrite -zxf solr*tgz
 solrDirectory=`find . -maxdepth 1 -type d -name "solr*"`
 echo solrDirectory=$solrDirectory
 cd $solrDirectory
-#sed -i.bak 's|<dataDir>${solr.data.dir:}</dataDir>|<dataDir>/data</dataDir>|' $solrDirectory/server/solr/configsets/_default/conf/solrconfig.xml
 sed -i.bak 's|#SOLR_JAVA_MEM="-Xms512m -Xmx512m"|SOLR_JAVA_MEM="-Xms8g -Xmx8g"|' bin/solr.in.sh
 
     mkdir -p /export/solr/node$hostnumber/configsets/cord/conf
     cp server/solr/configsets/_default/conf/solrconfig.xml /export/solr/node$hostnumber/configsets/cord/conf/
-	cp /export/coredir/conf/DIHconfigfile.xml /export/solr/node$hostnumber/configsets/cord/conf/
+	cp /export/solr/conf/DIHconfigfile.xml /export/solr/node$hostnumber/configsets/cord/conf/
 	sed -i.bak "s|<dataDir>/data</dataDir>|<dataDir>/export/solr/node$hostnumber/data</dataDir>|" /export/solr/node$hostnumber/configsets/cord/conf/solrconfig.xml
 	sed -i.bak "s|  <!-- SearchHandler|  <lib dir=\"\${solr.install.dir:/home/ralphlevan/solr-8.5.2}/dist/\" regex=\"solr-dataimporthandler-.*\.jar\"/>\n  <requestHandler class=\"solr.DataImportHandler\" name=\"/dataimport\">\n    <lst name=\"defaults\">\n    <str name=\"config\">DIHconfigfile.xml</str>\n  </lst>\n</requestHandler>\n  <!-- SearchHandler|" /export/solr/node$hostnumber/configsets/cord/conf/solrconfig.xml
-	cp /export/coredir/conf/cord-managed-schema /export/solr/node$hostnumber/configsets/cord/conf/managed-schema
+	cp /export/solr/conf/cord-managed-schema /export/solr/node$hostnumber/configsets/cord/conf/managed-schema
 	cp -rp server/solr/configsets/_default/conf/lang/ /export/solr/node$hostnumber/configsets/cord/conf/
 	cp  server/solr/configsets/_default/conf/*.txt /export/solr/node$hostnumber/configsets/cord/conf/
     mkdir -p /export/solr/node$hostnumber/data
 	cp server/solr/solr.xml /export/solr/node$hostnumber/data
 
 wget https://repo1.maven.org/maven2/org/xerial/sqlite-jdbc/3.30.1/sqlite-jdbc-3.30.1.jar -O server/solr-webapp/webapp/WEB-INF/lib/sqlite-jdbc-3.30.1.jar
-#mv Solr-LCCN-plugin*.jar $solrDirectory/server/solr-webapp/webapp/WEB-INF/lib
 cd ..
 
 
