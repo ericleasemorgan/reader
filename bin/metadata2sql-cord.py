@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import os
+
 # metadata2sql.py - given a few configurations, output sets of sql insert statements
 
 # Eric Lease Morgan <emorgan@nd.edu>
@@ -10,7 +10,7 @@ import os
 
 
 # configure
-METADATA = './etc/metadata.csv'
+METADATA = './cord/etc/metadata.csv'
 TEMPLATE = "INSERT INTO documents ( 'authors', 'title', 'date', 'year', 'journal', 'source', 'abstract', 'license', 'pdf_json', 'pmc_json', 'sha', 'url', 'doi', 'arxiv_id', 'cord_uid', 'mag_id', 'pmc_id', 'pubmed_id', 'who_id' ) VALUES ( '##AUTHORS##', '##TITLE##', '##DATE##', '##YEAR##', '##JOURNAL##', '##SOURCE##', '##ABSTRACT##', '##LICENSE##', '##PDFJSON##', '##PMCJSON##', '##SHA##', '##URL##', '##DOI##', '##ARXIVID##', '##CORDUID##', '##MAGID##', '##PMCID##', '##PUBMEDID##', '##WHOID##' );"
 INSERTS  = './cord/sql'
 
@@ -21,7 +21,7 @@ import sys
 import os 
 
 # sanity check
-if not os.path.exists( INSERTS ): os.makedirs( INSERTS )
+if not os.path.exists( INSERTS ) : os.makedirs( INSERTS )
 
 # process each row in the metadata file
 metadata = pd.read_csv( METADATA, low_memory=False )

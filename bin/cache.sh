@@ -20,45 +20,47 @@ CHANGELOG='https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/latest
 ZIPS='./cord/zips'
 JSON='./cord/json'
 TMP='./tmp'
-ETC='./etc'
+ETC='./cord/etc'
+SQL='./cord/sql'
 
 # initialize
 echo '===== initializing file system =====' >&2
 HOME=$( pwd )
-rm -rf $JSON
-rm -rf $TMP
-rm -rf $ZIPS
-mkdir -p $ETC
-mkdir -p $JSON
-mkdir -p $TMP
-mkdir -p $ZIPS
+rm -rf $JSON &
+rm -rf $TMP  &
+rm -rf $ZIPS &
+rm -rf $SQL  &
+mkdir -p "$ETC"
+mkdir -p "$JSON"
+mkdir -p "$TMP"
+mkdir -p "$ZIPS"
+mkdir -p "$SQL"
+wait
 
 # get the metadata file and put it into place
 echo '===== getting metadata file =====' >&2
-wget -O $ETC/metadata.csv $METADATA
+wget -O "$ETC/metadata.csv" $METADATA
 
 # the FAQ
 echo '===== getting FAQ =====' >&2
-wget -k -O $ETC/FAQ.html $FAQ
+wget -k -O "$ETC/FAQ.html" $FAQ
 
 # the change log
 echo '===== getting change log =====' >&2
-wget -O $ETC/CHANGELOG.txt $CHANGELOG
+wget -O "$ETC/CHANGELOG.txt" $CHANGELOG
 
 # get data...
 echo '===== getting documents =====' >&2
-cd $ZIPS
-wget $DOCUMENTS
+wget -O "$ZIPS/document_parses.tar.gz" $DOCUMENTS
 
 # ...copy it...
 echo '===== moving documents to tmp =====' >&2
-cd $HOME
-cp $ZIPS/*.gz $TMP
+cp "$ZIPS/document_parses.tar.gz" "$TMP/document_parses.tar.gz"
 
 # ...and uncompress them
 echo '===== uncompressing documents =====' >&2
 cd $TMP
-tar xvf *.gz
+tar xvf document_parses.tar.gz
 
 # move the resulting json files to the json directory
 echo '===== moving JSON files =====' >&2

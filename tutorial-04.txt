@@ -1,0 +1,86 @@
+
+
+Caching, enhancing, and indexing CORD: Tutorial #4
+
+This text outlines how to cache, enhance, and index the CORD data set. Everything is executed from the Reader's home directory, and as of this writing, that directory is /export/reader on the machine at 149.165.170.42.
+
+
+Step #1
+
+CORD is manifested as a number of different files (tarballs), and the URLs of these files are configured at the top of ./bin/cache.sh. At the top of ./bin/cache.sh are also configurations for where the files will be... cached. Assuming CORD has not moved, you can cache the remote data with the following command:
+
+  $ ./bin/cache.sh
+
+Ironically, the longest part of the process of the copying of the uncompressed JSON files to the JSON directory. As a file system, NFS is not speedy, and I suppose this operation can be greatly improved. The caching process takes about 10 minutes to complete. 
+
+
+Step #2
+
+The next step is to read the cached metadata file (./cord/etc/metadata.csv) and create bunches o' files in the form of SQL INSERT statements.  Like this:
+
+  $ ./bin/metadata2sql-cord.py
+
+I suppose this process could be parallel-ized, but it seems to run quickly enough. Observe the value of "index" in standard error to monitor: 1) the progress of the process, and 2) the size of the data set. As of this writing, the later is about 192,000 items!
+
+
+Step #3
+
+It is now time to initialize our CORD database, and you might want to manually rename the existing cord database (./etc/cord.db) to something like ./etc/x-cord.db, just in case something stupid happens. To see the structure of the database, take a gander at ./etc/schema-cord.sql. When ready, run this:
+
+  $ ./bin/db-initialize.sh
+
+Initialization will happen in the blink of an eye.
+
+
+Step #4
+
+We can now fill the database with the metadata extracted in Step #2:
+
+  $ ./bin/sql2db.sh
+
+This process works by initializing an SQL TRANSACTION, concatenating all of the files in ./cord/sql to the TRANSACTION, closing the TRANSACTION, and submitting the result to SQLite. If this process fails, then it is probably because of an SQL syntax error. If this doesn't fail, then we can pat ourselves on the back because programmatically creating a couple hundred thousand SQL files with zero syntax errors is pretty good.
+
+This process takes about 60 seconds, and the technique is akin to the reduce step of the map/reduce process. This technique is used throughout the Reader process and has eliminated the need for a server-based database application. SQLite works quite well.
+
+For extra credit, you can now query the database with commands such as:
+
+  * echo "SELECT COUNT( document_id ) FROM documents;" | sqlite3 ./etc/cord.db
+  * echo "SELECT year, COUNT( year ) AS c FROM documents GROUP BY year ORDER BY c DESC;" | sqlite3 ./etc/cord.db
+  * echo "SELECT COUNT( source ) AS c, source FROM documents GROUP BY source ORDER BY c DESC;" | sqlite3 ./etc/cord.db
+
+In the later case, notice how multiple values are stored in single fields; as distributed, CORD is not in a normalized form. Consequently, further processing necessary. 
+
+
+Step #5
+
+To make the cached data set more database friendly, a number of different fields need to be parsed and the results copied to other fields. This is done with a pretty advanced SQL technique. For example, see ./etc/sources2source.sql. To do the normalization, run the following four commands:
+
+  $ cat ./etc/authors2author.sql | sqlite3 ./etc/cord.db
+  $ cat ./etc/sources2source.sql | sqlite3 ./etc/cord.db
+  $ cat ./etc/urls2url.sql | sqlite3 ./etc/cord.db
+  $ cat ./etc/shas2sha.sql | sqlite3 ./etc/cord.db
+
+Splitting and then creating new data from the splits is pretty fast.
+
+Now you can run additional queries and get a better understanding of the data set:
+
+  * echo "SELECT COUNT( source ) AS c, source FROM sources GROUP BY source ORDER BY c DESC;" | sqlite3 ./etc/cord.db
+  * echo "SELECT COUNT( author ) AS c, author FROM authors GROUP BY author ORDER BY c DESC LIMIT 50;" | sqlite3 ./etc/cord.db
+
+Given the last query, ask yourself, "Did Wei Wang really author more than 250 articles on COVID-19?" Well, let's see. Try this advanced query:
+
+  * echo -e ".mode tabs\n.headers on\nSELECT a.author, d.title FROM authors AS a documents as d WHERE d.document_id = a.document_id AND a.author is 'Wang, Wei' ORDER BY d.title;" | sqlite3 ./etc/cord.db
+
+By viewing the results one can see there are duplicate records in the data set. Managing the duplicates is left up for a later exercise. 
+
+
+One script to rule them all, mostly
+
+All of the things outlined above can be done with "one script to rule them all". If you trust the process, then you can run the following, but you must be patient. If you had to download and manage 100,000 journal articles, then it would take you a long time too:
+
+  $ ./bin/build-step-01.sh
+
+
+--
+Eric Lease Morgan <emorgan@nd.edu>
+July 20, 2020

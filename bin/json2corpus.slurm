@@ -11,5 +11,5 @@
 
 #SBATCH --mail-type=ALL
 
-cd /export/cord
+cd /export/reader
 mkdir -p ./cord/txt; find cord/json -type f -not -name "P*" | sort | parallel ./bin/json2corpus.sh
