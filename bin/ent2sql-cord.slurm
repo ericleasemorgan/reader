@@ -11,5 +11,5 @@
 
 #SBATCH --mail-type=ALL
 
-cd /export/cord
+cd /export/reader
 mkdir -p ./cord/sql-ent; find ./cord/ent -name "*.ent" | parallel --will-cite ./bin/ent2sql-cord.pl
