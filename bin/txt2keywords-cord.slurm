@@ -11,5 +11,5 @@
 
 #SBATCH --mail-type=ALL
 
-cd /export/cord
+cd /export/reader
 mkdir -p ./cord/wrd; find ./cord/txt -name '*.txt' | sort | parallel ./bin/txt2keywords-cord.sh

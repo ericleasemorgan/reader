@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH -p cloud
+#SBATCH -p big-cloud
 #SBATCH -N 1
 #SBATCH -n 10
 #SBATCH --mail-user=emorgan@nd.edu
@@ -11,5 +11,5 @@
 
 #SBATCH --mail-type=ALL
 
-cd /export/cord
+cd /export/reader
 mkdir -p ./cord/ent; find ./cord/txt -name '*.txt' | parallel --will-cite ./bin/txt2ent-cord.sh
