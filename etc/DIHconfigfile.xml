@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!--+
     | Distant Reader - DIHconfigfile.xml
     |
-    | May 2020, Last revised:
+    | May 2020, Last revised: 
     +-->
 
 <!--
@@ -23,9 +23,9 @@
   <dataSource name="ddr2" type="FileDataSource" encoding="UTF-8" />
   <document>
     <!-- processor for database, note no delete spec without trigger -->
-    <entity name="edr1" dataSource="ddr1" pk="id" onError="skip" processor="SqlEntityProcessor"
-         query="SELECT document_id as id,substr('000000'||document_id, -6, 6) as cord_id,
-                       title, date, year, journal, abstract, license, pdf_json, pmc_json, sha,
+    <entity name="edr1" dataSource="ddr1" pk="id" onError="skip" processor="SqlEntityProcessor" 
+         query="SELECT document_id as id,substr('000000'||document_id, -6, 6) as cord_id, 
+                       title, date, year, journal, abstract, license, pdf_json, pmc_json, sha, 
                        doi, arxiv_id, mag_id, pmc_id, pubmed_id, who_id,
                        cord_uid, 'reader' as carrels from documents"
          deltaQuery="SELECT document_id as id from documents WHERE timeStamp > '${dataimporter.last_index_time}'"
@@ -61,7 +61,7 @@
             <field column="url" name="facet_urls" />
         </entity>
         <!-- entity -->
-        <entity name="entity"
+        <entity name="entity" 
           query="select distinct entity, document_id from ent where entity != 'nan'"
           cacheKey="document_id" cacheLookup="edr1.id" cacheImpl="SortedMapBackedCache"
         >
@@ -69,7 +69,7 @@
             <field column="entity" name="facet_entity" />
         </entity>
         <!-- type -->
-        <entity name="type"
+        <entity name="type" 
           query="select distinct type, document_id from ent where type != 'nan'"
           cacheKey="document_id" cacheLookup="edr1.id" cacheImpl="SortedMapBackedCache"
         >
@@ -96,9 +96,13 @@
         <field column="pubmed_id"/>
         <field column="who_id"/>
         <!-- processor for text files (which contain article text) -->
-        <entity name="edr2" dataSource="ddr2" onError="skip" processor="DrPlainTextEntityProcessor"
+        <!-- per Art, changed DrPlainText... to PlainText...
+             entity name="edr2" dataSource="ddr2" onError="skip" processor="DrPlainTextEntityProcessor"
             url="&FILELOC;-${edr1.cord_id}-${edr1.cord_uid}.txt"
-        >
+        -->
+        <entity name="edr2" dataSource="ddr2" onError="skip" processor="PlainTextEntityProcessor" 
+            url="&FILELOC;-${edr1.cord_id}-${edr1.cord_uid}.txt"
+        > 
             <field column="plainText" name="fulltext"/>
         </entity>
     </entity>
