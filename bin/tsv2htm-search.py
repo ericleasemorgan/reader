@@ -25,8 +25,7 @@ tsv = sys.argv[ 1 ]
 df = pd.read_csv( tsv, sep='\t', error_bad_lines=False )
 
 rows = ''
-for index, row in df.iterrows() :
-
+for index, row in df.iterrows() :	
 	# parse
 	id        = str( row[ 'id' ] )
 	author    = str( row[ 'author' ] )
@@ -39,14 +38,13 @@ for index, row in df.iterrows() :
 	text      = str( row[ 'txt' ] )
 	summary   = str(row[ 'summary' ])
 	flesch    = str(row[ 'flesch' ])
-
+	path      = '../txt/' + id + '.txt'
+	linkedtitle = "<a href=" + path + ">" + title + "</a>"
 	# build
-	rows = rows + "<tr><td>" + summary + "</td><td>" + author + "</td><td>" + id + "</td><td>" + date + "</td><td>" + words + "</td><td>" + flesch + "</td></tr>\n"
-
+	rows = rows + "<tr><td>" + linkedtitle + "<table class='display'><tr><td>" +  summary + "</td></tr></table></td>" + "<td>" +  author + "</td><td>" + id + "</td><td>" + date + "</td><td>" + words + "</td><td>" + flesch + "</td><td>" + "<button type = 'button' onclick='Expand()' class='btn-primary'>" + "+" + "</button>" + "<button type = 'button' onclick='Collapse()' class='btn-primary'>" + "-" + "</button>" + "</td></tr>\n"
 # slurp up the template and do the substitution
 with open( TEMPLATE, 'r' ) as handle : htm = handle.read()
 htm = htm.replace( '##ROWS##', rows )
-
 # output and done
 print( htm )
 exit()

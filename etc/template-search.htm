@@ -30,50 +30,90 @@
 
         <!-- data tables -->
         <link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.min.css">
-        <script type="text/javascript" language="javascript" src="../js/jquery.dataTables.min.js"></script> 
-	 <script type="text/javascript" class="init">
-               $(document).ready(function(){
-                    $('div.tableclass').hide();
-                    $('select.tabledrop').change(function(){
-                        var selectedOption = $(this).children("option:selected").val();
-                        if(selectedOption =='tableopt'){
-                                $(document).ready(function(){
-                                if($('#query').val()){
- 					$('#tsv').DataTable().columns(0).search($('#query').val(), true, false).draw();
-                                         $('div.tableclass').show();
-                                }else{  
-                                        $(document).ready(function(){
-                                                document.getElementById('searchBTN').addEventListener('click', function(){
-                                                         if($('select.tabledrop').children("option:selected").val() == 'tableopt'){
-                                                                $('div.tableclass').show();
-                                                        }
-                                                });
-                                        });
-                                }
-				$('#tsv').dataTable().fnDraw();       
-                                $('#searchBTN').click(function(){
-                                	var table = $('#tsv').DataTable();
-                                        var val = $.fn.dataTable.util.escapeRegex($('#query').val());
-                                        var myregex = ("\\b" + val + "\\b");
-                                        table.columns(0).search(myregex, true, false).draw();
-                                 });          
-                                    $('div.item').hide();
-                        	});
-                        }else{
-                                $(document).ready(function(){
-                                        $('div.tableclass').hide();
-                                        var newtable = $('#tsv').DataTable();
-                                        newtable.destroy();
-                                        $('div.item').show();
-                                        $('div.searchbarclass').show();
-                                });
-                        };
-                    });
-                });
+	<script type="text/javascript" language="javascript" src="../js/jquery.dataTables.min.js"></script>      
 
+	<script type="text/javascript" class="init">    
+		var tableselected = 0;
+               $(document).ready(function(){	
+			$('div.tableclass').hide();
+                	$('select.tabledrop').change(function(){
+                 		var selectedOption = $(this).children("option:selected").val();
+				if(selectedOption =='tableopt'){			
+				tableselected = 1;
+			   	$(document).ready(function(){ 			
+					$("#tsv > tbody > tr").each(function(i){
+                                                        var sum = $(this).children('td').eq(0).children('table');
+                                                        sum.hide();
+                                               });
+					$('#tsv').dataTable({sDom: 'Blrtip'},{sScrollX: "100%"}, {  bAutoWidth: 'false'},{"aoColumnDefs" : [
+    { sWidth: '17%', "aTargets": [ 0 ] },
+    { sWidth: '17%', "aTargets": [ 1 ] },
+    { sWidth: '17%', "aTargets": [ 2 ] },
+    { sWidth: '17%', "aTargets": [ 3 ] },
+    { sWidth: '17%', "aTargets": [ 4 ] },
+    { sWidth: '15%', "aTargets": [ 5 ] }
+	]}, {aoColumns : [
+	{ sWidth: '17%'},
+	{sWidth: '17%'},
+	{sWidth: '17%'},
+	{sWidth: '17%'},
+	{sWidth: '17%'},
+	{sWidth: '15%' }
+	]}, {buttons : ['expand']}).fnDraw(); 
+					$("#tsv > tbody > tr").each(function(i){
+                                                        var sum = $(this).children('td').eq(0).children('table');
+                                                        sum.hide();
+                                               });
+					if($('#query').val()){ 	
+						$('#tsv').DataTable().search($('#query').val(), true, false).draw(); 
+                        			$('div.tableclass').show();
+						$('#tsv').dataTable().fnDraw();     
+						$("#tsv > tbody > tr").each(function(i){
+                                                        var sum = $(this).children('td').eq(0).children('table');
+                                                        sum.hide();
+                                               });   
+					}else{ 	
+						$(document).ready(function(){
+							document.getElementById('searchBTN').addEventListener('click', function(){
+								 if($('select.tabledrop').children("option:selected").val() == 'tableopt'){
+									$('div.tableclass').show();
+								}
+							});
+						});
+		                               $('#tsv').dataTable().fnDraw();     
+					}
+					       $("#tsv > tbody > tr").each(function(i){
+							var sum = $(this).children('td').eq(0).children('table');
+                               				sum.hide();
+					       });
+						
+				$('#searchBTN').click(function(){	
+                                           	var val = $.fn.dataTable.util.escapeRegex($('#query').val());
+						var myregex = ("\\b" + val + "\\b");
+                                	       	$('#tsv').DataTable().columns(0).search(myregex, true, false).draw();            
+						$("#tsv > tbody > tr").each(function(i){
+                                                        var sum = $(this).children('td').eq(0).children('table');
+                                                        sum.hide();
+                                               });
+				}); 
+ 				    $('div.item').hide();
+	  		  });			
+			}else{
+				tableselected = 0;
+				$(document).ready(function(){
+					$('div.tableclass').hide();
+					$('#tsv').DataTable().destroy();
+					$('div.item').show();
+					$('div.searchbarclass').show();		
+				});
+			};
+			 $('#tsv').DataTable().destroy();
+			});
+		});
+	
         </script>
-
 	<script type="text/javascript" src="../js/elasticlunr.js"></script>
+
 </head>
 <body>
 
@@ -128,7 +168,6 @@
         </nav>
 
         <div class="container subpage">
-
                 <nav aria-label="breadcrumb">
                 <ol class="breadcrumb ">
                         <li class="breadcrumb-item">
@@ -136,95 +175,114 @@
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">search</li>
                 </ol>
-        </nav>
+        	</nav>
 
-<h1>Search Interface</h1>
-<p>This displays appearances of words in the text. Use it to search &amp; browse the list to learn more about your study carrel.</p>
-<div id="searchbardiv" class="searchbarclass">
-<input id='query' type='text' onkeydown='keyfunc(event)' >
-<input id="search()" type='button' value='search' class='btn-primary' onClick='search()' >
-</div>
-<br>
-<label>
-        Display results as:
-        <select id='tabledrop' name='tableoption' class='tabledrop'>
-                <option value="listopt">List</option>
-                <option value="tableopt">Table</option>
-        </select>
-</label> <br>
+		<h1>Search Interface</h1>
+		<p> This displays appearances of words in the text. Use it to search &amp; browse the list to learn more about your study carrel.</p> </li>
+		<div id="searchbardiv" class="searchbarclass">
+			<input id='query' type='text' onkeydown='keyfunc(event)' >
+			<input id="searchBTN" type='button' value='search' class='btn-primary' onClick='search()' > 
+		
+		<label style='margin: 50px'>
+			 Display results as:
+			<select id='tabledrop' name='tableoption' class='tabledrop'> 
+			<option value="listopt">List</option> 
+			<option value="tableopt">Table</option> 
+		</select>
+		</label> 
+		</div>
 <div id="tableDiv" class="tableclass">
-   <table id="tsv" class="display">
+   <table id="tsv">
         <thead>
             <tr>
-                <th>Summary</th>
+                <th>Text</th>		
                 <th>Author</th>
                 <th>ID</th>
                 <th>Date</th>
                 <th>Words</th>
                 <th>Readability</th>
+		<th>View</th>
             </tr>
         </thead>
 	<tbody>
 	##ROWS##
 	</tbody>
-</table>
+	</table>
 </div>
-<div id="newDiv">
-<ol id= "mylist"></ol>
+<div id="newDiv" class="item">
+<ol id= "mylist" class="item"></ol>
 </div>
 
 <script>
-		function keyfunc(e){
-			if(e){
-			
-				if(e.keyCode == 13){
-					console.log('key 13');
-					search();
-				}
-			}
-		}
-        
-		function search() {
-		document.getElementById("mylist").innerHTML = "";
-		var query = document.getElementById("query").value;
-		var data  = ##JSON##;
+		function Expand(){
+			var table = $('#tsv').DataTable();
+			$('#tsv tbody').on('click', 'tr', function(){
+				var sum = $(this).children('td').eq(0).children('table');
+				sum.show();
+			});
+                }
+               	function Collapse(){
+			 var table = $('#tsv').DataTable();
+			 $('#tsv tbody').on('click', 'tr', function(){
+				var sum = $(this).children('td').eq(0).children('table');
+                                sum.hide();
+			});
+                }
 		
-		// initialize the index
-		var index = elasticlunr(function () {
-			this.setRef('id');
-			this.addField('title');
-			this.addField('summary');
-			this.addField('flesch');
-			this.addField('date');
-			this.addField('words');
-			this.addField('author');
+		function keyfunc(e){
+			if(e){	
+				if(e.keyCode == 13){          
+					if(tableselected == 1){
+						$('div.tableclass').show();
+						var val = $.fn.dataTable.util.escapeRegex($('#query').val());
+                                        	var myregex = ("\\b" + val + "\\b");
+                                        	$('#tsv').DataTable().columns(0).search(myregex, true, false).draw();
+					}
+					search();	 
+				}	
+			}
 			
-		});
+        }
+		function search() {
+			document.getElementById("mylist").innerHTML = "";
+			var query = document.getElementById("query").value;
+			var data = ##JSON##;
+	
+			// initialize the index
+			var index = elasticlunr(function () {
+				this.setRef('id');
+				this.addField('title');
+				this.addField('summary');	
+ 				this.addField('flesch');
+	                        this.addField('date');
+        	                this.addField('words');
+                	        this.addField('author');
+			});	
+	
 
 		// loop through each item in the data
 		for ( var item in data ) {
-	
 			// parse
 			var record = {
 				'id'      : data[item].id,
 				'title'   : data[item].title,
 				'summary' : data[item].summary,
 				'flesch' : data[item].flesch,
-				'date' : data[item].date,
-				'words' : data[item].words,
-				'author' : data[item].author
+                                'date' : data[item].date,
+                                'words' : data[item].words,
+                                'author' : data[item].author
 			}
 		
 			// update the index
 			index.updateDoc( record );
-		}
+		}		
 		// configure searching
 		var configuration = { bool: "and" };
 		// search
 		var results = index.search( query, configuration );
 		var list = '<ol>'
-		for ( var item in results ) {
-			myli = document.createElement("myli");
+		for ( var item in results ) {	
+  			myli = document.createElement("myli");
                         var linktxt = document.createTextNode(results[item].doc.title);
                         var ititle = results[item].doc.id + '.txt';
                         myli.innerHTML = "<a href= ../txt/" + ititle +" >" + results[item].doc.title + "<\a>";
@@ -233,24 +291,24 @@
                         var summarytext = document.createTextNode(results[item].doc.summary);
                         var scoretext = document.createTextNode(results[item].doc.score);
                         myli.innerHTML = myli.innerHTML + "<li>" + "<b>" + "Score: " +"</b>" + results[item].score +" <br>" + "</li>";
-			myli.innerHTML = myli.innerHTML + "<li>" + "<b>" + "Readability: " +"</b>" + results[item].doc.flesch +" <br>" + "</li>";
-			myli.innerHTML = myli.innerHTML + "<li>" + "<b>" + "Length(words): " +"</b>" + results[item].doc.words +" <br>" + "</li>";
-			myli.innerHTML = myli.innerHTML + "<li>" + "<b>" + "Author: " +"</b>" + results[item].doc.author +" <br>" + "</li>";
+                        myli.innerHTML = myli.innerHTML + "<li>" + "<b>" + "Readability: " +"</b>" + results[item].doc.flesch +" <br>" + "</li>";
+                        myli.innerHTML = myli.innerHTML + "<li>" + "<b>" + "Length(words): " +"</b>" + results[item].doc.words +" <br>" + "</li>";
+                        myli.innerHTML = myli.innerHTML + "<li>" + "<b>" + "Author: " +"</b>" + results[item].doc.author +" <br>" + "</li>";
                         myli.innerHTML = "<br>"+ "<li>"+ "<ul>" + myli.innerHTML + "</ul>" + "</li>" + "<br>";
                         document.getElementById("mylist").appendChild(myli);
-			
 		}
-		if(results == 0){
+		list += '</ol>'
+		 if(results == 0){
                         myli = document.createElement("myli");
                         myli.innerHTML = "<br>"+"No Results Found for Entered Text.";
                         document.getElementById("mylist").appendChild(myli);
-                }
-
-		
+                }	
 	}
+	
+	
 </script>
         <footer class="footer">
-                <div class="container">
+                
                          <hr>
                          <div class="row">
 
@@ -269,10 +327,11 @@
                          </div>
 
 
-                </div>
+                
   </footer>
 
 
 </body>
 
 </html>
+
