@@ -32,6 +32,8 @@ CREATE TABLE documents (
     
 );
 
+CREATE INDEX documents_sha_i ON documents (sha);
+CREATE INDEX documents_pmc_id_i ON documents (pmc_id);
 
 -- name entitites
 CREATE TABLE ent (
