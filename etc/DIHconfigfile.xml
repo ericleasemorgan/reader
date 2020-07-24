@@ -3,6 +3,7 @@
     | Distant Reader - DIHconfigfile.xml
     |
     | May 2020, Last revised: 
+    | July 22, 2020 - re-defined entities by ELM
     +-->
 
 <!--
@@ -13,8 +14,8 @@
 -->
 <!-- ============ Edit the section below to match your solr server environment ============ -->
 <!DOCTYPE document [
-    <!ENTITY DB "/export/cord/etc/cord.db">
-    <!ENTITY FILELOC "/export/cord/txt/cord">
+    <!ENTITY DB "/export/reader/etc/cord.db">
+    <!ENTITY FILELOC "/export/reader/cord/txt/cord">
 ]>
 
 <!-- ============ Don't edit below unless you need to change the database mapping ============ -->
