@@ -33,11 +33,9 @@ if [[ "$SHA" == $PMC_FILE_ID ]]; then
 	ID_COLUMN="pmc_id"
 fi
 
-TEMPLATE=".mode tabs\nSELECT authors, title, date, journal, doi, abstract, \
-document_id, cord_uid FROM documents WHERE ${ID_COLUMN} is '##SHA##';"
-
 # get more metadata
-QUERY=$( echo $TEMPLATE | sed "s/##SHA##/$SHA/" )
+QUERY=".mode tabs\nSELECT authors, title, date, journal, doi, abstract, \
+document_id, cord_uid FROM documents WHERE ${ID_COLUMN} is '$SHA';"
 IFS=$'\t'
 printf $QUERY | sqlite3 $DB | while read -a RESULTS; do
 

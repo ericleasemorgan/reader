@@ -12,7 +12,6 @@
 # configure
 TXT='./cord/txt'
 DB='./etc/cord.db'
-TEMPLATE=".mode tabs\nSELECT document_id, cord_uid FROM documents WHERE sha='##SHA##'";
 JSON2TXT='./bin/json2txt.sh'
 
 if [[ -z $1 ]]; then
@@ -27,7 +26,7 @@ JSON=$1
 SHA=$( basename $JSON .json )
 
 # build an SQL query, and find some other (pseudo) keys
-QUERY=$( echo $TEMPLATE | sed "s/##SHA##/$SHA/" )
+QUERY=".mode tabs\nSELECT document_id, cord_uid FROM documents WHERE sha='$SHA'";
 IFS=$'\t'
 printf $QUERY | sqlite3 $DB | while read DOCID CORDID; do
 
