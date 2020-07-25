@@ -5,15 +5,16 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame; distributed under a GNU Public License
 
-# May 24, 2020 - migrating for Project CORD
-# May 26, 2020 - added additional facets
-# June 1, 2020 - added additional facets
-# June 2, 2020 - added queueing of a carrel
+# May  24, 2020 - migrating for Project CORD
+# May  26, 2020 - added additional facets
+# June  1, 2020 - added additional facets
+# June  2, 2020 - added queueing of a carrel
+# July 25, 2020 - added sources
 
 
 # configure
-use constant FACETFIELD   => ( 'facet_journal', 'year', 'facet_authors', 'facet_keywords', 'facet_entity', 'facet_type' );
-use constant FIELDS       => 'id,title,doi,url,date,journal,abstract';
+use constant FACETFIELD   => ( 'facet_journal', 'year', 'facet_authors', 'facet_keywords', 'facet_entity', 'facet_type', 'facet_sources' );
+use constant FIELDS       => 'id,title,doi,url,date,journal,abstract,sources';
 use constant SOLR         => 'http://solr-01:8983/solr/cord';
 use constant ROWS         => 49;
 use constant SEARCH2QUEUE => './search2queue.cgi?query=';
@@ -60,6 +61,17 @@ else {
 
 	# search
 	my $response = $solr->search( $query, \%search_options );
+
+	# build a list of source facets
+	my @facet_source = ();
+	my $source_facets = &get_facets( $response->facet_counts->{ facet_fields }->{ facet_sources } );
+	foreach my $facet ( sort { $$source_facets{ $b } <=> $$source_facets{ $a } } keys %$source_facets ) {
+	
+		my $encoded = uri_encode( $facet );
+		my $link = qq(<a href='./?query=$sanitized AND facet_sources:"$encoded"'>$facet</a>);
+		push @facet_source, $link . ' (' . $$source_facets{ $facet } . ')';
+		
+	}
 
 	# build a list of journal facets
 	my @facet_journal = ();
@@ -144,6 +156,7 @@ else {
 		my $date        = $doc->value_for( 'date' );
 		my $journal     = $doc->value_for( 'journal' );
 		my $abstract    = $doc->value_for( 'abstract' );
+		my $sources      = $doc->value_for( 'sources' );
 						
 		# create a item
 		my $item =  &item;
@@ -154,6 +167,7 @@ else {
 		$item    =~ s/##DATE##/$date/ge;
 		$item    =~ s/##JOURNAL##/$journal/ge;
 		$item    =~ s/##ABSTRACT##/$abstract/ge;
+		$item    =~ s/##SOURCE##/$sources/ge;
 
 		# update the list of items
 		$items .= $item;
@@ -168,6 +182,7 @@ else {
 	$html =~ s/##HITS##/scalar( @hits )/e;
 	$html =~ s/##SEARCH2QUEUE##/$search2queue/e;
 	$html =~ s/##ITEMS##/$items/e;
+	$html =~ s/##FACETSSOURCE##/join( '; ', @facet_source )/e;
 	$html =~ s/##FACETSAUTHOR##/join( '; ', @facet_author )/e;
 	$html =~ s/##FACETSJOURNAL##/join( '; ', @facet_journal )/e;
 	$html =~ s/##FACETSYEAR##/join( '; ', @facet_year )/e;
@@ -225,12 +240,13 @@ sub item {
 	#my $url         = shift;
 	
 	my $item  = "<li class='item'><strong>##TITLE##</strong><ul>";
-	$item    .= "<li style='list-style-type:circle'>##ABSTRACT##</li>";
-	$item    .= "<li style='list-style-type:circle'>##DATE##</li>";
-	$item    .= "<li style='list-style-type:circle'>##JOURNAL##</li>";
-	$item    .= "<li style='list-style-type:circle'>##URL##</li>";
-	$item    .= "<li style='list-style-type:circle'>##DOI##</li>";
-	$item    .= "<li style='list-style-type:circle'>##DOCUMENTID##</li>";
+	$item    .= "<li style='list-style-type:circle'>abstract: ##ABSTRACT##</li>";
+	$item    .= "<li style='list-style-type:circle'>date: ##DATE##</li>";
+	$item    .= "<li style='list-style-type:circle'>journal: ##JOURNAL##</li>";
+	$item    .= "<li style='list-style-type:circle'>URL: ##URL##</li>";
+	$item    .= "<li style='list-style-type:circle'>DOI: ##DOI##</li>";
+	$item    .= "<li style='list-style-type:circle'>local id:##DOCUMENTID##</li>";
+	$item    .= "<li style='list-style-type:circle'>source: ##SOURCE##</li>";
 	$item    .= "</ul></li>";
 	
 	return $item;
@@ -328,6 +344,7 @@ sub results_template {
 	</div>
 	
 	<div class="col-3 col-m-3">
+	<h3>Source facets</h3><p>##FACETSSOURCE##</p>
 	<h3>Year facets</h3><p>##FACETSYEAR##</p>
 	<h3>Entity facets</h3><p>##FACETSENTITY##</p>
 	<h3>Entity type facets</h3><p>##FACETSTYPE##</p>
