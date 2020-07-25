@@ -65,6 +65,7 @@ def id2bibliographics( id, engine ) :
 	bibliographics.update( { "title"     : result.at[ 0, 'title' ] } )
 	bibliographics.update( { "txt"       : result.at[ 0, 'txt' ] } )
 	bibliographics.update( { "words"     : result.at[ 0, 'words' ] } )
+	bibliographics.update( { "url"       : result.at[ 0, 'url' ] } )
 
 	# done
 	return bibliographics
@@ -100,6 +101,7 @@ def addBibliographics( df, engine ) :
 	titles  = []
 	dates   = []
 	caches  = []
+	urls    = []
 
 	# process each row in the given dataframe
 	for index, row in df.iterrows() :
@@ -109,6 +111,7 @@ def addBibliographics( df, engine ) :
 		title  = []
 		date   = []
 		cache  = []
+		url    = []
 		
 		# process each file
 		for id in row[ 'files'].split( ';' ) :
@@ -119,7 +122,7 @@ def addBibliographics( df, engine ) :
 			
 			id.replace( "'", "''" )
 
-			query = 'SELECT author, title, date, txt FROM bib where id is "{}"'.format( id )
+			query = 'SELECT author, title, date, txt, url FROM bib where id is "{}"'.format( id )
 
 			# search, and conditionally update
 			result = pd.read_sql_query( query, engine )
@@ -131,6 +134,7 @@ def addBibliographics( df, engine ) :
 				title.append( '' )
 				date.append( '' )
 				cache.append( '' )
+				url.append( '' )
 				
 			# update with found values
 			else :
@@ -146,18 +150,23 @@ def addBibliographics( df, engine ) :
 											
 				if ( result.iloc[ 0, 3 ] ) : cache.append( result.iloc[ 0, 3 ] )
 				else : cache.append( '' )
+				
+				if ( result.iloc[ 0, 4 ] ) : url.append( result.iloc[ 0, 4 ] )
+				else : url.append( '' )
 											
 		# update
 		authors.append( '|'.join( author ) )
 		titles.append( '|'.join( title ) )
 		dates.append( '|'.join( date ) )
 		caches.append( '|'.join( cache ) )
+		urls.append( '|'.join( url ) )
 
 	# add bibliographic columns to the dataframe and done
 	df['authors'] = authors 
 	df['titles']  = titles 
 	df['dates']   = dates 
-	df['caches']   = caches 
+	df['caches']  = caches 
+	df['urls']    = urls 
 	return( df )
 
 
@@ -172,6 +181,7 @@ def readModel( directory, engine, t, d, f ) :
 	words  = []
 	files  = []
 	titles = []
+	urls   = []
 	
 	# process each topic in the DataFrame
 	for index, row in df.iterrows() :
@@ -182,12 +192,16 @@ def readModel( directory, engine, t, d, f ) :
 		items = items.split( '|' )
 		files.append( items[ 0:f ] )
 		
+		items = row[ 'urls' ]
+		items = items.split( '|' )
+		urls.append( items[ 0:f ] )
+		
 		items = row[ 'titles' ]
 		items = items.split( '|' )
 		titles.append( items[ 0:f ] )
 
 	# done
-	return words, files, titles
+	return words, urls, titles, files
 	
 	
 # initialize
@@ -344,9 +358,9 @@ unigramlinks = [ 'None', 'None', 'None' ]
 for item, file in enumerate( unigramfiles.rstrip().split( '\n' ) ) :
 	id = os.path.splitext( os.path.basename( file ) )[ 0 ]
 	bibliographics = id2bibliographics( id, engine )
-	cache = bibliographics.get('cache')
+	url = bibliographics.get('url')
 	title = bibliographics.get('title')
-	link = "<a href='{}'>{}</a>".format( cache, title )
+	link = "<a href='{}'>{}</a>".format( url, title )
 	unigramlinks[ item ] = link
 
 # bigrams; just as ugly
@@ -374,9 +388,9 @@ bigramlinks = [ 'None', 'None', 'None']
 for item, file in enumerate( bigramfiles.rstrip().split( '\n' ) ) :
 	id = os.path.splitext( os.path.basename( file ) )[ 0 ]
 	bibliographics = id2bibliographics( id, engine )
-	cache = bibliographics.get('cache')
+	url = bibliographics.get('url')
 	title = bibliographics.get('title')
-	link = "<a href='{}'>{}</a>".format( cache, title )
+	link = "<a href='{}'>{}</a>".format( url, title )
 	bigramlinks[ item ]= link 
 
 # trigrams
@@ -394,9 +408,9 @@ if ( not os.path.exists( './tsv/quadgrams.tsv' ) ) :
 	handle.close() 
 
 # topic model
-topicSingleWords, topicSingleFiles, topicSingleTitles          = readModel( DIRECTORY, engine, 1, 1, 1 )
-topicTripleWords, topicTripleFiles, topicTripleTitles          = readModel( DIRECTORY, engine, 3, 1, 1 )
-topicQuintupleWords, topicQuintupleFiles, topicQuintupleTitles = readModel( DIRECTORY, engine, 5, 3, 1 )
+topicSingleWords, topicSingleUrls, topicSingleTitles, topicSingleFiles             = readModel( DIRECTORY, engine, 1, 1, 1 )
+topicTripleWords, topicTripleUrls, topicTripleTitles, topicTripleFiles             = readModel( DIRECTORY, engine, 3, 1, 1 )
+topicQuintupleWords, topicQuintupleUrls, topicQuintupleTitles, topicQuintupleFiles = readModel( DIRECTORY, engine, 5, 3, 1 )
 subprocess.check_output( TOPICMODEL + ' ./txt 5 3 ./figures/topics.png', shell=True )
 
 # debug
@@ -414,15 +428,15 @@ sys.stderr.write( '                   proper nouns: ' + '; '.join( properNouns )
 sys.stderr.write( '                       keywords: ' + '; '.join( keywords )    + '\n' )
 sys.stderr.write( '\n' )
 sys.stderr.write( '       one topic; one dimension: ' + '; '.join( topicSingleWords )                                         + '\n' )
-sys.stderr.write( '                        file(s): ' + ', '.join( [ '; '.join( files ) for files in topicSingleFiles ] )     + '\n' )
+sys.stderr.write( '                        file(s): ' + ', '.join( [ '; '.join( files ) for files in topicSingleUrls ] )     + '\n' )
 sys.stderr.write( '                      titles(s): ' + ' | '.join( [ '; '.join( titles ) for titles in topicSingleTitles ] ) + '\n' )
 sys.stderr.write( '\n' )
 sys.stderr.write( '    three topics; one dimension: ' + '; '.join( topicTripleWords )                                         + '\n' )
-sys.stderr.write( '                        file(s): ' + ', '.join( [ '; '.join( files ) for files in topicTripleFiles ] )     + '\n' )
+sys.stderr.write( '                        file(s): ' + ', '.join( [ '; '.join( files ) for files in topicTripleUrls ] )     + '\n' )
 sys.stderr.write( '                      titles(s): ' + ' | '.join( [ '; '.join( titles ) for titles in topicTripleTitles ] ) + '\n' )
 sys.stderr.write( '\n' )
 sys.stderr.write( '  five topics; three dimensions: ' + '; '.join( topicQuintupleWords )                                         + '\n' )
-sys.stderr.write( '                        file(s): ' + ', '.join( [ '; '.join( files ) for files in topicQuintupleFiles ] )     + '\n' )
+sys.stderr.write( '                        file(s): ' + ', '.join( [ '; '.join( files ) for files in topicQuintupleUrls ] )     + '\n' )
 sys.stderr.write( '                      titles(s): ' + ' | '.join( [ '; '.join( titles ) for titles in topicQuintupleTitles ] ) + '\n' )
 sys.stderr.write( '\n' )
 
@@ -447,14 +461,14 @@ html = html.replace( '##PRONOUNS##',               ', '.join( pronouns ) )
 html = html.replace( '##ADJECTIVES##',             ', '.join( adjectives ) )
 html = html.replace( '##ADVERBS##',                ', '.join( adverbs ) )
 html = html.replace( '##TOPICSSINGLEWORD##',       topicSingleWords[ 0 ] )
-html = html.replace( '##TOPICSSINGLEFILE##',       topicSingleFiles[ 0 ][ 0 ] )
+html = html.replace( '##TOPICSSINGLEFILE##',       topicSingleUrls[ 0 ][ 0 ] )
 html = html.replace( '##TOPICSSINGLETITLE##',      topicSingleTitles[ 0 ][ 0 ] )
 html = html.replace( '##TOPICSTRIPLEWORD01##',     topicTripleWords[ 0 ] )
 html = html.replace( '##TOPICSTRIPLEWORD02##',     topicTripleWords[ 1 ] )
 html = html.replace( '##TOPICSTRIPLEWORD03##',     topicTripleWords[ 2 ] )
-html = html.replace( '##TOPICSTRIPLEFILE01##',     topicTripleFiles[ 0 ][ 0 ] )
-html = html.replace( '##TOPICSTRIPLEFILE02##',     topicTripleFiles[ 1 ][ 0 ] )
-html = html.replace( '##TOPICSTRIPLEFILE03##',     topicTripleFiles[ 2 ][ 0 ] )
+html = html.replace( '##TOPICSTRIPLEFILE01##',     topicTripleUrls[ 0 ][ 0 ] )
+html = html.replace( '##TOPICSTRIPLEFILE02##',     topicTripleUrls[ 1 ][ 0 ] )
+html = html.replace( '##TOPICSTRIPLEFILE03##',     topicTripleUrls[ 2 ][ 0 ] )
 html = html.replace( '##TOPICSTRIPLETITLE01##',    topicTripleTitles[ 0 ][ 0 ] )
 html = html.replace( '##TOPICSTRIPLETITLE02##',    topicTripleTitles[ 1 ][ 0 ] )
 html = html.replace( '##TOPICSTRIPLETITLE03##',    topicTripleTitles[ 2 ][ 0 ] )
@@ -463,11 +477,11 @@ html = html.replace( '##TOPICSQUINWORDS02##',      ', '.join( topicQuintupleWord
 html = html.replace( '##TOPICSQUINWORDS03##',      ', '.join( topicQuintupleWords[ 2 ].split( ' ' ) ) )
 html = html.replace( '##TOPICSQUINWORDS04##',      ', '.join( topicQuintupleWords[ 3 ].split( ' ' ) ) )
 html = html.replace( '##TOPICSQUINWORDS05##',      ', '.join( topicQuintupleWords[ 4 ].split( ' ' ) ) )
-html = html.replace( '##TOPICSQUINFILE01##',       topicQuintupleFiles[ 0 ][ 0 ] )
-html = html.replace( '##TOPICSQUINFILE02##',       topicQuintupleFiles[ 1 ][ 0 ] )
-html = html.replace( '##TOPICSQUINFILE03##',       topicQuintupleFiles[ 2 ][ 0 ] )
-html = html.replace( '##TOPICSQUINFILE04##',       topicQuintupleFiles[ 3 ][ 0 ] )
-html = html.replace( '##TOPICSQUINFILE05##',       topicQuintupleFiles[ 4 ][ 0 ] )
+html = html.replace( '##TOPICSQUINFILE01##',       topicQuintupleUrls[ 0 ][ 0 ] )
+html = html.replace( '##TOPICSQUINFILE02##',       topicQuintupleUrls[ 1 ][ 0 ] )
+html = html.replace( '##TOPICSQUINFILE03##',       topicQuintupleUrls[ 2 ][ 0 ] )
+html = html.replace( '##TOPICSQUINFILE04##',       topicQuintupleUrls[ 3 ][ 0 ] )
+html = html.replace( '##TOPICSQUINFILE05##',       topicQuintupleUrls[ 4 ][ 0 ] )
 html = html.replace( '##TOPICSQUINTITLE01##',      topicQuintupleTitles[ 0 ][ 0 ] )
 html = html.replace( '##TOPICSQUINTITLE02##',      topicQuintupleTitles[ 1 ][ 0 ] )
 html = html.replace( '##TOPICSQUINTITLE03##',      topicQuintupleTitles[ 2 ][ 0 ] )

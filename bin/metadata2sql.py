@@ -69,6 +69,24 @@ for file, row in metadata.iterrows() :
 		date = date.replace( "'", "''" )
 		print( "UPDATE bib SET date = '%s' WHERE id is '%s';" % ( date, id ) )
 	
+	# abstract
+	if 'abstract' in metadata :
+		abstract = str( row[ 'abstract' ] )
+		abstract = abstract.replace( "'", "''" )
+		print( "UPDATE bib SET abstract = '%s' WHERE id is '%s';" % ( abstract, id ) )
+	
+	# url
+	if 'url' in metadata :
+		url = str( row[ 'url' ] )
+		url = url.replace( "'", "''" )
+		print( "UPDATE bib SET url = '%s' WHERE id is '%s';" % ( url, id ) )
+	
+	# doi
+	if 'doi' in metadata :
+		doi = str( row[ 'doi' ] )
+		doi = doi.replace( "'", "''" )
+		print( "UPDATE bib SET doi = '%s' WHERE id is '%s';" % ( doi, id ) )
+	
 	# delimit
 	print()
 	

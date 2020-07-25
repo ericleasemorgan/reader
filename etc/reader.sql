@@ -57,6 +57,9 @@ create table bib (
     pages     INT,
     extension TEXT,
     mime      TEXT,
+    url       TEXT,
+    doi       TEXT,
+    abstract  TEXT,
     genre     TEXT
 );
 

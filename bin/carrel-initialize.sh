@@ -11,14 +11,14 @@
 
 
 # pre-configure
-TEMPLATE='.mode tabs\nSELECT document_id, cord_uid, authors, title, date FROM documents WHERE ##WHERE##;'
+TEMPLATE='.mode tabs\nSELECT document_id, cord_uid, authors, title, date, abstract, doi, url FROM documents WHERE ##WHERE##;'
 
 # configure
 CACHE='cache'
 CARRELS='/export/reader/carrels'
 CSV='metadata.csv'
 DB='./etc/cord.db'
-HEADER='author\ttitle\tdate\tfile'
+HEADER='author\ttitle\tdate\tfile\tabstract\tdoi\turl'
 JSON='./cord/json'
 SUBSELECT="SELECT pdf_json FROM documents WHERE document_id = '##DOCID##';"
 TSV='metadata.tsv'
@@ -68,7 +68,7 @@ while [ 1 ]; do
 	
 	# submit SELECT and process each result
 	IFS=$'\t'
-	printf "$SELECT" | sqlite3 $DB | while read DOCID CORDID AUTHORS TITLE DATE; do
+	printf "$SELECT" | sqlite3 $DB | while read DOCID CORDID AUTHORS TITLE DATE ABSTRACT DOI URLS; do
 
 		# get the pdf_json file name
 		SQL=$( echo $SUBSELECT | sed "s/##DOCID##/$DOCID/" )
@@ -79,6 +79,9 @@ while [ 1 ]; do
 	
 		# for right now, we only want a single author
 		AUTHOR=$( echo $AUTHORS | cut -d';' -f1 )
+	
+		# for right now, we only want a single url
+		URL=$( echo $URLS | cut -d';' -f1 )
 	
 		# build a file name; a bit obtuse
 		ITEM=$(printf "%05d" $DOCID)
@@ -96,7 +99,7 @@ while [ 1 ]; do
 		
 		# update the metadata file
 		#printf "$AUTHOR\t$TITLE\t$DATE\t$FILE\n" >> $METADATA
-		echo -e "$AUTHOR\t$TITLE\t$DATE\t$FILE" >> $METADATA
+		echo -e "$AUTHOR\t$TITLE\t$DATE\t$FILE\t$ABSTRACT\t$DOI\t$URL" >> $METADATA
 	
 		# copy the local JSON file to the cache
 		cp "$JSON/$PDFJSON" "$CACHE/$FILE"
