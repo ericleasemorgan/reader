@@ -29,7 +29,7 @@ INITIALIZECARREL='/export/reader/bin/initialize-carrel.sh'
 MAP='/export/reader/bin/map.sh'
 METADATA2SQL='/export/reader/bin/metadata2sql.py'
 REDUCE='/export/reader/bin/reduce.sh'
-JSON2TXTPDF='/export/reader/bin/json2txt-pdf.sh'
+JSON2TXTCARREL='/export/reader/bin/json2txt-carrel.sh'
 CARREL2ZIP='/export/reader/bin/carrel2zip.pl'
 MAKEPAGES='/export/reader/bin/make-pages.sh'
 
@@ -43,7 +43,7 @@ echo "Creating study carrel named $NAME" >&2
 $INITIALIZECARREL $NAME
 
 # convert raw input (JSON files) to plain text
-find cache -name "*.json" | parallel $JSON2TXTPDF
+find cache -name "*.json" | parallel $JSON2TXTCARREL
 
 # unzip the zip file and put the result in the cache
 echo "Reading metadata file and updating bibliogrpahics" >&2

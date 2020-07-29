@@ -10,14 +10,16 @@
 # June  1, 2020 - added additional facets
 # June  2, 2020 - added queueing of a carrel
 # July 25, 2020 - added sources
+# July 29, 2020 - added even more fields; less than half seem to have content
 
 
 # configure
 use constant FACETFIELD   => ( 'facet_journal', 'year', 'facet_authors', 'facet_keywords', 'facet_entity', 'facet_type', 'facet_sources' );
-use constant FIELDS       => 'id,title,doi,url,date,journal,abstract,sources';
+use constant FIELDS       => 'id,title,doi,url,date,journal,abstract,sources,pmc_json,pdf_json,sha';
 use constant SOLR         => 'http://solr-01:8983/solr/cord';
 use constant ROWS         => 49;
 use constant SEARCH2QUEUE => './search2queue.cgi?query=';
+use constant EVERYTHING   => "http://localhost:8080/?query=%28+%28+*+NOT+%28+pdf_json%3Anan+%29+%29+OR+%28+*+NOT+%28+pmc_json%3Anan+%29+%29+%29";
 
 # require
 use CGI;
@@ -156,7 +158,10 @@ else {
 		my $date        = $doc->value_for( 'date' );
 		my $journal     = $doc->value_for( 'journal' );
 		my $abstract    = $doc->value_for( 'abstract' );
-		my $sources      = $doc->value_for( 'sources' );
+		my $sources     = $doc->value_for( 'sources' );
+		my $sha         = $doc->value_for( 'sha' );
+		my $pmcjson     = $doc->value_for( 'pmc_json' );
+		my $pdfjson     = $doc->value_for( 'pdf_json' );
 						
 		# create a item
 		my $item =  &item;
@@ -168,6 +173,9 @@ else {
 		$item    =~ s/##JOURNAL##/$journal/ge;
 		$item    =~ s/##ABSTRACT##/$abstract/ge;
 		$item    =~ s/##SOURCE##/$sources/ge;
+		$item    =~ s/##SHA##/$sha/ge;
+		$item    =~ s/##PMCJSON##/$pmcjson/ge;
+		$item    =~ s/##PDFJSON##/$pdfjson/ge;
 
 		# update the list of items
 		$items .= $item;
@@ -247,6 +255,9 @@ sub item {
 	$item    .= "<li style='list-style-type:circle'>DOI: ##DOI##</li>";
 	$item    .= "<li style='list-style-type:circle'>local id:##DOCUMENTID##</li>";
 	$item    .= "<li style='list-style-type:circle'>source: ##SOURCE##</li>";
+	$item    .= "<li style='list-style-type:circle'>sha: ##SHA##</li>";
+	$item    .= "<li style='list-style-type:circle'>PMC JSON: ##PMCJSON##</li>";
+	$item    .= "<li style='list-style-type:circle'>PDF JSON: ##PDFJSON##</li>";
 	$item    .= "</ul></li>";
 	
 	return $item;
@@ -258,6 +269,8 @@ sub item {
 # root template
 sub template {
 
+	my $link = EVERYTHING;
+	
 	return <<EOF
 <html>
 <head>
@@ -283,6 +296,7 @@ sub template {
 <div class="col-9 col-m-9">
 
 	<p>Use these pages to search the CORD data set and possibly queue the creation of study carrels. Enter a query.</p>
+	<p>Here's a helpful hint. Find <a href='$link'>all records containing full text</a>.</p>
 	<p>
 	<form method='GET' action='./'>
 	Query: <input type='text' name='query' value='##QUERY##' size='50' autofocus="autofocus"/>

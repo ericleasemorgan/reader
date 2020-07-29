@@ -5,13 +5,14 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame; distributed under a GNU Public License
 
-# May 14, 2020 - first investigations
-# May 16, 2020 - required WHERE clause as input
-# June 7, 2020 - changed input to be a space-delimited list of identifiers; enabled scaling
+# May  14, 2020 - first investigations
+# May  16, 2020 - required WHERE clause as input
+# June  7, 2020 - changed input to be a space-delimited list of identifiers; enabled scaling
+# July 28, 2020 - modified so we include both types of JSON files; getting ugly
 
 
 # pre-configure
-TEMPLATE='.mode tabs\nSELECT document_id, cord_uid, authors, title, date, abstract, doi, url FROM documents WHERE ##WHERE##;'
+TEMPLATE='.mode tabs\nSELECT document_id, cord_uid, authors, title, date, abstract, doi, url, pmc_json, pdf_json FROM documents WHERE ##WHERE##;'
 
 # configure
 CACHE='cache'
@@ -20,7 +21,6 @@ CSV='metadata.csv'
 DB='./etc/cord.db'
 HEADER='author\ttitle\tdate\tfile\tabstract\tdoi\turl'
 JSON='./cord/json'
-SUBSELECT="SELECT pdf_json FROM documents WHERE document_id = '##DOCID##';"
 TSV='metadata.tsv'
 COUNT=999
 START=0
@@ -68,15 +68,15 @@ while [ 1 ]; do
 	
 	# submit SELECT and process each result
 	IFS=$'\t'
-	printf "$SELECT" | sqlite3 $DB | while read DOCID CORDID AUTHORS TITLE DATE ABSTRACT DOI URLS; do
+	printf "$SELECT" | sqlite3 $DB | while read DOCID CORDID AUTHORS TITLE DATE ABSTRACT DOI URLS PMCJSON PDFJSON; do
 
-		# get the pdf_json file name
-		SQL=$( echo $SUBSELECT | sed "s/##DOCID##/$DOCID/" )
-		PDFJSON=$( echo $SQL | sqlite3 $DB )
+		# for right now, we only want a single PMC or PDF JSON file; dirty data
+		PMCJSON=$( echo $PMCJSON | cut -d';' -f1 )
+		PDFJSON=$( echo $PDFJSON | cut -d';' -f1 )
 	
-		# we only want to continue, if we have a file
-		if [[ $PDFJSON == 'nan' || -z  $PDFJSON ]]; then continue; fi
-	
+		# if there is no content, then skip this record
+		if [[ $PMCJSON == 'nan' && $PDFJSON = 'nan' ]]; then continue; fi
+		
 		# for right now, we only want a single author
 		AUTHOR=$( echo $AUTHORS | cut -d';' -f1 )
 	
@@ -84,25 +84,33 @@ while [ 1 ]; do
 		URL=$( echo $URLS | cut -d';' -f1 )
 	
 		# build a file name; a bit obtuse
-		ITEM=$(printf "%05d" $DOCID)
+		ITEM=$(printf "%06d" $DOCID)
 		FILE="cord-$ITEM-$CORDID.json"
 	
 		# debug
-		echo "  document id: $DOCID"   >&2
-		#echo "       author: $AUTHOR"  >&2
-		#echo "     cord UID: $CORDID"  >&2
-		echo "        title: $TITLE"   >&2
-		#echo "         date: $DATE"    >&2
-		echo "         JSON: $PDFJSON" >&2
-		echo "    file name: $FILE"    >&2
-		echo                           >&2
-		
+		echo "       document ID: $DOCID"   >&2
+		echo "           CORD ID: $CORDID"  >&2
+		echo "             title: $TITLE"   >&2
+		echo "              date: $DATE"    >&2
+		echo "          PDF JSON: $PDFJSON" >&2
+		echo "          PMC JSON: $PMCJSON" >&2
+	
 		# update the metadata file
-		#printf "$AUTHOR\t$TITLE\t$DATE\t$FILE\n" >> $METADATA
 		echo -e "$AUTHOR\t$TITLE\t$DATE\t$FILE\t$ABSTRACT\t$DOI\t$URL" >> $METADATA
 	
-		# copy the local JSON file to the cache
-		cp "$JSON/$PDFJSON" "$CACHE/$FILE"
+		# copy a JSON (content) file to the cache
+		if [[ ! -z $PDFJSON && $PDFJSON != 'nan' ]]; then
+			echo "       source file: $PDFJSON" >&2
+			echo "  destination file: $FILE"    >&2
+			cp "$JSON/$PDFJSON" "$CACHE/$FILE"
+		else
+			echo "         source file: $PMCJSON" >&2
+			echo "    destination file: $FILE"    >&2
+			cp "$JSON/$PMCJSON" "$CACHE/$FILE"
+		fi
+
+		# delimit
+		echo >&2
 	
 	done
 		

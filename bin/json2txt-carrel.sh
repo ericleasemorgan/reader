@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
 
-# json2txt.sh - give an JSON file of specific shape, output a pseudo-structured plain text file
+# json2txt-pdf.sh - give an JSON file of specific shape, output a pseudo-structured plain text file
 
 # Eric Lease Morgan <emorgan@nd.ed>
 # (c) University of Notre Dame; distributed under a GNU Public License
 
-# June 11, 2020 - first cut
+# March 16, 2020 - first cut
+# March 20, 2020 - added additional data to the txt output
+# May   15, 2020 - for better or for worse, get all metadata from the database
 
 
 # configure
 DB='/export/reader/etc/cord.db'
+TXT='./txt'
 
 # sanity check
 if [[ -z $1 ]]; then
@@ -24,18 +27,15 @@ FILE=$1
 echo -e "         file: $FILE" >&2
 
 # get the (sort of) key, the sha
-SHA=$( cat $FILE | jq --raw-output '.paper_id' )
+PAPERID=$( cat $FILE | jq --raw-output '.paper_id' )
 
 # set query column based on json paper_id field
 ID_COLUMN="sha"
 PMC_FILE_ID="PMC*"
-if [[ "$SHA" == $PMC_FILE_ID ]]; then
-	ID_COLUMN="pmc_id"
-fi
+if [[ "$PAPERID" == $PMC_FILE_ID ]]; then ID_COLUMN="pmc_id"; fi
 
 # get more metadata
-QUERY=".mode tabs\nSELECT authors, title, date, journal, doi, abstract, \
-document_id, cord_uid FROM documents WHERE ${ID_COLUMN} is '$SHA';"
+QUERY=".mode tabs\nSELECT authors, title, date, journal, doi, abstract, document_id, cord_uid FROM documents WHERE ${ID_COLUMN} LIKE '%%$PAPERID%%';"
 IFS=$'\t'
 printf $QUERY | sqlite3 $DB | while read -a RESULTS; do
 
@@ -88,7 +88,7 @@ printf $QUERY | sqlite3 $DB | while read -a RESULTS; do
 
 	# build the plain and output
 	TEXT="key: $KEY\nauthors: $AUTHORS\ntitle: $TITLE\ndate: $DATE\njournal: $JOURNAL\nDOI: $DOI\nsha: $SHA\ndoc_id: $DOCID\ncord_uid: $CORDID\n\n$ABSTRACT\n\n$BODY\n\n$BIBENTRIES\n\n$BACKMATTER"
-	echo -e "$TEXT"
+	echo -e "$TEXT" > $TXT/$KEY.txt
 
 done
 exit
