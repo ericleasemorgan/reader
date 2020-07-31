@@ -5,9 +5,10 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame; distributed under a GNU Public License
 
-# May 28, 2020 - first cut; while Gus is literally on his last legs
-# June 2, 2020 - added provenance
-# June 3, 2020 - added partition
+# May  28, 2020 - first cut; while Gus is literally on his last legs
+# June  2, 2020 - added provenance
+# June  3, 2020 - added partition
+# July 31, 2020 - added exit if carrel already exists; will no longer overwrite, hmmm
 
 
 # configure
@@ -38,6 +39,12 @@ cat $FILE | while read SHORTNAME DATE TIME EMAIL QUERY; do
 	echo "        time: $TIME"      >&2
 	echo "       email: $EMAIL"     >&2
 	echo "       query: $QUERY"     >&2
+
+	# don't to the work if it has already been done
+	if [[ -d "$CARRELS/$SHORTNAME" ]]; then
+		echo "       Carrel exists. Exiting." >&2
+		exit
+	fi
 	
 	# initialize the carrel with data
 	$SEARCH2CARREL $SHORTNAME "$QUERY"

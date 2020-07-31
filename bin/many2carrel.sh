@@ -11,7 +11,7 @@
 # configure
 MANY2CARREL='./bin/many2carrel.pl'
 DB='./etc/cord.db';
-AUTHORS='SELECT LOWER(author) FROM authors GROUP BY LOWER(author) ORDER BY COUNT(LOWER(author)) DESC LIMIT 15;'
+AUTHORS='SELECT LOWER(author) FROM authors GROUP BY LOWER(author) ORDER BY COUNT(LOWER(author)) DESC LIMIT 28;'
 JOURNALS='SELECT journal FROM documents GROUP BY journal ORDER BY COUNT(journal) DESC LIMIT 4;'
 KEYWORDS='SELECT LOWER(keyword) FROM wrd GROUP BY LOWER(keyword) ORDER BY COUNT(LOWER(keyword)) DESC LIMIT 4;'
 
