@@ -5,12 +5,13 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame; distributed under a GNU Public License
 
-# May  24, 2020 - migrating for Project CORD
-# May  26, 2020 - added additional facets
-# June  1, 2020 - added additional facets
-# June  2, 2020 - added queueing of a carrel
-# July 25, 2020 - added sources
-# July 29, 2020 - added even more fields; less than half seem to have content
+# May   24, 2020 - migrating for Project CORD
+# May   26, 2020 - added additional facets
+# June   1, 2020 - added additional facets
+# June   2, 2020 - added queueing of a carrel
+# July  25, 2020 - added sources
+# July  29, 2020 - added even more fields; less than half seem to have content
+# August 3, 2020 - changed input to text area; I am simply unable to see
 
 
 # configure
@@ -296,19 +297,18 @@ sub template {
 <div class="col-9 col-m-9">
 
 	<p>Use these pages to search the CORD data set and possibly queue the creation of study carrels. Enter a query.</p>
-	<p>Here's a helpful hint. Find <a href='$link'>all records containing full text</a>.</p>
-	<p>
 	<form method='GET' action='./'>
-	Query: <input type='text' name='query' value='##QUERY##' size='50' autofocus="autofocus"/>
+	<textarea name='query' autofocus="autofocus" cols='50' rows='10' style='font-size: large'>##QUERY##</textarea><br />
 	<input type='submit' value='Search' />
 	</form>
+	<p>Here's a helpful hint. Find <a href='$link'>all records containing full text</a>.</p>
 
 	##RESULTS##
 
 	<div class="footer">
 		<p style='text-align: right'>
 		Eric Lease Morgan &amp; Team Project CORD<br />
-		May 24, 2020
+		August 3, 2020
 		</p>
 	</div>
 
@@ -349,7 +349,7 @@ sub results_template {
 	<div class="col-6 col-m-6">
 		<p>
 		<form method='GET' action='./'>
-		Query: <input type='text' name='query' value='##QUERY##' size='50' autofocus="autofocus"/>
+		<textarea name='query' autofocus="autofocus" cols='50' rows='10' style='font-size: large'>##QUERY##</textarea><br />
 		<input type='submit' value='Search' />
 		</form>
 		
