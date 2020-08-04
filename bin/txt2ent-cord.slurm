@@ -2,11 +2,11 @@
 
 #SBATCH -p big-cloud
 #SBATCH -N 1
-#SBATCH -n 10
+#SBATCH -n 1
 #SBATCH --mail-user=emorgan@nd.edu
 #SBATCH -t 48:0:00
 #SBATCH -J TXT2ENT
-#SBATCH --array=0-2
+#SBATCH --array=0-100
 #SBATCH -o ./log/txt2ent-output.txt
 #SBATCH -e ./log/txt2ent-error.txt
 
@@ -39,4 +39,4 @@ NUM_LINES=$(cat $WORK_LIST | wc -l)
 START_LINE=$(( NUM_LINES * SLURM_ARRAY_TASK_ID / SLURM_ARRAY_TASK_COUNT + 1 ))
 STOP_LINE=$(( NUM_LINES * (SLURM_ARRAY_TASK_ID + 1) / SLURM_ARRAY_TASK_COUNT ))
 
-sed -n "${START_LINE},${STOP_LINE}p" $WORK_LIST | parallel --will-cite ./bin/txt2ent-cord.sh
+sed -n "${START_LINE},${STOP_LINE}p" $WORK_LIST | xargs ./bin/txt2ent-cord.py
