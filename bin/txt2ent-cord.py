@@ -23,6 +23,23 @@ import sys
 # sanity check
 if len( sys.argv ) < 2 : sys.exit( "Usage: " + sys.argv[ 0 ] + " <file1> [<file2> ... ]" )
 
+# return maximum size of a set of files
+def get_maximum_size( files ) :
+	
+	# initialize
+	maximum = 0
+	
+	# process each file
+	for file in files :
+
+		# get the size, compare, and conditionally update
+		size = os.stat( file ).st_size
+		if size > maximum : maximum = size
+		
+	# increase by one and done
+	maximum += 1
+	return maximum
+
 # extract named entities and output them to a file; the hard work gets done here
 def process_file( key, input_filename, output_filename):
 	
@@ -39,10 +56,8 @@ def process_file( key, input_filename, output_filename):
 		# begin output, the header
 		print( "\t".join( [ 'id', 'sid', 'eid', 'entity', 'type' ] ), file=handle )
 
-		# initialize the model and model the text; might benefit from "disabling" something
-		maximum = len( text ) + 1
-		nlp     = spacy.load( MODEL, max_length=maximum )
-		doc     = nlp( text )
+		# apply the model to the text
+		doc = nlp( text )
 		
 		# process each sentence in the document
 		for s, sentence in enumerate( doc.sents, 1 ) :
@@ -58,18 +73,25 @@ def process_file( key, input_filename, output_filename):
 				print( "\t".join( [key, str(s), str(e), entity.text, entity.label_ ] ), file=handle )
 
 
+# initailize
+files = sys.argv[ 1: ]
+
+# determine the maximum size  of our files and initialize our model; might benefit from "disabling" something
+maximum = get_maximum_size( files )
+nlp     = spacy.load( MODEL, max_length=maximum )
+
 # process each given file
-for file_name in sys.argv[ 1: ] :
+for input_file in files :
 
 	# get the key and compute the output file name
-	key         = os.path.splitext( os.path.basename( file_name ) )[0]
+	key         = os.path.splitext( os.path.basename( input_file ) )[0]
 	output_file = os.path.join( ENT, key + ".ent" )
 	
 	# don't do the work if it has already been done
 	if os.path.isfile( output_file ) : continue
 
 	# try to do the work
-	try : process_file( key, file_name, output_file )
+	try : process_file( key, input_file, output_file )
 	
 	# output unsuccessful tries
 	except ValueError as err : print( key, err )
