@@ -62,5 +62,10 @@ for file_name in sys.argv[1:]:
 	if os.path.isfile(output_file):
 		# skip if the output file has already been computed
 		continue
-	process_file(key, file_name, output_file)
+	try:
+		process_file(key, file_name, output_file)
+	except ValueError as err:
+		# Some files are too big for the NLP module.
+		# Catch those errors so we can keep processing the rest
+		print(key, err)
 
