@@ -2,19 +2,18 @@
 
 # txt2ent-cord.py - given a plain text file, output a tab-delimited file of named entitites
 
-# Eric Lease Morgan <emorgan@nd.edu>
+# Don Brower <dbrower@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
 
-# July 1, 2018 - first cut, or there abouts
-# May 26, 202 by Jiali Cheng <cheng.jial@husky.neu.edu> - migrating to Project CORD
+# July    1, 2018 - first cut (or there abouts) by Eric Morgan
+# August 11, 2020 - completely re-written to exploit a parallel processing; requires a lot of RAM
 
 
 # configure
 MODEL = 'en_ner_bionlp13cg_md'
-ENT='./cord/ent'
+ENT   = './cord/ent'
 
 # require
-from nltk import *
 import os
 import re
 import scispacy
@@ -22,50 +21,58 @@ import spacy
 import sys
 
 # sanity check
-if len( sys.argv ) < 2 :
-	sys.exit("Usage: " + sys.argv[ 0 ] + " <file1> [<file2> ... ]\n")
+if len( sys.argv ) < 2 : sys.exit( "Usage: " + sys.argv[ 0 ] + " <file1> [<file2> ... ]" )
 
-
-def process_file(key, input_filename, output_filename):
+# extract named entities and output them to a file; the hard work gets done here
+def process_file( key, input_filename, output_filename):
+	
 	# open the given file and unwrap it
 	text = ''
-	with open(input_filename, 'r') as f:
-		text = f.read()
+	with open( input_filename, 'r' ) as f : text = f.read()
 
-	# consolidate all whitespace runs into a single space
+	# consolidate whitespace
 	text = re.sub( r'\W+', ' ', text )
 
-	with open(output_filename, 'w') as w:
+	# create output file
+	with open( output_filename, 'w' ) as handle :
+
 		# begin output, the header
-		print( "\t".join( [ 'id', 'sid', 'eid', 'entity', 'type' ] ), file=w )
+		print( "\t".join( [ 'id', 'sid', 'eid', 'entity', 'type' ] ), file=handle )
 
-		# parse the text into sentences and process each one
-		s = 0
-		for sentence in sent_tokenize( text ) :
-
-			# (re-)initialize and increment
-			s += 1
+		# initialize the model and model the text; might benefit from "disabling" something
+		maximum = len( text ) + 1
+		nlp     = spacy.load( MODEL, max_length=maximum )
+		doc     = nlp( text )
+		
+		# process each sentence in the document
+		for s, sentence in enumerate( doc.sents, 1 ) :
+		
+			# re-initialize
 			e = 0
-			sentence = nlp( sentence )
-
-			# process each entity
-			for entity in sentence.ents : 
-
+			
+			# process each entity in the given sentence
+			for entity in sentence.ents :
+				
+				# increment and output
 				e += 1
-				print( "\t".join( [ key, str( s ), str( e ), entity.text, entity.label_ ] ), file=w )
+				print( "\t".join( [key, str(s), str(e), entity.text, entity.label_ ] ), file=handle )
 
-# initialize
-nlp  = spacy.load( MODEL, disable=['tagger'] )
-for file_name in sys.argv[1:]:
-	key = os.path.splitext( os.path.basename( file_name ) )[0]
-	output_file = os.path.join(ENT, key + ".ent")
-	if os.path.isfile(output_file):
-		# skip if the output file has already been computed
-		continue
-	try:
-		process_file(key, file_name, output_file)
-	except ValueError as err:
-		# Some files are too big for the NLP module.
-		# Catch those errors so we can keep processing the rest
-		print(key, err)
 
+# process each given file
+for file_name in sys.argv[ 1: ] :
+
+	# get the key and compute the output file name
+	key         = os.path.splitext( os.path.basename( file_name ) )[0]
+	output_file = os.path.join( ENT, key + ".ent" )
+	
+	# don't do the work if it has already been done
+	if os.path.isfile( output_file ) : continue
+
+	# try to do the work
+	try : process_file( key, file_name, output_file )
+	
+	# output unsuccessful tries
+	except ValueError as err : print( key, err )
+
+# done
+exit
