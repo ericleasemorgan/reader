@@ -11,6 +11,7 @@
 
 # configure
 MODEL = 'en_ner_bionlp13cg_md'
+ENT='./cord/ent'
 
 # require
 from nltk import *
@@ -21,43 +22,50 @@ import spacy
 import sys
 
 # sanity check
-if len( sys.argv ) != 2 :
-	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <file>\n" )
-	quit()
+if len( sys.argv ) < 2 :
+	sys.exit("Usage: " + sys.argv[ 0 ] + " <file1> [<file2> ... ]\n")
+
+
+def process_file(key, input_filename, output_filename):
+	# open the given file and unwrap it
+	text = ''
+	with open(input_filename, 'r') as f:
+		text = f.read()
+
+	# consolidate all whitespace runs into a single space
+	text = re.sub( r'\W+', ' ', text )
+
+	with open(output_filename, 'w') as w:
+		# begin output, the header
+		print( "\t".join( [ 'id', 'sid', 'eid', 'entity', 'type' ] ), file=w )
+
+		# parse the text into sentences and process each one
+		s = 0
+		for sentence in sent_tokenize( text ) :
+
+			# (re-)initialize and increment
+			s += 1
+			e = 0
+			sentence = nlp( sentence )
+
+			# process each entity
+			for entity in sentence.ents : 
+
+				e += 1
+				print( "\t".join( [ key, str( s ), str( e ), entity.text, entity.label_ ] ), file=w )
 
 # initialize
-file = sys.argv[ 1 ]
 nlp  = spacy.load( MODEL, disable=['tagger'] )
+for file_name in sys.argv[1:]:
+	key = os.path.splitext( os.path.basename( file_name ) )[0]
+	output_file = os.path.join(ENT, key + ".ent")
+	if os.path.isfile(output_file):
+		# skip if the output file has already been computed
+		continue
+	try:
+		process_file(key, file_name, output_file)
+	except ValueError as err:
+		# Some files are too big for the NLP module.
+		# Catch those errors so we can keep processing the rest
+		print(key, err)
 
-# limit ourselves to a few processors only
-#os.system( "taskset -pc 0-1 %d > /dev/null" % os.getpid() )
-
-# open the given file and unwrap it
-text = open( file, 'r' ).read()
-text = re.sub( '\r', '\n', text )
-text = re.sub( '\n+', ' ', text )
-text = re.sub( '^\W+', '', text )
-text = re.sub( '\t', ' ',  text )
-text = re.sub( ' +', ' ',  text )
-
-# begin output, the header
-print( "\t".join( [ 'id', 'sid', 'eid', 'entity', 'type' ] ) )
-
-# parse the text into sentences and process each one
-key = os.path.splitext( os.path.basename( file ) )[0]
-s  = 0
-for sentence in sent_tokenize( text ) :
-
-	# (re-)initialize and increment
-	s += 1
-	e = 0
-	sentence = nlp( sentence )
-	
-	# process each entity
-	for entity in sentence.ents : 
-	
-		e += 1
-		print( "\t".join( [ key, str( s ), str( e ), entity.text, entity.label_ ] ) )
-
-# done
-quit()
