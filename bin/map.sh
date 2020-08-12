@@ -33,17 +33,9 @@ find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2urls.
 find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/file2bib.sh {} & 
 wait
 
-# set up multi-threading environment
-OMP_NUM_THREADS=1
-OPENBLAS_NUM_THREADS=1
-MKL_NUM_THREADS=1
-export OMP_NUM_THREADS
-export OPENBLAS_NUM_THREADS
-export MKL_NUM_THREADS
-
 # extract parts-of-speech and named-entities
-find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2ent.sh {} &
-find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2pos.sh {} &
+find "$INPUT" -name '*.txt' | parallel /export/reader/bin/cordent2carrel.sh &
+find "$INPUT" -name '*.txt' | parallel /export/reader/bin/cordpos2carrel.sh &
 wait
 
 # set up multi-threading environment, again

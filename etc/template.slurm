@@ -13,7 +13,7 @@
 #SBATCH -p ##PARTITION##
 #SBATCH -N 1
 #SBATCH -n ##CORES##
-#SBATCH -t 48:0:00
+#SBATCH -t 96:0:00
 #SBATCH -J ##NAME##
 #SBATCH -o standard-output.txt
 #SBATCH -e standard-error.txt
