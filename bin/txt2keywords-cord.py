@@ -12,8 +12,10 @@
 
 
 # configure
-NGRAMS = 1
-TOPN   = 0.005
+NGRAMS  = 1
+TOPN    = 0.005
+MAXIMUM = 3000000 # arbitrary
+WRD     ='./cord/wrd'
 
 # require
 from textacy.ke.yake import yake
@@ -23,34 +25,48 @@ import sys
 import textacy.preprocessing
 
 # sanity check
-if len( sys.argv ) != 2 :
-	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <file>\n" )
-	quit()
+if len( sys.argv ) < 2 :
+	exit('Usage: ' + sys.argv[ 0 ] + " [<file1> [<file2> ...]]\n" )
 
-# initialize
-file = sys.argv[ 1 ]
+def process_file(key, input_filename, output_filename):
+	# open the given file and unwrap it
+	text = ''
+	with open( input_filename, 'r' ) as f : text = f.read()
 
-# open the given file and unwrap it
-text = open( file ).read()
-text = textacy.preprocessing.normalize.normalize_quotation_marks( text )
-text = textacy.preprocessing.normalize.normalize_hyphenated_words( text )
-text = textacy.preprocessing.normalize.normalize_whitespace( text )
+	text = textacy.preprocessing.normalize.normalize_quotation_marks( text )
+	text = textacy.preprocessing.normalize.normalize_hyphenated_words( text )
+	text = textacy.preprocessing.normalize.normalize_whitespace( text )
 
-# compute the identifier
-id = os.path.basename( os.path.splitext( file )[ 0 ] )
+	doc = model( text )
+
+	with open( output_filename, 'w') as handle:
+		# output a header
+		print( "id\tkeyword", file=handle )
+
+		# process and output each keyword and done; can't get much simpler
+		for keyword, score in ( yake( doc, ngrams=NGRAMS, topn=TOPN ) ) :
+
+			if ( len( keyword ) < 3 ) : continue
+			print( "\t".join( [ key, keyword ] ), file=handle )
 
 # initialize model
-maximum = len( text ) + 1
-model   = spacy.load( 'en', max_length=maximum )
-doc     = model( text )
+model = spacy.load( 'en', max_length=MAXIMUM )
 
-# output a header
-print( "id\tkeyword" )
+# process each given file
+for file_name in sys.argv[ 1: ] :
 
-# process and output each keyword and done; can't get much simpler
-for keyword, score in ( yake( doc, ngrams=NGRAMS, topn=TOPN ) ) :
-
-	if ( len( keyword ) < 3 ) : continue
-	print( "\t".join( [ id, keyword ] ) )
+	# get the key and compute the output file name
+	key         = os.path.splitext( os.path.basename( file_name ) )[0]
+	output_file = os.path.join( WRD, key + ".wrd" )
 	
-exit()
+	# don't do the work if it has already been done
+	if os.path.isfile( output_file ) : continue
+
+	# try to do the work
+	try : process_file( key, file_name, output_file )
+	
+	# output unsuccessful tries
+	except ValueError as err : print( key, err )
+
+# done
+exit
