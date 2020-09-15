@@ -68,7 +68,7 @@ $DB2BIBLIOGRAPHICS > ./tsv/bibliographics.tsv
 $TSV2BIBLIOGRAPHICS ./tsv/bibliographics.tsv > ./htm/bibliographics.htm
 
 # list questions
-echo "==== make-pages.sh questions" >&2
+echo "==== make-pages.sh questions [ERIC WAS HERE]" >&2
 echo -e "identifier\tquestion"      > ./tsv/questions.tsv
 $LISTQUESTIONS $CARREL             >> ./tsv/questions.tsv
 $TSV2QUESTIONS ./tsv/questions.tsv  > ./htm/questions.htm

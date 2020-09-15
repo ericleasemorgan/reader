@@ -10,12 +10,12 @@
 # July    12, 2018 - migrating to the cluster
 # February 3, 2020 - tweaked a lot to accomodate large files
 # June    22, 2020 - processing txt files, not json files; needs to be tidied
+# August  13, 2020 - using pre-processed files
 
 
 # configure
 TXT='txt';
 CACHE='cache'
-PARALLEL='/export/bin/parallel'
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -28,26 +28,16 @@ NAME=$1
 INPUT="$TXT"
 
 # extract addresses, urls, and keywords
-find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2adr.sh {}  &
-find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2urls.sh {} &
-find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/file2bib.sh {} & 
+find "$INPUT" -name '*.txt' | parallel /export/reader/bin/txt2adr.sh {}  &
+find "$INPUT" -name '*.txt' | parallel /export/reader/bin/txt2urls.sh {} &
+find "$INPUT" -name '*.txt' | parallel /export/reader/bin/file2bib.sh {} & 
 wait
 
-# extract parts-of-speech and named-entities
+# copy previously created entity, part-of-speech and keyword files
 find "$INPUT" -name '*.txt' | parallel /export/reader/bin/cordent2carrel.sh &
 find "$INPUT" -name '*.txt' | parallel /export/reader/bin/cordpos2carrel.sh &
+find "$INPUT" -name '*.txt' | parallel /export/reader/bin/cordwrd2carrel.sh &
 wait
-
-# set up multi-threading environment, again
-OMP_NUM_THREADS=3
-OPENBLAS_NUM_THREADS=3
-MKL_NUM_THREADS=3
-export OMP_NUM_THREADS
-export OPENBLAS_NUM_THREADS
-export MKL_NUM_THREADS
-
-# extract keywords
-find "$INPUT" -name '*.txt' | $PARALLEL --will-cite /export/reader/bin/txt2keywords.sh {}
 
 # done
 echo "Que is empty; done" >&2

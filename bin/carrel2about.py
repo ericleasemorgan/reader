@@ -331,6 +331,7 @@ if ( not os.path.exists( './tsv/adjective-noun.tsv' ) ) :
 # named-entities
 if ( not os.path.exists( './tsv/entities.tsv' ) ) :
 	entities = pd.read_sql_query( "select lower(entity) as entity, type, count(lower(entity)) as frequency from ent where (type is 'TAXON' or type is 'DISEASE' or type is 'CHEMICAL' or type is 'PERSON' or type is 'GPE' or type is 'LOC' or type is 'ORG') group by entity order by frequency desc", engine )
+	#entities = pd.read_sql_query( "select entity as entity, type, count(entity) as frequency from ent group by entity order by frequency desc", engine )
 	entities.to_csv( './tsv/entities.tsv', columns=[ 'entity', 'type', 'frequency' ], sep='\t', index=False )
 
 # unigrams; really ugly!
