@@ -14,7 +14,7 @@
 use constant FACETFIELD => ( 'facet_journal', 'year' );
 use constant FIELDS     => 'id,title,doi,url,date,journal';
 use constant SOLR       => 'http://solr-01:8983/solr/cord';
-use constant ROWS       => 100000;
+use constant ROWS       => 10000;
 
 # require
 use strict;
