@@ -12,7 +12,7 @@
 # configure
 TXT='./cord/txt'
 DB='./etc/cord.db'
-JSON2TXT='./bin/json2txt.sh'
+JSON2TXT='json2txt.sh'
 
 if [[ -z $1 ]]; then
 	echo "Usage: $0 <json>" >&2

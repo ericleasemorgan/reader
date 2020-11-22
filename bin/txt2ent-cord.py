@@ -61,7 +61,7 @@ def process_file( key, input_filename, output_filename):
 		for model in MODELS:
 		
 			# debug
-			sys.stderr.write( 'model:' + model + "\n" )
+			#sys.stderr.write( 'model:' + model + "\n" )
 			
 			# load the model and model the text
 			nlp = spacy.load( model, max_length=size )

@@ -5,11 +5,12 @@
 # Don Brower <dbrower@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
 
-# August 12, 2020 - by Eric but rooted in Don's good work
+# August   12, 2020 - by Eric but rooted in Don's good work
+# November 21, 2020 - changed (upgraded) the language model
 
 
 # configure
-MODEL = 'en_core_web_sm'
+MODEL = 'en_core_web_lg'
 POS   = './cord/pos'
 
 # require

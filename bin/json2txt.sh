@@ -9,7 +9,7 @@
 
 
 # configure
-DB='/export/reader/etc/cord.db'
+DB="$READERCORD_HOME/etc/cord.db"
 
 # sanity check
 if [[ -z $1 ]]; then

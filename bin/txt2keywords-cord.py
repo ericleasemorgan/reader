@@ -9,13 +9,14 @@
 # June     24, 2018 - lemmatized output
 # December 23, 2019 - started using Textacy
 # March    18, 2020 - eliminated words less than three characters long; ought to explore stop words
+# November 21, 2020 - changed (upgraded) model
 
 
 # configure
 NGRAMS  = 1
 TOPN    = 0.005
 WRD     = './cord/wrd'
-MODEL   = 'en_core_web_sm'
+MODEL   = 'en_core_web_lg'
 
 # require
 from textacy.ke.yake import yake
