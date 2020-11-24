@@ -9,7 +9,7 @@
 
 
 # configure
-CORDENT=/export/reader/cord/ent
+CORDENT="$READERCORD_HOME/cord/ent"
 CARRELENT=./ent
 
 # sanity check

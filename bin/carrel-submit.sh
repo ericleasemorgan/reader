@@ -11,7 +11,7 @@
 
 
 # configure
-CARRELS='/export/reader/carrels'
+CARRELS="$READERCORD_HOME/carrels"
 TEMPLATE='./etc/template.slurm'
 SLURM='make-carrel.slurm'
 BIG=20

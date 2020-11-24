@@ -8,8 +8,13 @@
 # July 9, 2020 - added customized stop word list
 
 
+# pre-require and configure
+import os
+READERCORD_HOME = os.environ[ 'READERCORD_HOME' ]
+
+
 # configure
-STOPWORDS = '/export/reader/etc/stopwords.txt'
+STOPWORDS = READERCORD_HOME + '/etc/stopwords.txt'
 
 # require
 from sklearn.decomposition import LatentDirichletAllocation

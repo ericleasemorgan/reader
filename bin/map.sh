@@ -28,17 +28,16 @@ NAME=$1
 INPUT="$TXT"
 
 # extract addresses, urls, and keywords
-find "$INPUT" -name '*.txt' | parallel /export/reader/bin/txt2adr.sh {}  &
-find "$INPUT" -name '*.txt' | parallel /export/reader/bin/txt2urls.sh {} &
-find "$INPUT" -name '*.txt' | parallel /export/reader/bin/file2bib.sh {} & 
-wait
+find "$INPUT" -name '*.txt' | parallel txt2adr.sh {}  &
+find "$INPUT" -name '*.txt' | parallel txt2urls.sh {} &
+find "$INPUT" -name '*.txt' | parallel file2bib.sh {} & 
 
 # copy previously created entity, part-of-speech and keyword files
-find "$INPUT" -name '*.txt' | parallel /export/reader/bin/cordent2carrel.sh &
-find "$INPUT" -name '*.txt' | parallel /export/reader/bin/cordpos2carrel.sh &
-find "$INPUT" -name '*.txt' | parallel /export/reader/bin/cordwrd2carrel.sh &
-wait
+find "$INPUT" -name '*.txt' | parallel cordent2carrel.sh &
+find "$INPUT" -name '*.txt' | parallel cordpos2carrel.sh &
+find "$INPUT" -name '*.txt' | parallel cordwrd2carrel.sh &
 
-# done
+# hang out and then que
+wait
 echo "Que is empty; done" >&2
 exit

@@ -10,28 +10,21 @@
 # May   31, 2020 - sent report to STDOUT, thus making the simple report visible 
 
 
-# enhance environment
-PERL_HOME='/export/perl/bin'
-JAVA_HOME='/export/java/bin'
-PYTHON_HOME='/export/python/bin'
-PATH=$PYTHON_HOME:$PERL_HOME:$JAVA_HOME:$PATH
-export PATH
-
 # configure
-CARRELS='/export/reader/carrels'
+CARRELS="$READERCORD_HOME/carrels"
 CORPUS="./etc/reader.txt"
 DB='./etc/reader.db'
 REPORT='./etc/report.txt'
 
 # require
-DB2REPORT='/export/reader/bin/db2report.sh'
-INITIALIZECARREL='/export/reader/bin/initialize-carrel.sh'
-MAP='/export/reader/bin/map.sh'
-METADATA2SQL='/export/reader/bin/metadata2sql.py'
-REDUCE='/export/reader/bin/reduce.sh'
-JSON2TXTCARREL='/export/reader/bin/json2txt-carrel.sh'
-CARREL2ZIP='/export/reader/bin/carrel2zip.pl'
-MAKEPAGES='/export/reader/bin/make-pages.sh'
+DB2REPORT='db2report.sh'
+INITIALIZECARREL='initialize-carrel.sh'
+MAP='map.sh'
+METADATA2SQL='metadata2sql.py'
+REDUCE='reduce.sh'
+JSON2TXTCARREL='json2txt-carrel.sh'
+CARREL2ZIP='carrel2zip.pl'
+MAKEPAGES='make-pages.sh'
 
 # get the name of newly created directory
 NAME=$( pwd )
@@ -58,14 +51,8 @@ cat ./tmp/update-bibliographics.sql | sqlite3 $DB
 # build the carrel; the magic happens here
 echo "Building study carrel named $NAME" >&2
 
-# start tika
-java -jar /export/lib/tika/tika-server.jar &
-PID=$!
-sleep 10
-
 # extract parts-of-speech, named entities, etc
 $MAP $NAME
-kill $PID
 
 # build the database
 $REDUCE $NAME
@@ -88,8 +75,6 @@ $MAKEPAGES $NAME
 
 # zip it up
 echo "Zipping study carrel" >&2
-#rm -rf ./tmp
-#cp "$LOG/$NAME.log" "$NAME/log" 
 $CARREL2ZIP $NAME
 echo "" >&2
 
@@ -97,4 +82,5 @@ echo "" >&2
 cp "./etc/reader.zip" "./study-carrel.zip"
 
 # done
+echo "Done building study carrel named $NAME" >&2
 exit

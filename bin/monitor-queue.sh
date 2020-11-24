@@ -9,23 +9,12 @@
 # June 7, 2020 - created in-process... processing
 
 
-# set up environment; overkill
-PERL_HOME='/export/perl/bin'
-JAVA_HOME='/export/java/bin'
-READER_HOME='/export/reader'
-WORD2VEC_HOME='/export/word2vec/bin'
-EXPORT_HOME='/export/bin'
-PATH=$EXPORT_HOME:$WORD2VEC_HOME:$PERL_HOME:$JAVA_HOME:$READER_HOME:$PATH
 
 # configure
-HOME='/export/reader'
-TODO='/export/reader/queue/todo'
-INPROCESS='/export/reader/queue/in-process'
-SUBMITTTED='/export/reader/queue/submitted.tsv'
-QUEUE2CARREL='./bin/queue2carrel.sh'
-
-# make sane
-cd $HOME
+TODO="$READERCORD_HOME/queue/todo"
+INPROCESS="$READERCORD_HOME/queue/in-process"
+SUBMITTTED="$READERCORD_HOME/queue/submitted.tsv"
+QUEUE2CARREL='queue2carrel.sh'
 
 # process each to-do item
 find $TODO -name '*.tsv' | while read FILE; do

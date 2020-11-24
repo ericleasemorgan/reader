@@ -10,8 +10,8 @@
 
 
 # configure
-SEARCH='./bin/search.pl'
-CARRELINITIALIZE='./bin/carrel-initialize.sh'
+SEARCH='search.pl'
+CARRELINITIALIZE='carrel-initialize.sh'
 
 # sanity check
 if [[ -z $1 || -z $2 ]]; then

@@ -9,9 +9,9 @@
 
 
 # configure
-CARRELS='/export/reader/carrels'
-QUERIES='/export/reader/etc/queries.sql'
-DB='/etc/reader.db'
+CARRELS="$READERCORD_HOME/carrels"
+QUERIES="$READERCORD_HOME/etc/queries.sql"
+DB='etc/reader.db'
 
 # sanity check
 if [[ -z "$1" ]]; then

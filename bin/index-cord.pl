@@ -12,7 +12,7 @@
 # configure
 use constant DATABASE => './etc/cord.db';
 use constant DRIVER   => 'SQLite';
-use constant QUERY    => qq(SELECT document_id, title, year, abstract, date, journal, source, license, doi, arxiv_id, cord_uid, mag_id, pmc_id, pubmed_id, who_id, sha, pdf_json, pmc_json FROM documents ORDER BY RANDOM() LIMIT 5000;);
+use constant QUERY    => qq(SELECT document_id, title, year, abstract, date, journal, source, license, doi, arxiv_id, cord_uid, mag_id, pmc_id, pubmed_id, who_id, sha, pdf_json, pmc_json FROM documents ORDER BY RANDOM() LIMIT 100000;);
 use constant SOLR     => 'http://10.0.1.11:8983/solr/reader-cord';
 use constant TEXTS    => './cord/txt';
 

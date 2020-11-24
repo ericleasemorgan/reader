@@ -9,7 +9,7 @@
 
 
 # configure
-CORDWRD=/export/reader/cord/wrd
+CORDWRD="$READERCORD_HOME/cord/wrd"
 CARRELWRD=./wrd
 
 # sanity check

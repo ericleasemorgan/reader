@@ -7,9 +7,13 @@
 
 # June 26, 2020 - enhanced by Maria Carrol to be more meaningful and link to plain text
 
+# pre-require and configure
+import os
+READERCORD_HOME = os.environ[ 'READERCORD_HOME' ]
+
 
 # configure
-TEMPLATE = '/export/reader/etc/tsv2htm-bibliographics.htm'
+TEMPLATE = READERCORD_HOME + '/etc/tsv2htm-bibliographics.htm'
 
 # require
 import pandas as pd

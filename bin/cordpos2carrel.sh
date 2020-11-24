@@ -9,7 +9,7 @@
 
 
 # configure
-CORDPOS=/export/reader/cord/pos
+CORDPOS="$READERCORD_HOME/cord/pos"
 CARRELPOS=./pos
 
 # sanity check

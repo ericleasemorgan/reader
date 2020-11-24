@@ -6,8 +6,13 @@
 # June 25, 2020 - first working version
 
 
+# pre-require and configure
+import os
+READERCORD_HOME = os.environ[ 'READERCORD_HOME' ]
+
+
 # configure; the file created from the output of carrel2search.pl
-TEMPLATE = '/export/reader/tmp/search.htm'
+TEMPLATE = READERCORD_HOME + '/tmp/search.htm'
 
 # require
 import sys

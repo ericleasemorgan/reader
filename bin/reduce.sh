@@ -10,9 +10,8 @@
 
 
 # configure
-CARRELS='/export/reader/carrels'
-REDUCE='/export/reader/bin/reduce.pl'
-PARALLEL='/export/bin/parallel'
+CARRELS="$READERCORD_HOME/carrels"
+REDUCE='reduce.pl'
 
 # sanity check
 if [[ -z "$1" ]]; then
@@ -27,44 +26,39 @@ NAME=$1
 echo "$NAME" >&2
 
 find "$CARRELS/$NAME" -name '*.bib' -exec $REDUCE "$CARRELS/$NAME" bib {} \;
-#find "$CARRELS/$NAME" -name '*.adr' -exec $REDUCE "$CARRELS/$NAME" adr {} \;
-#find "$CARRELS/$NAME" -name '*.ent' -exec $REDUCE "$CARRELS/$NAME" ent {} \;
-#find "$CARRELS/$NAME" -name '*.pos' -exec $REDUCE "$CARRELS/$NAME" pos {} \;
-#find "$CARRELS/$NAME" -name '*.wrd' -exec $REDUCE "$CARRELS/$NAME" wrd {} \;
-#find "$CARRELS/$NAME" -name '*.url' -exec $REDUCE "$CARRELS/$NAME" url {} \;
 
 # addresses
 echo "===== Reducing email addresses" >&2
 cd "$CARRELS/$NAME"
 mkdir -p ./tmp/sql-adr
-find ./adr -name "*.adr" | $PARALLEL --will-cite /export/reader/bin/adr2sql.pl
-/export/reader/bin/reduce-adr.sh
+find ./adr -name "*.adr" | parallel adr2sql.pl
+reduce-adr.sh
 
 # keywords
 echo "===== Reducing keywords" >&2
 cd "$CARRELS/$NAME"
 mkdir -p ./tmp/sql-wrd
-find ./wrd -name "*.wrd" | $PARALLEL --will-cite /export/reader/bin/wrd2sql.pl
-/export/reader/bin/reduce-wrd.sh
+find ./wrd -name "*.wrd" | parallel wrd2sql.pl
+reduce-wrd.sh
 
 # urls
 echo "===== Reducing urls" >&2
 cd "$CARRELS/$NAME"
 mkdir -p ./tmp/sql-url
-find ./urls -name "*.url" | $PARALLEL --will-cite /export/reader/bin/url2sql.pl
-/export/reader/bin/reduce-url.sh
+find ./urls -name "*.url" | parallel url2sql.pl
+reduce-url.sh
 
 # entities
 echo "===== Reducing named entities" >&2
 cd "$CARRELS/$NAME"
 mkdir -p ./tmp/sql-ent
-find ./ent -name "*.ent" | $PARALLEL --will-cite /export/reader/bin/ent2sql.pl
-/export/reader/bin/reduce-ent.sh
+find ./ent -name "*.ent" | parallel ent2sql.pl
+reduce-ent.sh
 
 # pos
 echo "===== Reducing parts of speech" >&2
 cd "$CARRELS/$NAME"
 mkdir -p ./tmp/sql-pos
-find ./pos -name "*.pos" | $PARALLEL --will-cite /export/reader/bin/pos2sql.pl
-/export/reader/bin/reduce-pos.sh
+find ./pos -name "*.pos" | parallel pos2sql.pl
+reduce-pos.sh
 

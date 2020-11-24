@@ -12,10 +12,9 @@
 
 
 # configure
-SEARCH2CARREL='./bin/search2carrel.sh'
-CARRELS='/export/reader/carrels'
-CARRELSUBMIT='./bin/carrel-submit.sh'
-PARTITION='big-cloud'
+SEARCH2CARREL='search2carrel.sh'
+CARRELS="$READERCORD_HOME/carrels"
+CARRELSUBMIT='carrel-submit.sh'
 
 # sanity check
 if [[ -z $1 ]]; then 
@@ -53,7 +52,7 @@ cat $FILE | while read SHORTNAME DATE TIME EMAIL QUERY; do
 	cp $FILE "$CARRELS/$SHORTNAME/provenance.tsv"
 	
 	# create a slurm script and submit it; do the work
-	$CARRELSUBMIT $SHORTNAME $PARTITION $EMAIL
+	#$CARRELSUBMIT $SHORTNAME $PARTITION $EMAIL
 	
 # fini
 done

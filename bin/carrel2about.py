@@ -15,19 +15,24 @@
 # July       9, 2020 - removed (some) stopword from the output; enhanced output with some provenance; linked to txt (not cache)
 
 
+# pre-require and configure
+import os
+READERCORD_HOME = os.environ[ 'READERCORD_HOME' ]
+
+
 # configure
-CLOUD      = '/export/reader/bin/cloud.py'
+CLOUD      = 'cloud.py'
 CLOUDCOUNT = 150
 CORPUS     = './etc/reader.txt'
 COUNT      = 50
 DATABASE   = './etc/reader.db'
 DIRECTORY  = './txt'
-NGRAMS     = '/export/reader/bin/ngrams.pl'
-PLOTFLESCH = '/export/reader/bin/plot-flesch.sh'
-PLOTSIZES  = '/export/reader/bin/plot-sizes.sh'
-TOPICMODEL = '/export/reader/bin/topic-model.py'
-TEMPLATE   = '/export/reader/etc/about.htm'
-STOPWORDS  = '/export/reader/etc/stopwords.txt'
+NGRAMS     = 'ngrams.pl'
+PLOTFLESCH = 'plot-flesch.sh'
+PLOTSIZES  = 'plot-sizes.sh'
+TOPICMODEL = 'topic-model.py'
+TEMPLATE   = READERCORD_HOME + '/etc/about.htm'
+STOPWORDS  = READERCORD_HOME + '/etc/stopwords.txt'
 PROVENANCE = './provenance.tsv'
 
 # require

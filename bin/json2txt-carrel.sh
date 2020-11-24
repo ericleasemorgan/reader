@@ -11,7 +11,7 @@
 
 
 # configure
-DB='/export/reader/etc/cord.db'
+DB="$READERCORD_HOME/etc/cord.db"
 TXT='./txt'
 
 # sanity check

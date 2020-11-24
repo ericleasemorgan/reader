@@ -16,7 +16,7 @@ TEMPLATE='.mode tabs\nSELECT document_id, cord_uid, authors, title, date, abstra
 
 # configure
 CACHE='cache'
-CARRELS='/export/reader/carrels'
+CARRELS="$READERCORD_HOME/carrels"
 CSV='metadata.csv'
 DB='./etc/cord.db'
 HEADER='author\ttitle\tdate\tfile\tabstract\tdoi\turl'
