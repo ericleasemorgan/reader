@@ -75,6 +75,7 @@ $MAKEPAGES $NAME
 
 # zip it up
 echo "Zipping study carrel" >&2
+rm -rf ./tmp
 $CARREL2ZIP $NAME
 echo "" >&2
 
