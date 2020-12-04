@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Authentication Required"
+AuthUserFile "/etc/httpd/htpasswd"
+Require user ##PATRON##

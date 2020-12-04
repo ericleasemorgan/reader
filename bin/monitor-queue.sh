@@ -29,7 +29,7 @@ find $TODO -name '*.tsv' | while read FILE; do
 	echo ''                    >&2
 	cat $FILE                  >&2
 	echo ''                    >&2
-	$QUEUE2CARREL $INPROCESS/$BASENAME.tsv
+	$QUEUE2CARREL $INPROCESS/$BASENAME.tsv 2>> ~/log/queue2carrel.log
 	
 	# clean up
 	rm -rf $INPROCESS/$BASENAME.tsv

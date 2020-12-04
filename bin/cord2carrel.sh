@@ -25,6 +25,7 @@ REDUCE='reduce.sh'
 JSON2TXTCARREL='json2txt-carrel.sh'
 CARREL2ZIP='carrel2zip.pl'
 MAKEPAGES='make-pages.sh'
+CARREL2PATRONS='carrel2patrons.sh'
 
 # get the name of newly created directory
 NAME=$( pwd )
@@ -82,6 +83,8 @@ echo "" >&2
 # make zip file accessible
 cp "./etc/reader.zip" "./study-carrel.zip"
 
+# move the carrel to patron's cache
+$CARREL2PATRONS $NAME
+
 # done
-echo "Done building study carrel named $NAME" >&2
 exit
