@@ -1,7 +1,7 @@
 
 The creation of your study carrel -- ##CARREL## -- has been completed, and it ought to be accessible at the following URL:
   
-  https://library.distantreader.org/patrons/eric/##CARREL##/
+  https://library.distantreader.org/patrons/##PATRON##/##CARREL##/
   
 Here are a few more links of possible interest:
 

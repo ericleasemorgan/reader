@@ -27,7 +27,7 @@ CARREL=$1
 STATUS=$2
 
 # given the carrel and the provenance, look up the patron's username and address
-PATRON=$( cat "$CARRELS/$CARREL/$PROVENANCE" | cut -d$'\t' -f4 )
+PATRON=$( cat "$CARRELS/$CARREL/$PROVENANCE" | cut -d$'\t' -f5 )
 ADDRESS=$( echo "SELECT email FROM patrons WHERE username IS '$PATRON';" | sqlite3 $PATRONS )
 
 # branch accordingly; started

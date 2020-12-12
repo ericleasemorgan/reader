@@ -22,7 +22,7 @@ fi
 CARREL=$1
 
 # get the name of the patron and provisionally create their cache
-PATRON=$( cat "$CARRELS/$CARREL/$PROVENANCE" | cut -d$'\t' -f4 )
+PATRON=$( cat "$CARRELS/$CARREL/$PROVENANCE" | cut -d$'\t' -f5 )
 mkdir -p "$PATRONS/$PATRON"
 
 # (re-)create the patron's htaccess file
@@ -30,5 +30,7 @@ cat $TEMPLATE | sed s"/##PATRON##/$PATRON/g" > "$PATRONS/$PATRON/.htaccess"
 
 # make sane, do the work, and done
 cd $CARRELS
-mv $CARREL "$PATRONS/$PATRON"
+rm -rf "$PATRONS/$PATRON/$CARREL"
+#mv $CARREL "$PATRONS/$PATRON"
+cp -r $CARREL "$PATRONS/$PATRON"
 exit

@@ -32,10 +32,11 @@ cd $READERCORD_HOME
 IFS=$'\t'
 
 # read the file
-cat $FILE | while read SHORTNAME DATE TIME EMAIL QUERY; do
+cat $FILE | while read TYPE SHORTNAME DATE TIME EMAIL QUERY; do
 
 	# debug
 	echo "        file: $FILE" >&2
+	echo "        type: $TYPE" >&2
 	echo "  short name: $SHORTNAME" >&2
 	echo "        date: $DATE"      >&2
 	echo "        time: $TIME"      >&2

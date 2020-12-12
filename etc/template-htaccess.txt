@@ -1,4 +1,4 @@
 AuthType Basic
 AuthName "Authentication Required"
-AuthUserFile "/etc/httpd/htpasswd"
+AuthUserFile "/data-disk/etc/reader-htpasswd"
 Require user ##PATRON##
