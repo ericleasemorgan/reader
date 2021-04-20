@@ -69,3 +69,4 @@ echo "adding facet: type"
 curl -X POST -H 'Content-type:application/json' --data-binary '{"add-field": {"name":"facet_type", "type":"string", "multiValued":true, "stored":true, "omitTermFreqAndPositions":true}}' $INDEX
 echo "adding catch-all field: _text_"
 curl -X POST -H 'Content-type:application/json' --data-binary '{"add-copy-field" : {"source":"*","dest":"_text_"}}' $INDEX
+

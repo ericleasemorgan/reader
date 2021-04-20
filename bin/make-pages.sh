@@ -1,20 +1,27 @@
 #!/usr/bin/env bash
 
+# make-pages.sh - output a myriad of HTML files, reports against our feature extraction process
+
+# Eric Lease Morgan <emorgan@nd.edu>
+# (c) University of Notre Dame; distributed under a GNU Public License
+
+# June 27, 2020 - but really written at least 18 months ago
+
 
 # configure
 CARREL2ABOUT='/export/reader/bin/carrel2about.py'
 CARREL2JSON='/export/reader/bin/carrel2json.py'
 CARREL2SEARCH='/export/reader/bin/carrel2search.pl'
 CARRELS='/export/reader/carrels'
-CORPUS2FILE='/export/reader/bin/corpus2file.sh'
+DB2BIBLIOGRAPHICS='/export/reader/bin/db2tsv-bibliographics.py'
+DB2TOPICMODEL='/export/reader/bin/db2topicmodel.pl'
 LISTQUESTIONS='/export/reader/bin/list-questions.sh'
 PARALLEL='/export/bin/parallel'
+TSV2BIBLIOGRAPHICS='/export/reader/bin/tsv2htm-bibliographics.py'
 TSV2COMPLEX='/export/reader/bin/tsv2htm-complex.py'
 TSV2ENTITIES='/export/reader/bin/tsv2htm-entities.py'
 TSV2HTM='/export/reader/bin/tsv2htm.py'
 TSV2QUESTIONS='/export/reader/bin/tsv2htm-questions.py'
-DB2BIBLIOGRAPHICS='/export/reader/bin/db2tsv-bibliographics.py'
-TSV2BIBLIOGRAPHICS='/export/reader/bin/tsv2htm-bibliographics.py'
 TXT='txt/*.txt'
 
 # sanity check
@@ -72,7 +79,7 @@ $CARREL2SEARCH $CARREL > ./htm/search.htm
 
 # create data and page for topic modeling
 echo "==== make-pages.sh topic modeling corpus" >&2
-find txt/*.txt | $PARALLEL --will-cite $CORPUS2FILE {} > ./etc/model-data.txt
+$DB2TOPICMODEL > ./etc/model-data.txt
 cp /export/reader/etc/template-model.htm ./htm/topic-model.htm
 
 # create cool network diagram ("Thanks, Team JAMS!")

@@ -14,7 +14,7 @@
 # configure
 use constant FACETFIELD   => ( 'facet_journal', 'year', 'facet_authors', 'facet_keywords', 'facet_entity', 'facet_type' );
 use constant FIELDS       => 'id,title,doi,url,date,journal,abstract';
-use constant SOLR         => 'http://10.0.0.8:8983/solr/cord';
+use constant SOLR         => 'http://10.0.0.6:8983/solr/cord';
 use constant ROWS         => 49;
 use constant SEARCH2QUEUE => './search2queue.cgi?query=';
 

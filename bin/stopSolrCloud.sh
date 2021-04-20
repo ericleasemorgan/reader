@@ -1,1 +1,1 @@
-parallel --tag --nonall --slf /export/coredir/solrCloudHostlist.txt "/export/coredir/stopSolrNode.sh"
+parallel --tag --nonall --slf /export/solr/bin/solrCloudHostlist.txt "/export/solr/bin/stopSolrNode.sh"
