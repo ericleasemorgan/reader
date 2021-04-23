@@ -5,18 +5,22 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame; distributed under a GNU Public License
 
-# May 24, 2020 - migrating for Project CORD
-# May 26, 2020 - added additional facets
-# June 1, 2020 - added additional facets
-# June 2, 2020 - added queueing of a carrel
+# May   24, 2020 - migrating for Project CORD
+# May   26, 2020 - added additional facets
+# June   1, 2020 - added additional facets
+# June   2, 2020 - added queueing of a carrel
+# July  25, 2020 - added sources
+# July  29, 2020 - added even more fields; less than half seem to have content
+# August 3, 2020 - changed input to text area; I am simply unable to see
 
 
 # configure
-use constant FACETFIELD   => ( 'facet_journal', 'year', 'facet_authors', 'facet_keywords', 'facet_entity', 'facet_type' );
-use constant FIELDS       => 'id,title,doi,url,date,journal,abstract';
-use constant SOLR         => 'http://10.0.0.6:8983/solr/cord';
+use constant FACETFIELD   => ( 'facet_journal', 'year', 'facet_authors', 'facet_keywords', 'facet_entity', 'facet_type', 'facet_sources' );
+use constant FIELDS       => 'id,title,doi,url,date,journal,abstract,sources,pmc_json,pdf_json,sha';
+use constant SOLR         => 'http://solr-01:8983/solr/cord';
 use constant ROWS         => 49;
 use constant SEARCH2QUEUE => './search2queue.cgi?query=';
+use constant EVERYTHING   => "http://localhost:8080/?query=%28+%28+*+NOT+%28+pdf_json%3Anan+%29+%29+OR+%28+*+NOT+%28+pmc_json%3Anan+%29+%29+%29";
 
 # require
 use CGI;
@@ -60,6 +64,17 @@ else {
 
 	# search
 	my $response = $solr->search( $query, \%search_options );
+
+	# build a list of source facets
+	my @facet_source = ();
+	my $source_facets = &get_facets( $response->facet_counts->{ facet_fields }->{ facet_sources } );
+	foreach my $facet ( sort { $$source_facets{ $b } <=> $$source_facets{ $a } } keys %$source_facets ) {
+	
+		my $encoded = uri_encode( $facet );
+		my $link = qq(<a href='./?query=$sanitized AND facet_sources:"$encoded"'>$facet</a>);
+		push @facet_source, $link . ' (' . $$source_facets{ $facet } . ')';
+		
+	}
 
 	# build a list of journal facets
 	my @facet_journal = ();
@@ -144,6 +159,10 @@ else {
 		my $date        = $doc->value_for( 'date' );
 		my $journal     = $doc->value_for( 'journal' );
 		my $abstract    = $doc->value_for( 'abstract' );
+		my $sources     = $doc->value_for( 'sources' );
+		my $sha         = $doc->value_for( 'sha' );
+		my $pmcjson     = $doc->value_for( 'pmc_json' );
+		my $pdfjson     = $doc->value_for( 'pdf_json' );
 						
 		# create a item
 		my $item =  &item;
@@ -154,6 +173,10 @@ else {
 		$item    =~ s/##DATE##/$date/ge;
 		$item    =~ s/##JOURNAL##/$journal/ge;
 		$item    =~ s/##ABSTRACT##/$abstract/ge;
+		$item    =~ s/##SOURCE##/$sources/ge;
+		$item    =~ s/##SHA##/$sha/ge;
+		$item    =~ s/##PMCJSON##/$pmcjson/ge;
+		$item    =~ s/##PDFJSON##/$pdfjson/ge;
 
 		# update the list of items
 		$items .= $item;
@@ -168,6 +191,7 @@ else {
 	$html =~ s/##HITS##/scalar( @hits )/e;
 	$html =~ s/##SEARCH2QUEUE##/$search2queue/e;
 	$html =~ s/##ITEMS##/$items/e;
+	$html =~ s/##FACETSSOURCE##/join( '; ', @facet_source )/e;
 	$html =~ s/##FACETSAUTHOR##/join( '; ', @facet_author )/e;
 	$html =~ s/##FACETSJOURNAL##/join( '; ', @facet_journal )/e;
 	$html =~ s/##FACETSYEAR##/join( '; ', @facet_year )/e;
@@ -225,12 +249,16 @@ sub item {
 	#my $url         = shift;
 	
 	my $item  = "<li class='item'><strong>##TITLE##</strong><ul>";
-	$item    .= "<li style='list-style-type:circle'>##ABSTRACT##</li>";
-	$item    .= "<li style='list-style-type:circle'>##DATE##</li>";
-	$item    .= "<li style='list-style-type:circle'>##JOURNAL##</li>";
-	$item    .= "<li style='list-style-type:circle'>##URL##</li>";
-	$item    .= "<li style='list-style-type:circle'>##DOI##</li>";
-	$item    .= "<li style='list-style-type:circle'>##DOCUMENTID##</li>";
+	$item    .= "<li style='list-style-type:circle'>abstract: ##ABSTRACT##</li>";
+	$item    .= "<li style='list-style-type:circle'>date: ##DATE##</li>";
+	$item    .= "<li style='list-style-type:circle'>journal: ##JOURNAL##</li>";
+	$item    .= "<li style='list-style-type:circle'>URL: ##URL##</li>";
+	$item    .= "<li style='list-style-type:circle'>DOI: ##DOI##</li>";
+	$item    .= "<li style='list-style-type:circle'>local id:##DOCUMENTID##</li>";
+	$item    .= "<li style='list-style-type:circle'>source: ##SOURCE##</li>";
+	$item    .= "<li style='list-style-type:circle'>sha: ##SHA##</li>";
+	$item    .= "<li style='list-style-type:circle'>PMC JSON: ##PMCJSON##</li>";
+	$item    .= "<li style='list-style-type:circle'>PDF JSON: ##PDFJSON##</li>";
 	$item    .= "</ul></li>";
 	
 	return $item;
@@ -242,6 +270,8 @@ sub item {
 # root template
 sub template {
 
+	my $link = EVERYTHING;
+	
 	return <<EOF
 <html>
 <head>
@@ -267,18 +297,18 @@ sub template {
 <div class="col-9 col-m-9">
 
 	<p>Use these pages to search the CORD data set and possibly queue the creation of study carrels. Enter a query.</p>
-	<p>
 	<form method='GET' action='./'>
-	Query: <input type='text' name='query' value='##QUERY##' size='50' autofocus="autofocus"/>
+	<textarea name='query' autofocus="autofocus" cols='50' rows='10' style='font-size: large'>##QUERY##</textarea><br />
 	<input type='submit' value='Search' />
 	</form>
+	<p>Here's a helpful hint. Find <a href='$link'>all records containing full text</a>.</p>
 
 	##RESULTS##
 
 	<div class="footer">
 		<p style='text-align: right'>
 		Eric Lease Morgan &amp; Team Project CORD<br />
-		May 24, 2020
+		August 3, 2020
 		</p>
 	</div>
 
@@ -319,7 +349,7 @@ sub results_template {
 	<div class="col-6 col-m-6">
 		<p>
 		<form method='GET' action='./'>
-		Query: <input type='text' name='query' value='##QUERY##' size='50' autofocus="autofocus"/>
+		<textarea name='query' autofocus="autofocus" cols='50' rows='10' style='font-size: large'>##QUERY##</textarea><br />
 		<input type='submit' value='Search' />
 		</form>
 		
@@ -328,6 +358,7 @@ sub results_template {
 	</div>
 	
 	<div class="col-3 col-m-3">
+	<h3>Source facets</h3><p>##FACETSSOURCE##</p>
 	<h3>Year facets</h3><p>##FACETSYEAR##</p>
 	<h3>Entity facets</h3><p>##FACETSENTITY##</p>
 	<h3>Entity type facets</h3><p>##FACETSTYPE##</p>

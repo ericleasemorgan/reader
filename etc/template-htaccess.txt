@@ -1,0 +1,5 @@
+AuthType Basic
+AuthName "Authentication Required"
+AuthUserFile "/data-disk/etc/reader-htpasswd"
+Require user ##PATRON##
+HeaderName /includes/header-patron.html

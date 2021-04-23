@@ -1,0 +1,5 @@
+LONGNAME	BCG Vaccine
+SCOPENOTE	This carrel was created from a Distant Reader query of CORD19 dataset on May 28, 2020. The query was: (Bacille Calmette-Guerin) AND (COVID-19 or Covid19  or SARS-CoV-2 or CoV-2).  <a href="./study-carrel.zip">Download this study carrel</a> for off-line viewing, and <a href="./MANIFEST.htm">read the manifest</a> to see more. 
+CREATOR	Natalie Meyers
+EMAIL	natalie.meyers@nd.edu
+CREATIONDATE	June 19 , 2020

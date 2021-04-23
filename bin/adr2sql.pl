@@ -26,6 +26,7 @@ my $key        =  basename( $tsv ,  ( '.adr' ) );
 my @parts      =  split( '-', $key );
 my $documentid =  $parts[ 1 ];
 $documentid    =~ s/^0+//;
+$documentid    = $key;
 
 # debug
 warn "$key\n";

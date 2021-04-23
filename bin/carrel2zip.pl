@@ -9,8 +9,10 @@
 
 
 # configure
+use constant READERCORD_HOME => $ENV{ 'READERCORD_HOME' };
+
 use constant ETC     => 'etc';
-use constant CARRELS => '/export/reader/carrels';
+use constant CARRELS =>  READERCORD_HOME . '/carrels';
 use constant READER  => 'reader';
 
 # require

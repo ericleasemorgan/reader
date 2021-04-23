@@ -124,7 +124,7 @@ statistics = textacy.text_stats.TextStats( doc )
 words      = statistics.n_words 
 sentences  = statistics.n_sents 
 syllables  = statistics.n_syllables
-flesch     = int( textacy.text_stats.flesch_reading_ease( syllables, words, sentences ) )
+flesch     = int( textacy.text_stats.readability.flesch_reading_ease( syllables, words, sentences ) )
 
 # output header, data, and then done
 print( "\t".join( ( 'id', 'author', 'title', 'date', 'pages', 'extension', 'mime', 'words', 'sentences', 'flesch', 'summary', 'cache', 'txt' ) ) )

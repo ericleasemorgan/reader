@@ -6,10 +6,9 @@
 # August 17, 2019 - while investigating Philadelphia as a place to "graduate"
 
 
-CARRELS='/export/reader/carrels'
-LISTQUESTIONS='/export/reader/bin/list-questions.pl'
-TXT='./txt/*.txt'
-PARALLEL='/export/bin/parallel'
+CARRELS="$READERCORD_HOME/carrels"
+LISTQUESTIONS='list-questions.pl'
+TXT='./txt'
 
 if [[ -z $1 ]]; then
 	echo "Usage: $0 <short-name>"  >&2
@@ -23,5 +22,5 @@ CARREL=$1
 cd "$CARRELS/$CARREL"
 
 # do the work and done
-find $TXT | while read FILE; do echo $( basename "$FILE" .txt ); done | $PARALLEL --will-cite $LISTQUESTIONS {}
+find $TXT -type f | while read FILE; do echo $( basename "$FILE" .txt ); done | parallel $LISTQUESTIONS
 exit

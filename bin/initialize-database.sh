@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# initialize-db.sh - given the name of a directory, initialize a distant reader database
+# initialize-database.sh - given the name of a directory, initialize a distant reader database
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame and distributed under a GNU Public License
@@ -11,7 +11,7 @@
 # configure
 ETC='etc'
 DATABASE="reader.db"
-SCHEMA='/export/reader/etc/reader.sql'
+SCHEMA="$READERCORD_HOME/etc/reader.sql"
 
 # sanity check
 if [[ -z "$1" ]]; then

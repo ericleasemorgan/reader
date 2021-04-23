@@ -11,7 +11,7 @@
 echo "=== file2bib.sh ===" >&2
 
 # configure
-FILE2BIB='/export/reader/bin/file2bib.py'
+FILE2BIB='file2bib.py'
 BIB='bib'
 
 # set up environment

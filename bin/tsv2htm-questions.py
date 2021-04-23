@@ -1,7 +1,12 @@
 #!/usr/bin/env python
 
+# pre-require and configure
+import os
+READERCORD_HOME = os.environ[ 'READERCORD_HOME' ]
+
+
 # configure
-TEMPLATE = '/export/reader/etc/tsv2htm-questions.htm'
+TEMPLATE = READERCORD_HOME + '/etc/tsv2htm-questions.htm'
 
 # require
 import sys

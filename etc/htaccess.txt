@@ -1,8 +1,0 @@
-htpasswd -b /export/www/passwd catholic pamphlets
-
-AuthType Basic
-AuthName "Restricted Files"
-AuthUserFile "/export/www/passwd"
-Require user catholic
-
-

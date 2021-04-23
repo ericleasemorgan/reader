@@ -1,0 +1,162 @@
+
+
+Caching, enhancing, and indexing CORD: Tutorial #4
+==================================================
+
+This text outlines how to cache, enhance, and index the CORD data set. Everything is executed from the Reader's home directory, and as of this writing, that directory is /export/reader on the machine at 149.165.170.42.
+
+
+Part I - Step #1
+----------------
+
+CORD is manifested as a number of different files (tarballs), and the URLs of these files are configured at the top of ./bin/cache.sh. At the top of ./bin/cache.sh are also configurations for where the files will be... cached. Assuming CORD has not moved, you can cache the remote data with the following command:
+
+  $ ./bin/cache.sh
+
+Ironically, the longest part of the process of the copying of the uncompressed JSON files to the JSON directory. As a file system, NFS is not speedy, and I suppose this operation can be greatly improved. The caching process takes about 10 minutes to complete. 
+
+
+Part I - Step #2
+----------------
+
+The next step is to read the cached metadata file (./cord/etc/metadata.csv) and create bunches o' files in the form of SQL INSERT statements.  Like this:
+
+  $ ./bin/metadata2sql-cord.py
+
+I suppose this process could be parallel-ized, but it seems to run quickly enough. Observe the value of "index" in standard error to monitor: 1) the progress of the process, and 2) the size of the data set. As of this writing, the later is about 192,000 items!
+
+
+Part I - Step #3
+----------------
+
+It is now time to initialize our CORD database, and you might want to manually rename the existing cord database (./etc/cord.db) to something like ./etc/x-cord.db, just in case something stupid happens. To see the structure of the database, take a gander at ./etc/schema-cord.sql. When ready, run this:
+
+  $ ./bin/db-initialize.sh
+
+Initialization will happen in the blink of an eye.
+
+
+Part I - Step #4
+----------------
+
+We can now fill the database with the metadata extracted in Step #2:
+
+  $ ./bin/sql2db.sh
+
+This process works by initializing an SQL TRANSACTION, concatenating all of the files in ./cord/sql to the TRANSACTION, closing the TRANSACTION, and submitting the result to SQLite. If this process fails, then it is probably because of an SQL syntax error. If this doesn't fail, then we can pat ourselves on the back because programmatically creating a couple hundred thousand SQL files with zero syntax errors is pretty good.
+
+This process takes about 60 seconds, and the technique is akin to the reduce step of the map/reduce process. This technique is used throughout the Reader process and has eliminated the need for a server-based database application. SQLite works quite well.
+
+For extra credit, you can now query the database with commands such as:
+
+  * echo "SELECT COUNT( document_id ) FROM documents;" | sqlite3 ./etc/cord.db
+  * echo "SELECT year, COUNT( year ) AS c FROM documents GROUP BY year ORDER BY c DESC;" | sqlite3 ./etc/cord.db
+  * echo "SELECT COUNT( source ) AS c, source FROM documents GROUP BY source ORDER BY c DESC;" | sqlite3 ./etc/cord.db
+
+In the later case, notice how multiple values are stored in single fields; as distributed, CORD is not in a normalized form. Consequently, further processing necessary. 
+
+
+Part I - Step #5
+----------------
+
+To make the cached data set more database friendly, a number of different fields need to be parsed and the results copied to other fields. This is done with a pretty advanced SQL technique. See ./etc/sources2source.sql. To do the normalization, run the following four commands:
+
+  $ cat ./etc/authors2author.sql | sqlite3 ./etc/cord.db
+  $ cat ./etc/sources2source.sql | sqlite3 ./etc/cord.db
+  $ cat ./etc/urls2url.sql | sqlite3 ./etc/cord.db
+  $ cat ./etc/shas2sha.sql | sqlite3 ./etc/cord.db
+
+Splitting and then creating new data from the splits is pretty fast.
+
+Now you can run additional queries and get a better understanding of the data set:
+
+  * echo "SELECT COUNT( source ) AS c, source FROM sources GROUP BY source ORDER BY c DESC;" | sqlite3 ./etc/cord.db
+  * echo "SELECT COUNT( author ) AS c, author FROM authors GROUP BY author ORDER BY c DESC LIMIT 50;" | sqlite3 ./etc/cord.db
+
+Given the last query, ask yourself, "Did Wei Wang really author more than 250 articles on COVID-19?" Well, let's see. Try this advanced query:
+
+  * echo -e ".mode tabs\n.headers on\nSELECT a.author, d.title FROM authors AS a documents as d WHERE d.document_id = a.document_id AND a.author is 'Wang, Wei' ORDER BY d.title;" | sqlite3 ./etc/cord.db
+
+By viewing the results one can see there are duplicate records in the data set. Managing the duplicates is an exercise for later. 
+
+
+Part I - One script to rule them all, mostly
+--------------------------------------------
+
+All of the things outlined above can be done with "one script to rule them all". If you trust the process, then you can run the following, but you must be patient. If you had to download and manage 200,000 journal articles, then it would take you a long time too:
+
+  $ ./bin/build-step-01.sh
+
+
+Part II - Step #1
+-----------------
+
+The next part of the process is all about feature extraction (enhancement), and the first step is the transformation of the JSON files into something looking more like narrative texts. The following sbatch command ought to do the work:
+
+  $ sbatch json2corpus.slurm
+
+Taking at least a few hours to complete, the process is not fast, but it can be improved. 'More on the possible improvements below.
+
+The result of this process is the creation of a pile o' plain text files in ./cord/txt. Each file has the shape of an mbox file or an HTTP response; the first few lines (the header) are name/value pairs denoting metadata values. The "body" of the text is delimited from the header with a blank line, and the body contains paragraphs of text.
+
+
+Part II - Steps #2 and #3
+-------------------------
+
+The nexts steps are very similar to each other -- extracting named-entities and calculating keywords. These two processes are accomplished with the following two sbatch commands:
+
+  $ sbatch ./bin/txt2ent-cord.slurm
+  $ sbatch ./bin/txt2keywords-cord.slurm
+
+These scripts result in sets of tab-delimited files saved in the ./cord/ent and ./cord/wrd directories, respectively.
+
+Like Part II - Step #1, these processes take too long to complete - something like twenty-four hours, but they too can be greatly improved. 
+
+
+Part II - Steps #4 and #5
+-------------------------
+
+After the features have been extracted ("mapped"), they need to be added to the underlying database ("reduced"). The first part of this process is the transformation of the tab-delimited files from immediately above into SQL statements. Here's how to do the good work:
+
+  $ sbatch ./bin/ent2sql-cord.slurm
+  $ sbatch ./bin/wrd2sql-cord.slurm
+
+These two processes are much faster that some of the other processes, but they too can be optimized. The processes result in two sets of SQL INSERT statements saved as individual files in ./cord/sql-ent and ./cord/sql-wrd.
+
+
+Part II - Steps #6 and #7
+-------------------------
+
+Given sets of SQL INSERT statements saved as files (the results of the previous step) you can now actually save them to the database (./etc/cord.db). This is done like this:
+
+  $ ./bin/reduce-ent-cord.sh
+  $ ./bin/reduce-wrd-cord.sh
+
+This process is exactly the same as Part I - Step #4, and if it fails, then it is probably because of an SQL syntax error. If it doesn't fail, then we can pat ourselves on the back.
+
+
+Part II - Step #8
+-----------------
+
+The database is now filled with as much information as we are going to give it, and we can now create a report against the database outlining the database's content. This is done with rudimentary SQL (./etc/summarize.sql) and executed like this:
+
+  ./bin/summarize.sh > ./report.txt
+
+
+Part II - Optimization and automation
+-------------------------------------
+
+The whole of the steps in this part of the process (Part II) needs to be optimized and automated. Optimization requires changing the way Steps #1 through #5 are executed. Presently, a virtual machine is created, a list of files to proces is created, and each file is submitted to a utility called "parallel". This implementation limits processing to the size of the virtual machine, which is 24 cores. A "better" what do to this work is to: 1) create a list (array) of files to process, 2) determine the number elements in the list, and 3) submit an sbatch job which loops through the array. Using this process we will exploit each and every idle core in our cluster; using this process we can probably run things against 120 cords instead of 24. On the other hand, a job array can be no larger than 1000 items long and we have 200,000 items to process. Hmmm!
+
+This process also needs to be automated. Each of the steps needs to be executed after the previous ones are complete, but as of this writing I don't know how to submit an sbatch command and learn when it has been completed. Help!?
+
+
+Part III - Indexing
+-------------------
+
+The data has been harvested. Its metadata has been saved to the database. The data has been transformed into something human-readable (plain text). The metadata has been enhanced with named-entities and keywords. It is now time to make the content searchable. This is done with Solr and is documented elsewhere. 
+
+
+--
+Eric Lease Morgan <emorgan@nd.edu>
+July 21, 2020

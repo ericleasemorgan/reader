@@ -9,19 +9,18 @@
 
 
 # configure
-CARREL2ABOUT='/export/reader/bin/carrel2about.py'
-CARREL2JSON='/export/reader/bin/carrel2json.py'
-CARREL2SEARCH='/export/reader/bin/carrel2search.pl'
-CARRELS='/export/reader/carrels'
-DB2BIBLIOGRAPHICS='/export/reader/bin/db2tsv-bibliographics.py'
-DB2TOPICMODEL='/export/reader/bin/db2topicmodel.pl'
-LISTQUESTIONS='/export/reader/bin/list-questions.sh'
-PARALLEL='/export/bin/parallel'
-TSV2BIBLIOGRAPHICS='/export/reader/bin/tsv2htm-bibliographics.py'
-TSV2COMPLEX='/export/reader/bin/tsv2htm-complex.py'
-TSV2ENTITIES='/export/reader/bin/tsv2htm-entities.py'
-TSV2HTM='/export/reader/bin/tsv2htm.py'
-TSV2QUESTIONS='/export/reader/bin/tsv2htm-questions.py'
+CARREL2ABOUT='carrel2about.py'
+CARREL2JSON='carrel2json.py'
+CARREL2SEARCH='carrel2search.pl'
+CARRELS="$READERCORD_HOME/carrels"
+DB2BIBLIOGRAPHICS='db2tsv-bibliographics.py'
+DB2TOPICMODEL='db2topicmodel.pl'
+LISTQUESTIONS='list-questions.sh'
+TSV2BIBLIOGRAPHICS='tsv2htm-bibliographics.py'
+TSV2COMPLEX='tsv2htm-complex.py'
+TSV2ENTITIES='tsv2htm-entities.py'
+TSV2HTM='tsv2htm.py'
+TSV2QUESTIONS='tsv2htm-questions.py'
 TXT='txt/*.txt'
 
 # sanity check
@@ -68,25 +67,20 @@ $DB2BIBLIOGRAPHICS > ./tsv/bibliographics.tsv
 $TSV2BIBLIOGRAPHICS ./tsv/bibliographics.tsv > ./htm/bibliographics.htm
 
 # list questions
-echo "==== make-pages.sh questions" >&2
+echo "==== make-pages.sh questions [ERIC WAS HERE]" >&2
 echo -e "identifier\tquestion"      > ./tsv/questions.tsv
 $LISTQUESTIONS $CARREL             >> ./tsv/questions.tsv
 $TSV2QUESTIONS ./tsv/questions.tsv  > ./htm/questions.htm
 
 # create search page
 echo "==== make-pages.sh search" >&2
-$CARREL2SEARCH $CARREL > ./htm/search.htm
+$CARREL2SEARCH $CARREL > "$READERCORD_HOME/tmp/search.htm"
+tsv2htm-search.py ./tsv/bibliographics.tsv > ./htm/search.htm
 
 # create data and page for topic modeling
 echo "==== make-pages.sh topic modeling corpus" >&2
 $DB2TOPICMODEL > ./etc/model-data.txt
-cp /export/reader/etc/template-model.htm ./htm/topic-model.htm
-
-# create cool network diagram ("Thanks, Team JAMS!")
-#echo "==== make-pages.sh network diagram" >&2
-#$CARREL2JSON > ./etc/network-graph.json
-#cp /export/reader/etc/template-diagram.htm ./htm/network-diagram.htm
-
+cp "$READERCORD_HOME/etc/template-model.htm" ./htm/topic-model.htm
 
 # done
 wait

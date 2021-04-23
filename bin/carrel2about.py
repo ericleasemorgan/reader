@@ -12,20 +12,29 @@
 # September 14, 2019 - fixed unigrams & bigrams; Yoda says, "Really ugly, they are."
 # June       4, 2020 - added additional entity types
 # June      26, 2020 - removed lower-casing of proper nouns, but the values themselves seem bogus
+# July       9, 2020 - removed (some) stopword from the output; enhanced output with some provenance; linked to txt (not cache)
+
+
+# pre-require and configure
+import os
+READERCORD_HOME = os.environ[ 'READERCORD_HOME' ]
 
 
 # configure
-CLOUD      = '/export/reader/bin/cloud.py'
+CLOUD      = 'cloud.py'
 CLOUDCOUNT = 150
 CORPUS     = './etc/reader.txt'
 COUNT      = 50
 DATABASE   = './etc/reader.db'
 DIRECTORY  = './txt'
-NGRAMS     = '/export/reader/bin/ngrams.pl'
-PLOTFLESCH = '/export/reader/bin/plot-flesch.sh'
-PLOTSIZES  = '/export/reader/bin/plot-sizes.sh'
-TOPICMODEL = '/export/reader/bin/topic-model.py'
-TEMPLATE   = '/export/reader/etc/about.htm'
+NGRAMS     = 'ngrams.pl'
+PLOTFLESCH = 'plot-flesch.sh'
+PLOTSIZES  = 'plot-sizes.sh'
+TOPICMODEL = 'topic-model.py'
+TEMPLATE   = READERCORD_HOME + '/etc/template-cord2carrel.htm'
+STOPWORDS  = READERCORD_HOME + '/etc/stopwords.txt'
+PROVENANCE = './provenance.tsv'
+PATRONS    = '/data-disk/etc/reader-patrons.db'
 
 # require
 from sqlalchemy import create_engine
@@ -62,6 +71,7 @@ def id2bibliographics( id, engine ) :
 	bibliographics.update( { "title"     : result.at[ 0, 'title' ] } )
 	bibliographics.update( { "txt"       : result.at[ 0, 'txt' ] } )
 	bibliographics.update( { "words"     : result.at[ 0, 'words' ] } )
+	bibliographics.update( { "url"       : result.at[ 0, 'url' ] } )
 
 	# done
 	return bibliographics
@@ -97,6 +107,7 @@ def addBibliographics( df, engine ) :
 	titles  = []
 	dates   = []
 	caches  = []
+	urls    = []
 
 	# process each row in the given dataframe
 	for index, row in df.iterrows() :
@@ -106,6 +117,7 @@ def addBibliographics( df, engine ) :
 		title  = []
 		date   = []
 		cache  = []
+		url    = []
 		
 		# process each file
 		for id in row[ 'files'].split( ';' ) :
@@ -116,7 +128,7 @@ def addBibliographics( df, engine ) :
 			
 			id.replace( "'", "''" )
 
-			query = 'SELECT author, title, date, cache FROM bib where id is "{}"'.format( id )
+			query = 'SELECT author, title, date, txt, url FROM bib where id is "{}"'.format( id )
 
 			# search, and conditionally update
 			result = pd.read_sql_query( query, engine )
@@ -128,6 +140,7 @@ def addBibliographics( df, engine ) :
 				title.append( '' )
 				date.append( '' )
 				cache.append( '' )
+				url.append( '' )
 				
 			# update with found values
 			else :
@@ -143,18 +156,23 @@ def addBibliographics( df, engine ) :
 											
 				if ( result.iloc[ 0, 3 ] ) : cache.append( result.iloc[ 0, 3 ] )
 				else : cache.append( '' )
+				
+				if ( result.iloc[ 0, 4 ] ) : url.append( result.iloc[ 0, 4 ] )
+				else : url.append( '' )
 											
 		# update
 		authors.append( '|'.join( author ) )
 		titles.append( '|'.join( title ) )
 		dates.append( '|'.join( date ) )
 		caches.append( '|'.join( cache ) )
+		urls.append( '|'.join( url ) )
 
 	# add bibliographic columns to the dataframe and done
 	df['authors'] = authors 
 	df['titles']  = titles 
 	df['dates']   = dates 
-	df['caches']   = caches 
+	df['caches']  = caches 
+	df['urls']    = urls 
 	return( df )
 
 
@@ -169,6 +187,7 @@ def readModel( directory, engine, t, d, f ) :
 	words  = []
 	files  = []
 	titles = []
+	urls   = []
 	
 	# process each topic in the DataFrame
 	for index, row in df.iterrows() :
@@ -179,16 +198,26 @@ def readModel( directory, engine, t, d, f ) :
 		items = items.split( '|' )
 		files.append( items[ 0:f ] )
 		
+		items = row[ 'urls' ]
+		items = items.split( '|' )
+		urls.append( items[ 0:f ] )
+		
 		items = row[ 'titles' ]
 		items = items.split( '|' )
 		titles.append( items[ 0:f ] )
 
 	# done
-	return words, files, titles
+	return words, urls, titles, files
 	
 	
 # initialize
 engine = create_engine( 'sqlite:///' + DATABASE )
+
+# initialize stopwords
+handle    = open( STOPWORDS, 'r' )
+stopwords = handle.read().split( '\n' )
+handle.close()
+
 
 # number of items
 numberOfItems = pd.read_sql_query( 'SELECT COUNT( id ) FROM bib', engine )
@@ -214,6 +243,7 @@ if( not os.path.exists( './figures/flesch-boxplot.png' ) )   : subprocess.run( [
 
 # nouns
 nouns = pd.read_sql_query( "select lower(token) as 'noun', count(lower(token)) as frequency from pos where pos is 'NN' or pos is 'NNS' group by lower(token) order by frequency desc", engine )
+nouns = nouns[ ~nouns[ 'noun' ].isin( stopwords ) ]
 if ( not os.path.exists( './tsv/nouns.tsv' ) ) : nouns.to_csv( './tsv/nouns.tsv', sep='\t', columns=[ 'noun', 'frequency' ], index=False )
 if ( not os.path.exists( './figures/nouns.png' ) ) :
 	data = nouns[ 0:CLOUDCOUNT ]
@@ -222,7 +252,8 @@ if ( not os.path.exists( './figures/nouns.png' ) ) :
 nouns = nouns[ 'noun' ].iloc[ : COUNT ].tolist()
 
 # verbs
-verbs = pd.read_sql_query( "select lower(token) as 'verb', count(lower(token)) as frequency from pos where pos like 'VB%%' group by lower(token) order by frequency desc", engine )
+verbs = pd.read_sql_query( "select lower(token) as 'verb', count(lower(lemma)) as frequency from pos where pos like 'VB%%' group by lower(lemma) order by frequency desc", engine )
+verbs = verbs[ ~verbs[ 'verb' ].isin( stopwords ) ]
 if ( not os.path.exists( './tsv/verbs.tsv' ) ) : verbs.to_csv( './tsv/verbs.tsv', sep='\t', columns=[ 'verb', 'frequency' ], index=False )
 if ( not os.path.exists( './figures/verbs.png' ) ) :
 	data = verbs[ 0:CLOUDCOUNT ]
@@ -230,9 +261,9 @@ if ( not os.path.exists( './figures/verbs.png' ) ) :
 	subprocess.run( [ CLOUD, './tmp/verbs.tsv', 'white', './figures/verbs.png' ] )
 verbs = verbs[ 'verb' ].iloc[ : COUNT ].tolist()
 
-
 # adjectives
 adjectives = pd.read_sql_query( "select lower(token) as 'adjective', count(lower(token)) as frequency from pos where pos like 'J%%' group by lower(token) order by frequency desc", engine )
+adjectives = adjectives[ ~adjectives[ 'adjective' ].isin( stopwords ) ]
 if ( not os.path.exists( './tsv/adjectives.tsv' ) ) : adjectives.to_csv( './tsv/adjectives.tsv', sep='\t', columns=[ 'adjective', 'frequency' ], index=False )
 if ( not os.path.exists( './figures/adjectives.png' ) ) :
 	data = adjectives[ 0:CLOUDCOUNT ]
@@ -243,6 +274,7 @@ adjectives = adjectives[ 'adjective' ].iloc[ : COUNT ].tolist()
 
 # adverbs
 adverbs = pd.read_sql_query( "select lower(token) as 'adverb', count(lower(token)) as frequency from pos where pos like 'R%%' group by lower(token) order by frequency desc", engine )
+adverbs = adverbs[ ~adverbs[ 'adverb' ].isin( stopwords ) ]
 if ( not os.path.exists( './tsv/adverbs.tsv' ) ) : adverbs.to_csv( './tsv/adverbs.tsv', sep='\t', columns=[ 'adverb', 'frequency' ], index=False )
 if ( not os.path.exists( './figures/adverbs.png' ) ) :
 	data = adverbs[ 0:CLOUDCOUNT ]
@@ -252,6 +284,7 @@ adverbs = adverbs[ 'adverb' ].iloc[ : COUNT ].tolist()
 
 # pronouns
 pronouns = pd.read_sql_query( "select lower(token) as 'pronoun', count(lower(token)) as frequency from pos where pos like 'PR%%' group by lower(token) order by frequency desc", engine )
+propepronounsrNouns = pronouns[ ~pronouns[ 'pronoun' ].isin( stopwords ) ]
 if ( not os.path.exists( './tsv/pronouns.tsv' ) ) : pronouns.to_csv( './tsv/pronouns.tsv', sep='\t', columns=[ 'pronoun', 'frequency' ], index=False )
 if ( not os.path.exists( './figures/pronouns.png' ) ) :
 	data = pronouns[ 0:CLOUDCOUNT ]
@@ -261,6 +294,7 @@ pronouns = pronouns[ 'pronoun' ].iloc[ : COUNT ].tolist()
 
 # proper nouns
 properNouns = pd.read_sql_query( "select token as 'proper', count(token) as frequency from pos where pos like 'NNP%%' group by token order by frequency desc", engine )
+properNouns = properNouns[ ~properNouns[ 'proper' ].isin( stopwords ) ]
 if ( not os.path.exists( './tsv/proper-nouns.tsv' ) ) : properNouns.to_csv( './tsv/proper-nouns.tsv', sep='\t', columns=[ 'proper', 'frequency' ], index=False )
 if ( not os.path.exists( './figures/proper-nouns.png' ) ) :
 	data = properNouns[ 0:CLOUDCOUNT ]
@@ -270,8 +304,9 @@ properNouns = properNouns[ 'proper' ].iloc[ : COUNT ].tolist()
 
 # keywords
 keywords = pd.read_sql_query( "select lower( keyword ) as 'keyword', count( keyword ) as frequency from wrd group by lower( keyword ) order by frequency desc", engine )
+keywords = keywords[ ~keywords[ 'keyword' ].isin( stopwords ) ]
 if ( not os.path.exists( './tsv/keywords.tsv' ) ) : keywords.to_csv( './tsv/keywords.tsv', sep='\t', columns=[ 'keyword', 'frequency' ], index=False )
-if ( not os.path.exists( './figures/kekeywordsywords.png' ) ) :
+if ( not os.path.exists( './figures/keywords.png' ) ) :
 	data = keywords[ 0:CLOUDCOUNT ]
 	data.to_csv( './tmp/keywords.tsv', columns=[ 'keyword', 'frequency' ], header=False, sep='\t', index=False )
 	subprocess.run( [ CLOUD, './tmp/keywords.tsv', 'white', './figures/keywords.png' ] )
@@ -292,6 +327,7 @@ if ( not os.path.exists( './tsv/adjective-noun.tsv' ) ) :
 # named-entities
 if ( not os.path.exists( './tsv/entities.tsv' ) ) :
 	entities = pd.read_sql_query( "select lower(entity) as entity, type, count(lower(entity)) as frequency from ent where (type is 'TAXON' or type is 'DISEASE' or type is 'CHEMICAL' or type is 'PERSON' or type is 'GPE' or type is 'LOC' or type is 'ORG') group by entity order by frequency desc", engine )
+	#entities = pd.read_sql_query( "select entity as entity, type, count(entity) as frequency from ent group by entity order by frequency desc", engine )
 	entities.to_csv( './tsv/entities.tsv', columns=[ 'entity', 'type', 'frequency' ], sep='\t', index=False )
 
 # unigrams; really ugly!
@@ -319,9 +355,9 @@ unigramlinks = [ 'None', 'None', 'None' ]
 for item, file in enumerate( unigramfiles.rstrip().split( '\n' ) ) :
 	id = os.path.splitext( os.path.basename( file ) )[ 0 ]
 	bibliographics = id2bibliographics( id, engine )
-	cache = bibliographics.get('cache')
+	url = bibliographics.get('url')
 	title = bibliographics.get('title')
-	link = "<a href='{}'>{}</a>".format( cache, title )
+	link = "<a href='{}'>{}</a>".format( url, title )
 	unigramlinks[ item ] = link
 
 # bigrams; just as ugly
@@ -349,9 +385,9 @@ bigramlinks = [ 'None', 'None', 'None']
 for item, file in enumerate( bigramfiles.rstrip().split( '\n' ) ) :
 	id = os.path.splitext( os.path.basename( file ) )[ 0 ]
 	bibliographics = id2bibliographics( id, engine )
-	cache = bibliographics.get('cache')
+	url = bibliographics.get('url')
 	title = bibliographics.get('title')
-	link = "<a href='{}'>{}</a>".format( cache, title )
+	link = "<a href='{}'>{}</a>".format( url, title )
 	bigramlinks[ item ]= link 
 
 # trigrams
@@ -369,9 +405,9 @@ if ( not os.path.exists( './tsv/quadgrams.tsv' ) ) :
 	handle.close() 
 
 # topic model
-topicSingleWords, topicSingleFiles, topicSingleTitles          = readModel( DIRECTORY, engine, 1, 1, 1 )
-topicTripleWords, topicTripleFiles, topicTripleTitles          = readModel( DIRECTORY, engine, 3, 1, 1 )
-topicQuintupleWords, topicQuintupleFiles, topicQuintupleTitles = readModel( DIRECTORY, engine, 5, 3, 1 )
+topicSingleWords, topicSingleUrls, topicSingleTitles, topicSingleFiles             = readModel( DIRECTORY, engine, 1, 1, 1 )
+topicTripleWords, topicTripleUrls, topicTripleTitles, topicTripleFiles             = readModel( DIRECTORY, engine, 3, 1, 1 )
+topicQuintupleWords, topicQuintupleUrls, topicQuintupleTitles, topicQuintupleFiles = readModel( DIRECTORY, engine, 5, 3, 1 )
 subprocess.check_output( TOPICMODEL + ' ./txt 5 3 ./figures/topics.png', shell=True )
 
 # debug
@@ -389,20 +425,56 @@ sys.stderr.write( '                   proper nouns: ' + '; '.join( properNouns )
 sys.stderr.write( '                       keywords: ' + '; '.join( keywords )    + '\n' )
 sys.stderr.write( '\n' )
 sys.stderr.write( '       one topic; one dimension: ' + '; '.join( topicSingleWords )                                         + '\n' )
-sys.stderr.write( '                        file(s): ' + ', '.join( [ '; '.join( files ) for files in topicSingleFiles ] )     + '\n' )
+sys.stderr.write( '                        file(s): ' + ', '.join( [ '; '.join( files ) for files in topicSingleUrls ] )     + '\n' )
 sys.stderr.write( '                      titles(s): ' + ' | '.join( [ '; '.join( titles ) for titles in topicSingleTitles ] ) + '\n' )
 sys.stderr.write( '\n' )
 sys.stderr.write( '    three topics; one dimension: ' + '; '.join( topicTripleWords )                                         + '\n' )
-sys.stderr.write( '                        file(s): ' + ', '.join( [ '; '.join( files ) for files in topicTripleFiles ] )     + '\n' )
+sys.stderr.write( '                        file(s): ' + ', '.join( [ '; '.join( files ) for files in topicTripleUrls ] )     + '\n' )
 sys.stderr.write( '                      titles(s): ' + ' | '.join( [ '; '.join( titles ) for titles in topicTripleTitles ] ) + '\n' )
 sys.stderr.write( '\n' )
 sys.stderr.write( '  five topics; three dimensions: ' + '; '.join( topicQuintupleWords )                                         + '\n' )
-sys.stderr.write( '                        file(s): ' + ', '.join( [ '; '.join( files ) for files in topicQuintupleFiles ] )     + '\n' )
+sys.stderr.write( '                        file(s): ' + ', '.join( [ '; '.join( files ) for files in topicQuintupleUrls ] )     + '\n' )
 sys.stderr.write( '                      titles(s): ' + ' | '.join( [ '; '.join( titles ) for titles in topicQuintupleTitles ] ) + '\n' )
 sys.stderr.write( '\n' )
 
+# read the provenance data
+with open( PROVENANCE, 'r' ) as handle : record = handle.read().strip()
+fields       = record.split( "\t" )
+type         = fields[ 0 ]
+nameofcarrel = fields[ 1 ]
+date         = fields[ 2 ]
+time         = fields[ 3 ]
+username     = fields[ 4 ]
+input        = fields[ 5 ]
+
+# given a username, get the name and email 
+engine = create_engine( 'sqlite:///' + PATRONS )
+query  = "SELECT name, email FROM patrons WHERE username is '{}'".format( username )
+result = pd.read_sql_query( query, engine )
+patron = result.at[ 0, 'name' ]
+email  = result.at[ 0, 'email' ]
+
+# debug
+sys.stderr.write( "      Type: " + type + '\n' )
+sys.stderr.write( "     title: " + nameofcarrel + '\n' )
+sys.stderr.write( "      date: " + date + '\n' )
+sys.stderr.write( "      time: " + time + '\n' )
+sys.stderr.write( "  username: " + username + '\n' )
+sys.stderr.write( "    patron: " + patron + '\n' )
+sys.stderr.write( "     email: " + email + '\n' )
+sys.stderr.write( "     input: " + input + '\n' )
+
+
 # open the template and do the substitutions
 with open( TEMPLATE, 'r' ) as handle : html = handle.read()
+html = html.replace( '##NAMEOFCARREL##',           nameofcarrel )
+html = html.replace( '##DATEOFCREATION##',           date )
+html = html.replace( '##TIMEOFCREATION##',           time )
+html = html.replace( '##PATRON##',           patron )
+html = html.replace( '##EMAILOFCREATOR##',           email )
+html = html.replace( '##INPUT##',                  input )
+html = html.replace( '##CREATIONPROCESS##',                  type )
+
 html = html.replace( '##NUMBEROFITEMS##',          str( numberOfItems ) )
 html = html.replace( '##SUMOFWORDS##',             str( sumOfWords ) )
 html = html.replace( '##AVERAGESIZEINWORDS##',     str( averageSizeInWords)  )
@@ -417,14 +489,14 @@ html = html.replace( '##PRONOUNS##',               ', '.join( pronouns ) )
 html = html.replace( '##ADJECTIVES##',             ', '.join( adjectives ) )
 html = html.replace( '##ADVERBS##',                ', '.join( adverbs ) )
 html = html.replace( '##TOPICSSINGLEWORD##',       topicSingleWords[ 0 ] )
-html = html.replace( '##TOPICSSINGLEFILE##',       topicSingleFiles[ 0 ][ 0 ] )
+html = html.replace( '##TOPICSSINGLEFILE##',       topicSingleUrls[ 0 ][ 0 ] )
 html = html.replace( '##TOPICSSINGLETITLE##',      topicSingleTitles[ 0 ][ 0 ] )
 html = html.replace( '##TOPICSTRIPLEWORD01##',     topicTripleWords[ 0 ] )
 html = html.replace( '##TOPICSTRIPLEWORD02##',     topicTripleWords[ 1 ] )
 html = html.replace( '##TOPICSTRIPLEWORD03##',     topicTripleWords[ 2 ] )
-html = html.replace( '##TOPICSTRIPLEFILE01##',     topicTripleFiles[ 0 ][ 0 ] )
-html = html.replace( '##TOPICSTRIPLEFILE02##',     topicTripleFiles[ 1 ][ 0 ] )
-html = html.replace( '##TOPICSTRIPLEFILE03##',     topicTripleFiles[ 2 ][ 0 ] )
+html = html.replace( '##TOPICSTRIPLEFILE01##',     topicTripleUrls[ 0 ][ 0 ] )
+html = html.replace( '##TOPICSTRIPLEFILE02##',     topicTripleUrls[ 1 ][ 0 ] )
+html = html.replace( '##TOPICSTRIPLEFILE03##',     topicTripleUrls[ 2 ][ 0 ] )
 html = html.replace( '##TOPICSTRIPLETITLE01##',    topicTripleTitles[ 0 ][ 0 ] )
 html = html.replace( '##TOPICSTRIPLETITLE02##',    topicTripleTitles[ 1 ][ 0 ] )
 html = html.replace( '##TOPICSTRIPLETITLE03##',    topicTripleTitles[ 2 ][ 0 ] )
@@ -433,11 +505,11 @@ html = html.replace( '##TOPICSQUINWORDS02##',      ', '.join( topicQuintupleWord
 html = html.replace( '##TOPICSQUINWORDS03##',      ', '.join( topicQuintupleWords[ 2 ].split( ' ' ) ) )
 html = html.replace( '##TOPICSQUINWORDS04##',      ', '.join( topicQuintupleWords[ 3 ].split( ' ' ) ) )
 html = html.replace( '##TOPICSQUINWORDS05##',      ', '.join( topicQuintupleWords[ 4 ].split( ' ' ) ) )
-html = html.replace( '##TOPICSQUINFILE01##',       topicQuintupleFiles[ 0 ][ 0 ] )
-html = html.replace( '##TOPICSQUINFILE02##',       topicQuintupleFiles[ 1 ][ 0 ] )
-html = html.replace( '##TOPICSQUINFILE03##',       topicQuintupleFiles[ 2 ][ 0 ] )
-html = html.replace( '##TOPICSQUINFILE04##',       topicQuintupleFiles[ 3 ][ 0 ] )
-html = html.replace( '##TOPICSQUINFILE05##',       topicQuintupleFiles[ 4 ][ 0 ] )
+html = html.replace( '##TOPICSQUINFILE01##',       topicQuintupleUrls[ 0 ][ 0 ] )
+html = html.replace( '##TOPICSQUINFILE02##',       topicQuintupleUrls[ 1 ][ 0 ] )
+html = html.replace( '##TOPICSQUINFILE03##',       topicQuintupleUrls[ 2 ][ 0 ] )
+html = html.replace( '##TOPICSQUINFILE04##',       topicQuintupleUrls[ 3 ][ 0 ] )
+html = html.replace( '##TOPICSQUINFILE05##',       topicQuintupleUrls[ 4 ][ 0 ] )
 html = html.replace( '##TOPICSQUINTITLE01##',      topicQuintupleTitles[ 0 ][ 0 ] )
 html = html.replace( '##TOPICSQUINTITLE02##',      topicQuintupleTitles[ 1 ][ 0 ] )
 html = html.replace( '##TOPICSQUINTITLE03##',      topicQuintupleTitles[ 2 ][ 0 ] )
