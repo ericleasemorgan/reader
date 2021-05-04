@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--+
+    | Distant Reader - DIHconfigfile.xml
+    |
+    | May 2020, Last revised: 
+    | July 22, 2020 - re-defined entities by ELM
+    +-->
+
+<!--
+    Set entity references for key parameters:
+
+    DB - location of the SQLite database.
+    FILELOC - location of fulltext TXT files with file prefix.
+-->
+<!-- ============ Edit the section below to match your solr server environment ============ -->
+<!DOCTYPE document [
+    <!ENTITY DB "/export/reader/etc/cord.db">
+    <!ENTITY FILELOC "/export/reader/cord/txt/cord">
+]>
+
+<!-- ============ Don't edit below unless you need to change the database mapping ============ -->
+<dataConfig>
+  <dataSource name="ddr1" url="jdbc:sqlite:&DB;" driver="org.sqlite.JDBC"/>
+  <dataSource name="ddr2" type="FileDataSource" encoding="UTF-8" />
+  <document>
+    <!-- processor for database, note no delete spec without trigger -->
+    <entity name="edr1" dataSource="ddr1" pk="id" onError="skip" processor="SqlEntityProcessor" 
+         query="SELECT document_id as id,substr('000000'||document_id, -6, 6) as cord_id, 
+                       title, date, year, journal, abstract, license, pdf_json, pmc_json, sha, 
+                       doi, arxiv_id, mag_id, pmc_id, pubmed_id, who_id,
+                       cord_uid, 'reader' as carrels from documents"
+         deltaQuery="SELECT document_id as id from documents WHERE timeStamp > '${dataimporter.last_index_time}'"
+    >
+        <!-- carrels -->
+        <field column="carrels"/>
+        <!-- authors -->
+        <entity name="authors" query="select document_id, author from authors where author != 'nan'"
+          cacheKey="document_id" cacheLookup="edr1.id" cacheImpl="SortedMapBackedCache"
+        >
+            <field column="author" name="authors" />
+            <field column="author" name="facet_authors" />
+        </entity>
+        <!-- keywords -->
+        <entity name="keywords" query="select document_id, keyword from wrd where keyword != 'nan'"
+          cacheKey="document_id" cacheLookup="edr1.id" cacheImpl="SortedMapBackedCache"
+        >
+            <field column="keyword" name="keywords" />
+            <field column="keyword" name="facet_keywords" />
+        </entity>
+        <!-- sources -->
+        <entity name="sources" query="select document_id, source from sources where source != 'nan'"
+          cacheKey="document_id" cacheLookup="edr1.id" cacheImpl="SortedMapBackedCache"
+        >
+            <field column="source" name="sources" />
+            <field column="source" name="facet_sources" />
+        </entity>
+        <!-- urls -->
+        <entity name="urls" query="select document_id, url from urls where url != 'nan'"
+          cacheKey="document_id" cacheLookup="edr1.id" cacheImpl="SortedMapBackedCache"
+        >
+            <field column="url" name="urls" />
+            <field column="url" name="facet_urls" />
+        </entity>
+        <!-- entity -->
+        <entity name="entity" 
+          query="select distinct entity, document_id from ent where entity != 'nan'"
+          cacheKey="document_id" cacheLookup="edr1.id" cacheImpl="SortedMapBackedCache"
+        >
+            <field column="entity" />
+            <field column="entity" name="facet_entity" />
+        </entity>
+        <!-- type -->
+        <entity name="type" 
+          query="select distinct type, document_id from ent where type != 'nan'"
+          cacheKey="document_id" cacheLookup="edr1.id" cacheImpl="SortedMapBackedCache"
+        >
+            <field column="type" />
+            <field column="type" name="facet_type" />
+        </entity>
+        <!-- document fields -->
+        <field column="title"/>
+        <field column="date"/>
+        <field column="year"/>
+        <field column="journal"/>
+        <field column="journal" name="facet_journal" />
+        <field column="abstract"/>
+        <field column="license"/>
+        <field column="license" name="facet_license" />
+        <field column="pdf_json"/>
+        <field column="pmc_json"/>
+        <field column="sha"/>
+        <field column="doi"/>
+        <field column="arxiv_id"/>
+        <field column="cord_uid"/>
+        <field column="mag_id"/>
+        <field column="pmc_id"/>
+        <field column="pubmed_id"/>
+        <field column="who_id"/>
+        <!-- processor for text files (which contain article text) -->
+        <!-- per Art, changed DrPlainText... to PlainText...
+             entity name="edr2" dataSource="ddr2" onError="skip" processor="DrPlainTextEntityProcessor"
+            url="&FILELOC;-${edr1.cord_id}-${edr1.cord_uid}.txt"
+        -->
+        <entity name="edr2" dataSource="ddr2" onError="skip" processor="PlainTextEntityProcessor" 
+            url="&FILELOC;-${edr1.cord_id}-${edr1.cord_uid}.txt"
+        > 
+            <field column="plainText" name="fulltext"/>
+        </entity>
+    </entity>
+  </document>
+</dataConfig>

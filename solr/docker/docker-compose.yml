@@ -1,0 +1,116 @@
+# a docker-compose.yml to start a simple cluster with three ZooKeeper nodes and three Solr nodes.
+#
+# To use:
+#
+# mkdir mycluster
+# cd mycluster
+# curl --output docker-compose.yml https://raw.githubusercontent.com/docker-solr/docker-solr-examples/master/docker-compose/docker-compose.yml
+# docker-compose up
+#
+version: '3.7'
+services:
+  solr1:
+    image: solr
+    container_name: solr1
+    ports:
+     - "8981:8983"
+    environment:
+      - ZK_HOST=zoo1:2181,zoo2:2181,zoo3:2181
+    networks:
+      - solr
+    depends_on:
+      - zoo1
+      - zoo2
+      - zoo3
+    volumes:
+      - "./sqlite-jdbc-3.30.1.jar:/opt/solr/server/solr-webapp/webapp/WEB-INF/lib/sqlite-jdbc-3.30.1.jar"
+      - "./cord:/opt/solr/server/solr/configsets/cord"
+      - "./custom.sh:/docker-entrypoint-initdb.d/custom.sh"
+
+  solr2:
+    image: solr
+    container_name: solr2
+    ports:
+     - "8982:8983"
+    environment:
+      - ZK_HOST=zoo1:2181,zoo2:2181,zoo3:2181
+    networks:
+      - solr
+    depends_on:
+      - zoo1
+      - zoo2
+      - zoo3
+    volumes:
+      - "./sqlite-jdbc-3.30.1.jar:/opt/solr/server/solr-webapp/webapp/WEB-INF/lib/sqlite-jdbc-3.30.1.jar"
+      - "./cord:/opt/solr/server/solr/configsets/cord"
+#      - "./custom.sh:/docker-entrypoint-initdb.d/custom.sh"
+
+  solr3:
+    image: solr
+    container_name: solr3
+    ports:
+     - "8983:8983"
+    environment:
+      - ZK_HOST=zoo1:2181,zoo2:2181,zoo3:2181
+    networks:
+      - solr
+    depends_on:
+      - zoo1
+      - zoo2
+      - zoo3
+    volumes:
+      - "./sqlite-jdbc-3.30.1.jar:/opt/solr/server/solr-webapp/webapp/WEB-INF/lib/sqlite-jdbc-3.30.1.jar"
+      - "./cord:/opt/solr/server/solr/configsets/cord"
+#      - "./custom.sh:/docker-entrypoint-initdb.d/custom.sh"
+
+  zoo1:
+    image: zookeeper
+    container_name: zoo1
+    restart: always
+    hostname: zoo1
+    ports:
+      - 2181:2181
+      - 7001:7000
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
+      ZOO_4LW_COMMANDS_WHITELIST: mntr, conf, ruok
+      ZOO_CFG_EXTRA: "metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider metricsProvider.httpPort=7000 metricsProvider.exportJvmInfo=true"
+    networks:
+      - solr
+
+  zoo2:
+    image: zookeeper
+    container_name: zoo2
+    restart: always
+    hostname: zoo2
+    ports:
+      - 2182:2181
+      - 7002:7000
+    environment:
+      ZOO_MY_ID: 2
+      ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
+      ZOO_4LW_COMMANDS_WHITELIST: mntr, conf, ruok
+      ZOO_CFG_EXTRA: "metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider metricsProvider.httpPort=7000 metricsProvider.exportJvmInfo=true"
+    networks:
+      - solr
+
+  zoo3:
+    image: zookeeper
+    container_name: zoo3
+    restart: always
+    hostname: zoo3
+    ports:
+      - 2183:2181
+      - 7003:7000
+    environment:
+      ZOO_MY_ID: 3
+      ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
+      ZOO_4LW_COMMANDS_WHITELIST: mntr, conf, ruok
+      ZOO_CFG_EXTRA: "metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider metricsProvider.httpPort=7000 metricsProvider.exportJvmInfo=true"
+    networks:
+      - solr
+
+networks:
+  solr:
+
