@@ -1,0 +1,79 @@
+
+
+SELinux and Project CORD: Tutorial #2
+
+In order to fulfill the self-imposed requirements of Project CORD, two HTTP interfaces are required. The first is a public interface, and the second is an internal interface. The public interface is no problem. Denote a directory where study carrels can be browsed, used, and downloaded. Configure Apache accordingly. Go. No CGI required. ("No CGI required." That's the point of study carrels.)
+
+The second interface is more problematic, because it is with this interface we will create the study carrels to begin with. Yes, command-line tools to create study carrels have been written, but because they are command-line tools, their usability is limited. A pseudo-GUI interface is all but required, and consequently CGI is required. This file documents how this is being implemented while SELinux is still turn on.
+
+
+Apache
+
+First, Apache is configured to listen on port 80. More specifically, it is configured to listen on port 80 on both localhost as well as the external interface. Apache is also configured to listen on the localhost on port 8080. This second configuration is the internal interface. Thus, httpd.conf contains the following directives:
+
+  Listen 80
+  Listen localhost:8080
+
+We can then create an Apache Virtual Host which tells the server what to allow when localhost connections are established:
+
+  <VirtualHost localhost:8080>
+	ServerAdmin emorgan@nd.edu
+	DocumentRoot /export/www/html/admin
+	Options Indexes ExecCGI FollowSymLinks
+	CustomLog /var/log/httpd/admin-access.log combined
+	ErrorLog /var/log/httpd/admin-error.log
+  </VirtualHost>
+
+In other words, there is an HTTP instance located on localhost, port 8080. emorgan@nd.edu has taken responsibility. The content is located in /export/www/html/admin. Directory browsing is enabled. CGI scripting is enabled. And the use of symbolic links is enabled. Finally, log files are denoted.
+
+
+SELinux
+
+The problem comes when SELinux is also enabled. As you may or may not know, SELinux is a RedHat-ish addition to Linux, and it is a way to provide enhanced operating system security. Unfortunately, sans a few SELinux configurations, our HTTP server will return all sort of permission denied errors with the CGI is run. The following commands resolve this situation. First we must make our specific CGI script executable:
+
+  $ sudo semanage fcontext -a -t httpd_sys_script_exec_t /export/www/html/admin/admin.cgi
+  $ sudo restorecon /export/www/html/admin/admin.cgi
+
+Second, because the CGI script needs to query our internal Solr instance, we need to allow network connections:
+
+  $ sudo setsebool -P httpd_can_network_connect 1
+
+In the future, our admin interface will need to write files and submit jobs. When that occurs a few more SELinux configurations will need to be put into place.
+
+
+Usage
+
+To actually use the internal interace, one needs to make an SSH connection to the host. Once there, a person can use a Web browser to connect to localhost on port 8080. Here is the simplest of examples:
+
+  $ ssh cord.distantreader.org
+  $ lynx http://localhost:8080
+
+But using a terminal interface can be cumbersome. If your desktop computer is runs Linux, Mac OS X, or Windows with the Bash subshell installed, then you can exploit SSH "forwarding". First, make an SSH connection to the host but forward ("bind") your localhost connection to the remote machine's localhost connection:
+
+  $ ssh -L localhost:8080:localhost:8080 cord.distantreader.org
+
+If you use a Windows computer, and if you use PuTTy as your SSH client, then use the command below to establish your SSH connection; PuTTY calls this process "tunneling":
+
+  > putty -L localhost:8080:localhost:8080 cord.distantreader.org
+
+Next, open your desktop computer's Web browser, and go to http://localhost:8080/  As a result, you ought to see and experience the internal interface, in all of its glory.
+
+
+Summary
+
+Project CORD requires two HTTP interfaces, external and internal. This file outlined how to set up the internal HTTP interface, enable CGI scripting, and interact with the internal interface using your desktop computer. For more detail, try some of the following links:
+
+  * https://selinuxproject.org/page/ApacheRecipes#Allow_the_Apache_HTTP_Server_to_run_CGI_scripts
+  * https://fedoraproject.org/wiki/SELinux/apache
+  * https://www.theskillpedia.com/cgi-scripts-and-selinux/
+  * https://unix.stackexchange.com/questions/50639/httpd-cant-write-to-folder-file-because-of-selinux
+  
+  * https://www.ccsl.carleton.ca/~falaca/comp4108_w17/ssh_putty/index.html
+  * https://intranet.cs.hku.hk/csintranet/contents/technical/howto/putty-portforward.jsp
+
+"Let's make study carrels!"
+
+
+--
+Eric Lease Morgan <emorgan@nd.edu>
+May 25, 2020 - Memorial Day-ing at the cabin

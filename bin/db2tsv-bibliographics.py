@@ -2,13 +2,17 @@
 
 # db2tsv-bibliographics.py - dump bibliographics as a TSV file
 
+# Eric Lease Morgan <emorgan@nd.edu>
+# (c) University of Notre Dame; distributed under a GNU Public License
+
 # September 15, 2019 - first cut
+# July      25, 2020 - added abstract, url, and doi
 
 
 # configure
 DATABASE = './etc/reader.db'
 QUERY    = 'SELECT * FROM bib ORDER BY author'
-HEADER   = 'id\tauthor\ttitle\tdate\twords\tsentences\tpages\tflesch\tcache\ttxt\tsummary'
+HEADER   = 'id\tauthor\ttitle\tdate\twords\tsentences\tpages\tflesch\tcache\ttxt\tsummary\tabstract\turl\tdoi'
 
 # require
 from sqlalchemy import create_engine
@@ -36,6 +40,9 @@ for index, row in bibliographics.iterrows() :
 	cache     = bibliographics.at[ index, 'cache' ]           if bibliographics.at[ index, 'cache' ]    else ''
 	txt       = bibliographics.at[ index, 'txt' ]             if bibliographics.at[ index, 'txt' ]      else ''
 	summary   = bibliographics.at[ index, 'summary' ]         if bibliographics.at[ index, 'summary' ]  else ''
+	abstract  = bibliographics.at[ index, 'abstract' ]        if bibliographics.at[ index, 'abstract' ] else ''
+	url       = bibliographics.at[ index, 'url' ]             if bibliographics.at[ index, 'url' ]      else ''
+	doi       = bibliographics.at[ index, 'doi' ]             if bibliographics.at[ index, 'doi' ]      else ''
 	
 	# debug
 	sys.stderr.write( '         id: {}\n'.format( id ) )
@@ -49,10 +56,13 @@ for index, row in bibliographics.iterrows() :
 	sys.stderr.write( '      cache: {}\n'.format( cache ) )
 	sys.stderr.write( '        txt: {}\n'.format( txt ) )
 	sys.stderr.write( '    summary: {}\n'.format( summary ) )
+	sys.stderr.write( '   abstract: {}\n'.format( abstract ) )
+	sys.stderr.write( '        url: {}\n'.format( url ) )
+	sys.stderr.write( '        doi: {}\n'.format( doi ) )
 	sys.stderr.write( '\n' )
 
 	# output
-	print( '\t'.join( [ id, author, title, date, words, sentences, pages, flesch, cache, txt, summary ] ) )
+	print( '\t'.join( [ id, author, title, date, words, sentences, pages, flesch, cache, txt, summary, abstract, url, doi ] ) )
 
 # done
 exit()

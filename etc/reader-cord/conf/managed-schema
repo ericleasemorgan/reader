@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Solr managed schema - automatically generated - DO NOT EDIT -->
+<schema name="reader-cord" version="1.6">
+
+  <uniqueKey>id</uniqueKey>
+  <fieldType name="int" class="solr.TrieIntField" positionIncrementGap="0" docValues="true" precisionStep="0"/>
+  <fieldType name="long" class="solr.TrieLongField" positionIncrementGap="0" docValues="true" precisionStep="0"/>
+  <fieldType name="string" class="solr.StrField" sortMissingLast="true" docValues="true"/>
+  <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100" multiValued="true">
+    <analyzer type="index">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  
+  <!-- administrative fields -->
+  <field name="_root_" type="string" docValues="false" indexed="true" stored="false"/>
+  <field name="_text_" type="text_general" multiValued="true" indexed="true" stored="false"/>
+  <field name="_version_" type="long" indexed="false" stored="false"/>
+
+  <!-- my fields -->
+  <field name="abstract"        type="text_general"  multiValued="false"  stored="true"/>
+  <field name="arxiv_id"        type="string"        multiValued="false"  stored="true"/>
+  <field name="authors"         type="text_general"  multiValued="true"   stored="true"/>
+  <field name="carrels"         type="text_general"  multiValued="true"   stored="true"/>
+  <field name="cord_uid"        type="string"        multiValued="false"  stored="true"/>
+  <field name="date"            type="text_general"  multiValued="false"  stored="true"/>
+  <field name="doi"             type="string"        multiValued="false"  stored="false"/>
+  <field name="entity"          type="text_general"  multiValued="true"   stored="true"/>
+  <field name="facet_authors"   type="string"        omitTermFreqAndPositions="true" multiValued="true" stored="true"/>
+  <field name="facet_entity"    type="string"        omitTermFreqAndPositions="true" multiValued="true" stored="true"/>
+  <field name="facet_journal"   type="string"        omitTermFreqAndPositions="true" multiValued="false" stored="true"/>
+  <field name="facet_keywords"  type="string"        omitTermFreqAndPositions="true" multiValued="true" stored="true"/>
+  <field name="facet_license"   type="string"        omitTermFreqAndPositions="true" multiValued="false" stored="true"/>
+  <field name="facet_sources"   type="string"        omitTermFreqAndPositions="true" multiValued="true" stored="true"/>
+  <field name="facet_type"      type="string"        omitTermFreqAndPositions="true" multiValued="true" stored="true"/>
+  <field name="facet_urls"      type="string"        omitTermFreqAndPositions="true" multiValued="true" stored="true"/>
+  <field name="fulltext"        type="text_general"  multiValued="false"  stored="false"/>
+  <field name="id"              type="string"        multiValued="false"  indexed="true" required="true" stored="true"/>
+  <field name="journal"         type="text_general"  multiValued="false"  stored="true"/>
+  <field name="keywords"        type="text_general"  multiValued="true"   stored="true"/>
+  <field name="license"         type="text_general"  multiValued="false"  stored="true"/>
+  <field name="mag_id"          type="string"        multiValued="false"  stored="false"/>
+  <field name="pdf_json"        type="string"        multiValued="false"  stored="false"/>
+  <field name="pmc_id"          type="string"        multiValued="false"  stored="true"/>
+  <field name="pmc_json"        type="string"        multiValued="false"  stored="false"/>
+  <field name="pubmed_id"       type="string"        multiValued="false"  stored="true"/>
+  <field name="sha"             type="string"        multiValued="false"  stored="false"/>
+  <field name="source"          type="text_general"  multiValued="false"  stored="true"/>
+  <field name="sources"         type="text_general"  multiValued="true"   stored="true"/>
+  <field name="title"           type="text_general"  multiValued="false"  stored="true"/>
+  <field name="type"            type="text_general"  multiValued="true"   stored="true"/>
+  <field name="urls"            type="text_general"  multiValued="true"   stored="true"/>
+  <field name="who_id"          type="string"        multiValued="false"  stored="false"/>
+  <field name="year"            type="int"           multiValued="false"  stored="true"/>
+
+  <!-- default field -->
+  <copyField source="*" dest="_text_"/>
+  
+</schema>

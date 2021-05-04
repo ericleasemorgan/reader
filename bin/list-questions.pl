@@ -6,7 +6,8 @@
 # configure
 use constant DATABASE => './etc/reader.db';
 use constant DRIVER   => 'SQLite';
-use constant SIZE     => 150;
+use constant SIZE     => 1;
+
 # require
 use DBI;
 use strict;
@@ -24,6 +25,7 @@ $did =~ s/'/''/g;
 
 # find all documents having the given keyword
 my $sql    = "select sid from pos where pos is '.' AND token IS '?' AND id IS '$did' order by sid;";
+
 my $handle = $dbh->prepare( $sql );
 $handle->execute() or die $DBI::errstr;
 
@@ -41,7 +43,9 @@ while( my $result = $handle->fetchrow_hashref ) {
 
 	# process each token; build a sentence
 	my @sentence = ();
-	while( my $token = $subhandle->fetchrow_hashref ) { push( @sentence, $$token{ 'token' } ) }
+	while( my $token = $subhandle->fetchrow_hashref ) { 
+		push( @sentence, $$token{ 'token' } )
+	}
 
 	my $sentence = join( ' ', @sentence );
 	$sentence =~ s/ ([[:punct:]])/$1/g;
@@ -53,7 +57,7 @@ while( my $result = $handle->fetchrow_hashref ) {
 # output and done
 foreach my $sentence ( sort( @sentences ) ) {
 
-	next if ( length( $sentence ) > SIZE );
+	#next if ( length( $sentence ) > SIZE );
 	print join( "\t", ( $did, $sentence ) ), "\n";
 	
 }

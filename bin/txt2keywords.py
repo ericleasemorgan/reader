@@ -54,20 +54,20 @@ doc     = model( text )
 # output a header
 print( "id\tkeyword" )
 
-#list to keep track of already found keywords and avoid duplicates
-keywords = []
+# track found keywords to avoid duplicates
+keywords = set()
 
 # process and output each keyword with yake, will produce unigrams
 for keyword, score in ( yake( doc,  topn=TOPN ) ) :
 	if keyword not in keywords:
 		print( "\t".join( [ id, keyword ] ) )
-		keywords.append(keyword)
+		keywords.add(keyword)
 
 # process and output each keyword with scake, will typically produce keyphrases
 # removing lemmatization with normalize=None seems to produce better results
 for keyword, score in ( scake( doc, normalize=None, topn=TOPN ) ) :
 	if keyword not in keywords:
 		print( "\t".join( [ id, keyword ] ) )
-		keywords.append(keyword)
+		keywords.add(keyword)
 
 exit()

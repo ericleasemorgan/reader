@@ -1,0 +1,5 @@
+LONGNAME	Susceptibility
+SCOPENOTE	A carrel of 2019-20 CORD19 dataset articles on susceptibility and gender. created 2020-05-28 and updated June 10, 2020 with query = susceptibility AND (year:"2020" OR year:"2019" ) AND (entity:"women" OR entity:"men") 
+CREATOR	Natalie K Meyers 
+EMAIL	natalie.meyers@nd.edu
+CREATIONDATE	May 28, 2020

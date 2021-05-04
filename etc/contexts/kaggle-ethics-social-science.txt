@@ -1,0 +1,5 @@
+LONGNAME	Ethics or Social Science
+SCOPENOTE	This is a Distant Reader "study carrel" called <em>Ethics or Social Science</em>, and it is an initial attempt at addressing a Kaggle question of the same name.
+CREATOR	Eric Lease Morgan
+EMAIL	emorgan@nd.edu
+CREATIONDATE	June 14, 2020

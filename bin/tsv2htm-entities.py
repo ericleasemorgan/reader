@@ -7,9 +7,12 @@
 
 # December 27, 2019 - first documentation; sorted dataframe and truncated it for gradual degradation
 
+# pre-require and configure
+import os
+READERCORD_HOME = os.environ[ 'READERCORD_HOME' ]
 
 # configure
-TEMPLATE = '/export/reader/etc/tsv2htm-entities.htm'
+TEMPLATE = READERCORD_HOME + '/etc/tsv2htm-entities.htm'
 MAXIMUM  = 2500
 
 # require

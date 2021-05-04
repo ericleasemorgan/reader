@@ -25,7 +25,7 @@ if ( ! $tsv ) { die "Usage: $0 <ent>\n" }
 my $key        =  basename( $tsv ,  ( '.ent' ) );
 my @parts      =  split( '-', $key );
 my $documentid =  $parts[ 1 ];
-$documentid    =~ s/^0+//;
+$documentid    = $key;
 
 # debug
 warn "$key\n";

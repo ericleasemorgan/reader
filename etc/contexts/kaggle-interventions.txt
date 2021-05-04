@@ -1,0 +1,5 @@
+LONGNAME	Interventions
+SCOPENOTE	This is a Distant Reader "study carrel" called <em>Interventions</em>, and it is an initial attempt at addressing a Kaggle question of the same name.
+CREATOR	Eric Lease Morgan
+EMAIL	emorgan@nd.edu
+CREATIONDATE	June 13, 2020

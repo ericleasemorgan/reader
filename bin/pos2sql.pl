@@ -25,7 +25,8 @@ if ( ! $tsv ) { die "Usage: $0 <pos>\n" }
 my $key        =  basename( $tsv ,  ( '.pos' ) );
 my @parts      =  split( '-', $key );
 my $documentid =  $parts[ 1 ];
-$documentid    =~ s/^0+//;
+#$documentid    =~ s/^0+//;
+$documentid    = $key;
 
 # debug
 warn "$key\n";

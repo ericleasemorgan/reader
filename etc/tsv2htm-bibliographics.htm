@@ -21,6 +21,9 @@
 	<!-- Font Awesome Web Icons -->
 	<link rel="stylesheet" href="../css/font-awesome.min.css">
 
+	<script type="text/javascript" src="../js/elasticlunr.js"></script>
+
+
 	<!-- custom local css file -->
 	<link rel="stylesheet" href="../css/main.css">
 
@@ -94,6 +97,8 @@
 		</ol>
 	</nav>
 
+<p> Click <a href="#" target="_blank" rel="noopener noreferrer" onclick="makebib(); return false;">here</a> to see an annotated bibliography of the data in the table.</p>
+<br>
 <h1>Bibliographics</h1>
 <p>This is a table of authors, titles, dates and other bibliographic information; it is a list metadata describing the content of your study carrel. Think of it as your library.</p>
 
@@ -112,6 +117,56 @@
         <tbody>
         ##ROWS##
         </tbody>
+	<script>
+		var data_tr = $("#tsv tr")
+		var data_td = $("#tsv td")
+		var data = $('tsv').DataTable().rows().data();
+		var i = 1;
+		var j = 0;
+		function makebib(){
+			var mylist = document.createElement("ol");
+			var newitem = document.createElement("li");
+			var data_col_temp = data_td[j];
+			var data_row_temp = data_tr[i];
+			var rec_arr = [];
+			var record = {};
+		        //initialize the index
+        		var index = elasticlunr(function(){
+                		this.setRef('id');
+                		this.setRef('author');
+                		this.setRef('title');
+                		this.setRef('date');
+        		});
+			//extract data from the table; add to record array
+        		$("#tsv > tbody > tr").each(function(i){
+                		var id = ($(this).children('td').eq(0).text()); //id
+               			var author = ($(this).children('td').eq(1).html()); //author
+                        	var title = $(this).children('td').eq(2).html();//title
+                        	var date = $(this).children('td').eq(3).html(); //date
+                        	var newText = document.createTextNode(($(this).text()));
+                        	record 	= {
+                                	'id' : id,
+                                	'author' : author,
+                                	'title'  : title,
+                                	'date'   : date
+                        	}
+                        	rec_arr.push(record); //add record to array
+        		});     		
+        		var list = '<ol>'; //initialize ordered list
+			//add each element in rec_arr[] to the list
+        		for ( var item in rec_arr) {
+                		list += '<emsp>' //emphasized space 
+               			list +=   '<li>' + rec_arr[item].author + '. '
+                		list +=   '<i>' + rec_arr[item].title + '</i>' + '. ' //italicized title
+                		list +=   rec_arr[item].date + '<br>'
+                		list += '<br>'
+        		}
+        		list += '</ol>'
+        		var bib_header = '<h2 style="font-size:30px; text-align:center;"> Annotated Bibliography </h2>';
+        		document.write(bib_header); //write header to document
+			document.write(list); //write list to document
+		}
+	</script>
     </table>
 	</div>
 	<footer class="footer">

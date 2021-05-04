@@ -12,7 +12,7 @@
 
 # configure
 TXT='./txt'
-DB='/export/cord/etc/cord.db'
+DB='/export/reader/etc/cord.db'
 TEMPLATE=".mode tabs\nSELECT authors, title, date, journal, doi, abstract, document_id, cord_uid FROM documents WHERE sha is '##SHA##';"
 
 # sanity check
