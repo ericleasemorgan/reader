@@ -28,8 +28,11 @@ specific characteristics for your collection. These
 characteristics can help you summarize the collection as well as
 enumerate things you might want to investigate more closely.
 
-                               Eric Lease Morgan <emorgan@nd.edu>
-                                                     May 27, 2019";
+This report is a terse narrative report, and when processing 
+is complete you will be linked to a more complete narrative
+report. 
+
+                               Eric Lease Morgan <emorgan@nd.edu>";
 
 
 
@@ -190,29 +193,11 @@ SELECT COUNT( LOWER( t.token || ' ' || c.token || ' ' || d.token || ' ' || e.tok
 
 -- INSERT MORE KEWL GRAMMERS HERE
 
-
--- size of items
+-- a sort of bibliography
 select '
 
-Sizes of items; "Measures in words, how big is each item?"
-----------------------------------------------------------';
-select words, id from bib order by words desc;
-
-
--- readability of items
-select '
-
-Readability of items; "How difficult is each item to read?"
------------------------------------------------------------';
-select rtrim(round(flesch)) as f, id from bib order by f desc;
-
-
--- summaries
-select '
-
-Item summaries; "In a narrative form, how can each item be abstracted?"
------------------------------------------------------------------------';
-select id, summary || '
-' from bib order by id;
-
+A rudimentary bibliography
+--------------------------';
+.mode lines
+select b.id, b.author, b.title, b.date, group_concat(w.keyword, '; ') as keywords, b.summary, b.doi from bib as b, wrd as w where b.id = w.id group by b.id order by b.author;"
 
