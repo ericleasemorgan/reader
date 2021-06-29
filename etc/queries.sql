@@ -199,5 +199,5 @@ select '
 A rudimentary bibliography
 --------------------------';
 .mode lines
-select b.id, b.author, b.title, b.date, group_concat(w.keyword, '; ') as keywords, b.summary, b.doi from bib as b, wrd as w where b.id = w.id group by b.id order by b.author;"
+select b.id, b.author, b.title, b.date, group_concat(w.keyword, '; ') as keywords, b.summary, b.doi from bib as b, wrd as w where b.id = w.id group by b.id order by b.author;
 
