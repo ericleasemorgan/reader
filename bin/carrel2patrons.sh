@@ -31,6 +31,6 @@ cat $TEMPLATE | sed s"/##PATRON##/$PATRON/g" > "$PATRONS/$PATRON/.htaccess"
 # make sane, do the work, and done
 cd $CARRELS
 rm -rf "$PATRONS/$PATRON/$CARREL"
-#mv $CARREL "$PATRONS/$PATRON"
-cp -r $CARREL "$PATRONS/$PATRON"
+mv $CARREL "$PATRONS/$PATRON"
+#cp -r $CARREL "$PATRONS/$PATRON"
 exit

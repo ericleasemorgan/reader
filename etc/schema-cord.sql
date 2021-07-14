@@ -3,8 +3,9 @@
 -- Eric Lease Morgan <emorgan@nd.edu>
 -- (c) University of Notre Dame; distributed under a GNU Public License
 
--- May 14, 2020 - first documentation
--- May 26, 2020 - added quite a number of tables
+-- May  14, 2020 - first documentation
+-- May  26, 2020 - added quite a number of tables
+-- June 14, 2021 - views
 
 
 CREATE TABLE documents (
@@ -32,6 +33,7 @@ CREATE TABLE documents (
     
 );
 
+-- a copule of indexes
 CREATE INDEX documents_sha_i ON documents (sha);
 CREATE INDEX documents_pmc_id_i ON documents (pmc_id);
 
@@ -80,4 +82,18 @@ CREATE TABLE wrd (
 	keyword      TEXT
 
 );
+
+-- cool views by Art Rhyno
+CREATE VIEW view_authors AS SELECT document_id, GROUP_CONCAT(REPLACE(author,',','_')) as authors FROM authors GROUP BY document_id;
+
+CREATE VIEW view_keywords AS SELECT document_id, GROUP_CONCAT(keyword) as keywords FROM wrd GROUP BY document_id;
+
+CREATE VIEW view_entities AS SELECT document_id, GROUP_CONCAT(DISTINCT(entity)) as entities FROM ent GROUP BY document_id;
+
+CREATE VIEW view_types AS SELECT document_id, GROUP_CONCAT(DISTINCT(type)) as types FROM ent GROUP BY document_id;
+
+CREATE VIEW view_sources AS SELECT document_id, GROUP_CONCAT(source) as sources FROM sources GROUP BY document_id;
+
+CREATE VIEW view_urls AS SELECT document_id, GROUP_CONCAT(REPLACE(url,' ','')) as urls FROM urls GROUP BY document_id;
+
 

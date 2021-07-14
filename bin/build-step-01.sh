@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# build.sh - one script to create the CORD database
+# build-step-01.sh - one script to create the CORD database
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame; distributed under a GNU Public License
@@ -13,7 +13,7 @@
 
 
 # configure
-SOURCE='/data-disk/etc/reader-cord.cfg'
+SOURCE='/ocean/projects/cis210016p/shared/etc/reader-cord.cfg'
 
 # initialize and make sane
 source $SOURCE
@@ -43,9 +43,6 @@ cat ./etc/urls2url.sql | sqlite3 ./etc/cord.db
 echo "Filling shas table" >&2
 cat ./etc/shas2sha.sql | sqlite3 ./etc/cord.db
 
-echo "Done with Step #1. You now need to do some feature extraction. Call Eric." >&2
-exit
-
 echo "Transforming JSON into plain text" >&2
 mkdir -p ./cord/txt
 find cord/json -type f -not -name "P*" | sort | parallel --will-cite json2corpus.sh
@@ -53,10 +50,6 @@ find cord/json -type f -not -name "P*" | sort | parallel --will-cite json2corpus
 echo "Extracting named entities from plain text" >&2
 mkdir -p ./cord/ent
 find ./cord/txt -name "*.txt" | parallel ./bin/txt2ent-cord.py
-
-echo "Extracting parts-of-speech from plain text" >&2
-mkdir -p ./cord/pos
-find ./cord/txt -name "*.txt" | parallel ./bin/txt2pos-cord.py
 
 echo "Extracting keywords from plain text" >&2
 mkdir -p ./cord/wrd

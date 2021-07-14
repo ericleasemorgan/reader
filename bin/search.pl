@@ -1,4 +1,4 @@
-#!/data-disk/bin/perl
+#!/usr/bin/env perl
 
 # search.pl - command-line interface to search a solr instance
 
@@ -13,8 +13,8 @@
 # configure
 use constant FACETFIELD => ( 'facet_journal', 'year' );
 use constant FIELDS     => 'id,title,doi,url,date,journal';
-use constant SOLR       => 'http://10.0.1.11:8983/solr/reader-cord';
-use constant ROWS       => 10000;
+use constant SOLR       => 'http://localhost:8983/solr/cord';
+use constant ROWS       => 500;
 
 # require
 use strict;
