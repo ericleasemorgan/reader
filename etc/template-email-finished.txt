@@ -1,18 +1,18 @@
 
 The creation of your study carrel -- ##CARREL## -- has been completed, and it ought to be accessible at the following URL:
   
-  https://library.distantreader.org/patrons/##PATRON##/##CARREL##/
+  https://distantreader.org/patrons/##PATRON##/##CARREL##/
   
 Here are a few more links of possible interest:
 
   1. download your carrel
-     https://library.distantreader.org/patrons/##PATRON##/##CARREL##/study-carrel.zip
+     https://distantreader.org/patrons/##PATRON##/##CARREL##/study-carrel.zip
      
   2. read the summary report
-     https://library.distantreader.org/patrons/##PATRON##/##CARREL##/standard-output.txt
+     https://distantreader.org/patrons/##PATRON##/##CARREL##/standard-output.txt
      
   3. learn what the carrel contains
-     https://library.distantreader.org/patrons/##PATRON##/##CARREL##/MANIFEST.htm
+     https://distantreader.org/patrons/##PATRON##/##CARREL##/MANIFEST.htm
   
 Attached is an ugly log file outlining what the Reader did to create your carrel. If the creation process seemed to fail, then send the attachement to Eric.
 
