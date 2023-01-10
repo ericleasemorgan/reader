@@ -64,7 +64,8 @@ def process_file( key, input_filename, output_filename):
 			#sys.stderr.write( 'model:' + model + "\n" )
 			
 			# load the model and model the text
-			nlp = spacy.load( model, max_length=size )
+			nlp            = spacy.load( model)
+			nlp.max_length = size
 			doc = nlp( text )
 		
 			# process each sentence in the document

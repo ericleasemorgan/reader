@@ -21,7 +21,7 @@ TOPN   = 0.005
 # require
 import textacy.preprocessing
 from textacy.ke.scake import scake
-from textacy.ke.yake import yake
+textacy.extract.keyterms.yake
 import spacy
 import os
 import sys

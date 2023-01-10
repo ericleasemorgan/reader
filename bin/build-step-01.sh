@@ -13,7 +13,7 @@
 
 
 # configure
-SOURCE='/ocean/projects/cis210016p/shared/etc/reader-cord.cfg'
+SOURCE='/home/emorgan/shared/sandbox/cord/etc/reader-cord.cfg'
 
 # initialize and make sane
 source $SOURCE
@@ -47,29 +47,30 @@ echo "Transforming JSON into plain text" >&2
 mkdir -p ./cord/txt
 find cord/json -type f -not -name "P*" | sort | parallel --will-cite json2corpus.sh
 
-echo "Extracting named entities from plain text" >&2
-mkdir -p ./cord/ent
-find ./cord/txt -name "*.txt" | parallel ./bin/txt2ent-cord.py
-
 echo "Extracting keywords from plain text" >&2
+rm -rf ./cord/wrd
 mkdir -p ./cord/wrd
 find ./cord/txt -name "*.txt" | parallel ./bin/txt2keywords-cord.py
-
-echo "Transforming named entity files into SQL" >&2
-mkdir -p ./cord/sql-ent
-find ./cord/ent -type f | parallel ./bin/ent2sql-cord.pl 2> ./log/ent2sql.log
 
 echo "Transforming keyword files into SQL" >&2
 mkdir -p ./cord/sql-wrd
 find ./cord/wrd -type f | parallel ./bin/wrd2sql-cord.pl 2> ./log/wrd2sql.log
 
-echo "Reducing named entities to database" >&2
-./bin/reduce-ent-cord.sh
-
 echo "Reducing keywords to database" >&2
 ./bin/reduce-wrd-cord.sh
 
-echo "Summarizing" >&2
+#echo "Transforming named entity files into SQL" >&2
+#mkdir -p ./cord/sql-ent
+#find ./cord/ent -type f | parallel ./bin/ent2sql-cord.pl 2> ./log/ent2sql.log
+
+#echo "Extracting named entities from plain text" >&2
+#mkdir -p ./cord/ent
+#find ./cord/txt -name "*.txt" | parallel ./bin/txt2ent-cord.py
+
+#echo "Reducing named entities to database" >&2
+#./bin/reduce-ent-cord.sh
+
+echo "Summarizing" >&2`
 ./bin/summarize.sh > ./report.txt
 
 echo "Done building CORD database" >&2

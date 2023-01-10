@@ -6,7 +6,8 @@
 # Eric Lease Morgan <emorgan@nd.edu>
 # (c) University of Notre Dame; distributed under a GNU Public License
 
-# May 15, 2020 - first cut; sometimes I scare myself
+# May     15, 2020 - first cut; sometimes I scare myself
+# December 9, 2022 - increased size of key to 7 zeros
 
 
 # configure
@@ -31,7 +32,7 @@ IFS=$'\t'
 printf $QUERY | sqlite3 $DB | while read DOCID CORDID; do
 
 	# build a file name (yet another key); a bit obtuse
-	ITEM=$( printf "%06d" $DOCID )
+	ITEM=$( printf "%07d" $DOCID )
 	FILE="cord-$ITEM-$CORDID.txt"
 
 	# don't do the work, if it has already been done

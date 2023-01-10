@@ -5,7 +5,8 @@
 # Eric Lease Morgan <emorgan@nd.ed>
 # (c) University of Notre Dame; distributed under a GNU Public License
 
-# June 11, 2020 - first cut
+# June    11, 2020 - first cut
+# December 9, 2022 - made key seven charracters long
 
 
 # configure
@@ -50,7 +51,7 @@ printf $QUERY | sqlite3 $DB | while read -a RESULTS; do
 	CORDID=${RESULTS[7]}
 
 	# build a file name; a bit obtuse
-	ITEM=$( printf "%06d" $DOCID )
+	ITEM=$( printf "%07d" $DOCID )
 	KEY="cord-$ITEM-$CORDID"
 
 	# extract the body; jq++

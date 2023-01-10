@@ -10,6 +10,7 @@
 # December 23, 2019 - started using Textacy
 # March    18, 2020 - eliminated words less than three characters long; ought to explore stop words
 # November 21, 2020 - changed (upgraded) model
+# December  2, 2022 - tweaked for newer version of spacy and yake
 
 
 # configure
@@ -17,9 +18,10 @@ NGRAMS  = 1
 TOPN    = 0.005
 WRD     = './cord/wrd'
 MODEL   = 'en_core_web_lg'
+STOPWORDS = './etc/stopwords-wrd.txt'
 
 # require
-from textacy.ke.yake import yake
+from  textacy.extract.keyterms.yake import yake
 import os
 import spacy
 import sys
@@ -27,6 +29,9 @@ import re
 
 # sanity check
 if len( sys.argv ) < 2 : exit('Usage: ' + sys.argv[ 0 ] + " [<file1> [<file2> ...]]" )
+
+# read stopwords
+with open ( STOPWORDS ) as handle: stopwords = handle.read().split( '\n' )
 
 # return maximum size of a set of files
 def get_maximum_size( files ) :
@@ -64,6 +69,8 @@ def process_file(key, input_filename, output_filename):
 		for keyword, score in ( yake( doc, ngrams=NGRAMS, topn=TOPN ) ) :
 
 			if ( len( keyword ) < 3 ) : continue
+			keyword = keyword.lower()
+			if keyword in stopwords   : continue
 			print( "\t".join( [ key, keyword ] ), file=handle )
 
 # initailize
@@ -71,7 +78,8 @@ files = sys.argv[ 1: ]
 
 # determine the maximum size  of our files and initialize our model; might benefit from "disabling" something
 maximum = get_maximum_size( files )
-nlp     = spacy.load( MODEL, max_length=maximum )
+nlp            = spacy.load( MODEL )
+nlp.max_length = maximum + 1 
 
 # process each given file
 for file_name in files :
